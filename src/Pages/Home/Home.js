@@ -13,42 +13,36 @@ class Home extends Component {
 			<div className="main-banner">
 				<div className="d-table">
 					<div className="d-table-cell">
-						<div className="container">
+						<div className="container-fluid">
 							<div className="row align-items-center">
-								<div className="col-lg-5"></div>
-								<div className="col-lg-4">
+								<div className="col-lg-9"></div>
+								<div className="col-md-3 form-right">
 									<div className="get-appointment-form">
 										<h3>Vacation Home Managment</h3>
 										<p>Earn $5000 More Or We Pay You</p>
-										<p className="mtb">
-											<span className="pull-left">Revenue Guarantee</span>
-											<span className="pull-right">
-												<a href="#">Learn More</a>
-											</span>
-										</p>
+										<p className="mtb"><span className="pull-left">Revenue Guarantee</span><span className="pull-right"><a href="#">Learn More</a></span></p>
+										<br/><br/><br/><br/>
+										<span>Find out what you could earn</span>
+										<br/><br/>
 										<form>
-											<div className="form-group">
-												<input type="text" className="form-control" id="your_name" placeholder="Your Name"/>
+											<div className="col-md-6 form_edit_1">
+												<input type="text" className="form-control form_text" id="your_name" placeholder="Type of Place"/>
 											</div>
-											<div className="form-group">
-												<input type="email" className="form-control" id="your_email" placeholder="Your Email"/>
+											<div className="col-md-6 form_edit_2">
+												<input type="text" className="form-control form_text" id="your_email" placeholder="Number of guests"/>
 											</div>
-											<div className="form-group">
-												<input type="text" className="form-control" id="phone_number" placeholder="Phone Number"/>
-											</div>
-											<div className="form-group">
-												<input type="text" className="form-control" id="number" placeholder="Number Of List"/>
+											<div className="col-md-12 price_tag">
+											<br/>
+											<span className="form_price">$3333</span>
+											<span className="form_label"> per month <i className="fa fa-question-circle-o" aria-hidden="true"></i></span>
+											<br/>
 											</div>
 											<div className="text-center">
-												<button type="submit" className="btn btn-primary cu-btn">Back A Call</button>
-											</div>
-											<div className="form-footer">
-												<p>Or Call: <span>415-209-5847</span></p>
+												<button type="submit" className="btn btn-primary cu-btn">Get Started</button>
 											</div>
 										</form>
 									</div>
 								</div>
-								<div className="col-lg-3"></div>
 							</div>
 						</div>
 					</div>
@@ -61,237 +55,165 @@ class Home extends Component {
 							<div className="col-sm-12">
 								<div className="custom-media-box">
 									<div className="media ">
-										<h3 className="title">Why Dipsea?</h3>
+										<h3 className="title">Why Stinson Beach Property Management ?</h3>
 										<div className="cu-media-body">
-											<div className="pull-left">
-												<img src="images/t-icon.png"/>
-											</div>
 											<div className="media-contant">
-												<p>We understand the challenges involved in managing rental properties and technicalities and optimization of Airbnb/VRBO listings.</p>
+												<p>Our promise to you is to increase your revenue while freeing up your time.</p>
 											</div>
 										</div>
 										<div className="cu-media-body">
-											<div className="pull-left">
-												<img src="images/t-icon.png"/>
-											</div>
 											<div className="media-contant">
-												<p>The dirty secret of Airbnb/VRBO property management companies is the
-														larger the company, the more watered-down the service.</p>
+												<p>Stinson Beach Property Management operates exclusively 	in Stinson Beach, which allows for premium individualized care to maximize your property's revenue.</p>
 											</div>
 										</div>
 										<div className="cu-media-body">
-											<div className="pull-left">
-												<img src="images/t-icon.png"/>
-											</div>
 											<div className="media-contant">
-												<p>Dipsea Property Management operates exclusively in Stinson Beach and Bolinas, which allows for premium individualized care to both the hosts and guests</p>
+                                                <p>We are the only property management company in Stinson Beach that advertises properties on Airbnb and VRBO. We handle all the back end work and taxes, so you can enjoy regular payouts.</p>
 											</div>
 										</div>
 									</div>
+								</div>
+							</div>
+						</div>
+						<div className="row">
+							<div className="col-sm-12">
+								<div className="border-img text-center">
+									<img src="images/border-icon.png"/>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section className="full_service">
-				<div className="container">
+			<section className="home-second">
+				<div className="container custom-container">
 					<div className="row">
-						<div className="col-sm-12">
-							<div className="ser text-center">
-								<h3 className="title cu-border">Full-Service Vacation Rental Management</h3>
+						<div className="col-sm-4">
+							<div className="home-inner-content">
+								<h3 className="home-inner-title">We protect homeowners</h3>
+								<p>To keep you, your home , and you belongings safe and we protect you by investing in the property ourselves</p>
+								<p>We install Smart Locks, Noise Monitors, Ensure Each Booking is covered with $1M USD accident and damage protection at no cost to  you.</p>
 							</div>
 						</div>
-						<div className="col-sm-12">
-							<div className="ser-2 text-center">
-								<p>15%-25% Of Nightly Rate</p>
+						<div className="col-sm-4">
+							<div className="home-inner-content">
+								<h3 className="home-inner-title">Guests are verified</h3>
+								<p>We only allow kind, laid back guests, that can pass our bank-level ID screening to stay in your home. This catches bad actors before they can even make a booking.</p>                     
 							</div>
-							<div id="myCarousel" className="carousel slide">
-								<div className="carousel-inner">
-									<div className="item active">
-										<div className="row">
-											<div className="col-sm-4">
-												<div className="card">
-													<div className="card-body text-center">
-														<p>
-															<img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"/>
-														</p>
-														<h4 className="card-title">Sunlimetech</h4>
-														<p className="card-text">This is basic card with image on top, title, description and button.</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-sm-4">
-												<div className="card">
-													<div className="card-body text-center">
-														<p>
-															<img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"/>
-														</p>
-														<h4 className="card-title">Sunlimetech</h4>
-														<p className="card-text">This is basic card with image on top, title, description and button.</p>
-													</div>
-												</div>	
-											</div>
-											<div className="col-sm-4">
-												<div className="card">
-													<div className="card-body text-center">
-														<p>
-															<img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"/>
-														</p>
-														<h4 className="card-title">Sunlimetech</h4>
-														<p className="card-text">This is basic card with image on top, title, description and button.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div className="row">
-											<div className="col-sm-4">
-												<div className="card">
-													<div className="card-body text-center">
-														<p>
-															<img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"/>
-														</p>
-														<h4 className="card-title">Sunlimetech</h4>
-														<p className="card-text">This is basic card with image on top, title, description and button.</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-sm-4">
-												<div className="card">
-													<div className="card-body text-center">
-														<p>
-															<img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"/>
-														</p>
-														<h4 className="card-title">Sunlimetech</h4>
-														<p className="card-text">This is basic card with image on top, title, description and button.</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-sm-4">
-												<div className="card">
-													<div className="card-body text-center">
-														<p>
-															<img className=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"/>
-														</p>
-														<h4 className="card-title">Sunlimetech</h4>
-														<p className="card-text">This is basic card with image on top, title, description and button.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<a className="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-								<a className="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+						</div>
+						<div className="col-sm-4">
+							<div className="home-inner-content">
+								<h3 className="home-inner-title">Authentic travel experiences</h3>
+								<p>Everything we do for guests revolves around providing the consistency and service of a great hotel combined with the waemth and cheracter of the home. Happy repeat guests means more revenue for you.</p>                     
+							</div>	
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-sm-12">
+							<div className="border-img text-center">
+								<img src="images/border-icon.png"/>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section className="testimonial">
-				<div className="container">
+			<section className="home-second">
+				<div className="container custom-container">
 					<div className="row">
 						<div className="col-sm-12">
-						<h2>What <b>our customers</b> are saying</h2>
-						<div id="myCarousel" className="carousel slide" data-ride="carousel">
-							<ol className="carousel-indicators">
-								<li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-								<li data-target="#myCarousel" data-slide-to="1"></li>
-								<li data-target="#myCarousel" data-slide-to="2"></li>
-							</ol>
-							<div className="carousel-inner">
-								<div className="item carousel-item active">
-									<div className="row">
-										<div className="col-sm-12">
-											<div className="media">
-												<div className="media-left d-flex mr-3">
-													<a href="#">
-														<img src="/examples/images/clients/1.jpg" alt=""/>
-													</a>
-												</div>
-												<div className="media-body">
-												   <div className="testimonial">
-													  <p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
-													  <p className="overview"><b>Paula Wilson</b>, Media Analyst</p>
-												   </div>
-												</div>
-											</div>
-										</div>
-									</div>
+							<div className="rent-title">
+								<h3 className="title text-center">Earn more in 3 Steps</h3>
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-sm-4">
+							<div className="home-inner-content">
+								<h3 className="home-inner-title m0">1.</h3>
+								<h3 className="home-inner-title mt0">Receive your action plan</h3>
+								<p>Set up a meeting a Homeowner Advisor to receive a detailed action plan to take your property to the next level</p>
+							</div>
+						</div>
+						<div className="col-sm-4">
+							<div className="home-inner-content">
+								<h3 className="home-inner-title m0">2</h3>
+								<h3 className="home-inner-title mt0">We prepare your property</h3>
+								<p>We put the plan motion and your property gets upgraded and integrated into our management systsm.</p>                     
+							</div>
+						</div>
+						<div className="col-sm-4">
+							<div className="home-inner-content">
+								<h3 className="home-inner-title m0">3.</h3>
+								<h3 className="home-inner-title mt0">Welcome your first guest</h3>
+								<p>Once your property is live, qualified guests book and Homeowner payouts begin.</p>
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-sm-12">
+							<div className="border-img text-center">
+								<img src="images/border-icon.png"/>
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-sm-12">
+							<div className="rent-title">
+								<h3 className="title text-center">Homeowner stories</h3>
+							</div>
+						</div>
+					</div>
+					<div className="row">
+						<div className="col-sm-6">
+							<div className="home-box"></div>
+						</div>
+						<div className="col-sm-6">
+							<div className="home-box-inner">
+								<div className="home-side-img">
+									<img src="images/sen-icon.png"/>
 								</div>
-								<div className="item carousel-item">
-									<div className="row">
-										<div className="col-sm-12">
-											<div className="media">
-												<div className="media-left d-flex mr-3">
-													<a href="#">
-														<img src="/examples/images/clients/3.jpg" alt=""/>
-													</a>
-												</div>
-												<div className="media-body">
-													<div className="testimonial">
-														<p>Lorem ipsum dolor sit amet, consec adipiscing elit. Nam eusem scelerisque tempor, varius quam luctus dui. Mauris magna metus nec.</p>
-														<p className="overview"><b>Michael Holz</b>, Seo Analyst</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+								<div className="home-box-content">
+									<h1>There's no one way to host. You might be surprised by how much fun you have. "</h1>
+									<p>Christelle, Phoenicia , NY</p>
+									<p><a href="#">Learn their story</a></p>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+					<div className="row">
+						<div className="col-sm-12">
+							<div className="border-img text-center">
+								<img src="images/border-icon.png"/>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 			<section className="ask-question">
-				<div className="container">
+				<div className="container custom-container">
+					<div className="row">
+						<div className="col-sm-12">
+							<div className="rent-title">
+								<h3 className="title text-center">Your questions answered</h3>
+							</div>
+						</div>
+					</div>
 					<div className="row">
 						<div className="col-sm-6">
 							<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 								<div className="panel panel-default">
 									<div className="panel-heading" role="tab" id="headingOne">
-									   <h4 className="panel-title">
-										  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										  <i className="more-less glyphicon glyphicon-plus"></i>
-										  Collapsible Group Item #1
-										  </a>
-									   </h4>
+										<h4 className="panel-title">
+											<a role="button" className="custom-pl" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											<i className="more-less glyphicon glyphicon-plus"></i>
+												Will I have to worry about taxes?
+											</a>
+										</h4>
 									</div>
 									<div id="collapseOne" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-									   <div className="panel-body">
-										  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									   </div>
-									</div>
-								</div>
-								<div className="panel panel-default">
-									<div className="panel-heading" role="tab" id="headingTwo">
-									   <h4 className="panel-title">
-										  <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-										  <i className="more-less glyphicon glyphicon-plus"></i>
-										  Collapsible Group Item #2
-										  </a>
-									   </h4>
-									</div>
-									<div id="collapseTwo" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									   <div className="panel-body">
-										  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									   </div>
-									</div>
-								</div>
-								<div className="panel panel-default">
-									<div className="panel-heading" role="tab" id="headingThree">
-									   <h4 className="panel-title">
-										  <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-										  <i className="more-less glyphicon glyphicon-plus"></i>
-										  Collapsible Group Item #3
-										  </a>
-									   </h4>
-									</div>
-									<div id="collapseThree" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-									   <div className="panel-body">
-										  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									   </div>
+										<div className="panel-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										</div>
 									</div>
 								</div>
 							</div>
@@ -299,49 +221,32 @@ class Home extends Component {
 						<div className="col-sm-6">
 							<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 								<div className="panel panel-default">
-									<div className="panel-heading" role="tab" id="headingFourth">
-									   <h4 className="panel-title">
-										  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFourth" aria-expanded="true" aria-controls="collapseFourth">
-										  <i className="more-less glyphicon glyphicon-plus"></i>
-										  Collapsible Group Item #1
-										  </a>
-									   </h4>
-									</div>
-									<div id="collapseFourth" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourth">
-									   <div className="panel-body">
-										  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									   </div>
-									</div>
-								</div>
-								<div className="panel panel-default">
-									<div className="panel-heading" role="tab" id="headingFive">
+									<div className="panel-heading" role="tab" id="headingtwo">
 										<h4 className="panel-title">
-											<a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-												<i className="more-less glyphicon glyphicon-plus"></i>
-											  Collapsible Group Item #2
+											<a role="button" className="custom-pl" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+											<i className="more-less glyphicon glyphicon-plus"></i>
+											Can I rent my own place?
 											</a>
-									   </h4>
+										</h4>
 									</div>
-									<div id="collapseFive" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-									   <div className="panel-body">
-										  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									   </div>
+									<div id="collapsetwo" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingtwo">
+										<div className="panel-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										</div>
 									</div>
 								</div>
-								<div className="panel panel-default">
-									<div className="panel-heading" role="tab" id="headingSix">
-									   <h4 className="panel-title">
-										  <a className="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-										  <i className="more-less glyphicon glyphicon-plus"></i>
-										  Collapsible Group Item #3
-										  </a>
-									   </h4>
-									</div>
-									<div id="collapseSix" className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
-									   <div className="panel-body">
-										  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-									   </div>
-									</div>
+							</div>
+						</div>
+					</div>
+					<div className="row mt-30 mb-70">
+						<div className="col-sm-12">
+							<div className="redy-to-earn">
+								<div className="redy-to-earn-img">
+									<img src="images/redy-earn.jpg"/>
+								</div>
+								<div className="redy-to-earn-text">
+									<h1>Redy to earn ?</h1>
+									<p><a href="#">Get Started </a></p>
 								</div>
 							</div>
 						</div>

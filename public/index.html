@@ -25,13 +25,38 @@
 	<script type="text/javascript" src="js/Custom_JQuery.js" ></script>
 	
 	<!-- mainfest files attachment-->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest" href="manifest.json" />
     
     <title>Stinsonbeachpm</title>
+	
+		<!--- firebase integration -->
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+		apiKey: "AIzaSyCsPuBQ9a4KMIC0I9hH5-7SVbXpfWkAn94",
+		authDomain: "stinsonbeachpm.firebaseapp.com",
+		databaseURL: "https://stinsonbeachpm.firebaseio.com",
+		projectId: "stinsonbeachpm",
+		storageBucket: "stinsonbeachpm.appspot.com",
+		messagingSenderId: "794824643345",
+		appId: "1:794824643345:web:cffc6ce65b7a66492df2b0",
+		measurementId: "G-CKCN8K90BL"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    
+    <div id="root">
+	</div>
   </body>
 </html>

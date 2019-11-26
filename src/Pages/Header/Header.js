@@ -24,7 +24,7 @@ export class Header extends Component {
 							 <a href="#">Property Management</a>
 						  </li>
 						  <li>
-							 <a href="#">Book Your Rental </a>
+							 <NavLink to="/Book_Your_Rental">Book Your Rental </NavLink>
 						  </li>
 						  <li>
 							 <a href="#">415-209-5847</a>

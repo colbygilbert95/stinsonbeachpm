@@ -4,22 +4,33 @@ import './index.js';
 import Home from "./Pages/Home/Home.js";
 import Blog from "./Pages/Blog/Blog.js";
 import Single_blog from "./Pages/Single_blog/Single_blog.js";
+import Book_Your_Rental from "./Pages/Book_Your_Rental/Book_Your_Rental.js";
+import Check_availability from "./Pages/Check_availability/Check_availability.js";
+import Property_Deatils from "./Pages/Property_Deatils/Property_Deatils.js";
+import Guarantee from "./Pages/Guarantee/Guarantee.js"; 
+import Test from "./Pages/Test/Test.js";
 
 class Main extends Component {
-render() {
-return (
-<BrowserRouter>
-<div>
-<div className="content">
+	render() {
+	return (
+			<BrowserRouter>
+			<div>
+				<div className="content">
 
-<Route exact path="/" component={Home}/>
-<Route exact path="/Blog" component={Blog}/>
-<Route exact path="/Single_blog" component={Single_blog}/>
-</div>
-</div>
-</BrowserRouter>
-);
-}
+					<Route exact path="/" component={Home}/>
+					<Route exact path="/Blog" component={Blog}/>
+					<Route exact path="/Single_blog" component={Single_blog}/>
+					<Route exact path="/Book_Your_Rental" component={Book_Your_Rental}/>
+					<Route exact path="/Check_availability" component={Check_availability}/>
+					<Route exact path="/Property_Deatils" component={Property_Deatils}/>
+					<Route exact path="/Guarantee" component={Guarantee}/>
+					<Route exact path="/Test" component={Test}/>
+
+				</div>
+			</div>
+			</BrowserRouter>
+		);
+	}
 }
 
 export default Main;
