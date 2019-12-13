@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import {NavLink} from "react-router-dom";
+import Search_form from "../Form/Search_form.js";
 
 class Home extends Component {
 	render() {
@@ -16,33 +18,7 @@ class Home extends Component {
 						<div className="container-fluid">
 							<div className="row align-items-center">
 								<div className="col-lg-9"></div>
-								<div className="col-lg-3">
-									<div className="get-appointment-form">
-										<h3>Vacation Home Managment</h3>
-										<p>Earn $5000 More Or We Pay You</p>
-										<p className="mtb"><span className="pull-left">Revenue Guarantee</span><span className="pull-right"><a href="#">Learn More</a></span></p>
-										<form>
-											<div className="form-group">
-												<input type="text" className="form-control" id="your_name" placeholder="Your Name"/>
-											</div>
-											<div className="form-group">
-												<input type="email" className="form-control" id="your_email" placeholder="Your Email"/>
-											</div>
-											<div className="form-group">
-												<input type="text" className="form-control" id="phone_number" placeholder="Phone Number"/>
-											</div>
-											<div className="form-group">
-												<input type="text" className="form-control" id="number" placeholder="Number Of List"/>
-											</div>
-											<div className="text-center">
-												<button type="submit" className="btn btn-primary cu-btn">Back A Call</button>
-											</div>
-											<div className="form-footer">
-												<p>Or Call: <span>415-209-5847</span></p>
-											</div>
-										</form>
-									</div>
-								</div>
+								{<Search_form/>}
 							</div>
 						</div>
 					</div>

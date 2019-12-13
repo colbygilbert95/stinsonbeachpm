@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import {NavLink} from "react-router-dom";
+import Search_form from "../Form/Search_form.js";
 
 class Home extends Component {
 	render() {
@@ -16,33 +18,7 @@ class Home extends Component {
 						<div className="container-fluid">
 							<div className="row align-items-center">
 								<div className="col-lg-9"></div>
-								<div className="col-md-3 form-right">
-									<div className="get-appointment-form">
-										<h3>Vacation Home Managment</h3>
-										<p>Earn $5000 More Or We Pay You</p>
-										<p className="mtb"><span className="pull-left">Revenue Guarantee</span><span className="pull-right"><a href="#">Learn More</a></span></p>
-										<br/><br/><br/><br/>
-										<span>Find out what you could earn</span>
-										<br/><br/>
-										<form>
-											<div className="col-md-6 form_edit_1">
-												<input type="text" className="form-control form_text" id="your_name" placeholder="Type of Place"/>
-											</div>
-											<div className="col-md-6 form_edit_2">
-												<input type="text" className="form-control form_text" id="your_email" placeholder="Number of guests"/>
-											</div>
-											<div className="col-md-12 price_tag">
-											<br/>
-											<span className="form_price">$3333</span>
-											<span className="form_label"> per month <i className="fa fa-question-circle-o" aria-hidden="true"></i></span>
-											<br/>
-											</div>
-											<div className="text-center">
-												<button type="submit" className="btn btn-primary cu-btn">Get Started</button>
-											</div>
-										</form>
-									</div>
-								</div>
+								{<Search_form/>}
 							</div>
 						</div>
 					</div>

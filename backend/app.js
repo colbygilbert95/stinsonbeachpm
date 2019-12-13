@@ -4,8 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const process = require('process');
-const Knex = require('knex');
-const crypto = require('crypto');
 const mysql = require('mysql');
 
 
@@ -14,56 +12,6 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 app.enable('trust proxy');
-
-// knex connection test
-
-const connect = () => {
-  // [START gae_flex_mysql_connect]
-  const config = {
-    user: process.env.SQL_USER,
-    password: process.env.SQL_PASSWORD,
-    database: process.env.SQL_DATABASE,
-  };
-
-  if (
-    process.env.INSTANCE_CONNECTION_NAME &&
-    process.env.NODE_ENV === 'production'
-  ) {
-    config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-  }
-
-  // Connect to the database
-  const knex = Knex({
-    client: 'mysql',
-    connection: config,
-  });
-  // [END gae_flex_mysql_connect]
-
-  return knex;
-};
-
-const knex = connect();
-
-
-const getPlatform = async knex => {
-  const results = await knex
-    .select('Name')
-    .from('platform')
-    .orderBy('timestamp', 'desc')
-    .limit(10);
-
-  return results.map(
-    visit => `Time: ${visit.timestamp}`
-  );
-};
-
-const insertVisit = (knex, visit) => {
-  return knex('visits').insert(visit);
-};
-
-
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -76,17 +24,18 @@ app.use(function(req, res, next) {
 });
 
 const connection = mysql.createConnection({
-	host: 'localhost',
-	user:'root',
-	password:'',//password of your mysql db
-	database:'stinsonbeachpm'
+	socketPath: '/cloudsql/graphic-outlook-259905:us-central1:stinsonbeachpm',
+	user: 'stinsonbeachpm',
+	database: 'stinsonbeachpm',
+	password: 'stinsonbeachpm'
 });
 
 connection.connect(function(err){
-(err)? console.log(err+'+++++++++++++++//////////'): console.log('connection********');
+(err)? console.log(err.stack+'+++++++++++++++//////////'): console.log('connection********'+connection.threadId);
+console.log(connection);
 });
 
-require('./routes/html-routes.js')(app, connection,getPlatform,insertVisit);
+require('./routes/html-routes.js')(app, connection);
 
 app.use(logger('dev'));
 app.use(express.json());

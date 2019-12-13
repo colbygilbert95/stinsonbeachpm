@@ -36,8 +36,10 @@ h1, h2, h3, h4, span, p, a, div {
 .navbar-default .navbar-nav>li>a {
     color: #444!important;
     font-size: 18px!important;
-    font-weight: 500!important;
     padding: 10px 25px!important;
+}
+.menu_header>li:hover {
+    font-weight: bold!important;
 }
 .title{
     color: #4b484b;
