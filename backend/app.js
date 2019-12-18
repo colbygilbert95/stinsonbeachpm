@@ -1,66 +1,38 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const process = require('process');
 const mysql = require('mysql');
 
+// Database Connection for Production
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// let config = {
+//     user: process.env.SQL_USER,
+//     database: process.env.SQL_DATABASE,
+//     password: process.env.SQL_PASSWORD,
+// }
 
-var app = express();
-app.enable('trust proxy');
+// if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
+//   config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+// }
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// let connection = mysql.createConnection(config);
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+// Database Connection for Development
+
+let connection = mysql.createConnection({
+  //host: '35.238.67.92',
+  user: 'root',
+  database: 'stinsonbeachpm',
+  password: 'stinsonbeachpm'
 });
 
-const connection = mysql.createConnection({
-	socketPath: '/cloudsql/graphic-outlook-259905:us-central1:stinsonbeachpm',
-	user: 'stinsonbeachpm',
-	database: 'stinsonbeachpm',
-	password: 'stinsonbeachpm'
-});
+if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV === 'production') {
+   config.socketPath = '/cloudsql/graphic-outlook-259905:us-central1:stinsonbeachpm';
+ }
 
-connection.connect(function(err){
-(err)? console.log(err.stack+'+++++++++++++++//////////'): console.log('connection********'+connection.threadId);
-console.log(connection);
-});
+  connection.connect(function(err) {
+    if (err) {
+      console.error('Error connecting: ' + err.stack);
+      return;
+    }
+    console.log('Connected as thread id: ' + connection.threadId);
+  });
 
-require('./routes/html-routes.js')(app, connection);
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
-//https://github.com/GoogleCloudPlatform/nodejs-docs-samples/blob/master/appengine/cloudsql/server.js
+  module.exports = connection;

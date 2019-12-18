@@ -40,92 +40,145 @@ class Book_Your_Rental extends Component {
 								<h3 className="title text-left">Top Rated Places to Stay</h3>
 							</div>
 						</div>
+						<NavLink to="/Charming_Stinson_Beach_1Bd_Den_Cottage">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-										   <img className="author-picture " src="images/bed.jpg" alt="..."/>
+										   <img className="author-picture " src="images/properties_images/11_Sierra/11-Sierra-Cover.png" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Billie Ramos</span>
+											<span className="text-left">Lisa Levin</span>
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
 											<span className="small"><strong>731</strong>(16)</span> </a>
 										</div>
 									</div>
-									<p>Amet animi autem commodi, debitis...</p>
-									<p><strong>$145</strong> / night</p>
+									<p>Charming Stinson Beach 1Bd+Den Cottage</p>
+									<p><strong>$179</strong> / night</p>
 								</div>
 							</div>
 						</div>
+						</NavLink>
+						<NavLink to="/Cute_And_Colourful_Oceanside_Cottage_w_Garden">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/bed.jpg" alt="..."/>
+											<img className="author-picture " src="images/properties_images/Mouse_Hole/Mouse_Hole_02.jpg" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Billie Ramos</span>
+											<span className="text-left">Kathleen Hurley</span>
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
 											<span className="small"><strong>731</strong>(16)</span> </a>
 										</div>
 									</div>
-									<p>Amet animi autem commodi, debitis...</p>
-									<p><strong>$145</strong> / night</p>
+									<p>Cute & Colourful Oceanside Cottage w Garden</p>
+									<p><strong>$131</strong> / night</p>
 								</div>
 							</div>
 						</div>
+						</NavLink>
+						<NavLink to="/Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/bed.jpg" alt="..."/>
+											<img className="author-picture " src="images/properties_images/Casita_Azul/Casita_Azul_22.jpg" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Billie Ramos</span>
+											<span className="text-left">Kathleen Hurley</span>
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
 											<span className="small"><strong>731</strong>(16)</span> </a>
 										</div>
 									</div>
-									<p>Amet animi autem commodi, debitis...</p>
-									<p><strong>$145</strong> / night</p>
+									<p>Stinson Beach Vibe - Cheerful Cottage w Garden</p>
+									<p><strong>$140</strong> / night</p>
 								</div>
 							</div>
 						</div>
+						</NavLink>
+						<NavLink to="/Comfortable_updated_vintage_beach_house">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/bed.jpg" alt="..."/>
+											<img className="author-picture " src="images//properties_images/Comfortable/banner.jpg" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Billie Ramos</span>
+											<span className="text-left">Jeff Finci</span>
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
 											<span className="small"><strong>731</strong>(16)</span> </a>
 										</div>
 									</div>
-									<p>Amet animi autem commodi, debitis...</p>
-									<p><strong>$145</strong> / night</p>
+									<p>Comfortable updated vintage beach house</p>
+									<p><strong>$625</strong> / night</p>
 								</div>
 							</div>
                         </div>
+						</NavLink>
+						<div class="col-md-12"><br/></div>
+						<NavLink to="/Oceanfront_Apartment_in_Stinson_Beach">
+						<div className="col-md-4 col-lg-3">
+							<div className="card card-blog">
+								<div className="rent-card-body">
+									<div className="rent-flex">
+										<div className="author">
+											<img className="author-picture " src="images/properties_images/Oceanfront/banner.jpg" alt="..."/>
+										</div>
+										<div className="like">
+											<span className="text-left">Jeff Finci</span>
+											<a href="javascript:;" className="pull-right">
+											<i className="fa fa-star mr-2"></i> 
+											<span className="small"><strong>731</strong>(16)</span> </a>
+										</div>
+									</div>
+									<p>Oceanfront Apartment in Stinson Beach</p>
+									<p><strong>$225</strong> / night</p>
+								</div>
+							</div>
+						</div>
+						</NavLink>
+						<NavLink to="/Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz">
+						<div className="col-md-4 col-lg-3">
+							<div className="card card-blog">
+								<div className="rent-card-body">
+									<div className="rent-flex">
+										<div className="author">
+											<img className="author-picture " src="images/properties_images/Relax/banner.jpg" alt="..."/>
+										</div>
+										<div className="like">
+											<span className="text-left">Jeff Finci</span>
+											<a href="javascript:;" className="pull-right">
+											<i className="fa fa-star mr-2"></i> 
+											<span className="small"><strong>731</strong>(16)</span> </a>
+										</div>
+									</div>
+									<p>Relax & Enjoy an Oceanfront Getaway - La Paz</p>
+									<p><strong>$185</strong> / night</p>
+								</div>
+							</div>
+						</div>
+						</NavLink>
 					</div>
-					<div className="row">
+					{/*<div className="row">
 						<div className="col-sm-12">
 							<div className="c-footer mtb-15">
 								<a href="#">Show more ></a>
 							</div>
 					   </div>
-					</div>
+					</div>*/}
 				</div>
 			</section>
+			<br/><br/>
+			{/*
 			<section className="book-rental-inner">
 				<div className="container-fluid">
 					<div className="row">		
@@ -392,7 +445,7 @@ class Book_Your_Rental extends Component {
 					</div> 
 				</div>
 			</section>
-			
+			*/}
 			<Footer/>
 			
 		</div>

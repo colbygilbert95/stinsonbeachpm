@@ -20,7 +20,9 @@
     "sqlite3": "^4.1.0"
   },
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "ws": "3.3.2"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -9,6 +9,12 @@ import Check_availability from "./Pages/Check_availability/Check_availability.js
 import Property_Deatils from "./Pages/Property_Deatils/Property_Deatils.js";
 import Guarantee from "./Pages/Guarantee/Guarantee.js"; 
 import Test from "./Pages/Test/Test.js";
+import Charming_Stinson_Beach_1Bd_Den_Cottage from "./Pages/Property_Deatils/Charming_Stinson_Beach_1Bd_Den_Cottage.js";
+import Cute_And_Colourful_Oceanside_Cottage_w_Garden from "./Pages/Property_Deatils/Cute_And_Colourful_Oceanside_Cottage_w_Garden.js";
+import Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden from "./Pages/Property_Deatils/Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden.js";
+import Comfortable_updated_vintage_beach_house from "./Pages/Property_Deatils/Comfortable_updated_vintage_beach_house.js";
+import Oceanfront_Apartment_in_Stinson_Beach from "./Pages/Property_Deatils/Oceanfront_Apartment_in_Stinson_Beach.js";
+import Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz from "./Pages/Property_Deatils/Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz.js";
 
 class Main extends Component {
 	render() {
@@ -25,7 +31,12 @@ class Main extends Component {
 					<Route exact path="/Property_Deatils" component={Property_Deatils}/>
 					<Route exact path="/Guarantee" component={Guarantee}/>
 					<Route exact path="/Test" component={Test}/>
-
+					<Route exact path="/Charming_Stinson_Beach_1Bd_Den_Cottage" component={Charming_Stinson_Beach_1Bd_Den_Cottage}/> 
+					<Route exact path="/Cute_And_Colourful_Oceanside_Cottage_w_Garden" component={Cute_And_Colourful_Oceanside_Cottage_w_Garden}/> 
+					<Route exact path="/Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden" component={Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden}/> 
+					<Route exact path="/Comfortable_updated_vintage_beach_house" component={Comfortable_updated_vintage_beach_house}/> 
+					<Route exact path="/Oceanfront_Apartment_in_Stinson_Beach" component={Oceanfront_Apartment_in_Stinson_Beach}/> 
+					<Route exact path="/Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz" component={Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz}/> 
 				</div>
 			</div>
 			</BrowserRouter>
