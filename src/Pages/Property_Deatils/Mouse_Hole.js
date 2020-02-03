@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
-const { FaIcon, FaStack } = require('react-fa-icon');
+//const { FaIcon, FaStack } = require('react-fa-icon');
 
-class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
+class Cute_And_Colourful_Oceanside_Cottage_w_Garden extends Component {
 	render() {
 		
 		return (
@@ -17,29 +17,29 @@ class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
 					<div className="row">
 						<div className="col-sm-4">
 							<div className="beach-box border-rds">
-								<h1>Relax & Enjoy an Oceanfront Getaway - La Paz</h1>
+								<h1>Cute & Colourful Oceanside Cottage w Garden</h1>
 							</div>
 						</div>
 						<div className="col-sm-6">
 							<div className="beach-img-box">
-								<img src="images/properties_images/Relax/banner.jpg" className="border-rds"/>
+								<img src="images/property_images/Mouse_Hole/Mouse_Hole_02.jpg" className="border-rds"/>
 							</div>
 						</div>
 						<div className="col-sm-2">
 							<div className="row">
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/properties_images/Relax/2.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/Mouse_Hole/Mouse_Hole_01.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/properties_images/Relax/3.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/Mouse_Hole/Mouse_Hole_03.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/properties_images/Relax/4.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/Mouse_Hole/Mouse_Hole_05.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 							</div>
@@ -54,9 +54,9 @@ class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
 							<div className="bed-list">
 								<div className="bed-inner">
 									<ul>
-										<li>2 guests</li>
+										<li>3 guests</li>
 										<li>1 Bedrooms</li>
-										<li>1 Beds</li>
+										<li>2 Beds</li>
 										<li>1 Baths</li>
 										{/*<li>5 Accommodates</li>*/}
 									</ul>
@@ -75,41 +75,54 @@ class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
 										<li>
 											<i class="fa-li fa fa-bell"></i>
 											<h5><strong>Self check-in</strong></h5>
-											<span>Check yourself in with the lockbox.</span>
+											<span>Check yourself in with the keypad.</span>
 										</li>
 										<li>
 											<i class="fa-li fa fa-lightbulb-o"></i>
 											<h5><strong>Sparkling clean</strong></h5>
-											<span>10 recent guests said this place was sparkling clean.</span>
+											<span>15 recent guests said this place was sparkling clean.</span>
 										</li>
 										<li>
-											<i class="fa-li fa fa-trophy"></i>
-											<h5><strong>Jeff is a Superhost</strong></h5>
-											<span>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</span>
+											<i class="fa-li fa fa-map fa-maker"></i>
+											<h5><strong>Great location</strong></h5>
+											<span>100% of recent guests gave the location a 5-star rating.</span>
 										</li>
 									</ul>
 									
 									<hr/>
 									
-									<p>Feel at home on the beach....Fantastic views of sand, surf & mountains. 1 BR apt located in a 3 unit building. Max 2 guests. Fully furnished w/full kitchen, gas BBQ, WiFi, flat panel Smart TV, queen bed w/heated mattress pads, backyard firepit. 1 dog welcome with $60 fee - charged separately once your booking is confirmed and accepted by the host. Cleaning fee, AirBnb Service Fee and 14% "hotel occupancy tax" will be charged at the time of booking.</p>
-									<p>Stays can not begin or end on a Saturday.</p>
-									
+									<p>Offering a true beachside experience highlighted by the delightful touches of the owner with a flair for the "joie de vivre", the cottage blends perfectly with the relaxing location, a few minutes walk to the Stinson Beach.</p>
+									<p>Conveniently situated at Calle de Occidente, this lovely 1BR cottage is designed for a comfortable stay with all the necessary amenities and an awesome outdoors area.
+									Cheerful sister property nearby can accommodate an additional 3 people.</p>
+									<p>Welcome!</p>
 									<br/>
 									<h4><strong>The space</strong></h4>
 									
-									<p>La Paz has stunning views and easy quick access to the beach and to the quaint Stinson Beach town. One queen bed. 2 guests maximum. Not suitable for young children. 1 dog welcome with additional $60 fee, charged after acceptance of booking. Price does not include a required 14% Stinson "occupancy" tax, the AirBnb fees and the cleaning fee which are each charged at the time of booking.</p>
+									<p>￭ Quirky interior and wood accents give the property a delightful cottage feel, captivating a very relaxing vibe. The unpretentious and practical set up gives an extra charm to the place that can perfectly accommodate 3 people.</p>
 									
+									<p>￭ Living Room <br/>
+									Colourful variety compiled in an open plan living room/kitchen with a laid back dining island. Sofa bed and window facing the garden.</p>
+									
+									<p>￭ Kitchen <br/>
+									If you decide to roll up your sleeves and master some of the culinary options of the local flavours, the fully equipped kitchen is there with all the amenities and then some.The adjoined area with the living room and easy access to the garden.</p>
+									
+									<p>￭ Bedroom <br/>
+									One bedroom with a queen-size bed match in simple style and comfort of this Stinson Beach cottage. Along with the regular commodities found in the room, the area has generous windows offering plenty of natural light.</p>
+									
+									<p>￭ Outdoors space <br/>
+									Highlighting the outdoors area with garden furniture, loungers, sun umbrella, BBQ and an outdoor shower as the reminders of the freedom of the beachside living.
+									Welcome!</p>
+																		
 									<br/>
 									<h4><strong>Guest access</strong></h4>
-									<p> Gas BBQ, sunny private deck, large back yard (shared with our other 1-bdrm apartment) and firepit. 2 car parking.</p>
+									<p> It's all yours! You will have access to the house, all the amenities, outdoors area & parking.</p>
 									
-									<p>Check-in time 5pm; check-out time 11 am.</p>
 									<br/>
 									<h4><strong>Other things to note</strong></h4>
 									
-									<p>Off-street parking for two cars. Maximum day time use 4 guests.</p>
-									<p>1 dog allowed; dog bed, dishes and treats provided.</p>
-									<p>We do not start or end visits on a Saturday.</p>
+									<p>Relax, enjoy, unwind!</p>
+									
+									
 									{/*<div class="col-sm-4 house_rules">
 										<img src="images/icons/No/002-non-smoking-area.svg" alt="No smoking"/>
 										<span>No smoking</span>
@@ -126,7 +139,7 @@ class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
 									<h4>House Rules</h4>
 									<strong>Things to know</strong>
 									<ul>
-										<li>Check-in: After 5PM</li>
+										<li>Check-in: After 3PM</li>
 										<li>Checkout: 11AM</li>
 									</ul>
 									<br/>
@@ -134,18 +147,11 @@ class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
 									<ul>
 										<li>No smoking</li>
 										<li>No parties or events</li>
-										<li>Not suitable for children and infants</li>
 									</ul>
 									<br/>
 									<strong>From your host</strong>
 									<ul class="no-decoration">
-										<li>Maximum of two overnight guests and two additional day-time guests. 1 well-behaved dog allowed. Fragile septic system. Please be mindful of water usage. No smoking on premises. No parties.</li>
-									</ul>
-									<br/>
-									<strong>You must also acknowledge</strong>
-									<ul>
-										<li>Security Deposit - if you damage the home, you may be charged up to €180</li>
-										<li>Some spaces are shared - Private BBQ and deck. Large back patio with fire pit shared with one other 1 bedroom unit</li>
+										<li>Just enjoy and take good care of the place as if it were a friend's home.</li>
 									</ul>
 									<hr/>
 									<h4>Cancellation policy</h4>
@@ -585,4 +591,4 @@ class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
 	}
 }
 
-export default Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz;
+export default Cute_And_Colourful_Oceanside_Cottage_w_Garden;

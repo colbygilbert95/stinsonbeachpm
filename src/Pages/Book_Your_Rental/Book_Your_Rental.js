@@ -20,7 +20,7 @@ class Book_Your_Rental extends Component {
 							   <li><a href="#">Guests</a></li>
 							   <li><a href="#">Price</a></li>
 							   <li><a href="#">Type of Place</a></li>
-							   <li className="active"><a href="#">More Filters</a></li>
+							   <li><a href="#">More Filters</a></li>
 							   
 							</ul>
 						</div>
@@ -40,19 +40,19 @@ class Book_Your_Rental extends Component {
 								<h3 className="title text-left">Top Rated Places to Stay</h3>
 							</div>
 						</div>
-						<NavLink to="/Charming_Stinson_Beach_1Bd_Den_Cottage">
+						<NavLink to="/Sierra_11">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-										   <img className="author-picture " src="images/properties_images/11_Sierra/11-Sierra-Cover.png" alt="..."/>
+										   <img className="author-picture " src="images/property_images/11_Sierra/11-Sierra-Cover.png" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Lisa Levin</span>
+											{/* <span className="text-left">Lisa Levin</span> */}
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
-											<span className="small"><strong>731</strong>(16)</span> </a>
+											<span className="small"><strong>4.92</strong>(142)</span> </a>
 										</div>
 									</div>
 									<p>Charming Stinson Beach 1Bd+Den Cottage</p>
@@ -61,19 +61,19 @@ class Book_Your_Rental extends Component {
 							</div>
 						</div>
 						</NavLink>
-						<NavLink to="/Cute_And_Colourful_Oceanside_Cottage_w_Garden">
+						<NavLink to="/Mouse_Hole">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Mouse_Hole/Mouse_Hole_02.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/Mouse_Hole/Mouse_Hole_02.jpg" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Kathleen Hurley</span>
+											{/* <span className="text-left">Kathleen Hurley</span> */}
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
-											<span className="small"><strong>731</strong>(16)</span> </a>
+											<span className="small"><strong>4.89</strong>(40)</span> </a>
 										</div>
 									</div>
 									<p>Cute & Colourful Oceanside Cottage w Garden</p>
@@ -82,19 +82,19 @@ class Book_Your_Rental extends Component {
 							</div>
 						</div>
 						</NavLink>
-						<NavLink to="/Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden">
+						<NavLink to="/Casita_Azul">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Casita_Azul/Casita_Azul_22.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/Casita_Azul/Casita_Azul_22.jpg" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Kathleen Hurley</span>
+											{/* <span className="text-left">Kathleen Hurley</span> */}
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
-											<span className="small"><strong>731</strong>(16)</span> </a>
+											<span className="small"><strong>4.92</strong>(39)</span> </a>
 										</div>
 									</div>
 									<p>Stinson Beach Vibe - Cheerful Cottage w Garden</p>
@@ -103,19 +103,19 @@ class Book_Your_Rental extends Component {
 							</div>
 						</div>
 						</NavLink>
-						<NavLink to="/Comfortable_updated_vintage_beach_house">
+						<NavLink to="/La_Playa">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images//properties_images/Comfortable/banner.jpg" alt="..."/>
+											<img className="author-picture " src="images//property_images/La_Playa/banner.jpg" alt="..."/>
 										</div>
 										<div className="like">
 											<span className="text-left">Jeff Finci</span>
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
-											<span className="small"><strong>731</strong>(16)</span> </a>
+											<span className="small"><strong>5.0</strong>(19)</span> </a>
 										</div>
 									</div>
 									<p>Comfortable updated vintage beach house</p>
@@ -125,19 +125,19 @@ class Book_Your_Rental extends Component {
                         </div>
 						</NavLink>
 						<div class="col-md-12"><br/></div>
-						<NavLink to="/Oceanfront_Apartment_in_Stinson_Beach">
+						<NavLink to="/La_Sirena">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Oceanfront/banner.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/La_Sirena/banner.jpg" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Jeff Finci</span>
+											{/* <span className="text-left">Jeff Finci</span> */}
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
-											<span className="small"><strong>731</strong>(16)</span> </a>
+											<span className="small"><strong>4.96</strong>(57)</span> </a>
 										</div>
 									</div>
 									<p>Oceanfront Apartment in Stinson Beach</p>
@@ -146,23 +146,86 @@ class Book_Your_Rental extends Component {
 							</div>
 						</div>
 						</NavLink>
-						<NavLink to="/Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz">
+						<NavLink to="/La_Paz">
 						<div className="col-md-4 col-lg-3">
 							<div className="card card-blog">
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Relax/banner.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/La_Paz/banner.jpg" alt="..."/>
 										</div>
 										<div className="like">
-											<span className="text-left">Jeff Finci</span>
+											{/* <span className="text-left">Jeff Finci</span> */}
 											<a href="javascript:;" className="pull-right">
 											<i className="fa fa-star mr-2"></i> 
-											<span className="small"><strong>731</strong>(16)</span> </a>
+											<span className="small"><strong>4.94</strong>(115)</span> </a>
 										</div>
 									</div>
 									<p>Relax & Enjoy an Oceanfront Getaway - La Paz</p>
-									<p><strong>$185</strong> / night</p>
+									<p><strong>$225</strong> / night</p>
+								</div>
+							</div>
+						</div>
+						</NavLink>
+						<NavLink to="/Mermaid_View">
+						<div className="col-md-4 col-lg-3">
+							<div className="card card-blog">
+								<div className="rent-card-body">
+									<div className="rent-flex">
+										<div className="author">
+											<img className="author-picture " src="images/property_images/Mermaid_View/banner.jpg" alt="..."/>
+										</div>
+										<div className="like">
+											{/* <span className="text-left">Jeff Finci</span> */}
+											<a href="javascript:;" className="pull-right">
+											<i className="fa fa-star mr-2"></i> 
+											<span className="small"><strong>4.6</strong>(50)</span> </a>
+										</div>
+									</div>
+									<p>Delightful Oceanside Cottage w Private Beach Lot</p>
+									<p><strong>$303</strong> / night</p>
+								</div>
+							</div>
+						</div>
+						</NavLink>
+						<NavLink to="/Pradero_27">
+						<div className="col-md-4 col-lg-3">
+							<div className="card card-blog">
+								<div className="rent-card-body">
+									<div className="rent-flex">
+										<div className="author">
+											<img className="author-picture " src="images/property_images/27_Pradero/banner.jpg" alt="..."/>
+										</div>
+										<div className="like">
+											{/* <span className="text-left">Jeff Finci</span> */}
+											<a href="javascript:;" className="pull-right">
+											<i className="fa fa-star mr-2"></i> 
+											<span className="small"><strong>4.60</strong>(30)</span> </a>
+										</div>
+									</div>
+									<p>Handsome Beach Cottage w Outdoors Lounge</p>
+									<p><strong>$225</strong> / night</p>
+								</div>
+							</div>
+						</div>
+						</NavLink>
+						<NavLink to="/Agua_Verde">
+						<div className="col-md-4 col-lg-3">
+							<div className="card card-blog">
+								<div className="rent-card-body">
+									<div className="rent-flex">
+										<div className="author">
+											<img className="author-picture " src="images/property_images/Agua_Verde/Aqua_Verde-4.jpg" alt="..."/>
+										</div>
+										<div className="like">
+											{/* <span className="text-left">Colby Gilbert</span> */}
+											<a href="javascript:;" className="pull-right">
+											<i className="fa fa-star mr-2"></i> 
+											<span className="small"><strong>5.0</strong>(13)</span> </a>
+										</div>
+									</div>
+									<p>Playful Oceanside Studio w Hot Tub</p>
+									<p><strong>$155</strong> / night</p>
 								</div>
 							</div>
 						</div>

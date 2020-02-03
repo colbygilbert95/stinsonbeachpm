@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
+//const { FaIcon, FaStack } = require('react-fa-icon');
 
-class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
+class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
 	render() {
 		
 		return (
@@ -16,29 +17,29 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 					<div className="row">
 						<div className="col-sm-4">
 							<div className="beach-box border-rds">
-								<h1>Charming‌ ‌Stinson‌ ‌Beach‌ ‌1Bd+Den‌ ‌Cottage‌ </h1>
+								<h1>Relax & Enjoy an Oceanfront Getaway - La Paz</h1>
 							</div>
 						</div>
 						<div className="col-sm-6">
 							<div className="beach-img-box">
-								<img src="images/property_images/11_Sierra/11-Sierra-Cover.png" className="border-rds"/>
+								<img src="images/property_images/Relax/banner.jpg" className="border-rds"/>
 							</div>
 						</div>
 						<div className="col-sm-2">
 							<div className="row">
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/property_images/11_Sierra/11-Sierra-Picture1.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/Relax/2.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/property_images/11_Sierra/11-Sierra-Picture2.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/Relax/3.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/property_images/11_Sierra/11-Sierra-Picture3.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/Relax/4.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 							</div>
@@ -53,16 +54,103 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 							<div className="bed-list">
 								<div className="bed-inner">
 									<ul>
-										<li>5 guests</li>
+										<li>2 guests</li>
 										<li>1 Bedrooms</li>
-										<li>3 Beds</li>
-										<li>1.5 Baths</li>
+										<li>1 Beds</li>
+										<li>1 Baths</li>
 										{/*<li>5 Accommodates</li>*/}
 									</ul>
 								</div>
 								{/*<p>NOTE : Construction next door to my property is scheduled to start in October. I am happy to refund $50 per day that noise from this project affects your stay but want all potential guests to be aware of this issue prior booking.</p>
 								<p>Relaxing refuge set on a lush hillside in the quiet seaside town of Stinoson Beach. Feel trensported by the suthentic Japanese design aesthetic and tranquil outdoor shower and soaking tub. Indulge in treetop ocean views from the comfort of a queen bed, and watch the sun set from the privacy of a wooden deck Walk only five minutes to three miles of perfect beach.</p>*/}
-								<i classname="fa fa-home" aria-hidden="true"></i> Entire home
+								<br/>
+								<div class="row row_padding">
+									<hr class="top_hr"/>
+									<ul class="fa-ul">
+										<li>
+											<i class="fa-li fa fa-home"></i>
+											<h5><strong>Entire home</strong></h5>
+											<span>You’ll have the cottage to yourself.</span>
+										</li>
+										<li>
+											<i class="fa-li fa fa-bell"></i>
+											<h5><strong>Self check-in</strong></h5>
+											<span>Check yourself in with the lockbox.</span>
+										</li>
+										<li>
+											<i class="fa-li fa fa-lightbulb-o"></i>
+											<h5><strong>Sparkling clean</strong></h5>
+											<span>10 recent guests said this place was sparkling clean.</span>
+										</li>
+										<li>
+											<i class="fa-li fa fa-trophy"></i>
+											<h5><strong>Jeff is a Superhost</strong></h5>
+											<span>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</span>
+										</li>
+									</ul>
+									
+									<hr/>
+									
+									<p>Feel at home on the beach....Fantastic views of sand, surf & mountains. 1 BR apt located in a 3 unit building. Max 2 guests. Fully furnished w/full kitchen, gas BBQ, WiFi, flat panel Smart TV, queen bed w/heated mattress pads, backyard firepit. 1 dog welcome with $60 fee - charged separately once your booking is confirmed and accepted by the host. Cleaning fee, AirBnb Service Fee and 14% "hotel occupancy tax" will be charged at the time of booking.</p>
+									<p>Stays can not begin or end on a Saturday.</p>
+									
+									<br/>
+									<h4><strong>The space</strong></h4>
+									
+									<p>La Paz has stunning views and easy quick access to the beach and to the quaint Stinson Beach town. One queen bed. 2 guests maximum. Not suitable for young children. 1 dog welcome with additional $60 fee, charged after acceptance of booking. Price does not include a required 14% Stinson "occupancy" tax, the AirBnb fees and the cleaning fee which are each charged at the time of booking.</p>
+									
+									<br/>
+									<h4><strong>Guest access</strong></h4>
+									<p> Gas BBQ, sunny private deck, large back yard (shared with our other 1-bdrm apartment) and firepit. 2 car parking.</p>
+									
+									<p>Check-in time 5pm; check-out time 11 am.</p>
+									<br/>
+									<h4><strong>Other things to note</strong></h4>
+									
+									<p>Off-street parking for two cars. Maximum day time use 4 guests.</p>
+									<p>1 dog allowed; dog bed, dishes and treats provided.</p>
+									<p>We do not start or end visits on a Saturday.</p>
+									{/*<div class="col-sm-4 house_rules">
+										<img src="images/icons/No/002-non-smoking-area.svg" alt="No smoking"/>
+										<span>No smoking</span>
+									</div>
+									<div class="col-sm-4 house_rules">
+										<img src="images/icons/No/003-no-alcohol.svg" alt="No smoking"/><span>No parties or events</span>
+									</div>
+									<div class="col-sm-4 house_rules">
+										<img src="images/icons/No/Pets-Allowed.svg" alt="No smoking"/><span>Pets are allowed</span>
+									</div>*/}
+								</div>
+								<div class="row row_padding">
+									<hr/>
+									<h4>House Rules</h4>
+									<strong>Things to know</strong>
+									<ul>
+										<li>Check-in: After 5PM</li>
+										<li>Checkout: 11AM</li>
+									</ul>
+									<br/>
+									<strong>General rules</strong>
+									<ul>
+										<li>No smoking</li>
+										<li>No parties or events</li>
+										<li>Not suitable for children and infants</li>
+									</ul>
+									<br/>
+									<strong>From your host</strong>
+									<ul class="no-decoration">
+										<li>Maximum of two overnight guests and two additional day-time guests. 1 well-behaved dog allowed. Fragile septic system. Please be mindful of water usage. No smoking on premises. No parties.</li>
+									</ul>
+									<br/>
+									<strong>You must also acknowledge</strong>
+									<ul>
+										<li>Security Deposit - if you damage the home, you may be charged up to €180</li>
+										<li>Some spaces are shared - Private BBQ and deck. Large back patio with fire pit shared with one other 1 bedroom unit</li>
+									</ul>
+									<hr/>
+									<h4>Cancellation policy</h4>
+									<p>Free cancellation for 48 hours. After that, cancel up to 7 days before check-in and get a 50% refund, minus the service fee.</p>
+								</div>
 							</div>
 						</div>
 						<div className="col-sm-4">
@@ -87,6 +175,8 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 					</div>
 				</div>
 			</section>
+			<br/><br/>
+			{/*
 			<hr/>
 			<section className="property-services">
 				<div className="container-fluid">
@@ -166,7 +256,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 						<div className="col-sm-3">
 							<div className="property-services-box text-center">
 								<div className="property-services-box-inner light-bg">
-									<img src="images/icons/Product details/cooking.svg"/>
+									<img src="images/icons/Product_details/cooking.svg"/>
 								</div>
 								<p><strong>Full kitchen</strong></p>
 							</div>
@@ -174,7 +264,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 						<div className="col-sm-3">
 							<div className="property-services-box text-center">
 								<div className="property-services-box-inner light-bg">
-									<img src="images/icons/Product details/008-wifi.svg"/>
+									<img src="images/icons/Product_details/008-wifi.svg"/>
 								</div>
 								<p><strong>Wifi</strong></p>
 							</div>
@@ -182,7 +272,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 						<div className="col-sm-3">
 							<div className="property-services-box text-center">
 								<div className="property-services-box-inner light-bg">
-									<img src="images/icons/Product details/009-tv.svg"/>
+									<img src="images/icons/Product_details/009-tv.svg"/>
 								</div>
 								<p><strong>TV</strong></p>
 							</div>
@@ -190,7 +280,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 						<div className="col-sm-3">
 							<div className="property-services-box text-center">
 								<div className="property-services-box-inner light-bg">
-									<img src="images/icons/Product details/007-bathtub.svg"/>
+									<img src="images/icons/Product_details/007-bathtub.svg"/>
 								</div>
 							   <p><strong>Bathroom essentials</strong></p>
 							</div>
@@ -198,7 +288,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 						<div className="col-sm-3">
 							<div className="property-services-box text-center">
 								<div className="property-services-box-inner light-bg">
-									<img src="images/icons/Product details/001-pillow.svg"/>
+									<img src="images/icons/Product_details/001-pillow.svg"/>
 								</div>
 								<p><strong>Bedroom comforts</strong></p>
 							</div>
@@ -206,7 +296,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 						<div className="col-sm-3">
 							<div className="property-services-box text-center">
 								<div className="property-services-box-inner light-bg">
-									<img src="images/icons/Product details/002-coffee-maker.svg"/>
+									<img src="images/icons/Product_details/002-coffee-maker.svg"/>
 								</div>
 								<p><strong>Coffee maker</strong></p>
 							</div>
@@ -214,7 +304,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 						<div className="col-sm-3">
 							<div className="property-services-box text-center">
 								<div className="property-services-box-inner light-bg">
-									<img src="images/icons/Product details/004-parking.svg"/>
+									<img src="images/icons/Product_details/004-parking.svg"/>
 								</div>
 								<p><strong>Free street parking</strong></p>
 							</div>
@@ -487,7 +577,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 					</div>
 				</div>
 			</section>
-			
+			*/}
 			<Footer/>
 			
 		</div>
@@ -495,4 +585,4 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 	}
 }
 
-export default Charming_Stinson_Beach_1Bd_Den_Cottage;
+export default Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz;

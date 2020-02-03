@@ -45,7 +45,7 @@ class Book_Your_Rental extends Component {
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-										   <img className="author-picture " src="images/properties_images/11_Sierra/11-Sierra-Cover.png" alt="..."/>
+										   <img className="author-picture " src="images/property_images/11_Sierra/11-Sierra-Cover.png" alt="..."/>
 										</div>
 										<div className="like">
 											<span className="text-left">Lisa Levin</span>
@@ -64,7 +64,7 @@ class Book_Your_Rental extends Component {
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Mouse_Hole/Mouse_Hole_02.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/Mouse_Hole/Mouse_Hole_02.jpg" alt="..."/>
 										</div>
 										<div className="like">
 											<span className="text-left">Kathleen Hurley</span>
@@ -83,7 +83,7 @@ class Book_Your_Rental extends Component {
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Casita_Azul/Casita_Azul_22.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/Casita_Azul/Casita_Azul_22.jpg" alt="..."/>
 										</div>
 										<div className="like">
 											<span className="text-left">Kathleen Hurley</span>
@@ -102,7 +102,7 @@ class Book_Your_Rental extends Component {
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images//properties_images/Comfortable/banner.jpg" alt="..."/>
+											<img className="author-picture " src="images//property_images/Comfortable/banner.jpg" alt="..."/>
 										</div>
 										<div className="like">
 											<span className="text-left">Jeff Finci</span>
@@ -122,7 +122,7 @@ class Book_Your_Rental extends Component {
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Oceanfront/banner.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/Oceanfront/banner.jpg" alt="..."/>
 										</div>
 										<div className="like">
 											<span className="text-left">Jeff Finci</span>
@@ -141,7 +141,7 @@ class Book_Your_Rental extends Component {
 								<div className="rent-card-body">
 									<div className="rent-flex">
 										<div className="author">
-											<img className="author-picture " src="images/properties_images/Relax/banner.jpg" alt="..."/>
+											<img className="author-picture " src="images/property_images/Relax/banner.jpg" alt="..."/>
 										</div>
 										<div className="like">
 											<span className="text-left">Jeff Finci</span>

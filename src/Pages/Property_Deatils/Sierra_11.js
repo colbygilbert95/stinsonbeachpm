@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
-const { FaIcon, FaStack } = require('react-fa-icon');
+//const { FaIcon, FaStack } = require('react-fa-icon');
 
-class Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden extends Component {
+class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 	render() {
 		
 		return (
@@ -17,29 +17,29 @@ class Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden extends Component {
 					<div className="row">
 						<div className="col-sm-4">
 							<div className="beach-box border-rds">
-								<h1>Stinson Beach Vibe - Cheerful Cottage w Garden</h1>
+								<h1>Charming‌ ‌Stinson‌ ‌Beach‌ ‌1Bd+Den‌ ‌Cottage‌ </h1>
 							</div>
 						</div>
 						<div className="col-sm-6">
 							<div className="beach-img-box">
-								<img src="images/properties_images/Casita_Azul/Casita_Azul_22.jpg" className="border-rds"/>
+								<img src="images/property_images/11_Sierra/11-Sierra-Cover.png" className="border-rds"/>
 							</div>
 						</div>
 						<div className="col-sm-2">
 							<div className="row">
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/properties_images/Casita_Azul/Casita_Azul_Colby_1.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/11_Sierra/11-Sierra-Picture1.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/properties_images/Casita_Azul/Casita_Azul_01.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/11_Sierra/11-Sierra-Picture2.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 								<div className="col-sm-12 mb-15">
 									<div className="beach-img-box">
-										<img src="images/properties_images/Casita_Azul/Casita_Azul_09.jpg" className="border-rds side_image"/>
+										<img src="images/property_images/11_Sierra/11-Sierra-Picture3.jpg" className="border-rds side_image"/>
 									</div>
 								</div>
 							</div>
@@ -54,10 +54,10 @@ class Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden extends Component {
 							<div className="bed-list">
 								<div className="bed-inner">
 									<ul>
-										<li>3 guests</li>
+										<li>5 guests</li>
 										<li>1 Bedrooms</li>
-										<li>2 Beds</li>
-										<li>1 Baths</li>
+										<li>3 Beds</li>
+										<li>1.5 Baths</li>
 										{/*<li>5 Accommodates</li>*/}
 									</ul>
 								</div>
@@ -75,12 +75,12 @@ class Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden extends Component {
 										<li>
 											<i class="fa-li fa fa-bell"></i>
 											<h5><strong>Self check-in</strong></h5>
-											<span>Check yourself in with the keypad.</span>
+											<span>Check yourself in with the lockbox.</span>
 										</li>
 										<li>
-											<i class="fa-li fa fa-lightbulb-o"></i>
-											<h5><strong>Sparkling clean</strong></h5>
-											<span>15 recent guests said this place was sparkling clean.</span>
+											<i class="fa-li fa fa-trophy"></i>
+											<h5><strong>Lisa is a Superhost</strong></h5>
+											<span>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</span>
 										</li>
 										<li>
 											<i class="fa-li fa fa-map fa-maker"></i>
@@ -91,39 +91,41 @@ class Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden extends Component {
 									
 									<hr/>
 									
-									<p>Enviably located only a few minutes walk away from the invigorating Stinson beach, in the area that perfectly reflects that laid back Californian spirit, the cottage is tailored with comfort and practicality in mind and ideally accommodates 3 people!
-									Should you have a group larger than 3, check out our cute & colourful sister property nearby.</p>
-									
-									<p>Welcome!</p>
+									<p>Half block to the beach, walk to town, close hiking Mt. Tam, Muir Woods, Pt. Reyes.</p>
+									<p>Upstairs: Queen bed, 1/2 bath, sitting room with day bed (bigger than twin, smaller than double) and streaming TV, private deck with partial ocean view.</p>
+									<p>Downstairs: Queen Murphy bed (pulls down from the wall), living room, dining room, kitchen, bath with shower and tub.</p>
+									<p>Fenced yard with front and back decks, BBQ, table and chairs, lounge chairs, hammock, outdoor shower.</p>
 									<br/>
 									<h4><strong>The space</strong></h4>
 									
-									<p>￭ Living Room <br/>
-									Well-arranged with large windows and plenty of natural light, the living room joins the dining area and the kitchen, creating a warm, cosy space, with a relaxing holiday vibe. Pull out sofa bed that makes into a full-sized bed is easily folded back, freeing the space for daily activities.</p>
+									<p>￭ Located in Stinson Beach Village just 6 houses from the beach and 2 blocks to town. Enter into the gated yard to the peaceful ambience of this beautiful home. The house is surrounded by decks and a lovely landscaped yard with a sense of privacy. Hardwood and Spanish-tile floors, high ceilings and skylights for plenty of light.</p>
 									
-									<p>￭ Kitchen <br/>
-									Large kitchen with dining island is well equipped with extra amenities to maximise your stay with functionality & comfort.</p>
+									<p>￭ Well-appointed rooms including luxury bedding, a newly remodelled fully-equipped kitchen, a Netflix streaming TV, and a warm water outdoor shower.</p>
 									
-									<p>￭ Bedroom <br/>
-									One bedroom with a queen-size bed match in simple style and comfort of this Stinson Beach cottage. Along with the regular commodities found in the room, the area has generous windows offering plenty of natural light.</p>
+									<p>￭ A wood-burning fireplace warms this cozy house. There is an ocean view from the upper deck.</p>
 									
-									<p>￭ Outdoors space <br/>
-									Relax on the loungers at the porch, contemplate the sky from the garden, freshen up with the outdoor shower. The outdoors area has everything you need for that beloved barbecue evenings as well.</p>
+									<p>￭ Well-behaved dogs allowed.</p>
 									
-									<p>￭ Parking is available near the cottage, free wifi, towels & linens.</p>
+									<p>Amenities:
+									Garden, Patio, Deck, 1-Wood Fireplaces, Gas BBQ, BBQ Tools, Wall and Space Heaters, 4-Burner Electric Range, Single Oven, Microwave, Coffee Maker, Coffee Grinder, Toaster, Blender, Tea Kettle, 1 TV (Internet), Wireless High Speed Internet, TV Has Netflix Streaming. Parking for 1 car in the driveway.</p>
 									
-									<p>￭ Floor heating and double pane windows.</p>
+									<p>Outdoor equipment:
+									Outside Shower, Table, Chairs, Umbrella, Lounge Chairs, Hammock, gas BBQ.</p>
 									
 									<br/>
 									<h4><strong>Guest access</strong></h4>
-									<p> It's all yours! You will have a cottage for private use along with the private outdoor area and a designated parking spot.</p>
+									<p>It's all yours! The entire house, washer & dryer, the outdoor shower, back yard, and decks.</p>
 									
 									<br/>
 									<h4><strong>Other things to note</strong></h4>
 									
-									<p>Relax, enjoy, unwind!</p>
+									<p>￭ The space is perfect for 2 couples or a family with one or two kids. Upstairs, a young child can sleep in the double futon bed in an L-shaped sitting room adjacent to the master bedroom. There are no walls between these rooms.</p>
 									
+									<p>￭ The downstairs queen Murphy bed is good for a second couple or an older child or teen</p>
 									
+									<p>￭ This is a dog-friendly cottage. Please be aware of this in case you have allergies. We clean very well after each guest (including damp mopping floors). No refunds will be given for allergic reactions.</p>
+									
+									<br/>
 									{/*<div class="col-sm-4 house_rules">
 										<img src="images/icons/No/002-non-smoking-area.svg" alt="No smoking"/>
 										<span>No smoking</span>
@@ -592,4 +594,4 @@ class Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden extends Component {
 	}
 }
 
-export default Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden;
+export default Charming_Stinson_Beach_1Bd_Den_Cottage;

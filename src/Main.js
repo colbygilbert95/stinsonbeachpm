@@ -9,12 +9,15 @@ import Check_availability from "./Pages/Check_availability/Check_availability.js
 import Property_Deatils from "./Pages/Property_Deatils/Property_Deatils.js";
 import Guarantee from "./Pages/Guarantee/Guarantee.js"; 
 import Test from "./Pages/Test/Test.js";
-import Charming_Stinson_Beach_1Bd_Den_Cottage from "./Pages/Property_Deatils/Charming_Stinson_Beach_1Bd_Den_Cottage.js";
-import Cute_And_Colourful_Oceanside_Cottage_w_Garden from "./Pages/Property_Deatils/Cute_And_Colourful_Oceanside_Cottage_w_Garden.js";
-import Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden from "./Pages/Property_Deatils/Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden.js";
-import Comfortable_updated_vintage_beach_house from "./Pages/Property_Deatils/Comfortable_updated_vintage_beach_house.js";
-import Oceanfront_Apartment_in_Stinson_Beach from "./Pages/Property_Deatils/Oceanfront_Apartment_in_Stinson_Beach.js";
-import Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz from "./Pages/Property_Deatils/Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz.js";
+import Sierra_11 from "./Pages/Property_Deatils/Sierra_11.js";
+import Mouse_Hole from "./Pages/Property_Deatils/Mouse_Hole.js";
+import Casita_Azul from "./Pages/Property_Deatils/Casita_Azul.js";
+import La_Playa from "./Pages/Property_Deatils/La_Playa.js";
+import La_Sirena from "./Pages/Property_Deatils/La_Sirena.js";
+import La_Paz from "./Pages/Property_Deatils/La_Paz.js";
+import Agua_Verde from "./Pages/Property_Deatils/Agua_Verde.js";
+import Mermaid_View from "./Pages/Property_Deatils/Mermaid_View.js";
+import Pradero_27 from "./Pages/Property_Deatils/Pradero_27.js";
 
 class Main extends Component {
 	render() {
@@ -31,12 +34,15 @@ class Main extends Component {
 					<Route exact path="/Property_Deatils" component={Property_Deatils}/>
 					<Route exact path="/Guarantee" component={Guarantee}/>
 					<Route exact path="/Test" component={Test}/>
-					<Route exact path="/Charming_Stinson_Beach_1Bd_Den_Cottage" component={Charming_Stinson_Beach_1Bd_Den_Cottage}/> 
-					<Route exact path="/Cute_And_Colourful_Oceanside_Cottage_w_Garden" component={Cute_And_Colourful_Oceanside_Cottage_w_Garden}/> 
-					<Route exact path="/Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden" component={Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden}/> 
-					<Route exact path="/Comfortable_updated_vintage_beach_house" component={Comfortable_updated_vintage_beach_house}/> 
-					<Route exact path="/Oceanfront_Apartment_in_Stinson_Beach" component={Oceanfront_Apartment_in_Stinson_Beach}/> 
-					<Route exact path="/Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz" component={Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz}/> 
+					<Route exact path="/Sierra_11" component={Sierra_11}/> 
+					<Route exact path="/Mouse_Hole" component={Mouse_Hole}/> 
+					<Route exact path="/Casita_Azul" component={Casita_Azul}/> 
+					<Route exact path="/La_Playa" component={La_Playa}/> 
+					<Route exact path="/La_Sirena" component={La_Sirena}/> 
+					<Route exact path="/La_Paz" component={La_Paz}/> 
+					<Route exact path="/Agua_Verde" component={Agua_Verde}/> 
+					<Route exact path="/Mermaid_View" component={Mermaid_View}/> 
+					<Route exact path="/Pradero_27" component={Pradero_27}/> 
 				</div>
 			</div>
 			</BrowserRouter>
