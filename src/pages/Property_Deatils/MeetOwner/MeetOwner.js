@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getOwnerInfoByListing } from "../../../store/actions/bookingActions";
 import { connect } from "react-redux";
-import moment from "../../../../../server/node_modules/moment/moment";
+import moment from "../../../../server/node_modules/moment/moment";
 
 class MeetOwner extends Component {
   componentDidMount() {

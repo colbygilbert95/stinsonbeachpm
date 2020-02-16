@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
-import Header from '../Header/Header.js';
-import Footer from '../Footer/Footer.js';
+import Header from '../Header/Header.js.js';
+import Footer from '../Footer/Footer.js.js';
 
 class Home extends Component {
 	render() {
