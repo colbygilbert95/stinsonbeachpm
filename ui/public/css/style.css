@@ -778,6 +778,20 @@ h2::after {
         border: 1px solid #3498db;
         border-radius: 5px;
     }
+
+    .contact-with-host-btn {
+        text-align: left;
+        margin-top: 30px;
+    }
+    .contact-with-host-btn a {
+        text-decoration: none !important;
+        font-size: 18px;
+        text-align: center;
+        padding: 7px 25px;
+        border: 1px solid #3498db;
+        border-radius: 5px;
+    }
+    
     .meet-box-contact {
         padding-top: 78px;
         padding-bottom: 77px;

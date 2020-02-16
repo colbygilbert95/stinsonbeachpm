@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-class ListingCard extends Component {
+class OtherStayCard extends Component {
   render() {
     const { unitData } = this.props;
-    const { Name, WeekdayRate, Title, NumReviews, AvgReviews, URL } = unitData;
+    const { Name, WeekdayRate, Title, NumReviews, AvgReviews } = unitData;
     const unitPathName = Name.replace(/ /g, "_");
     return (
       <NavLink
@@ -20,24 +20,27 @@ class ListingCard extends Component {
                 <div className="author">
                   <img
                     className="author-picture "
-                    src={URL}
-                    alt={Name + " Stinson Beach Header Photo"}
+                    src={
+                      "images/property_images/" +
+                      unitPathName +
+                      "/" +
+                      unitPathName +
+                      "_Cover.jpg"
+                    }
+                    alt="..."
                   />
-                </div>
-                <div className="like">
-                  {/* <span className="text-left">Lisa Levin</span> */}
-                  <a href="javascript:;" className="pull-right">
-                    <i className="fa fa-star mr-2"></i>
-                    <span className="small">
-                      <strong>{AvgReviews}</strong>({NumReviews})
-                    </span>
-                  </a>
                 </div>
               </div>
               <p>{Title}</p>
               <p>
                 <strong>${WeekdayRate}</strong> / night
               </p>
+              <a href="javascript:;" className="pull-left">
+                <i className="fa fa-star mr-2"></i>
+                <span className="small">
+                  <strong>{AvgReviews}</strong> ({NumReviews})
+                </span>
+              </a>
             </div>
           </div>
         </div>
@@ -46,4 +49,4 @@ class ListingCard extends Component {
   }
 }
 
-export default ListingCard;
+export default OtherStayCard;

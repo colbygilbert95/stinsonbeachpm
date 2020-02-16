@@ -22,7 +22,7 @@ class Location extends Component {
                 </p>
                 <p>
                   <strong>
-                    Distance from San Francisco International Airport{" "}
+                    Distance from San Francisco International Airport
                   </strong>
                 </p>
                 <p className="font-style-italic">

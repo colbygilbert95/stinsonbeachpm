@@ -1,9 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { getOwnerInfoByListing } from "../../../store/actions/bookingActions";
+import { connect } from "react-redux";
+import moment from "../../../../../server/node_modules/moment/moment";
 
 class MeetOwner extends Component {
-    state = {  }
-    render() { 
-        return ( <section className="meet-the-owner">
+  componentDidMount() {
+    const { unitName } = this.props;
+    this.props.getOwnerInfoByListing(unitName);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.unitName != this.props.unitName) {
+      const { unitName } = this.props;
+      this.props.getOwnerInfoByListing(unitName);
+    }
+  }
+  render() {
+    const ownerInfo =
+      this.props.ownerInfo[0] === undefined
+        ? { Bio: "" }
+        : this.props.ownerInfo[0];
+
+    const { FirstName, LastName, Bio, PictureURL, AddedOn } = ownerInfo;
+    return (
+      <section className="meet-the-owner">
         <div className="container-fluid">
           <hr />
           <div className="row">
@@ -18,37 +37,23 @@ class MeetOwner extends Component {
               <div className="meet-box">
                 <div className="row">
                   <div className="col-sm-3">
-                    <div className="meet-img-box"></div>
+                    <img className="meet-img-box" src={PictureURL} />
                   </div>
                   <div className="col-sm-9">
                     <div className="meet-coment">
                       <p className="mtb-15">
-                        <strong>Hi, Iʼm Stinson,</strong>
+                        <strong>Hi, {FirstName + " " + LastName},</strong>
                       </p>
-                      <p>
-                        Stinson Beach is a quiet seaside town popular for its
-                        calm surf, smooth sand, and miles of mountain trails.
-                        The beach bungalow set on the hillside with wooden and
-                        stone stairs to arrive. Worth the trek, but if you
-                        have a bad knee, a tricky ankle or a hitch in your
-                        get-along, this is not the property for you.{" "}
-                      </p>
-                      <p>
-                        Stinson Beach is a quiet seaside town popular for its
-                        calm surf, smooth sand, and miles of mountain trails.
-                        The beach bungalow set on the hillside with wooden and
-                        stone stairs to arrive. Worth the trek, but if you
-                        have a bad knee, a tricky ankle or a hitch in your
-                        get-along, this is not the property for you.{" "}
-                      </p>
-                      <p>
-                        Stinson Beach is a quiet seaside town popular for its
-                        calm surf, smooth sand, and miles of mountain trails.
-                        The beach bungalow set on the hillside with wooden and
-                        stone stairs to arrive. Worth the trek, but if you
-                        have a bad knee, a tricky ankle or a hitch in your
-                        get-along, this is not the property for you.
-                      </p>
+                      <span>
+                        {Bio.split(/\n/i).map((text, index) => {
+                          return (
+                            <React.Fragment key={index}>
+                              {text}
+                              <br />
+                            </React.Fragment>
+                          );
+                        })}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -57,23 +62,29 @@ class MeetOwner extends Component {
             <div className="col-sm-3">
               <div className="meet-box meet-box-contact">
                 <p>
-                  <strong>Joined:</strong> September 2014
+                  <strong>Joined:</strong> {moment(AddedOn).format("MMMM YYYY")}
                 </p>
                 <p>
-                  <strong>Response rate:</strong> 100%{" "}
+                  <strong>Response rate:</strong> 100%
                 </p>
                 <p>
                   <strong>Response time:</strong> within an hour
                 </p>
                 <p className="contact-with-owner-btn">
-                  <a href="#">Contact with Owner</a>
+                  <a href="#">Contact</a>
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </section> );
-    }
+      </section>
+    );
+  }
 }
- 
-export default MeetOwner;
+const mapStateToProps = state => {
+  return {
+    ownerInfo: state.booking.ownerInfo
+  };
+};
+
+export default connect(mapStateToProps, { getOwnerInfoByListing })(MeetOwner);

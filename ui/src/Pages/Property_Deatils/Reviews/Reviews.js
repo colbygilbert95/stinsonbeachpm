@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getUnitReviews } from "../../../store/actions/bookingActions";
+import Review from './Review/Review';
 
 class Reviews extends Component {
-    state = {  }
+  componentDidMount() {
+    
+    const { unitName } = this.props;
+    this.props.getUnitReviews(unitName);
+  }
+  componentDidUpdate(prevProps) {
+    if(prevProps.unitName != this.props.unitName) {
+      const { unitName } = this.props;
+      this.props.getUnitReviews(unitName);
+    }
+
+  }
     render() { 
+      const {numReviews, avgReviews} = this.props
         return (  <section className="property-location">
         <div className="container-fluid">
           <hr />
@@ -14,83 +29,17 @@ class Reviews extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6">
-              <div className="reviews-box">
-                <div className="reviews-img-box"></div>
-                <div className="reviews-coment-box">
-                  <p>
-                    We have stayed in many different Airbnb’s and this was by
-                    far our favorite! It is so unique and special. It starts
-                    out with the adventurous stairway down to the private
-                    piece of heaven! We loved the room itself with the full
-                    thought out kitchen, but…{" "}
-                  </p>
-                  <p>
-                    <strong>Sarah</strong>
-                  </p>
-                  <p className="reviews-day">10 days ago</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="reviews-box">
-                <div className="reviews-img-box"></div>
-                <div className="reviews-coment-box">
-                  <p>
-                    We have stayed in many different Airbnb’s and this was by
-                    far our favorite! It is so unique and special. It starts
-                    out with the adventurous stairway down to the private
-                    piece of heaven! We loved the room itself with the full
-                    thought out kitchen, but…{" "}
-                  </p>
-                  <p>
-                    <strong>Sarah</strong>
-                  </p>
-                  <p className="reviews-day">10 days ago</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="reviews-box">
-                <div className="reviews-img-box"></div>
-                <div className="reviews-coment-box">
-                  <p>
-                    We have stayed in many different Airbnb’s and this was by
-                    far our favorite! It is so unique and special. It starts
-                    out with the adventurous stairway down to the private
-                    piece of heaven! We loved the room itself with the full
-                    thought out kitchen, but…{" "}
-                  </p>
-                  <p>
-                    <strong>Sarah</strong>
-                  </p>
-                  <p className="reviews-day">10 days ago</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="reviews-box">
-                <div className="reviews-img-box"></div>
-                <div className="reviews-coment-box">
-                  <p>
-                    We have stayed in many different Airbnb’s and this was by
-                    far our favorite! It is so unique and special. It starts
-                    out with the adventurous stairway down to the private
-                    piece of heaven! We loved the room itself with the full
-                    thought out kitchen, but…{" "}
-                  </p>
-                  <p>
-                    <strong>Sarah</strong>
-                  </p>
-                  <p className="reviews-day">10 days ago</p>
-                </div>
-              </div>
-            </div>
+    {
+            
+            this.props.reviews.map((review, index) =>{
+              return(<Review reviewData={review} key={index}/>)
+            })}
+            
           </div>
           <div className="row">
             <div className="col-sm-12">
               <div className="c-footer mtb-15">
-                <a href="#">Show all reviews &gt;</a>
+                <a href="#">Show all {numReviews} reviews &gt;</a>
               </div>
             </div>
           </div>
@@ -98,5 +47,11 @@ class Reviews extends Component {
       </section> );
     }
 }
- 
-export default Reviews;
+
+const mapStateToProps = state => {
+  return {
+    reviews: state.booking.reviews
+  };
+};
+
+export default  connect(mapStateToProps, { getUnitReviews })(Reviews);
