@@ -20,3 +20,69 @@
 .App-link {
   color: #09d3ac;
 }
+h3 {
+  color: #484848;
+}
+.earn-more {
+  display: flex;
+  background-color: #EBF5FC;
+  align-items: center;
+  justify-content: center; 
+  padding: 30px;
+}
+.earn-more > * {
+  margin-top: 10px;
+  color: #3498DB;
+}
+.client-result {
+  background-color: #F2F2F2;
+  padding: 35px 25px;
+  margin-bottom: 30px;
+}
+.client-result > h3 {
+  text-align: center;
+}
+.break {
+  border-bottom: 3px solid #484848;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.learn-btn {
+  background-color: #3498DB;
+  color: white;
+  border:none;
+  padding: 10px 30px;
+  border-radius: 3px;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  margin: 35px;
+}
+.rent-title {
+  color: #484848;
+}
+.flex{
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.col-5 {
+  width: 20%;
+  padding: 0 20px;
+}
+.py-5 {
+  padding: 5rem 0rem;
+}
+.items-center {
+  align-items: center;
+}
+
+.lightpick__month {
+  width: 500px !important;
+}
