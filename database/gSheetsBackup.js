@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require("path");
 const mysql = require("mysql");
 const fs = require("fs");
@@ -7,12 +8,11 @@ const bodyParser = require("body-parser");
 const authorize = require("./google-auth");
 
 var db = mysql.createConnection({
-  host: "35.243.138.96",
-  database: "mgmt",
-  //port: '3306',
-  user: "root",
-  password: "March1995"
-  //socketPath: '/cloudsql/stinsonbeachpm:us-east1:stinsonbeachpm'
+  host: process.env.SERVER_SQL_HOST,
+  database: process.env.SERVER_SQL_DATABASE,
+  user: process.env.SERVER_SQL_USER,
+  password: process.env.SERVER_SQL_PASSWORD,
+  socketPath: process.env.SERVER_SQL_SOCKET_PATH
 });
 
 db.connect(function(err) {

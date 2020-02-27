@@ -1,5 +1,5 @@
-const functions = require('firebase-functions');
 require('dotenv').config();
+const functions = require('firebase-functions');
 const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
