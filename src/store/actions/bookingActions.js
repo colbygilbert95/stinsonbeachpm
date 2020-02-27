@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = "http://localhost:5555";
+const apiUrl = "https://us-central1-stinsonbeachpm.cloudfunctions.net/app";
 
 export const getActiveUnits = () => {
   return dispatch => {

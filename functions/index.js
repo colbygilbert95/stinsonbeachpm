@@ -25,7 +25,8 @@ const db = mysql.createConnection({
   host: process.env.SERVER_SQL_HOST,
   database: process.env.SERVER_SQL_DATABASE,
   user: process.env.SERVER_SQL_USER,
-  password: process.env.SERVER_SQL_PASSWORD
+  password: process.env.SERVER_SQL_PASSWORD,
+  socketPath: process.env.SERVER_SQL_SOCKET_PATH
 
  
 });
@@ -47,6 +48,7 @@ db.connect(function(err) {
 
 // });
 app.get("/getActiveUnits", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   db.query(
     `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL
                 FROM Listing L
@@ -66,6 +68,7 @@ app.get("/getActiveUnits", (req, res) => {
 });
 
 app.get("/getUnit", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
   console.log("/getUnit")
   db.query(
@@ -82,15 +85,22 @@ app.get("/getUnit", (req, res) => {
 });
 
 app.get("/getUnitReviews", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
   console.log("/getUnitReviews")
   db.query(
-    `SELECT R.FirstName, R.PublicFeedback, G.PictureURL AS GuestPic, R.AddedOn
+    // `SELECT R.FirstName, R.PublicFeedback, G.PictureURL AS GuestPic, R.AddedOn
+    // FROM Listing L
+    // JOIN Guest G
+    // JOIN Review R
+    // WHERE L.Id = R.Listing 
+    // AND G.Id = R.Guest
+    // AND L.Name = ${db.escape(req.query.unitName)}`,
+    `SELECT R.FirstName, R.PublicFeedback,  R.AddedOn
     FROM Listing L
     JOIN Guest G
     JOIN Review R
     WHERE L.Id = R.Listing 
-    AND G.Id = R.Guest
     AND L.Name = ${db.escape(req.query.unitName)}`,
     (err, result) => {
       if (err) throw console.log("getUnit: " + err);
@@ -100,6 +110,7 @@ app.get("/getUnitReviews", (req, res) => {
 });
 
 app.get("/getUnitHeaderImgs", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
   console.log("/getUnitHeaderImgs")
   db.query(
@@ -118,6 +129,7 @@ app.get("/getUnitHeaderImgs", (req, res) => {
 });
 
 app.get("/getRoomHeaderImgs", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
   console.log("/getRoomHeaderImgs")
   db.query(
@@ -146,6 +158,7 @@ app.get("/getRoomHeaderImgs", (req, res) => {
 });
 
 app.get("/getUnitAmenities", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
   console.log("/getUnitAmenities");
   db.query(
@@ -165,7 +178,8 @@ app.get("/getUnitAmenities", (req, res) => {
 });
 
 app.get("/getBlockedDays", (req, res) => {
-  //console.log(req.query);
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log(req.query);
   console.log("/getBlockedDays");
   db.query(
     `SELECT LP.CalendarURL
@@ -225,6 +239,7 @@ app.get("/getBlockedDays", (req, res) => {
 });
 
 app.get("/getOwnerInfoByListing", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
   console.log("/getOwnerInfoByListing");
   db.query(
@@ -255,13 +270,13 @@ app.post("/charge", (req, res) =>{
   });
 })
 
-app.post("/a", function(req, res) {
-  //console.log(req.body);
-  //console.log(req.body.listing.id);
+app.post("/smartbnbWebhook", function(req, res) {
   console.log(req.body);
+  //console.log(req.body.listing.id);
   //insertCleaning(req)
   if (req.body.listing.id != null) {
     getListingByAdId(req).then(listingId => {
+      
       if (listingId) {
         checkGuest(req).then(guestExists => {
           console.log("guestExists: " + guestExists);
@@ -271,6 +286,7 @@ app.post("/a", function(req, res) {
                 updateReservation(req).then(() => {
                   updateCleaning(req);
                   updateQualityControl(req);
+                  res.send("Done: Update reservation");
                 });
               } else {
                 getGuest(req).then(guestId => {
@@ -280,6 +296,7 @@ app.post("/a", function(req, res) {
                       () => {
                         insertCleaning(req);
                         insertQaulityControl(req);
+                        res.send("Done: First insert");
                       }
                     );
                   });
@@ -295,6 +312,7 @@ app.post("/a", function(req, res) {
                     () => {
                       insertCleaning(req);
                       insertQaulityControl(req);
+                      res.send("Done: Second insert");
                     }
                   );
                 });
@@ -305,8 +323,10 @@ app.post("/a", function(req, res) {
       }
     });
   } else {
-    saveNull(req);
+    //saveNull(req);
+    res.send("Null")
   }
+  
 });
 
 function getVeventStartDate(vevent) {
@@ -336,7 +356,7 @@ function getListingByAdId(req) {
     db.query(
       `SELECT Listing 
       FROM ListingPlatform 
-       AdId = ${db.escape(adId)}`,
+      WHERE AdId = ${db.escape(adId)}`,
       (err, listingId) => {
         if (err) reject(console.log("getListingByAdId: " + err));
         if (listingId[0] != undefined) {
@@ -786,9 +806,11 @@ function saveNull(req) {
   });
 }
 
-const server = app.listen(app.get("port"), () => {
-  console.log("server is running on port", server.address().port);
-});
+exports.app = functions.https.onRequest(app)
+
+// const server = app.listen(app.get("port"), () => {
+//   console.log("server is running on port", server.address().port);
+// });
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions

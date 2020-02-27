@@ -6,7 +6,7 @@ import {StripeProvider} from 'react-stripe-elements';
 
 
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
-import './index.js.js';
+import './index.js';
 import Home from "./pages/Home/Home";
 import Blog from "./pages/Blog/Blog";
 import Single_blog from "./pages/Single_blog/Single_blog";
