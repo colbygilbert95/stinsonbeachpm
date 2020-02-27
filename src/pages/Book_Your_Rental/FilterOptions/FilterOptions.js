@@ -8,7 +8,7 @@ class FilterOptions extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-9">
-              {/* <ul className="single-post-link mt-0">
+              <ul className="single-post-link mt-0">
                 <li>
                   <a href="#">Date</a>
                 </li>
@@ -24,12 +24,12 @@ class FilterOptions extends Component {
                 <li>
                   <a href="#">More Filters</a>
                 </li>
-              </ul> */}
+              </ul>
             </div>
             <div className="col-sm-3">
-              {/* <div className="Show-Map-btn">
+              <div className="Show-Map-btn">
                 <span>Show Map</span>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
