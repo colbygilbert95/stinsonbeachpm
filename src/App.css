@@ -1,3 +1,6 @@
+html, body , #root{
+  height: 100%;
+}
 .App {
   text-align: center;
 }
@@ -85,4 +88,22 @@ h3 {
 
 .lightpick__month {
   width: 500px !important;
+}
+
+footer {
+  margin-top: 70px;
+}
+.max-w-250{
+  max-width: 250px;
+}
+.flex-parent {
+  display: flex;
+  justify-content: space-evenly;
+}
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-wrapper > div {
+  margin: 0 20px;
 }
