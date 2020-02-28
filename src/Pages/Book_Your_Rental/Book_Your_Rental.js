@@ -5,12 +5,9 @@ import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-
 
 class Book_Your_Rental extends Component {
 	render() {
-
 		return (
 			<div>
-
 				<Header />
-
 				<section className="book-your--top">
 					<div className="container-fluid">
 						<div className="row">
@@ -21,7 +18,6 @@ class Book_Your_Rental extends Component {
 									<li><a href="#">Price</a></li>
 									<li><a href="#">Type of Place</a></li>
 									<li><a href="#">More Filters</a></li>
-
 								</ul>
 							</div>
 							<div className="col-sm-3">
