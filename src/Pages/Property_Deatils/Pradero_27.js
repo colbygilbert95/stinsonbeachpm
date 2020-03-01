@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
+import Lightpick from 'lightpick'
+
 
 class Single_blog extends Component {
+	componentDidMount() {
+		var picker = new Lightpick({
+			inline: true,
+			singleDate: false,
+			numberOfMonths: 2,
+			field: document.getElementById('datepicker'),
+		});
+	}
 	render() {
-
 		return (
 			<div>
 

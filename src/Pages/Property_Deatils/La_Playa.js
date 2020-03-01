@@ -3,8 +3,18 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
 //const { FaIcon, FaStack } = require('react-fa-icon');
+import Lightpick from 'lightpick'
+
 
 class Comfortable_updated_vintage_beach_house extends Component {
+	componentDidMount() {
+		var picker = new Lightpick({
+			inline: true,
+			singleDate: false,
+			numberOfMonths: 2,
+			field: document.getElementById('datepicker'),
+		});
+	}
 	render() {
 
 		return (

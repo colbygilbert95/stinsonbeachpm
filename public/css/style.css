@@ -612,8 +612,10 @@ section.book-your--top {
 .mt-60{
     margin-top: 60px;
 }
-.mt-60:first-child {
-    margin-top: 0;
+@media (min-width: 960px){
+    .mt-60:first-child {
+        margin-top: 0;
+    }
 }
 .check-availability {
     margin-top: 15px;

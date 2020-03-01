@@ -3,8 +3,18 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
 //const { FaIcon, FaStack } = require('react-fa-icon');
+import Lightpick from 'lightpick'
+
 
 class Stinson_Beach_Vibe_Cheerful_Cottage_w_Garden extends Component {
+	componentDidMount() {
+		var picker = new Lightpick({
+			inline: true,
+			singleDate: false,
+			numberOfMonths: 2,
+			field: document.getElementById('datepicker'),
+		});
+	}
 	render() {
 
 		return (

@@ -85,9 +85,11 @@ h3 {
 .items-center {
   align-items: center;
 }
-
+.lightpick  {
+  width: 100%;
+}
 .lightpick__month {
-  width: 500px !important;
+  width: unset ;
 }
 
 footer {

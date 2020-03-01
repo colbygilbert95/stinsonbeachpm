@@ -3,8 +3,18 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
 //const { FaIcon, FaStack } = require('react-fa-icon');
+import Lightpick from 'lightpick'
+
 
 class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
+	componentDidMount() {
+		var picker = new Lightpick({
+			inline: true,
+			singleDate: false,
+			numberOfMonths: 2,
+			field: document.getElementById('datepicker'),
+		});
+	}
 	render() {
 
 		return (
@@ -15,29 +25,29 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 				<section className="check-availability">
 					<div className="container-fluid">
 						<div className="row">
-							<div className="col-sm-4">
+							<div className="col-sm-12 col-md-4">
 								<div className="beach-box border-rds">
 									<h1>Charming‌ ‌Stinson‌ ‌Beach‌ ‌1Bd+Den‌ ‌Cottage‌ </h1>
 								</div>
 							</div>
-							<div className="col-sm-6">
+							<div className="col-sm-12 col-md-6">
 								<div className="beach-img-box">
 									<img src="images/property_images/11_Sierra/11-Sierra-Cover.png" className="border-rds" height="615" />
 								</div>
 							</div>
-							<div className="col-sm-2">
+							<div className="col-sm-12 col-md-2">
 								<div className="row">
-									<div className="col-sm-12 mt-60">
+									<div className="col-sm-4 col-md-12 mt-60">
 										<div className="beach-img-box">
 											<img src="images/property_images/11_Sierra/11-Sierra-Picture1.jpg" className="border-rds side_image" />
 										</div>
 									</div>
-									<div className="col-sm-12 mt-60">
+									<div className="col-sm-4 col-md-12 mt-60">
 										<div className="beach-img-box">
 											<img src="images/property_images/11_Sierra/11-Sierra-Picture2.jpg" className="border-rds side_image" />
 										</div>
 									</div>
-									<div className="col-sm-12 mt-60">
+									<div className="col-sm-4 col-md-12 mt-60">
 										<div className="beach-img-box">
 											<img src="images/property_images/11_Sierra/11-Sierra-Picture3.jpg" className="border-rds side_image" />
 										</div>
@@ -324,11 +334,11 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 							</div>
 						</div>
 						<div className="row row_padding">
-							<div className="col-sm-8">
+							<div className="col-md-12 col-lg-8">
 								<input type="text" id="datepicker" style={{ display: 'none' }} />
 
 							</div>
-							<div className="col-sm-4">
+							<div className="col-md-12 col-lg-4 mt-15">
 								<div class="input-group">
 									<input type="text" class="form-control input-lg" placeholder="Check In" />
 									<span class="input-group-btn" style={{ width: '0px' }}></span>
@@ -357,7 +367,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 							</div>
 						</div>
 						<div className="row row_padding mb-40">
-							<div className="col-sm-9">
+							<div className="col-md-12 col-lg-9">
 								<div className="meet-box">
 									<div className="row row_padding">
 										<div className="col-sm-3">
@@ -374,7 +384,7 @@ class Charming_Stinson_Beach_1Bd_Den_Cottage extends Component {
 									</div>
 								</div>
 							</div>
-							<div className="col-sm-3">
+							<div className="col-md-12 col-lg-3">
 								<div className="meet-box meet-box-contact">
 									<p><strong>Joined:</strong> September 2014</p>
 									<p><strong>Response rate:</strong>  100% </p>

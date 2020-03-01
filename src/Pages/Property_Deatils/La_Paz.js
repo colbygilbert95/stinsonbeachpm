@@ -3,8 +3,18 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
 //const { FaIcon, FaStack } = require('react-fa-icon');
+import Lightpick from 'lightpick'
+
 
 class Relax_And_Enjoy_an_Oceanfront_Getaway_La_Paz extends Component {
+	componentDidMount() {
+		var picker = new Lightpick({
+			inline: true,
+			singleDate: false,
+			numberOfMonths: 2,
+			field: document.getElementById('datepicker'),
+		});
+	}
 	render() {
 
 		return (

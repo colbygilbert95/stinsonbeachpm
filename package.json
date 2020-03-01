@@ -20,6 +20,7 @@
     "framer": "^1.1.5",
     "http-errors": "^1.7.3",
     "jade": "^1.11.0",
+    "lightpick": "^1.6.1",
     "morgan": "^1.9.1",
     "mysql": "github:mysqljs/mysql",
     "mysql2": "^2.0.1",

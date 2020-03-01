@@ -19,6 +19,7 @@ import Agua_Verde from "./pages/Property_Deatils/Agua_Verde.js";
 import Mermaid_View from "./pages/Property_Deatils/Mermaid_View.js";
 import Pradero_27 from "./pages/Property_Deatils/Pradero_27.js";
 
+
 class Main extends Component {
 	render() {
 		return (
