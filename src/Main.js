@@ -26,7 +26,6 @@ class Main extends Component {
 			<BrowserRouter>
 				<div>
 					<div className="content">
-
 						<Route exact path="/" component={Home} />
 						<Route exact path="/Blog" component={Blog} />
 						<Route exact path="/Single_blog" component={Single_blog} />
