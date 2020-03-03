@@ -14,7 +14,7 @@ class ListingDescription extends Component {
       <section className="check-availability-second mt-15">
 
         <div className="container-fluid">
-          <div className="row">
+          <div className="row row_padding mt-40">
             <div className="col-sm-8">
               <div className="bed-list">
                 <div className="bed-inner">
@@ -59,17 +59,17 @@ class ListingDescription extends Component {
             </div>
 
             <div className="col-sm-4">
-              <div className="notes-side-box border-rds">
+              <div>
+                <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
+                <button className="learn-btn">Check Availability</button>
+              </div>
+              {/* <div className="notes-side-box border-rds">
 
-                {/* <p className="contact-with-host-btn">
+                <p className="contact-with-host-btn">
                   <a href="#">Contact</a>
-                </p> */}
+                </p>
                 <DateRangePickerWrapper blockedDays={blockedDays} />
-                <div>
-                  <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
-                  <button className="learn-btn">Check Availability</button>
-                </div>
-                {/* <div className="row">
+                <div className="row">
                   <div className="col-sm-5 border-right">
                     <div className="note-box-inner">
                       <div className="auther-img"></div>
@@ -86,8 +86,8 @@ class ListingDescription extends Component {
                       </p>
                     </div>
                   </div>
-                </div> */}
-              </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </div>

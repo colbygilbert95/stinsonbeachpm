@@ -11,10 +11,10 @@ class Rules extends Component {
   render() {
     const { listing } = this.props;
     const cancPolicy = (listing.PolicyDescription === undefined ? "" : listing.PolicyDescription)
-     
+
     return (
       <section>
-        <div className="row mt-40">
+        <div className="row row_padding mt-40">
           <div className="col-sm-6 border-right">
             <div className="rent-title mtt-0">
               <h3 className="title text-left">House Rules</h3>
@@ -38,7 +38,7 @@ class Rules extends Component {
               <h3 className="title text-left">Cancellation Policy</h3>
             </div>
             {cancPolicy.split(/\n/i).map((text) => {
-              return(<p>{text}</p>)
+              return (<p>{text}</p>)
             })}
             <div className="c-footer mtb-15">
               <a href="#">Show all policy &gt;</a>

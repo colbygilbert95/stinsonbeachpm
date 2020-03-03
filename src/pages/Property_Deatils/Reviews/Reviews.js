@@ -21,14 +21,14 @@ class Reviews extends Component {
     return (<section className="property-location">
       <div className="container-fluid">
         <hr />
-        <div className="row">
+        <div className="row row_padding">
           <div className="col-sm-12">
             <div className="rent-title">
               <h3 className="title text-left">Reviews</h3>
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row row_padding">
           {
 
             this.props.reviews.map((review, index) => {
@@ -36,7 +36,7 @@ class Reviews extends Component {
             })}
 
         </div>
-        <div className="row">
+        <div className="row row_padding">
           <div className="col-sm-12">
             <div className="c-footer mtb-15">
               <a href="#">Show all {numReviews} reviews &gt;</a>

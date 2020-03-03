@@ -15,6 +15,8 @@ import Rules from "./Rules/Rules";
 import OtherStays from "./OtherStays/OtherStays";
 import 'react-dates/initialize';
 import DayPickerRangeControllerWrapper from "./DayPickerControllerWrapper/DayPickerControllerWrapper";
+import DateRangePickerWrapper from "./ListingDescription/DateRangePickerWrapper/DateRangePickerWrapper";
+
 
 class PropertyDetails extends Component {
   componentDidMount() {
@@ -55,7 +57,7 @@ class PropertyDetails extends Component {
         <Header />
         <HeaderImages title={listing.Title} unitName={listing.Name} />
 
-        <ListingDescription listing={listing} blockedDays={blockedDays}/>
+        <ListingDescription listing={listing} blockedDays={blockedDays} />
         <hr />
         <ListingImages unitName={listing.Name} />
         <Amenties unitName={listing.Name} />
@@ -65,8 +67,15 @@ class PropertyDetails extends Component {
           numReviews={listing.NumReviews}
           avgReviews={listing.AvgReviews}
         />
-        <DayPickerRangeControllerWrapper blockedDays={blockedDays} />
-        <MeetOwner unitName={listing.Name}/>
+        <div className="row row_padding">
+          <div className="col-md-7">
+            <DayPickerRangeControllerWrapper blockedDays={blockedDays} />
+          </div>
+          <div className="col-md-5">
+            <DateRangePickerWrapper blockedDays={blockedDays} />
+          </div>
+        </div>
+        <MeetOwner unitName={listing.Name} />
         <hr />
         <Rules listing={listing} />
         <OtherStays />

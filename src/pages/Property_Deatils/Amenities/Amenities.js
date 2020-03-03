@@ -23,18 +23,18 @@ class Amenties extends Component {
       <section className="property-services">
         <div className="container-fluid">
           <hr />
-          <div className="row">
+          <div className="row row_padding">
             <div className="col-sm-12">
               <div className="rent-title">
                 <h3 className="title text-left">Amenities</h3>
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row row_padding">
             {amenities.map((amenity, index) => {
               return <AmentityCard key={index} url={amenity.IconURL} name={amenity.Name} />;
             })}
-             <div className="col-sm-3">
+            <div className="col-sm-3">
               <div className="property-services-box text-center">
                 <div className="property-services-box-inner bg-white">
                   <div className="c-footer mtblr">

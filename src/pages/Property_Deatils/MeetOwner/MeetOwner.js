@@ -25,17 +25,17 @@ class MeetOwner extends Component {
       <section className="meet-the-owner">
         <div className="container-fluid">
           <hr />
-          <div className="row">
+          <div className="row row_padding">
             <div className="col-sm-12">
               <div className="rent-title">
                 <h3 className="title text-left">Meet the Owner</h3>
               </div>
             </div>
           </div>
-          <div className="row mb-40">
+          <div className="row row_padding mb-40">
             <div className="col-sm-9">
               <div className="meet-box">
-                <div className="row">
+                <div className="row row_padding">
                   <div className="col-sm-3">
                     <img className="meet-img-box" src={PictureURL} />
                   </div>

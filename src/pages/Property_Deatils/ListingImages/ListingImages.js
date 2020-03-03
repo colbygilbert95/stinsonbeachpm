@@ -22,14 +22,14 @@ class ListingImages extends Component {
     return (
       <section className="property-services">
         <div className="container-fluid">
-          <div className="row">
+          <div className="row row_padding">
             <div className="col-sm-12">
               <div className="rent-title">
                 <h3 className="title text-left">Tour This Guesthouse</h3>
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row row_padding">
             {roomImgs.map((room, index) => {
               return <ImageCard key={index} url={room.URL} room={room.Name} />;
             })}
@@ -41,7 +41,7 @@ class ListingImages extends Component {
                     <a href="#">Show more &gt;</a>
                   </div>
                 </div>
-                
+
               </div>
             </div>
           </div>

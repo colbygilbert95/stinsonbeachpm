@@ -142,3 +142,6 @@ footer {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.DateRangePicker_picker  {
+  z-index: 10 !important;
+}
