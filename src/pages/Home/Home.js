@@ -239,7 +239,7 @@ class Home extends Component {
 										<img src="images/redy-earn.jpg" />
 									</div>
 									<div className="redy-to-earn-text">
-										<h1>Redy to earn ?</h1>
+										<h1>Redy to Earn ?</h1>
 										<p><a href="#">Get Started </a></p>
 									</div>
 								</div>

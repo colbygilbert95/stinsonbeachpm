@@ -5,7 +5,9 @@
 .App-logo {
   height: 40vmin;
 }
-
+h1 {
+  font-family: 'LeituraDisplay-Roman';
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
