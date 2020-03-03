@@ -7,13 +7,13 @@ class ListingCard extends Component {
     const { Name, WeekdayRate, Title, NumReviews, AvgReviews, URL } = unitData;
     const unitPathName = Name.replace(/ /g, "_");
     return (
-      <NavLink
-        to={{
-          pathname: "/" + unitPathName,
-          state: { unitName: Name }
-        }}
-      >
-        <div className="col-md-4 col-lg-3">
+      <div className="col-sm-12 col-md-4 col-lg-3">
+        <NavLink
+          to={{
+            pathname: "/" + unitPathName,
+            state: { unitName: Name }
+          }}
+        >
           <div className="card card-blog">
             <div className="rent-card-body">
               <div className="rent-flex">
@@ -25,7 +25,6 @@ class ListingCard extends Component {
                   />
                 </div>
                 <div className="like">
-                  {/* <span className="text-left">Lisa Levin</span> */}
                   <a href="javascript:;" className="pull-right">
                     <i className="fa fa-star mr-2"></i>
                     <span className="small">
@@ -34,14 +33,14 @@ class ListingCard extends Component {
                   </a>
                 </div>
               </div>
-              <p>{Title}</p>
+              <p className="text-overflow">{Title}</p>
               <p>
                 <strong>${WeekdayRate}</strong> / night
               </p>
             </div>
           </div>
-        </div>
-      </NavLink>
+        </NavLink>
+      </div>
     );
   }
 }

@@ -12,7 +12,7 @@ class ListingDescription extends Component {
     const space = listing.Space === undefined ? "" : listing.Space;
     return (
       <section className="check-availability-second mt-15">
-        
+
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-8">
@@ -25,7 +25,7 @@ class ListingDescription extends Component {
                     <li>{listing.Baths} Bath</li>
                   </ul>
                 </div>
-                
+
                 <span>
                   {description.split(/\n/i).map((text, index) => {
                     return (
@@ -51,20 +51,24 @@ class ListingDescription extends Component {
                     );
                   })}
                 </span>
-                <span><br/><strong>Any questions for the host?</strong><br/></span>
+                <span><br /><strong>Any questions for the host?</strong><br /></span>
                 <p className="contact-with-host-btn">
                   <a href="#">Contact</a>
                 </p>
               </div>
             </div>
-            
+
             <div className="col-sm-4">
               <div className="notes-side-box border-rds">
-                
-              {/* <p className="contact-with-host-btn">
+
+                {/* <p className="contact-with-host-btn">
                   <a href="#">Contact</a>
                 </p> */}
-              <DateRangePickerWrapper blockedDays={blockedDays}/>
+                <DateRangePickerWrapper blockedDays={blockedDays} />
+                <div>
+                  <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
+                  <button className="learn-btn">Check Availability</button>
+                </div>
                 {/* <div className="row">
                   <div className="col-sm-5 border-right">
                     <div className="note-box-inner">

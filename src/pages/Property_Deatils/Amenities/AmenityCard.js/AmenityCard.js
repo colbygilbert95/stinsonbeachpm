@@ -8,8 +8,8 @@ class AmentityCard extends Component {
     return (
       <div className="col-sm-3">
         <div className="property-services-box text-center">
-          <div >
-            <img src={url} className="property-services-box-inner light-bg"  />
+          <div className="property-services-box-inner light-bg items-center">
+            <img src={url} width={94} height={94} />
           </div>
           <p>
             <strong>{name}</strong>

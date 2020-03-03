@@ -31,7 +31,7 @@ class OtherStayCard extends Component {
                   />
                 </div>
               </div>
-              <p>{Title}</p>
+              <p className="text-overflow">{Title}</p>
               <p>
                 <strong>${WeekdayRate}</strong> / night
               </p>
