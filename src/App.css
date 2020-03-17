@@ -150,3 +150,9 @@ footer {
 .p-10 {
   padding: 15px;
 }
+.p-30 {
+  padding: 30px;
+}
+.justify-between {
+  justify-content: space-between;
+}
