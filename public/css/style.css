@@ -126,6 +126,9 @@ div#accordion a.custom-pl {
     width: 100%;
     text-align: center;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .redy-to-earn-img img {
     height: 300px;

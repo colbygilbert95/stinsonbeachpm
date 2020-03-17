@@ -15,7 +15,7 @@ class ListingDescription extends Component {
 
         <div className="container-fluid">
           <div className="row row_padding mt-40">
-            <div className="col-sm-8">
+            <div className="col-sm-8 mt-15">
               <div className="bed-list">
                 <div className="bed-inner">
                   <ul>
@@ -58,7 +58,7 @@ class ListingDescription extends Component {
               </div>
             </div>
 
-            <div className="col-sm-4 pl-100">
+            <div className="col-sm-4 mt-15">
               <div>
                 <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
                 <button className="learn-btn">Check Availability</button>
