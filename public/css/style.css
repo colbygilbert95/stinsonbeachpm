@@ -769,7 +769,7 @@ h2::after {
     }
     .meet-img-box {
         background: #d4d4d4;
-        height: 270px;
+        /* height: 270px; */
         border-radius: 10px;
     }
     .contact-with-owner-btn {
@@ -838,7 +838,7 @@ h2::after {
 		padding:0px !important;
 	}
 	img.author-picture {
-		max-height: 180px;
+		max-height: 150px;
 	}
 	.side_image {
 		max-height: 134px;

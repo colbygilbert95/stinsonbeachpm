@@ -57,7 +57,7 @@ class Home extends Component {
 									<div className="client-result">
 										<h3>Client Results</h3>
 										<div className="break"></div>
-										<div className="client">
+										<div className="client mb-40">
 											<p><strong>Client A: </strong>had a record year, earning $11,928 more than the previous year.  Their property was invited to Airbnb Plus, which on average, results in an additional 22% increase in income.</p>
 										</div>
 										<div className="client">

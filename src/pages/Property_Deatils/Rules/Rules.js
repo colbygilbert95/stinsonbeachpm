@@ -14,34 +14,36 @@ class Rules extends Component {
 
     return (
       <section>
-        <div className="row row_padding mt-40">
-          <div className="col-sm-6 border-right">
-            <div className="rent-title mtt-0">
-              <h3 className="title text-left">House Rules</h3>
-            </div>
-            <p>
-              The host has set some house rules, which you’ll be asked to agree
-              to when you book.
+        <div className="container-fluid">
+          <div className="row row_padding mt-40">
+            <div className="col-sm-6 border-right">
+              <div className="rent-title mtt-0">
+                <h3 className="title text-left">House Rules</h3>
+              </div>
+              <p>
+                The host has set some house rules, which you’ll be asked to agree
+                to when you book.
             </p>
-            <p>
-              <strong>Check-in:</strong> After {moment("2020-01-01 " + listing.Checkin).format("hA")}
-            </p>
-            <p>
-              <strong>Checkout</strong> {moment("2020-01-01 " + listing.Checkout).format("hA")}
-            </p>
-            <div className="c-footer mtb-15">
-              <a href="#">Show all rules &gt;</a>
+              <p>
+                <strong>Check-in:</strong> After {moment("2020-01-01 " + listing.Checkin).format("hA")}
+              </p>
+              <p>
+                <strong>Checkout</strong> {moment("2020-01-01 " + listing.Checkout).format("hA")}
+              </p>
+              <div className="c-footer mtb-15">
+                <a href="#">Show all rules &gt;</a>
+              </div>
             </div>
-          </div>
-          <div className="col-sm-6 pr-40">
-            <div className="rent-title mtt-0">
-              <h3 className="title text-left">Cancellation Policy</h3>
-            </div>
-            {cancPolicy.split(/\n/i).map((text) => {
-              return (<p>{text}</p>)
-            })}
-            <div className="c-footer mtb-15">
-              <a href="#">Show all policy &gt;</a>
+            <div className="col-sm-6">
+              <div className="rent-title mtt-0">
+                <h3 className="title text-left">Cancellation Policy</h3>
+              </div>
+              {cancPolicy.split(/\n/i).map((text) => {
+                return (<p>{text}</p>)
+              })}
+              <div className="c-footer mtb-15">
+                <a href="#">Show all policy &gt;</a>
+              </div>
             </div>
           </div>
         </div>

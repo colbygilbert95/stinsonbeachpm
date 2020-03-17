@@ -7,13 +7,13 @@ class OtherStayCard extends Component {
     const { Name, WeekdayRate, Title, NumReviews, AvgReviews } = unitData;
     const unitPathName = Name.replace(/ /g, "_");
     return (
-      <NavLink
-        to={{
-          pathname: "/" + unitPathName,
-          state: { unitName: Name }
-        }}
-      >
-        <div className="col-md-4 col-lg-3">
+      <div className="col-md-4 col-lg-3">
+        <NavLink
+          to={{
+            pathname: "/" + unitPathName,
+            state: { unitName: Name }
+          }}
+        >
           <div className="card card-blog">
             <div className="rent-card-body">
               <div className="rent-flex">
@@ -43,8 +43,8 @@ class OtherStayCard extends Component {
               </a>
             </div>
           </div>
-        </div>
-      </NavLink>
+        </NavLink>
+      </div>
     );
   }
 }

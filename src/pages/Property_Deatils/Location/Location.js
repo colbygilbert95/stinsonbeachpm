@@ -15,7 +15,7 @@ class Location extends Component {
           </div>
         </div>
         <div className="row row_padding">
-          <div className="col-sm-5">
+          <div className="col-sm-5 mt-15">
             <div className="location-box border-rds">
               <p>
                 <strong>Stinson Beach, California, United States</strong>
@@ -31,7 +31,7 @@ class Location extends Component {
               <p>{listing.Location}</p>
             </div>
           </div>
-          <div className="col-sm-7">
+          <div className="col-sm-7 mt-15">
             <div className="property-location-map">
               <img className="border-rds" src="images/map-2.png" />
             </div>

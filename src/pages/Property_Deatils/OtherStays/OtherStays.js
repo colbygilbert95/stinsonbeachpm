@@ -21,6 +21,8 @@ class OtherStays extends Component {
                 <h3 className="title text-left">Other Places to Stay</h3>
               </div>
             </div>
+          </div>
+          <div className="row">
             {
 
               displayUnits.map((unit, index) => {

@@ -67,13 +67,16 @@ class PropertyDetails extends Component {
           numReviews={listing.NumReviews}
           avgReviews={listing.AvgReviews}
         />
-        <div className="row row_padding">
-          <div className="col-md-7">
-            <DayPickerRangeControllerWrapper blockedDays={blockedDays} />
+        <div className="container-fluid">
+          <div className="row row_padding">
+            <div className="col-md-7 mt-15">
+              <DayPickerRangeControllerWrapper blockedDays={blockedDays} />
+            </div>
+            <div className="col-md-5 mt-15">
+              <DateRangePickerWrapper blockedDays={blockedDays} />
+            </div>
           </div>
-          <div className="col-md-5">
-            <DateRangePickerWrapper blockedDays={blockedDays} />
-          </div>
+
         </div>
         <MeetOwner unitName={listing.Name} />
         <hr />

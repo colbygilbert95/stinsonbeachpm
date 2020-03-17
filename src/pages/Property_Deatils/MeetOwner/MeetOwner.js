@@ -33,9 +33,9 @@ class MeetOwner extends Component {
             </div>
           </div>
           <div className="row row_padding mb-40">
-            <div className="col-sm-9">
+            <div className="col-sm-9 mt-15">
               <div className="meet-box">
-                <div className="row row_padding">
+                <div className="row">
                   <div className="col-sm-3">
                     <img className="meet-img-box" src={PictureURL} />
                   </div>
@@ -59,7 +59,7 @@ class MeetOwner extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-sm-3">
+            <div className="col-sm-3 mt-15">
               <div className="meet-box meet-box-contact">
                 <p>
                   <strong>Joined:</strong> {moment(AddedOn).format("MMMM YYYY")}
