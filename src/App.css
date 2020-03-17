@@ -162,3 +162,8 @@ footer {
 a:hover{
   text-decoration: none;
 }
+.italic-underline {
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: bold;
+}

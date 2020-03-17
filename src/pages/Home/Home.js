@@ -58,10 +58,10 @@ class Home extends Component {
 										<h3>Client Results</h3>
 										<div className="break"></div>
 										<div className="client mb-40">
-											<p><strong>Client A: </strong>had a record year, earning $11,928 more than the previous year.  Their property was invited to Airbnb Plus, which on average, results in an additional 22% increase in income.</p>
+											<p><strong>Client A: </strong>had a record year, <span className="italic-underline">earning $11,928 more than the previous year.</span> Their property was invited to Airbnb Plus, which on average, results in an additional 22% increase in income.</p>
 										</div>
 										<div className="client">
-											<p><strong>Client B: </strong>before working with me was making, on average, $2,148 per month.  Now they are averaging $9,572 per month.  They will see an $89,093 increase in yearly revenue.</p>
+											<p><strong>Client B: </strong>before working with me was making, on average, $2,148 per month.  Now they are averaging $9,572 per month.  <span className="italic-underline">They will see an $89,093 increase in yearly revenue.</span></p>
 										</div>
 									</div>
 								</div>
@@ -81,21 +81,23 @@ class Home extends Component {
 						<div className="row">
 							<div className="col-sm-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title">We protect homeowners</h3>
-									<p>To keep you, your home , and you belongings safe and we protect you by investing in the property ourselves</p>
-									<p>We install Smart Locks, Noise Monitors, Ensure Each Booking is covered with $1M USD accident and damage protection at no cost to  you.</p>
+									<h3 className="home-inner-title m0">1.</h3>
+									<h3 className="home-inner-title mt0">Receive your action plan</h3>
+									<p>Set up a meeting a Homeowner Advisor to receive a detailed action plan to take your property to the next level</p>
 								</div>
 							</div>
 							<div className="col-sm-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title">Guests are verified</h3>
-									<p>We only allow kind, laid back guests, that can pass our bank-level ID screening to stay in your home. This catches bad actors before they can even make a booking.</p>
+									<h3 className="home-inner-title m0">2</h3>
+									<h3 className="home-inner-title mt0">We prepare your property</h3>
+									<p>We put the plan motion and your property gets upgraded and integrated into our management systsm.</p>
 								</div>
 							</div>
 							<div className="col-sm-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title">Authentic travel experiences</h3>
-									<p>Everything we do for guests revolves around providing the consistency and service of a great hotel combined with the waemth and cheracter of the home. Happy repeat guests means more revenue for you.</p>
+									<h3 className="home-inner-title m0">3.</h3>
+									<h3 className="home-inner-title mt0">Welcome your first guest</h3>
+									<p>Once your property is live, qualified guests book and Homeowner payouts begin.</p>
 								</div>
 							</div>
 						</div>
@@ -123,23 +125,21 @@ class Home extends Component {
 						<div className="row">
 							<div className="col-sm-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title m0">1.</h3>
-									<h3 className="home-inner-title mt0">Receive your action plan</h3>
-									<p>Set up a meeting a Homeowner Advisor to receive a detailed action plan to take your property to the next level</p>
+									<h3 className="home-inner-title">We protect homeowners</h3>
+									<p>To keep you, your home , and you belongings safe and we protect you by investing in the property ourselves</p>
+									<p>We install Smart Locks, Noise Monitors, Ensure Each Booking is covered with $1M USD accident and damage protection at no cost to  you.</p>
 								</div>
 							</div>
 							<div className="col-sm-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title m0">2</h3>
-									<h3 className="home-inner-title mt0">We prepare your property</h3>
-									<p>We put the plan motion and your property gets upgraded and integrated into our management systsm.</p>
+									<h3 className="home-inner-title">Guests are verified</h3>
+									<p>We only allow kind, laid back guests, that can pass our bank-level ID screening to stay in your home. This catches bad actors before they can even make a booking.</p>
 								</div>
 							</div>
 							<div className="col-sm-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title m0">3.</h3>
-									<h3 className="home-inner-title mt0">Welcome your first guest</h3>
-									<p>Once your property is live, qualified guests book and Homeowner payouts begin.</p>
+									<h3 className="home-inner-title">Authentic travel experiences</h3>
+									<p>Everything we do for guests revolves around providing the consistency and service of a great hotel combined with the waemth and cheracter of the home. Happy repeat guests means more revenue for you.</p>
 								</div>
 							</div>
 						</div>
