@@ -159,3 +159,6 @@ footer {
 .pl-100 {
   padding-left: 100px;
 }
+a:hover{
+  text-decoration: none;
+}
