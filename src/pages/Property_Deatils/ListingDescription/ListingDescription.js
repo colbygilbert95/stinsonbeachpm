@@ -58,7 +58,7 @@ class ListingDescription extends Component {
               </div>
             </div>
 
-            <div className="col-sm-4">
+            <div className="col-sm-4 pl-100">
               <div>
                 <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
                 <button className="learn-btn">Check Availability</button>

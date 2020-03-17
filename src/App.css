@@ -156,3 +156,6 @@ footer {
 .justify-between {
   justify-content: space-between;
 }
+.pl-100 {
+  padding-left: 100px;
+}
