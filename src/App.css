@@ -156,6 +156,9 @@ footer {
 .justify-between {
   justify-content: space-between;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+}
 .pl-100 {
   padding-left: 100px;
 }

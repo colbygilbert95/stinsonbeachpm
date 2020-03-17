@@ -4,8 +4,8 @@ class FilterOptions extends Component {
   render() {
     return (
       <section className="book-your--top">
-        <div className="flex justify-between p-30">
-          <ul className="single-post-link mt-0">
+        <div className="flex justify-between p-30 flex-wrap">
+          <ul className="single-post-link mt-15">
             <li>
               <a href="#">Date</a>
             </li>
@@ -22,7 +22,7 @@ class FilterOptions extends Component {
               <a href="#">More Filters</a>
             </li>
           </ul>
-          <div className="Show-Map-btn">
+          <div className="Show-Map-btn mt-15">
             <span>Show Map</span>
           </div>
         </div>

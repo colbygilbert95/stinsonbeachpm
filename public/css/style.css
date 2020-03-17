@@ -509,7 +509,7 @@ h2::after {
     .single-post-link li {
         list-style: none;
         display: inline-block;
-        margin: 0px 7px;
+        margin: 0px 4px;
     }
     .single-post-link li a {
         padding: 5px 10px;
@@ -538,7 +538,6 @@ h2::after {
     }
     section.book-your--top {
         background: #ebf5fc;
-        padding: 30px 0px;
     }
     .Show-Map-btn span {
         border: 1px solid #3498db;
