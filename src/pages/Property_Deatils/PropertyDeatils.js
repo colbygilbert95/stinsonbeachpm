@@ -69,10 +69,10 @@ class PropertyDetails extends Component {
         />
         <div className="container-fluid">
           <div className="row row_padding">
-            <div className="col-md-7 mt-15">
+            <div className="col-md-12 col-lg-7 mt-15">
               <DayPickerRangeControllerWrapper blockedDays={blockedDays} />
             </div>
-            <div className="col-md-5 mt-15">
+            <div className="col-md-12 col-lg-5 mt-15">
               <DateRangePickerWrapper blockedDays={blockedDays} />
             </div>
           </div>
