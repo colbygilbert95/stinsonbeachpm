@@ -872,4 +872,14 @@ h2::after {
 	}
 	.no-decoration li{
 		list-style-type:none;
-	}
+    }
+    
+@media (max-width: 992px) {
+    img.author-picture {
+     max-height: 400px !important;
+    }
+    .property-services-box-inner {
+        max-height: 400px !important;
+        height: unset;
+    }
+}
