@@ -179,3 +179,10 @@ a:hover{
 .pr-60 {
   padding-right: 60px;
 }
+.font-lg {
+  font-size: 32px !important;
+  margin-bottom: 30px !important;
+}
+.learn-btn {
+  min-width: 230px;
+}

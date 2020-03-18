@@ -76,21 +76,21 @@ class Home extends Component {
 						<div className="row">
 							<div className="col-sm-12 col-md-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title m0">1.</h3>
+									<h3 className="home-inner-title m0 font-lg">1.</h3>
 									<h3 className="home-inner-title mt0">Receive your action plan</h3>
 									<p>Set up a meeting a Homeowner Advisor to receive a detailed action plan to take your property to the next level</p>
 								</div>
 							</div>
 							<div className="col-sm-12 col-md-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title m0">2</h3>
+									<h3 className="home-inner-title m0 font-lg">2</h3>
 									<h3 className="home-inner-title mt0">We prepare your property</h3>
 									<p>We put the plan motion and your property gets upgraded and integrated into our management systsm.</p>
 								</div>
 							</div>
 							<div className="col-sm-12 col-md-4">
 								<div className="home-inner-content">
-									<h3 className="home-inner-title m0">3.</h3>
+									<h3 className="home-inner-title m0 font-lg">3.</h3>
 									<h3 className="home-inner-title mt0">Welcome your first guest</h3>
 									<p>Once your property is live, qualified guests book and Homeowner payouts begin.</p>
 								</div>
