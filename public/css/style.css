@@ -7,11 +7,9 @@ h1, h2, h3, h4, span, p, a, div {
 .main-banner {
     background-image: url(../images/front_banner.jpg); 
     background-position: center center;
-    /*background-size: cover;*/
-	background-size: 100%;
+    background-size: cover;
     position: relative;
 	background-repeat:no-repeat;
-    height: 500px;
 }
 .custom-navbar {
     margin-bottom: 0px !important;

@@ -170,3 +170,12 @@ a:hover{
   font-style: italic;
   font-weight: bold;
 }
+.justify-content-end{
+  justify-content: flex-end;
+}
+.align-items-center {
+  align-items: center
+}
+.pr-60 {
+  padding-right: 60px;
+}
