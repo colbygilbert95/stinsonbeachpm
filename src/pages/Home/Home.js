@@ -14,7 +14,7 @@ class Home extends Component {
 
 				<div className="main-banner">
 					<div className="container">
-						<div className="row flex justify-content-end py-5 pr-60">
+						<div className="row flex justify-content-end py-5 pr-60 pl-60">
 							{<Search_form />}
 						</div>
 					</div>
