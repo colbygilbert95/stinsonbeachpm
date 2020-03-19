@@ -26,6 +26,7 @@ class HeaderImages extends Component {
           </div>
           <div className="col-sm-6">
             <div className="beach-img-box mb-15">
+              <button className="take-tour-btn">Take Tour</button>
               <img src={headerImgs[0].URL} className="border-rds" />
             </div>
           </div>

@@ -203,3 +203,13 @@ a:focus {
 h3 {
   color: #484848;
 }
+.take-tour-btn {
+  background-color: white;
+  border-radius: 4px;
+  border: none;
+  position: absolute;
+  padding: 5px 18px;
+  bottom: 40px;
+  right: 40px;
+  color: #484848;
+}
