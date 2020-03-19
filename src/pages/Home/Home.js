@@ -164,7 +164,7 @@ class Home extends Component {
 									<div className="home-box-content">
 										<h1>There's no one way to host. You might be surprised by how much fun you have. "</h1>
 										<p>Christelle, Phoenicia , NY</p>
-										<p><a href="#">Learn their story</a></p>
+										<p><a href="#" className="block">Learn their story</a></p>
 									</div>
 								</div>
 							</div>
