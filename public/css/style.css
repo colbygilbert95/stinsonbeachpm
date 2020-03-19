@@ -885,4 +885,11 @@ h2::after {
     .get-appointment-form {
         width: 100%;
     }
+    .block {
+        display: block;
+        text-align: center;
+    }
+    .amenities-img {
+        width: 60px !important;
+    }
 }

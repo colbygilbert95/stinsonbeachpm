@@ -189,3 +189,14 @@ a:hover{
 .pl-60 {
   padding-left: 60px;
 }
+
+.amenities-img {
+  width: 94px; 
+  height: 94px;
+}
+.justify-center {
+  justify-content: center;
+}
+a:focus {
+  text-decoration: none;
+}
