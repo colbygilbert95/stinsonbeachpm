@@ -15,7 +15,7 @@ class ListingCard extends Component {
           }}
         >
           <div className="card card-blog">
-            <div className="rent-card-body">
+            <div className="rent-card-body mt-40">
               <div className="rent-flex">
                 <div className="author">
                   <img
