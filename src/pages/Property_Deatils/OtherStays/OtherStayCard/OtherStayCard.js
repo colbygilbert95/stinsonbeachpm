@@ -7,44 +7,43 @@ class OtherStayCard extends Component {
     const { Name, WeekdayRate, Title, NumReviews, AvgReviews } = unitData;
     const unitPathName = Name.replace(/ /g, "_");
     return (
-      <div className="col-md-4 col-lg-3">
-        <NavLink
-          to={{
-            pathname: "/" + unitPathName,
-            state: { unitName: Name }
-          }}
-        >
-          <div className="card card-blog">
-            <div className="rent-card-body mt-40">
-              <div className="rent-flex">
-                <div className="author">
-                  <img
-                    className="author-picture "
-                    src={
-                      "images/property_images/" +
-                      unitPathName +
-                      "/" +
-                      unitPathName +
-                      "_Cover.jpg"
-                    }
-                    alt="..."
-                  />
-                </div>
+      <NavLink
+        className="place"
+        to={{
+          pathname: "/" + unitPathName,
+          state: { unitName: Name }
+        }}
+      >
+        <div className="card card-blog">
+          <div className="rent-card-body mt-40">
+            <div className="rent-flex">
+              <div className="author">
+                <img
+                  className="author-picture"
+                  src={
+                    "images/property_images/" +
+                    unitPathName +
+                    "/" +
+                    unitPathName +
+                    "_Cover.jpg"
+                  }
+                  alt="..."
+                />
               </div>
-              <p className="text-overflow">{Title}</p>
-              <p>
-                <strong>${WeekdayRate}</strong> / night
-              </p>
-              <a href="javascript:;" className="pull-left">
-                <i className="fa fa-star mr-2"></i>
-                <span className="small">
-                  <strong>{AvgReviews}</strong> ({NumReviews})
-                </span>
-              </a>
             </div>
+            <p className="text-overflow mt-15">{Title}</p>
+            <p>
+              <strong>${WeekdayRate}</strong> / night
+              </p>
+            <a href="javascript;" className="pull-left">
+              <i className="fa fa-star mr-2"></i>
+              <span className="small">
+                <strong>{AvgReviews}</strong> ({NumReviews})
+                </span>
+            </a>
           </div>
-        </NavLink>
-      </div>
+        </div>
+      </NavLink>
     );
   }
 }

@@ -31,27 +31,6 @@ class PropertyDetails extends Component {
     console.log("PropertyDetails");
     console.log(this.props);
     const { listing, blockedDays } = this.props;
-    // const {
-    //   Title,
-    //   Bedrooms,
-    //   Beds,
-    //   Baths,
-    //   Accommodates,
-    //   PropertyType,
-    //   Checkout,
-    //   Checkin,
-    //   Description,
-    //   Space,
-    //   GuestAccess,
-    //   OtherNotes,
-    //   Location,
-    //   GuestInteraction,
-    //   HouseRules,
-    //   NumReviews,
-    //   AvgReviews,
-    //   PolicyName,
-    //   PolicyDescription
-    // } = this.props.listing;
     return (
       <div>
         <Header />
@@ -74,6 +53,14 @@ class PropertyDetails extends Component {
             </div>
             <div className="col-md-12 col-lg-5 mt-15">
               <DateRangePickerWrapper blockedDays={blockedDays} />
+              <select class="form-control mt-30 gusts-slect-menu">
+                <option>Guests</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
             </div>
           </div>
 

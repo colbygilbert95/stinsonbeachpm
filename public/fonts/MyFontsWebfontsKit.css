@@ -1,26 +1,3 @@
-/**
- * @license
- * MyFonts Webfont Build ID 3874087, 2020-03-01T15:27:39-0500
- * 
- * The fonts listed in this notice are subject to the End User License
- * Agreement(s) entered into by the website owner. All other parties are 
- * explicitly restricted from using the Licensed Webfonts(s).
- * 
- * You may obtain a valid license at the URLs below.
- * 
- * Webfont: LeituraDisplay-Roman by DSType
- * URL: https://www.myfonts.com/fonts/dstype/leitura-display/roman/
- * Copyright: Copyright (c) 2007 by Dino dos Santos _DSType. All rights reserved.
- * 
- * 
- * 
- * © 2020 MyFonts Inc
-*/
-
-
-/* @import must be at top of file, otherwise CSS will not work */
-@import url("//hello.myfonts.net/count/3b1d27");
-
   
-@font-face {font-family: 'LeituraDisplay-Roman';src: url('webfonts/3B1D27_0_0.eot');src: url('webfonts/3B1D27_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3B1D27_0_0.woff2') format('woff2'),url('webfonts/3B1D27_0_0.woff') format('woff'),url('webfonts/3B1D27_0_0.ttf') format('truetype');}
+@font-face {font-family: 'LeituraDisplay-Roman';src: url('DINPro-Regular_13937.ttf') }
  

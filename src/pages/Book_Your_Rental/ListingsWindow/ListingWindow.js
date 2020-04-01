@@ -19,7 +19,7 @@ class ListingWindow extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="otherPlacesWrapper">
             {units.map((unit, index) => {
               return (<ListingCard unitData={unit} key={index} />)
             })}

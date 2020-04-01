@@ -22,7 +22,7 @@ class OtherStays extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="otherPlacesWrapper">
             {
 
               displayUnits.map((unit, index) => {

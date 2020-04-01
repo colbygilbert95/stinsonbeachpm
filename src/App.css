@@ -5,8 +5,8 @@
 .App-logo {
   height: 40vmin;
 }
-h1 {
-  /* font-family: 'LeituraDisplay-Roman'; */
+p, h1 , h2 , h3 , h4 , h5 , h6 , a , li {
+  /* font-family: 'LeituraDisplay-Roman' !important; */
 }
 .App-header {
   background-color: #282c34;
@@ -140,7 +140,7 @@ footer {
   margin: 0 20px;
 }
 .text-overflow {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -212,4 +212,209 @@ h3 {
   bottom: 40px;
   right: 40px;
   color: #484848;
+}
+.gusts-slect-menu {
+  max-width: 350px;
+}
+.check-availability-section {
+  margin-top: 20px;
+  display: flex;
+}
+.check-availability-section > * {
+  flex:1;
+  margin: 0 15px;
+}
+.check-availability-gallery {
+  display: flex;
+  flex: unset;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 10%;
+}
+.h-unset {
+  height: unset !important;
+}
+.beach-img-box {
+  position: relative;
+}
+@media(max-width: 970px ){
+  .check-availability-section {
+    flex-direction: column;
+  }
+  .check-availability-section > *{
+    flex: unset;
+  }
+  .h-unset {
+    display: none;
+   height: 500px !important; 
+   margin-bottom: 20px;
+  }
+}
+
+.otherPlacesWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.place:nth-child(2){
+  display: none;
+}
+.place {
+  padding: 0 10px;
+  max-width: 25%;
+}
+img.author-picture {
+  width: 100%;
+  max-height: unset;
+}
+@media (max-width: 1110px){
+  .otherPlacesWrapper {
+    justify-content: unset;
+  }
+  .place{
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 740px){
+  .place {
+    max-width: 100%;
+  }
+}
+
+.check-availability-wrapper {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left: 0;
+  right:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.check-availability-wrapper .content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+.check-availability-wrapper .content .price {
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+.check-availability-wrapper .content .rate {
+  margin-bottom: 20px;
+}
+.check-availability-wrapper .content .rate i {
+  color: #3498DB;
+  margin-right: 5px;
+}
+.check-availability-wrapper .DateRangePickerInput__showClearDates {
+  border-radius: 5px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+.check-availability-wrapper .DateInput_input {
+  font-size: 16px;
+  padding: 7px 11px 5px;
+}
+.check-availability-btn {
+  color: white;
+  background: #3498DB;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+  margin-top: 30px;
+}
+.overlay {
+  background-color: black;
+  opacity: .6;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; 
+  z-index: 10 ;
+}
+.relative {
+  position: relative;
+}
+.remove-btn {
+  background-color: white;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 25px;
+  font-size: 25px;
+  position: absolute;
+  top: -45px;
+  right: -45px;   
+}
+.guests-calculator-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+.calculator {
+  position: absolute;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 16%);
+}
+.chips-list {
+  position: absolute;
+  display: flex;
+}
+.chips-list .chip {
+  background-color: #3498DB;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.input-wrapper .collapse-btn {
+  position: absolute;
+  right: 10px;
+  background-color: white;
+  border: none;
+}
+.guests-calculator-wrapper .close-btn {
+  text-align: right;
+  margin-top: 20px;
+}
+.guests-input {
+  border: 1px solid #3498DB;
+  border-radius: 3px;
+  width: 100%;
+  padding: 10px;
+}
+.calculator-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.calculator-item  .increamenter{
+  display: flex;
+}
+.increamenter {
+  display: flex;
+  align-items: center;
+}
+.increamenter > button {
+  border: 1px solid #3498DB;
+  background-color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 25px;
+  margin: 0 20px;
+  color: #3498DB;
 }

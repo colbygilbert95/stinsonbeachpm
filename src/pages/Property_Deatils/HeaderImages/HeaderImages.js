@@ -16,42 +16,28 @@ class HeaderImages extends Component {
   render() {
     const { title } = this.props
     const headerImgs = (this.props.headerImgs[0] === undefined ? [{ URL: '' }, { URL: '' }, { URL: '' }, { URL: '' }] : this.props.headerImgs)
-    return (<section className="check-availability">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-sm-4">
-            <div className="beach-box border-rds mb-15">
-              <h1>{title}</h1>
-            </div>
+    return (
+      <section className="check-availability-section">
+        <div className="beach-box border-rds h-unset">
+          <h1>Beach View at the Bird's Nest Bungalow</h1>
+        </div>
+        <div className="beach-img-box">
+          <button className="take-tour-btn">Take Tour</button>
+          <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%2010.jpeg" className="border-rds large-img" />
+        </div>
+        <div className="check-availability-gallery hidden-md hidden-sm hidden-xs">
+          <div className="beach-img-box">
+            <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%2020.jpg" className="border-rds small-img" />
           </div>
-          <div className="col-sm-6">
-            <div className="beach-img-box mb-15">
-              <button className="take-tour-btn">Take Tour</button>
-              <img src={headerImgs[0].URL} className="border-rds" />
-            </div>
+          <div className="beach-img-box">
+            <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%201.jpg" className="border-rds small-img" />
           </div>
-          <div className="col-sm-2">
-            <div className="row">
-              <div className="col-sm-12 mb-15">
-                <div className="beach-img-box">
-                  <img src={headerImgs[1].URL} className="border-rds" />
-                </div>
-              </div>
-              <div className="col-sm-12 mb-15">
-                <div className="beach-img-box">
-                  <img src={headerImgs[2].URL} className="border-rds" />
-                </div>
-              </div>
-              <div className="col-sm-12 mb-15">
-                <div className="beach-img-box">
-                  <img src={headerImgs[3].URL} className="border-rds" />
-                </div>
-              </div>
-            </div>
+          <div className="beach-img-box">
+            <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%2019.jpg?authuser=2" className="border-rds small-img" />
           </div>
         </div>
-      </div>
-    </section>);
+      </section>
+    );
   }
 }
 const mapStateToProps = state => {
