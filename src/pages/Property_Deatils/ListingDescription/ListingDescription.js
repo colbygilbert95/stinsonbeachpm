@@ -12,7 +12,6 @@ class ListingDescription extends Component {
     const space = listing.Space === undefined ? "" : listing.Space;
     return (
       <section className="check-availability-second mt-15">
-
         <div className="container-fluid">
           <div className="row row_padding mt-40">
             <div className="col-sm-8 mt-15">
@@ -25,7 +24,6 @@ class ListingDescription extends Component {
                     <li>{listing.Baths} Bath</li>
                   </ul>
                 </div>
-
                 <span>
                   {description.split(/\n/i).map((text, index) => {
                     return (
@@ -57,37 +55,11 @@ class ListingDescription extends Component {
                 </p>
               </div>
             </div>
-
             <div className="col-sm-4 mt-15">
               <div>
                 <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
                 <button className="learn-btn">Check Availability</button>
               </div>
-              {/* <div className="notes-side-box border-rds">
-
-                <p className="contact-with-host-btn">
-                  <a href="#">Contact</a>
-                </p>
-                <DateRangePickerWrapper blockedDays={blockedDays} />
-                <div className="row">
-                  <div className="col-sm-5 border-right">
-                    <div className="note-box-inner">
-                      <div className="auther-img"></div>
-                      <p className="Royal">Royal Condo Vacation</p>
-                      <p className="Member">Member since 2014</p>
-                    </div>
-                  </div>
-                  <div className="col-sm-7">
-                    <div className="notes-side-content">
-                      <p>
-                        "It is my pleasure to have you comfortably tucked away
-                        while getting a chance to unwind, recharge, and drink in
-                        the beauty that surrounds you."
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

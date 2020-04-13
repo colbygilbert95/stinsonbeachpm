@@ -102,7 +102,9 @@ class Single_blog extends Component {
 							</div>
 							<div className="col-sm-3">
 								<p className="pull-left mt-15"><strong>$145</strong> / night</p>
-								<span className="check-btn mt-15"><button type="submit" className="btn btn-primary" onClick={this.openCheckAvailabilityModal}>Check Availability</button></span>
+								<span className="check-btn mt-15">
+									<button type="submit" className="btn btn-primary" onClick={this.openCheckAvailabilityModal}>Check Availability</button>
+								</span>
 							</div>
 						</div>
 					</div>
