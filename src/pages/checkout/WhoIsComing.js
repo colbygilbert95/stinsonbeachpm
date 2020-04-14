@@ -19,15 +19,18 @@ class WhoIsComing extends Component {
               <option>4 guest</option>
               <option>5 guest</option>
             </select>
-            <h4 className="number-of-nights">
+            <h4 className="number-of-nights switch">
               Traveling For Work?
+              <div class="material-switch ">
+                <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox" />
+                <label for="someSwitchOptionDefault" class="label-default"></label>
+              </div>
             </h4>
             <h4 className="number-of-nights">
               Introduce Yourself
             </h4>
             <p>Let Noa & Keren know a little bit about yourself and why you're coming.</p>
-            <textarea rows="10" className="mt-15" placeholder="Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-, sed diam nonumy eirmod"> </textarea>
+            <textarea rows="10" className="mt-15"> </textarea>
             <div className="agree">
               <button onClick={this.props.nextStep}>Continue</button>
             </div>

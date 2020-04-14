@@ -595,3 +595,161 @@ textarea {
   border-radius: 5px;
   width: 100%;
 }
+
+/** switch **/
+
+.material-switch > input[type="checkbox"] {
+    display: none;   
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative; 
+    width: 40px;  
+    background: #3498DB;
+}
+
+.material-switch > label::before {
+    background: rgb(0, 0, 0);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+
+.number-of-nights.switch{
+  display: flex;
+}
+.number-of-nights .material-switch  {
+  margin-left: 40px;
+}
+.credit-title{
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.enter-coupon {
+  display: inline-block;
+  color: #0099FF;
+  margin-top: 15px;
+}
+.title-3{
+  font-size: 15px;
+  color: #484848;
+  font-weight: bold;
+}
+.block{
+  display: block;
+}
+.mt-60 {
+  margin-top: 60px;
+}
+.ways-to-pay {
+  margin-top: 17px;
+}
+.way-to-pay{
+  display: flex;
+  border: 1px solid #f2f2f2;
+  border-radius: 7px;
+  padding: 20px;
+  margin-top: 14px;
+}
+.way-to-pay.active {
+  border: 1px solid #3498DB ;
+}
+.way-price{
+  font-weight: bold;
+}
+.way-price > p{
+  margin-bottom: 0;
+}
+.way-state{
+  font-weight: normal;
+  font-style: italic;
+}
+.way-description {
+  color: #CCCCCC;
+}
+.ml-auto{
+  margin-left: auto;
+}
+.way-title {
+  margin-right: 70px;
+  max-width: 330px;
+}
+.color-blue {
+  color: #0099FF;
+}
+.policy-description {
+  margin-top: 20px;
+}
+.circle-thin , .circle-thick {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-right: 20px;
+}
+.circle-thin {
+  border: 2px solid #707070;
+}
+.active .circle-thin {
+  border: 2px solid #3498DB;
+}
+.circle-thick{
+  border: 6px solid #707070; 
+}
+.active .circle-thick{
+  border: 6px solid #3498DB; 
+}
+
+@media (max-width: 1690px){
+  #checkout-header .links {
+    justify-content: center;
+  }
+}
+@media (max-width: 991px){
+  #checkout-header .links {
+    margin-top: 80px;
+  }
+  .agree button {
+   width: 100%; 
+  }
+  .agree {
+    margin-bottom: 50px;
+  }
+  .flat-card-wrapper {
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+}
