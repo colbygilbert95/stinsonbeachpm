@@ -732,7 +732,6 @@ textarea {
 .active .circle-thick{
   border: 6px solid #3498DB; 
 }
-
 @media (max-width: 1690px){
   #checkout-header .links {
     justify-content: center;

@@ -32,12 +32,12 @@ class Pay extends Component {
             <span className="title-3 block mt-40">How do you want to pay?</span>
             <div className="ways-to-pay">
               <a href="#" className={payWay === 'full' ? 'way-to-pay active' : 'way-to-pay'} onClick={() => this.changePayWay('full')}>
-                <span className="circle-thick"></span>
+                <span className={payWay === 'full' ? 'circle-thick' : 'circle-thin'}></span>
                 <p className="way-title">Pay In Full</p>
                 <p className="way-price ml-auto">314.63$</p>
               </a>
               <a href="#" className={payWay === 'less' ? 'way-to-pay active' : 'way-to-pay'} onClick={() => this.changePayWay('less')}>
-                <span className="circle-thin"></span>
+                <span className={payWay === 'less' ? 'circle-thick' : 'circle-thin'}></span>
                 <p className="way-title">
                   Pay less upfront
                   <p className="way-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
