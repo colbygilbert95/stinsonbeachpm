@@ -390,6 +390,10 @@ img.author-picture {
   text-align: right;
   margin-top: 20px;
 }
+.guests-calculator-wrapper .close-btn button {
+  background-color: transparent;
+  border: none;
+}
 .guests-input {
   border: 1px solid #3498DB;
   border-radius: 3px;

@@ -24,7 +24,7 @@ class Single_blog extends Component {
 		return (
 			<div>
 				<Header />
-				<CheckAvailabilityModal modalState={this.state.modalState} closeModal={this.closeModal} location={{ state: { unitName: '27_Pradero' } }} />
+				<CheckAvailabilityModal modalState={this.state.modalState} closeModal={this.closeModal} />
 				<section className="check-availability-section">
 					<div className="beach-box border-rds h-unset">
 						<h1>Beach View at the Bird's Nest Bungalow</h1>

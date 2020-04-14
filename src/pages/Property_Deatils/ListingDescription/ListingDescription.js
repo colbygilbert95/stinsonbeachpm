@@ -3,8 +3,24 @@ import 'react-dates/initialize';
 import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 import DateRangePickerWrapper from "./DateRangePickerWrapper/DateRangePickerWrapper";
 import CardSection from "./CardSection"
+import CheckAvailabilityModal from '../../Check_availability/CheckAvailabilityModal'
 
 class ListingDescription extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modalState: false
+    }
+  }
+  openCheckAvailabilityModal = () => {
+    this.setState({
+      modalState: true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({ modalState: false })
+  }
   render() {
     const { listing, blockedDays } = this.props;
     const description =
@@ -12,6 +28,7 @@ class ListingDescription extends Component {
     const space = listing.Space === undefined ? "" : listing.Space;
     return (
       <section className="check-availability-second mt-15">
+        <CheckAvailabilityModal modalState={this.state.modalState} closeModal={this.closeModal} />
         <div className="container-fluid">
           <div className="row row_padding mt-40">
             <div className="col-sm-8 mt-15">
@@ -58,7 +75,7 @@ class ListingDescription extends Component {
             <div className="col-sm-4 mt-15">
               <div>
                 <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
-                <button className="learn-btn">Check Availability</button>
+                <button className="learn-btn" onClick={this.openCheckAvailabilityModal}>Check Availability</button>
               </div>
             </div>
           </div>

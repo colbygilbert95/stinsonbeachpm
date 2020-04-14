@@ -6,14 +6,6 @@ import GuestCalculator from './GuestCalculator'
 
 
 class CheckAvailabilityModal extends Component {
-  componentDidMount() {
-    const { unitName } = this.props.location.state;
-    if (!unitName) {
-      unitName = window.location.href.split(/([^\/]+$)/);
-    }
-    this.props.getUnit(unitName);
-    this.props.getBlockedDays(unitName)
-  }
   render() {
     const { listing, blockedDays } = this.props;
     return (
@@ -33,14 +25,6 @@ class CheckAvailabilityModal extends Component {
                 <DateRangePickerWrapper blockedDays={blockedDays} />
                 <p className="mt-15"><strong>Guests</strong></p>
                 <GuestCalculator></GuestCalculator>
-                {/* <select class="form-control mt-30 gusts-slect-menu mt0">
-                  <option>Guests</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select> */}
                 <button className="check-availability-btn">Check Availability</button>
               </div>
             </div>
