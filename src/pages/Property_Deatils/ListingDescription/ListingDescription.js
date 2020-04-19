@@ -35,7 +35,7 @@ class ListingDescription extends Component {
               <div className="bed-list">
                 <div className="bed-inner">
                   <ul>
-                    <li>{listing.Accommodates} guests</li>
+                    <li>{listing.Accommodates} Guests</li>
                     <li>{listing.PropertyType}</li>
                     <li>{listing.Beds} Beds</li>
                     <li>{listing.Baths} Bath</li>

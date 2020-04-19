@@ -61,6 +61,7 @@ CREATE TABLE `Task` (
   `NumHelpers` INT,
   `AttachmentsURL` VARCHAR(2000),
   `PostNotes` TEXT,
+  `Paid`TINYINT(1),
   `AddedOn` DATETIME,
   `CreatedBy` INT,
   PRIMARY KEY (`Id`)
@@ -285,6 +286,8 @@ CREATE TABLE `ClientAccount` (
   `Percentage` DOUBLE,
   `Wage` DOUBLE,
   `HoursCharge` VARCHAR(255),
+  `BLNumber` VARCHAR(255),
+  `BLWebPin` VARCHAR(255),
   `TOTNumber` VARCHAR(255),
   `TOTWebPin` VARCHAR(255),
   `BuyInventory` TINYINT,
@@ -334,6 +337,19 @@ CREATE TABLE `Guest` (
   PRIMARY KEY (`Id`)
 );
 
+CREATE TABLE `Timesheet` (
+  `Id` INT AUTO_INCREMENT,
+  `Name` VARCHAR(255),
+  `Date` DATE,
+  `TimeIn` TIME,
+  `TimeOut` TIME,
+  `Task` INT,
+  `CastMember` INT,
+  `Paid` TINYINT(1),
+  `PaidOn` DATETIME,
+  PRIMARY KEY (`Id`)
+);
+
 ALTER TABLE Task ADD CONSTRAINT fk_listing_task_id FOREIGN KEY (`Listing`) REFERENCES Listing(Id);
 ALTER TABLE Task ADD CONSTRAINT fk_reservation_task_id FOREIGN KEY (`Reservation`) REFERENCES Reservation(Id);
 ALTER TABLE Task ADD CONSTRAINT fk_castmember_task_id FOREIGN KEY (`CastMember`) REFERENCES CastMember(Id);
@@ -358,7 +374,8 @@ ALTER TABLE Reservation ADD CONSTRAINT fk_listing_reservation_id FOREIGN KEY (`L
 ALTER TABLE Reservation ADD CONSTRAINT fk_guest_reservation_id FOREIGN KEY (`Guest`) REFERENCES Guest(Id);
 ALTER TABLE ClientAccount ADD CONSTRAINT fk_castmember_clientaccount_id FOREIGN KEY (`CleaningCrew`) REFERENCES CastMember(Id);
 ALTER TABLE Guest ADD CONSTRAINT fk_castmember_guest_id FOREIGN KEY (`CreatedBy`) REFERENCES CastMember(Id);
-
+ALTER TABLE Timesheet ADD CONSTRAINT fk_castmember_timesheet_id FOREIGN KEY (`CastMember`) REFERENCES CastMember(Id);
+ALTER TABLE Timesheet ADD CONSTRAINT fk_task_timesheet_id FOREIGN KEY (`Task`) REFERENCES Task(Id);
 -- ALTER TABLE Review ADD CONSTRAINT fk_reservation_review_id FOREIGN KEY (`Reservation`) REFERENCES Reservation(Id);
 -- ALTER TABLE Review ADD CONSTRAINT fk_listing_review_id FOREIGN KEY (`Listing`) REFERENCES Listing(Id);
 -- ALTER TABLE Review ADD CONSTRAINT fk_guest_review_id FOREIGN KEY (`Guest`) REFERENCES Guest(Id);

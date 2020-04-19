@@ -5,7 +5,7 @@ const path = require("path");
 const mysql = require("mysql");
 const fs = require("fs");
 const bodyParser = require("body-parser");
-const moment = require("moment");
+const moment = require("moment-timezone");
 const cors = require("cors");
 const stripe = require("stripe")("sk_test_0WDf0azcNEORL3fzFr84q3Ty00CJ90FvWS");
 //const data1 = require('./data1.json')
@@ -37,7 +37,7 @@ db.connect(function(err) {
 
 // app.post("/", function(req, res) {
 //     fs.readFile('./data1.json', 'utf8', (err, jsonString) => {
-//         //console.log(jsonString)
+//         console.log(jsonString)
 //         let data = JSON.parse(jsonString)
 //         data.records.push(req.body)
 //         const output = JSON.stringify(data);
@@ -194,7 +194,7 @@ app.get("/getBlockedDays", (req, res) => {
         result.map(calURL => {
           return new Promise((resolve, reject) => {
             if (calURL.CalendarURL !== "") {
-              //console.log(calURL.CalendarURL);
+              console.log(calURL.CalendarURL);
               axios
                 .get(calURL.CalendarURL)
                 .then(response => {
@@ -272,7 +272,7 @@ app.post("/charge", (req, res) =>{
 
 app.post("/smartbnbWebhook", function(req, res) {
   console.log(req.body);
-  //console.log(req.body.listing.id);
+  console.log(req.body.listing.id);
   //insertCleaning(req)
   if (req.body.listing.id != null) {
     getListingByAdId(req).then(listingId => {
@@ -286,6 +286,12 @@ app.post("/smartbnbWebhook", function(req, res) {
                 updateReservation(req).then(() => {
                   updateCleaning(req);
                   updateQualityControl(req);
+                  console.log("Res Status Check")
+                  console.log(req.body.status.toUpperCase())
+                  if(req.body.status.toUpperCase() == "CANCELLED") {
+                    cancelCleaning(req)
+                    cancelQualityControl(req)
+                  }
                   res.send("Done: Update reservation");
                 });
               } else {
@@ -294,8 +300,10 @@ app.post("/smartbnbWebhook", function(req, res) {
                     console.log("First insert");
                     insertReservation(req, guestId, listingId, platformId).then(
                       () => {
-                        insertCleaning(req);
-                        insertQaulityControl(req);
+                        if(req.body.status.toUpperCase() !== "CANCELLED") {
+                          insertCleaning(req);
+                          insertQaulityControl(req);
+                        }
                         res.send("Done: First insert");
                       }
                     );
@@ -310,8 +318,10 @@ app.post("/smartbnbWebhook", function(req, res) {
                   console.log("Second insert");
                   insertReservation(req, guestId, listingId, platformId).then(
                     () => {
-                      insertCleaning(req);
-                      insertQaulityControl(req);
+                      if(req.body.status.toUpperCase() !== "CANCELLED") {
+                        insertCleaning(req);
+                        insertQaulityControl(req);
+                      }
                       res.send("Done: Second insert");
                     }
                   );
@@ -402,6 +412,7 @@ function getGuest(req) {
 
 function insertGuest(req) {
   return new Promise((resolve, reject) => {
+    const phone = req.body.guest.phone
     db.query(
       `INSERT INTO Guest (
                     ChannelId,
@@ -420,7 +431,7 @@ function insertGuest(req) {
                     ${db.escape(req.body.guest.first_name)},
                     ${db.escape(req.body.guest.last_name)},
                     ${db.escape(req.body.guest.picture_url)},
-                    ${db.escape(req.body.guest.phone)},
+                    ${db.escape(( phone != null ? phone.replace(/\D/g, ""): ""))},
                     ${db.escape(req.body.guest.email)},
                     '',
                     ${db.escape(req.body.guest.location)},
@@ -428,7 +439,7 @@ function insertGuest(req) {
                 )`,
       (err, res) => {
         if (err) reject(console.log("insertGuest" + err));
-        console.log("insertGuest: Success");
+        //console.log("insertGuest: Success");
         resolve();
       }
     );
@@ -505,11 +516,11 @@ function insertReservation(req, guestId, listingId, platformId) {
             ${db.escape(req.body.infants)},
             ${db.escape(req.body.start_date)},
             ${db.escape(
-              moment(req.body.checkin_time).format("YYYY-MM-DD HH:mm:ss")
+              moment.tz(req.body.checkin_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
             )},
             ${db.escape(req.body.end_date)},
             ${db.escape(
-              moment(req.body.checkout_time).format("YYYY-MM-DD HH:mm:ss")
+              moment.tz(req.body.checkout_time,  "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
             )},
             ${db.escape(req.body.currency)},
             ${db.escape(req.body.per_night_price)},
@@ -633,15 +644,17 @@ function getListing(Id) {
 
 function insertCleaning(req) {
   return new Promise((resolve, reject) => {
+    let adId = req.body.listing.id;
+    if (typeof adId === "string") adId = adId.match(/([^.]+$)/)[0];
     db.query(
       `
-            SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, C.CleaningCrew, R.StartDate, R.CheckinTime  
+            SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, C.CleaningCrew, R.EndDate, R.CheckoutTime  
             FROM Listing L
             INNER JOIN Reservation R
             INNER JOIN ClientAccount C
             INNER JOIN ListingPlatform LP
             INNER JOIN Property P
-            WHERE LP.AdId = ${db.escape(req.body.listing.id)} 
+            WHERE LP.AdId = ${db.escape(adId)} 
             AND R.ResId = ${db.escape(req.body.code)}  
             AND R.Listing = L.Id
             AND P.Id = L.Property 
@@ -657,25 +670,24 @@ function insertCleaning(req) {
                         Status, 
                         Listing, 
                         Reservation, 
-                        CastMember,
                         TaskType, 
                         DueDate, 
-                        StartWindow, 
+                        StartWindow,
+                        Paid, 
                         AddedOn) 
                      VALUES (
                         ${db.escape(cleaningData.Name + " - Cleaning")},
                         '',
-                        ${db.escape("Scheduled")},
+                        ${db.escape("Pending")},
                         ${db.escape(cleaningData.ListingId)},
                         ${db.escape(cleaningData.ReservationId)},
-                        ${db.escape(cleaningData.CleaningCrew)},
                         1,
                         ${db.escape(
-                          moment(cleaningData.StartDate)
-                            .add(11, "hours")
+                          moment(cleaningData.EndDate)
                             .format("YYYY-MM-DD HH:mm:ss")
                         )},
-                        ${db.escape(cleaningData.CheckinTime)},
+                        ${db.escape(cleaningData.CheckoutTime)},
+                        ${db.escape((moment(cleaningData.EndDate).isSameOrBefore(moment("02/29/2020")) ? 1 : 0))},
                         ${db.escape(moment().format("YYYY-MM-DD HH:mm:ss"))}
                      )`,
             err => {
@@ -690,20 +702,40 @@ function insertCleaning(req) {
   });
 }
 
+function cancelCleaning(req) {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `UPDATE Task SET 
+        Status = ${db.escape(
+          "Cancelled"
+        )}
+        WHERE TaskType = 1 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
+                  req.body.code
+                )} LIMIT 1);
+            `,
+      err => {
+        if (err) reject(console.log("cancelCleaning a: " + err));
+        console.log("cancelCleaning: Success");
+        resolve();
+      }
+    );
+  });
+}
+
 function updateCleaning(req) {
   return new Promise((resolve, reject) => {
     db.query(
       `UPDATE Task SET 
         StartWindow = ${db.escape(
-          moment(req.body.checkin_time).format("YYYY-MM-DD HH:mm:ss")
+          moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
         )}, 
-        DueDate = ${db.escape(req.body.start_date)}
+        DueDate = ${db.escape(req.body.end_date)}
                 WHERE TaskType = 1 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
                   req.body.code
                 )} LIMIT 1);
             `,
       err => {
-        if (err) reject(console.log("insertCleaning a: " + err));
+        if (err) reject(console.log("updateCleaning a: " + err));
         console.log("updateCleaning: Success");
         resolve();
       }
@@ -713,15 +745,17 @@ function updateCleaning(req) {
 
 function insertQaulityControl(req) {
   return new Promise((resolve, reject) => {
+    let adId = req.body.listing.id;
+    if (typeof adId === "string") adId = adId.match(/([^.]+$)/)[0];
     db.query(
       `
-              SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, R.StartDate, R.CheckinTime  
+              SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, R.EndDate, R.CheckoutTime  
               FROM Listing L
               INNER JOIN Reservation R
               INNER JOIN ClientAccount C
               INNER JOIN ListingPlatform LP
               INNER JOIN Property P
-              WHERE LP.AdId = ${db.escape(req.body.listing.id)} 
+              WHERE LP.AdId = ${db.escape(adId)} 
               AND R.ResId = ${db.escape(req.body.code)}  
               AND R.Listing = L.Id
               AND P.Id = L.Property 
@@ -747,17 +781,16 @@ function insertQaulityControl(req) {
                             qualityControlData.Name + " - Quality Control"
                           )},
                           '',
-                          ${db.escape("Scheduled")},
+                          ${db.escape("Pending")},
                           ${db.escape(qualityControlData.ListingId)},
                           ${db.escape(qualityControlData.ReservationId)},
                           1,
                           2,
                           ${db.escape(
-                            moment(qualityControlData.StartDate)
-                              .add(11, "hours")
+                            moment(qualityControlData.EndDate)
                               .format("YYYY-MM-DD HH:mm:ss")
                           )},
-                          ${db.escape(qualityControlData.CheckinTime)},
+                          ${db.escape(qualityControlData.CheckoutTime)},
                           ${db.escape(moment().format("YYYY-MM-DD HH:mm:ss"))}
                        )`,
             err => {
@@ -777,9 +810,9 @@ function updateQualityControl(req) {
     db.query(
       `UPDATE Task SET 
           StartWindow = ${db.escape(
-            moment(req.body.checkin_time).format("YYYY-MM-DD HH:mm:ss")
+            moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
           )}, 
-          DueDate = ${db.escape(req.body.start_date)}
+          DueDate = ${db.escape(req.body.end_date)}
                   WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
                     req.body.code
                   )} LIMIT 1);
@@ -787,6 +820,27 @@ function updateQualityControl(req) {
       err => {
         if (err) reject(console.log("updateQaulityConrol a: " + err));
         console.log("updateQualityControl: Success");
+        resolve();
+      }
+    );
+  });
+}
+
+function cancelQualityControl(req) {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `UPDATE Task SET 
+          Status = ${db.escape(
+           "Cancelled"
+          )} 
+          
+            WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
+                    req.body.code
+                  )} LIMIT 1);
+              `,
+      err => {
+        if (err) reject(console.log("cancelQaulityConrol a: " + err));
+        console.log("cancelQualityControl: Success");
         resolve();
       }
     );
