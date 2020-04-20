@@ -58,7 +58,7 @@ class GuestCalculator extends Component {
               2 guests maximum. Infants don't count toward the number of guests.
             </div>
             <div className="close-btn" >
-              <button onClick={() => { this.setState({ calculatorState: false }) }}>Close</button>
+              <button onClick={() => { this.setState({ calculatorState: false }) }}>Done</button>
             </div>
           </div>
         }
