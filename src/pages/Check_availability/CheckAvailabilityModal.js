@@ -25,7 +25,7 @@ class CheckAvailabilityModal extends Component {
                 <DateRangePickerWrapper blockedDays={blockedDays} />
                 <p className="mt-15"><strong>Guests</strong></p>
                 <GuestCalculator></GuestCalculator>
-                <NavLink className="check-availability-btn" to="/checkout">Check Availability</NavLink>
+                <NavLink className="check-availability-btn" to="/checkout">Reserve</NavLink>
               </div>
             </div>
           </div>
