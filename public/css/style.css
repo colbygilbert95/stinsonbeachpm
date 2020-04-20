@@ -43,7 +43,7 @@ h1, h2, h3, h4, span, p, a, div {
     }
 }
 .menu_header>li:hover {
-    font-weight: bold!important;
+    text-decoration: underline;
 }
 .title{
     color: #4b484b;
