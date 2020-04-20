@@ -889,9 +889,7 @@ img.author-picture {
         display: block;
         text-align: center;
     }
-    .amenities-img {
-        width: 60px !important;
-    }
+
 }
 
 @media (max-width: 770px){
