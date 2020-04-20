@@ -4,7 +4,7 @@ class ImageCard extends Component {
   render() {
     const { url, room } = this.props;
     return (
-      <div className="col-md-4 col-lg-3">
+      <div className="place">
         <div className="property-services-box text-center">
           <div className="property-services-box-inner">
             <img className="property-services-box-inner" src={url} />

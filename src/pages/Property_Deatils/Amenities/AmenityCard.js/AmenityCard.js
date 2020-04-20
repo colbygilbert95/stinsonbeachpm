@@ -6,7 +6,7 @@ class AmentityCard extends Component {
     console.log("url")
     console.log(this.props)
     return (
-      <div className="col-md-4 col-lg-3">
+      <div className="place">
         <div className="property-services-box text-center">
           <div className="property-services-box-inner light-bg items-center justify-center items-center flex py-20">
             {(name === 'Dryer' && url.length == 0)

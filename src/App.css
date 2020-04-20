@@ -253,7 +253,7 @@ h3 {
 
 .otherPlacesWrapper {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-wrap: wrap;
 }
 .place:nth-child(2){
@@ -262,6 +262,7 @@ h3 {
 .place {
   padding: 0 10px;
   max-width: 25%;
+  min-width: 25%;
 }
 img.author-picture {
   width: 100%;
@@ -273,12 +274,14 @@ img.author-picture {
   }
   .place{
     max-width: 50%;
+    min-width: 50%;
   }
 }
 
 @media (max-width: 740px){
   .place {
     max-width: 100%;
+    min-width: 100%;
   }
 }
 

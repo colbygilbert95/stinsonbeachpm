@@ -30,7 +30,7 @@ class Amenties extends Component {
               </div>
             </div>
           </div>
-          <div className="row row_padding">
+          <div className="otherPlacesWrapper">
             {amenities.map((amenity, index) => {
               return <AmentityCard key={index} url={amenity.IconURL} name={amenity.Name} />;
             })}

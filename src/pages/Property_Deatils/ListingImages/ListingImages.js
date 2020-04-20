@@ -29,7 +29,7 @@ class ListingImages extends Component {
               </div>
             </div>
           </div>
-          <div className="row row_padding">
+          <div className="otherPlacesWrapper">
             {roomImgs.map((room, index) => {
               return <ImageCard key={index} url={room.URL} room={room.Name} />;
             })}

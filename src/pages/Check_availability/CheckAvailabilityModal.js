@@ -10,7 +10,8 @@ class CheckAvailabilityModal extends Component {
     const { listing, blockedDays } = this.props;
     return (
       <div>
-        {(this.props.modalState) &&
+        {
+        (this.props.modalState) &&
           <div>
             <div className="overlay"></div>
             <div className="check-availability-wrapper">
