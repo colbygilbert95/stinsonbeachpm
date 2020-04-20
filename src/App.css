@@ -762,3 +762,10 @@ textarea {
 .check-availability-btn:hover {
   color: white;
 }
+.logo {
+  width: 100% !important;
+  max-width: 220px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
