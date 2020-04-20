@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getUnit, getBlockedDays } from "../../store/actions/bookingActions";
 import DateRangePickerWrapper from "../Property_Deatils/ListingDescription/DateRangePickerWrapper/DateRangePickerWrapper";
 import GuestCalculator from './GuestCalculator'
-
+import { NavLink } from 'react-router-dom'
 
 class CheckAvailabilityModal extends Component {
   render() {
@@ -25,7 +25,7 @@ class CheckAvailabilityModal extends Component {
                 <DateRangePickerWrapper blockedDays={blockedDays} />
                 <p className="mt-15"><strong>Guests</strong></p>
                 <GuestCalculator></GuestCalculator>
-                <button className="check-availability-btn">Check Availability</button>
+                <NavLink className="check-availability-btn" to="/checkout">Check Availability</NavLink>
               </div>
             </div>
           </div>

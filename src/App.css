@@ -756,3 +756,9 @@ textarea {
     margin-bottom: 50px;
   }
 }
+.check-availability-btn {
+  text-align: center;
+}
+.check-availability-btn:hover {
+  color: white;
+}
