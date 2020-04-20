@@ -26,6 +26,7 @@ class CheckAvailabilityModal extends Component {
                 <p className="mt-15"><strong>Guests</strong></p>
                 <GuestCalculator></GuestCalculator>
                 <NavLink className="check-availability-btn" to="/checkout">Reserve</NavLink>
+                <p className="text-center mt-10 font-bold">You won't be charged yet</p>
               </div>
             </div>
           </div>
