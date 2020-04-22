@@ -70,7 +70,7 @@ const defaultProps = {
   showInputs: false,
   minDate: null,
   maxDate: null,
-
+  onDateChange: () => {},
   // day presentation and interaction related props
   renderCalendarDay: undefined,
   renderDayContents: null,
@@ -144,6 +144,8 @@ class DayPickerRangeControllerWrapper extends React.Component {
         startDate,
         endDate,
       });
+      console.log(this.props)
+      this.props.onDateChange(startDate , endDate)
   }
 
   onDayBlocked(date) {

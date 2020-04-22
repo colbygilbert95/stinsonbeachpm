@@ -253,7 +253,6 @@ h3 {
 
 .otherPlacesWrapper {
   display: flex;
-  /* justify-content: center; */
   flex-wrap: wrap;
 }
 .place:nth-child(2){
@@ -268,7 +267,7 @@ img.author-picture {
   width: 100%;
   max-height: unset;
 }
-@media (max-width: 1110px){
+@media (max-width: 1250px){
   .otherPlacesWrapper {
     justify-content: unset;
   }
@@ -780,4 +779,21 @@ textarea {
 }
 .font-bold {
   font-weight: bold;
+}
+.width-unset{
+  width: 90% !important;
+}
+.slick-next , .slick-prev {
+  top: 42% !important;
+  z-index: 10000;
+}
+.slick-next {
+  right: 90px !important;
+}
+.slick-prev{
+  left: 13px !important;
+}
+.slick-prev:before, .slick-next:before {
+  font-size: 40px !important;
+  opacity: 1 !important;
 }

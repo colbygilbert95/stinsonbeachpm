@@ -19,6 +19,13 @@ import DateRangePickerWrapper from "./ListingDescription/DateRangePickerWrapper/
 
 
 class PropertyDetails extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      start_date: null,
+      end_date: null
+    }
+  }
   componentDidMount() {
     const { unitName } = this.props.location.state;
     if (!unitName) {
@@ -26,6 +33,12 @@ class PropertyDetails extends Component {
     }
     this.props.getUnit(unitName);
     this.props.getBlockedDays(unitName)
+  }
+  changeDates = (start_date , end_date) => {
+    this.setState({
+      start_date,
+      end_date
+    })
   }
   render() {
     console.log("PropertyDetails");
@@ -35,7 +48,6 @@ class PropertyDetails extends Component {
       <div>
         <Header />
         <HeaderImages title={listing.Title} unitName={listing.Name} />
-
         <ListingDescription listing={listing} blockedDays={blockedDays} />
         <hr />
         <ListingImages unitName={listing.Name} />
@@ -49,10 +61,10 @@ class PropertyDetails extends Component {
         <div className="container-fluid">
           <div className="row row_padding">
             <div className="col-md-12 col-lg-7 mt-15">
-              <DayPickerRangeControllerWrapper blockedDays={blockedDays} />
+              <DayPickerRangeControllerWrapper blockedDays={blockedDays} onDateChange={(start_date , end_date) => {this.changeDates(start_date , end_date)}} />
             </div>
             <div className="col-md-12 col-lg-5 mt-15">
-              <DateRangePickerWrapper blockedDays={blockedDays} />
+              <DateRangePickerWrapper blockedDays={blockedDays} initialStartDate={this.state.start_date} initialEndDate={this.state.end_date} />
               <select class="form-control mt-30 gusts-slect-menu">
                 <option>Guests</option>
                 <option>1</option>
@@ -63,7 +75,6 @@ class PropertyDetails extends Component {
               </select>
             </div>
           </div>
-
         </div>
         <MeetOwner unitName={listing.Name} />
         <hr />
@@ -74,6 +85,7 @@ class PropertyDetails extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     listing: state.booking.listing,

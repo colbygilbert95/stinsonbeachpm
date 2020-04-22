@@ -33,9 +33,6 @@ class Reviews extends Component {
             this.props.reviews.map((review, index) => {
               return (<Review reviewData={review} key={index} />)
             })
-
-
-
           }
         </div>
         <div className="row row_padding">

@@ -13,13 +13,14 @@ class OtherStayCard extends Component {
           pathname: "/" + unitPathName,
           state: { unitName: Name }
         }}
+        onClick={(e) => e.preventDefault()}
       >
         <div className="card card-blog">
           <div className="rent-card-body mt-40">
             <div className="rent-flex">
               <div className="author">
                 <img
-                  className="author-picture"
+                  className="author-picture width-unset"
                   src={
                     "images/property_images/" +
                     unitPathName +
@@ -28,6 +29,7 @@ class OtherStayCard extends Component {
                     "_Cover.jpg"
                   }
                   alt="..."
+                  width="250"
                 />
               </div>
             </div>
