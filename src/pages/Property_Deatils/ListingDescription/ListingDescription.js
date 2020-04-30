@@ -28,7 +28,7 @@ class ListingDescription extends Component {
     const space = listing.Space === undefined ? "" : listing.Space;
     return (
       <section className="check-availability-second mt-15">
-        <CheckAvailabilityModal modalState={this.state.modalState} closeModal={this.closeModal} />
+        <CheckAvailabilityModal maxGuests={listing.Accommodates} modalState={this.state.modalState} closeModal={this.closeModal} />
         <div className="container-fluid">
           <div className="row row_padding mt-40">
             <div className="col-sm-8 mt-15">
@@ -86,3 +86,4 @@ class ListingDescription extends Component {
 }
 
 export default ListingDescription;
+

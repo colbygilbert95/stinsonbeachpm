@@ -9,19 +9,22 @@ class GuestCalculator extends Component {
         { title: 'Adults', value: 0 },
         { title: 'Children', info: 'Ages 2-12', value: 0 },
         { title: 'Infants', info: 'Under 2', value: 0 }
-      ]
+      ],
+      total: 0
     }
   }
   increaseItem = (item) => {
-    item.value++;
-    this.setState({ items: this.state.items }, () => {
-      this.props.onGuestsChange(this.state.items.some(i => i.value))
-    })
+    if (this.state.total < this.props.maxGuests) {
+      item.value++;
+      this.setState({ items: this.state.items, total: this.state.total + 1 }, () => {
+        this.props.onGuestsChange(this.state.items.some(i => i.value))
+      })
+    }
   }
   decreaseItem = (item) => {
     if (item.value > 0) {
       item.value--
-      this.setState({ items: this.state.items }, () => {
+      this.setState({ items: this.state.items, total: this.state.total - 1 }, () => {
         this.props.onGuestsChange(this.state.items.some(i => i.value))
       })
     }
@@ -58,7 +61,7 @@ class GuestCalculator extends Component {
               )
             })}
             <div className="tip">
-              2 guests maximum. Infants don't count toward the number of guests.
+              {this.props.maxGuests} guests maximum. Infants don't count toward the number of guests.
             </div>
             <div className="close-btn" >
               <button onClick={() => { this.setState({ calculatorState: false }) }}>Done</button>

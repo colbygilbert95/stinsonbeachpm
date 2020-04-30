@@ -70,9 +70,11 @@ class CheckAvailabilityModal extends Component {
                 <DateRangePickerWrapper blockedDays={blockedDays} handleDateChange={this.handleDateChange} required={this.state.isDateFieldRequired}
                 />
 
-                <p className="mt-15"><strong>Guests</strong></p>
+                <p className="mt-15">
+                  <strong>Guests</strong>
+                </p>
 
-                <GuestCalculator onGuestsChange={this.handleGuestsChange} required={this.state.isGuestsFieldRequired}></GuestCalculator>
+                <GuestCalculator maxGuests={this.props.maxGuests} onGuestsChange={this.handleGuestsChange} required={this.state.isGuestsFieldRequired}></GuestCalculator>
 
                 <button className="check-availability-btn" onClick={this.reserve}>Reserve</button>
                 <p className="text-center mt-10 font-bold">You won't be charged yet</p>
