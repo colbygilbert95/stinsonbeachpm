@@ -40,7 +40,8 @@ const defaultProps = {
   autoFocusEndDate: false,
   initialStartDate: null,
   initialEndDate: null,
-
+  handleDateChange: () => { },
+  required: false,
   // input related props
   startDateId: START_DATE,
   startDatePlaceholderText: 'Checkin',
@@ -57,7 +58,7 @@ const defaultProps = {
   block: false,
   small: false,
   regular: false,
-  
+
 
   // calendar presentation and interaction related props
   renderMonthText: null,
@@ -76,9 +77,9 @@ const defaultProps = {
   navPosition: NAV_POSITION_TOP,
   navPrev: null,
   navNext: null,
-  onPrevMonthClick() {},
-  onNextMonthClick() {},
-  onClose() {},
+  onPrevMonthClick() { },
+  onNextMonthClick() { },
+  onClose() { },
 
   // day presentation and interaction related props
   renderCalendarDay: undefined,
@@ -124,31 +125,29 @@ class DateRangePickerWrapper extends React.Component {
 
   onDatesChange({ startDate, endDate }) {
     const { stateDateWrapper } = this.props;
-    
-    if(startDate !== null && endDate !== null) {
+
+    if (startDate !== null && endDate !== null) {
       for (
         let j = moment(startDate);
         j.isBefore(endDate, "day");
         j.add(1, "days")
       ) {
-        if(this.props.blockedDays[j.format("YYYY-MM-DD")] === "blocked") {
+        if (this.props.blockedDays[j.format("YYYY-MM-DD")] === "blocked") {
           startDate = endDate
           endDate = null;
-          this.onFocusChange({ focusedInput: startDate})
-         
+          this.onFocusChange({ focusedInput: startDate })
+
         }
       }
     }
-    
-  
+
+
     this.setState({
       startDate: startDate && stateDateWrapper(startDate),
       endDate: endDate && stateDateWrapper(endDate),
+    }, () => {
+      this.props.handleDateChange(startDate, endDate)
     });
-    // if(startDate && endDate){
-    //   this.onFocusChange(null);
-    //   //this.onClose({ startDate, endDate });
-    // }
   }
 
   onFocusChange(focusedInput) {
@@ -178,9 +177,9 @@ class DateRangePickerWrapper extends React.Component {
       'isDayBlocked',
       'isDayHighlighted',
     ]);
-
+    console.log(this.props.required)
     return (
-      <div>
+      <div className={this.props.required ? 'error' : ''}>
         <DateRangePicker
           {...props}
           onDatesChange={this.onDatesChange}

@@ -797,3 +797,9 @@ textarea {
   font-size: 40px !important;
   opacity: 1 !important;
 }
+.guests-input.error {
+  border: 1px solid #db3434;
+}
+.error .DateRangePickerInput__withBorder{
+  border: 1px solid #db3434;
+}

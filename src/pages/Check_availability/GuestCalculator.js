@@ -14,12 +14,16 @@ class GuestCalculator extends Component {
   }
   increaseItem = (item) => {
     item.value++;
-    this.setState({ items: this.state.items })
+    this.setState({ items: this.state.items }, () => {
+      this.props.onGuestsChange(this.state.items.some(i => i.value))
+    })
   }
   decreaseItem = (item) => {
     if (item.value > 0) {
       item.value--
-      this.setState({ items: this.state.items })
+      this.setState({ items: this.state.items }, () => {
+        this.props.onGuestsChange(this.state.items.some(i => i.value))
+      })
     }
   }
   render() {
@@ -29,11 +33,10 @@ class GuestCalculator extends Component {
           <div className="chips-list">
             {this.state.items.filter(item => item.value > 0).map(item =>
               <div className="chip">{item.value + ' ' + item.title}</div>
-
             )}
           </div>
           <button className="collapse-btn" onClick={() => { this.setState({ calculatorState: !this.state.calculatorState }) }}><i className={this.state.calculatorState ? 'fa fa-caret-up' : 'fa fa-caret-down'}></i></button>
-          <input className="guests-input" type="text" onFocus={() => { this.setState({ calculatorState: true }) }} />
+          <input className={this.props.required ? 'guests-input error' : 'guests-input'} type="text" onFocus={() => { this.setState({ calculatorState: true }) }} />
         </div>
         {
           this.state.calculatorState &&
