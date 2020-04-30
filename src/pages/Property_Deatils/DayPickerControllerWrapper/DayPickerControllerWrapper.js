@@ -5,7 +5,7 @@ import { forbidExtraProps } from 'airbnb-prop-types';
 import moment from 'moment';
 import omit from 'lodash/omit';
 
-import {DayPickerRangeController} from 'react-dates';
+import { DayPickerRangeController } from 'react-dates';
 
 import ScrollableOrientationShape from 'react-dates/src/shapes/ScrollableOrientationShape';
 
@@ -70,7 +70,7 @@ const defaultProps = {
   showInputs: false,
   minDate: null,
   maxDate: null,
-  onDateChange: () => {},
+  onDateChange: () => { },
   // day presentation and interaction related props
   renderCalendarDay: undefined,
   renderDayContents: null,
@@ -79,7 +79,7 @@ const defaultProps = {
   //isDayBlocked: () => false,
   isOutsideRange: day => !isInclusivelyAfterDay(day, moment()),
   isDayHighlighted: () => false,
-  
+
   daysViolatingMinNightsCanBeClicked: false,
 
   // calendar presentation and interaction related props
@@ -88,7 +88,7 @@ const defaultProps = {
   withPortal: false,
   initialVisibleMonth: null,
   numberOfMonths: 2,
-  onOutsideClick() {},
+  onOutsideClick() { },
   keepOpenOnDateSelect: false,
   renderCalendarInfo: null,
   isRTL: false,
@@ -102,8 +102,8 @@ const defaultProps = {
   navNext: null,
   renderNavPrevButton: null,
   renderNavNextButton: null,
-  onPrevMonthClick() {},
-  onNextMonthClick() {},
+  onPrevMonthClick() { },
+  onNextMonthClick() { },
 
   // internationalization
   monthFormat: 'MMMM YYYY',
@@ -126,26 +126,26 @@ class DayPickerRangeControllerWrapper extends React.Component {
   }
 
   onDatesChange({ startDate, endDate }) {
-    if(startDate !== null && endDate !== null) {
-        for (
-          let j = moment(startDate);
-          j.isBefore(endDate, "day");
-          j.add(1, "days")
-        ) {
-          if(this.props.blockedDays[j.format("YYYY-MM-DD")] === "blocked") {
-            startDate = endDate
-            endDate = null;
-            this.onFocusChange({ focusedInput: startDate})
-           
-          }
+    if (startDate !== null && endDate !== null) {
+      for (
+        let j = moment(startDate);
+        j.isBefore(endDate, "day");
+        j.add(1, "days")
+      ) {
+        if (this.props.blockedDays[j.format("YYYY-MM-DD")] === "blocked") {
+          startDate = endDate
+          endDate = null;
+          this.onFocusChange({ focusedInput: startDate })
+
         }
       }
-      this.setState({
-        startDate,
-        endDate,
-      });
-      console.log(this.props)
-      this.props.onDateChange(startDate , endDate)
+    }
+    this.setState({
+      startDate,
+      endDate,
+    }, () => {
+      this.props.onDateChange(startDate, endDate)
+    });
   }
 
   onDayBlocked(date) {

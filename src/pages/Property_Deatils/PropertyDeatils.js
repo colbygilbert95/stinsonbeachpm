@@ -19,7 +19,7 @@ import DateRangePickerWrapper from "./ListingDescription/DateRangePickerWrapper/
 
 
 class PropertyDetails extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       start_date: null,
@@ -34,15 +34,15 @@ class PropertyDetails extends Component {
     this.props.getUnit(unitName);
     this.props.getBlockedDays(unitName)
   }
-  changeDates = (start_date , end_date) => {
+  changeDates = (start_date, end_date) => {
     this.setState({
       start_date,
       end_date
+    }, () => {
+      console.log(this.state.start_date)
     })
   }
   render() {
-    console.log("PropertyDetails");
-    console.log(this.props);
     const { listing, blockedDays } = this.props;
     return (
       <div>
@@ -61,7 +61,7 @@ class PropertyDetails extends Component {
         <div className="container-fluid">
           <div className="row row_padding">
             <div className="col-md-12 col-lg-7 mt-15">
-              <DayPickerRangeControllerWrapper blockedDays={blockedDays} onDateChange={(start_date , end_date) => {this.changeDates(start_date , end_date)}} />
+              <DayPickerRangeControllerWrapper blockedDays={blockedDays} onDateChange={this.changeDates} />
             </div>
             <div className="col-md-12 col-lg-5 mt-15">
               <DateRangePickerWrapper blockedDays={blockedDays} initialStartDate={this.state.start_date} initialEndDate={this.state.end_date} />

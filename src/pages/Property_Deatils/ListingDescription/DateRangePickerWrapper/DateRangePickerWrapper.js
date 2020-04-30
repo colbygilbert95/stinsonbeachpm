@@ -177,7 +177,6 @@ class DateRangePickerWrapper extends React.Component {
       'isDayBlocked',
       'isDayHighlighted',
     ]);
-    console.log(this.props.required)
     return (
       <div className={this.props.required ? 'error' : ''}>
         <DateRangePicker
@@ -185,8 +184,8 @@ class DateRangePickerWrapper extends React.Component {
           onDatesChange={this.onDatesChange}
           onFocusChange={this.onFocusChange}
           focusedInput={focusedInput}
-          startDate={startDate}
-          endDate={endDate}
+          startDate={this.props.initialStartDate}
+          endDate={this.props.initialEndDate}
           isDayBlocked={this.onDayBlocked}
           isDayHighlighted={this.onDayHighlighted}
         />

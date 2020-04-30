@@ -26,12 +26,10 @@ const db = mysql.createConnection({
   database: process.env.SERVER_SQL_DATABASE,
   user: process.env.SERVER_SQL_USER,
   password: process.env.SERVER_SQL_PASSWORD,
-  socketPath: process.env.SERVER_SQL_SOCKET_PATH
-
- 
+  socketPath: process.env.SERVER_SQL_SOCKET_PAT
 });
 
-db.connect(function(err) {
+db.connect(function (err) {
   if (err) throw err;
 });
 
@@ -204,8 +202,8 @@ app.get("/getBlockedDays", (req, res) => {
                     const startDate = moment(getVeventStartDate(events[i]));
                     const endDate = moment(getVeventEndDate(events[i]));
 
-                    
-                    
+
+
                     if (endDate.isSameOrAfter(moment())) {
                       blockedDays[startDate.format("YYYY-MM-DD")] = "highlight";
                       blockedDays[endDate.format("YYYY-MM-DD")] = "highlight";
@@ -261,22 +259,23 @@ app.get("/getOwnerInfoByListing", (req, res) => {
 });
 
 
-app.post("/charge", (req, res) =>{
-  const token = req.body.stripeToken;
+app.post("/charge", (req, res) => {
   const chargeAmount = req.body.chargeAmount;
   const paymentIntent = stripe.paymentIntents.create({
     amount: chargeAmount,
     currency: 'usd',
+    metadata: { integration_check: 'accept_a_payment' },
   });
+  res.json({ client_secret: paymentIntent.client_secret });
 })
 
-app.post("/smartbnbWebhook", function(req, res) {
+app.post("/smartbnbWebhook", function (req, res) {
   console.log(req.body);
   console.log(req.body.listing.id);
   //insertCleaning(req)
   if (req.body.listing.id != null) {
     getListingByAdId(req).then(listingId => {
-      
+
       if (listingId) {
         checkGuest(req).then(guestExists => {
           console.log("guestExists: " + guestExists);
@@ -288,7 +287,7 @@ app.post("/smartbnbWebhook", function(req, res) {
                   updateQualityControl(req);
                   console.log("Res Status Check")
                   console.log(req.body.status.toUpperCase())
-                  if(req.body.status.toUpperCase() == "CANCELLED") {
+                  if (req.body.status.toUpperCase() == "CANCELLED") {
                     cancelCleaning(req)
                     cancelQualityControl(req)
                   }
@@ -300,7 +299,7 @@ app.post("/smartbnbWebhook", function(req, res) {
                     console.log("First insert");
                     insertReservation(req, guestId, listingId, platformId).then(
                       () => {
-                        if(req.body.status.toUpperCase() !== "CANCELLED") {
+                        if (req.body.status.toUpperCase() !== "CANCELLED") {
                           insertCleaning(req);
                           insertQaulityControl(req);
                         }
@@ -318,7 +317,7 @@ app.post("/smartbnbWebhook", function(req, res) {
                   console.log("Second insert");
                   insertReservation(req, guestId, listingId, platformId).then(
                     () => {
-                      if(req.body.status.toUpperCase() !== "CANCELLED") {
+                      if (req.body.status.toUpperCase() !== "CANCELLED") {
                         insertCleaning(req);
                         insertQaulityControl(req);
                       }
@@ -336,7 +335,7 @@ app.post("/smartbnbWebhook", function(req, res) {
     //saveNull(req);
     res.send("Null")
   }
-  
+
 });
 
 function getVeventStartDate(vevent) {
@@ -388,9 +387,9 @@ function checkGuest(req) {
         if (err) reject(console.log("checkGuest: " + err));
         resolve(
           guest[0][
-            `EXISTS(SELECT * FROM Guest WHERE ChannelId = ${db.escape(
-              req.body.guest.id
-            )})`
+          `EXISTS(SELECT * FROM Guest WHERE ChannelId = ${db.escape(
+            req.body.guest.id
+          )})`
           ] === 1
         );
       }
@@ -431,7 +430,7 @@ function insertGuest(req) {
                     ${db.escape(req.body.guest.first_name)},
                     ${db.escape(req.body.guest.last_name)},
                     ${db.escape(req.body.guest.picture_url)},
-                    ${db.escape(( phone != null ? phone.replace(/\D/g, ""): ""))},
+                    ${db.escape((phone != null ? phone.replace(/\D/g, "") : ""))},
                     ${db.escape(req.body.guest.email)},
                     '',
                     ${db.escape(req.body.guest.location)},
@@ -456,9 +455,9 @@ function checkReservation(req) {
         if (err) reject(console.log("checkReservation: " + err));
         resolve(
           reservation[0][
-            `EXISTS(SELECT * FROM Reservation WHERE ResId = ${db.escape(
-              req.body.code
-            )})`
+          `EXISTS(SELECT * FROM Reservation WHERE ResId = ${db.escape(
+            req.body.code
+          )})`
           ] === 1
         );
       }
@@ -516,12 +515,12 @@ function insertReservation(req, guestId, listingId, platformId) {
             ${db.escape(req.body.infants)},
             ${db.escape(req.body.start_date)},
             ${db.escape(
-              moment.tz(req.body.checkin_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-            )},
+        moment.tz(req.body.checkin_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
+      )},
             ${db.escape(req.body.end_date)},
             ${db.escape(
-              moment.tz(req.body.checkout_time,  "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-            )},
+        moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
+      )},
             ${db.escape(req.body.currency)},
             ${db.escape(req.body.per_night_price)},
             ${db.escape(req.body.base_price)},
@@ -534,14 +533,14 @@ function insertReservation(req, guestId, listingId, platformId) {
             ${db.escape(req.body.host_service_fee)},
             ${db.escape(req.body.payout_price)},
             ${db.escape(
-              moment.unix(req.body.created_at).format("YYYY-MM-DD HH:mm:ss")
-            )},
+        moment.unix(req.body.created_at).format("YYYY-MM-DD HH:mm:ss")
+      )},
             ${db.escape(
-              moment.unix(req.body.updated_at).format("YYYY-MM-DD HH:mm:ss")
-            )},
+        moment.unix(req.body.updated_at).format("YYYY-MM-DD HH:mm:ss")
+      )},
             ${db.escape(
-              moment.unix(req.body.sent_at).format("YYYY-MM-DD HH:mm:ss")
-            )}
+        moment.unix(req.body.sent_at).format("YYYY-MM-DD HH:mm:ss")
+      )}
         )`,
       err => {
         if (err) reject(console.log("insertReservation: " + err));
@@ -573,11 +572,11 @@ function updateReservation(req) {
         CleaningFee = ${db.escape(req.body.extras_price)},
         Payout = ${db.escape(req.body.payout_price)},
         UpdatedAt = ${db.escape(
-          moment.unix(req.body.updated_at).format("YYYY-MM-DD HH:mm:ss")
-        )},
+        moment.unix(req.body.updated_at).format("YYYY-MM-DD HH:mm:ss")
+      )},
         SentAt = ${db.escape(
-          moment.unix(req.body.sent_at).format("YYYY-MM-DD HH:mm:ss")
-        )}
+        moment.unix(req.body.sent_at).format("YYYY-MM-DD HH:mm:ss")
+      )}
       WHERE ResId = ${db.escape(req.body.code)}`,
 
       err => {
@@ -683,9 +682,9 @@ function insertCleaning(req) {
                         ${db.escape(cleaningData.ReservationId)},
                         1,
                         ${db.escape(
-                          moment(cleaningData.EndDate)
-                            .format("YYYY-MM-DD HH:mm:ss")
-                        )},
+              moment(cleaningData.EndDate)
+                .format("YYYY-MM-DD HH:mm:ss")
+            )},
                         ${db.escape(cleaningData.CheckoutTime)},
                         ${db.escape((moment(cleaningData.EndDate).isSameOrBefore(moment("02/29/2020")) ? 1 : 0))},
                         ${db.escape(moment().format("YYYY-MM-DD HH:mm:ss"))}
@@ -707,11 +706,11 @@ function cancelCleaning(req) {
     db.query(
       `UPDATE Task SET 
         Status = ${db.escape(
-          "Cancelled"
-        )}
+        "Cancelled"
+      )}
         WHERE TaskType = 1 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-                  req.body.code
-                )} LIMIT 1);
+        req.body.code
+      )} LIMIT 1);
             `,
       err => {
         if (err) reject(console.log("cancelCleaning a: " + err));
@@ -727,12 +726,12 @@ function updateCleaning(req) {
     db.query(
       `UPDATE Task SET 
         StartWindow = ${db.escape(
-          moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-        )}, 
+        moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
+      )}, 
         DueDate = ${db.escape(req.body.end_date)}
                 WHERE TaskType = 1 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-                  req.body.code
-                )} LIMIT 1);
+        req.body.code
+      )} LIMIT 1);
             `,
       err => {
         if (err) reject(console.log("updateCleaning a: " + err));
@@ -778,8 +777,8 @@ function insertQaulityControl(req) {
                           AddedOn) 
                        VALUES (
                           ${db.escape(
-                            qualityControlData.Name + " - Quality Control"
-                          )},
+              qualityControlData.Name + " - Quality Control"
+            )},
                           '',
                           ${db.escape("Pending")},
                           ${db.escape(qualityControlData.ListingId)},
@@ -787,9 +786,9 @@ function insertQaulityControl(req) {
                           1,
                           2,
                           ${db.escape(
-                            moment(qualityControlData.EndDate)
-                              .format("YYYY-MM-DD HH:mm:ss")
-                          )},
+              moment(qualityControlData.EndDate)
+                .format("YYYY-MM-DD HH:mm:ss")
+            )},
                           ${db.escape(qualityControlData.CheckoutTime)},
                           ${db.escape(moment().format("YYYY-MM-DD HH:mm:ss"))}
                        )`,
@@ -810,12 +809,12 @@ function updateQualityControl(req) {
     db.query(
       `UPDATE Task SET 
           StartWindow = ${db.escape(
-            moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-          )}, 
+        moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
+      )}, 
           DueDate = ${db.escape(req.body.end_date)}
                   WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-                    req.body.code
-                  )} LIMIT 1);
+        req.body.code
+      )} LIMIT 1);
               `,
       err => {
         if (err) reject(console.log("updateQaulityConrol a: " + err));
@@ -831,12 +830,12 @@ function cancelQualityControl(req) {
     db.query(
       `UPDATE Task SET 
           Status = ${db.escape(
-           "Cancelled"
-          )} 
+        "Cancelled"
+      )} 
           
             WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-                    req.body.code
-                  )} LIMIT 1);
+        req.body.code
+      )} LIMIT 1);
               `,
       err => {
         if (err) reject(console.log("cancelQaulityConrol a: " + err));

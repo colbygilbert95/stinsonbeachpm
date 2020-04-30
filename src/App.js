@@ -17,7 +17,7 @@ import Check_availability from "./pages/Check_availability/Check_availability";
 import Property_Deatils from "./pages/Property_Deatils/PropertyDeatils";
 import Guarantee from "./pages/Guarantee/Guarantee";
 import Test from "./pages/Test/Test";
-import Checkout from './pages/checkout/Checkout';
+import Checkout from './pages/Checkout/Checkout';
 
 class App extends Component {
 	render() {
