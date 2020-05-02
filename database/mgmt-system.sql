@@ -127,6 +127,8 @@ CREATE TABLE `Listing` (
   `CleanersPay` DOUBLE,
   `PetFee` DOUBLE,
   `SecurityDeposit` DOUBLE,
+  `TaxRate` DOUBLE,
+  `FAQ` VARCHAR(2000),
   `Wifi` VARCHAR(255),
   `WifiPassword` VARCHAR(255),
   `Checkout` TIME,
@@ -140,7 +142,6 @@ CREATE TABLE `Listing` (
   `Location` TEXT,
   `GuestInteraction` TEXT,
   `CancellationPolicy` INT,
-  `HouseRules` TEXT,
   `PictureURL` VARCHAR(2000),
   `NumReviews` VARCHAR(255),
   `AvgReviews` VARCHAR(255),
@@ -163,6 +164,7 @@ CREATE TABLE `ListingAmenity` (
   `Id` INT AUTO_INCREMENT,
   `Listing` INT,
   `Amenity` INT,
+  `Description` TEXT,
   `AddedOn` DATETIME,
   PRIMARY KEY (`Id`)
 );
@@ -350,6 +352,67 @@ CREATE TABLE `Timesheet` (
   PRIMARY KEY (`Id`)
 );
 
+CREATE TABLE `HouseRule` (
+  `Id` INT AUTO_INCREMENT,
+  `Name` VARCHAR(255),
+  `Platform` VARCHAR(255),
+  `IconURL` VARCHAR(2000),
+  `AddedOn` DATETIME,
+  PRIMARY KEY (`Id`)
+);
+
+
+CREATE TABLE `ListingRule` (
+  `Id` INT AUTO_INCREMENT,
+  `Listing` INT,
+  `HouseRule` INT,
+  `Description` TEXT,
+  `AddedOn` DATETIME,
+  PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `SBRules` (
+  `Id` INT AUTO_INCREMENT,
+  `Listing` INT,
+  `Children` TINYINT,
+  `Infants` TINYINT,
+  `Pets` TINYINT,
+  `Smoking` TINYINT,
+  `Parties` TINYINT,
+  `AdditionalRules` TEXT,
+  `Stairs` TINYINT,
+  `StairsDescription` TEXT,
+  `Noise` TINYINT,
+  `NoiseDescription` TEXT,
+  `NoParking` TINYINT,
+  `NoParkingDescription` TEXT,
+  `SharedSpaces` TINYINT,
+  `SharedSpacesDescription` TEXT,
+  `RecordingDevices` TINYINT,
+  `RecordingDevicesDescription` TEXT,
+  `AddedOn` DATETIME,
+  PRIMARY KEY (`Id`)
+);
+
+-- CREATE TABLE `SBAmenities` (
+--   `Id` INT AUTO_INCREMENT,
+--   `Listing` INT,
+--   `SelfCheckin` TINYINT,
+--   `FreePremisesParking` TINYINT,
+--   `FreeStreetParking` TINYINT,
+--   `FullKitchen` TINYINT,
+--   `Washer` TINYINT,
+--   `Dryer` TINYINT,
+--   `Dishwasher` TINYINT,
+--   `IndoorFireplace` TINYINT,
+--   `Heating` TINYINT,
+--   `TravelCrib` TINYINT,
+--   `Bathtub` TINYINT,
+--   `GardenOrBackyard` TINYINT,
+--   `ChildrenBooksToys` TINYINT,
+
+-- )
+
 ALTER TABLE Task ADD CONSTRAINT fk_listing_task_id FOREIGN KEY (`Listing`) REFERENCES Listing(Id);
 ALTER TABLE Task ADD CONSTRAINT fk_reservation_task_id FOREIGN KEY (`Reservation`) REFERENCES Reservation(Id);
 ALTER TABLE Task ADD CONSTRAINT fk_castmember_task_id FOREIGN KEY (`CastMember`) REFERENCES CastMember(Id);
@@ -365,6 +428,8 @@ ALTER TABLE Listing ADD CONSTRAINT fk_cancellationpolicy_listing_id FOREIGN KEY 
 ALTER TABLE Property ADD CONSTRAINT fk_clientaccount_property_id FOREIGN KEY (`ClientAccount`) REFERENCES ClientAccount(Id);
 ALTER TABLE ListingAmenity ADD CONSTRAINT fk_listing_listingamenity_id FOREIGN KEY (`Listing`) REFERENCES Listing(Id);
 ALTER TABLE ListingAmenity ADD CONSTRAINT fk_amenity_listingamenity_id FOREIGN KEY (`Amenity`) REFERENCES Amenity(Id);
+ALTER TABLE ListingRule ADD CONSTRAINT fk_listing_listingrule_id FOREIGN KEY (`Listing`) REFERENCES Listing(Id);
+ALTER TABLE ListingRule ADD CONSTRAINT fk_houserule_listingrule_id FOREIGN KEY (`HouseRule`) REFERENCES HouseRule(Id);
 ALTER TABLE ChecklistItem ADD CONSTRAINT fk_checklist_checklistitem_id FOREIGN KEY (`Checklist`) REFERENCES Checklist(Id);
 ALTER TABLE Client ADD CONSTRAINT fk_clientaccount_client_id FOREIGN KEY (`ClientAccount`) REFERENCES ClientAccount(Id);
 ALTER TABLE ListingPlatform ADD CONSTRAINT fk_platform_listingplatform_id FOREIGN KEY (`Platform`) REFERENCES Platform(Id);

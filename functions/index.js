@@ -32,18 +32,7 @@ const db = mysql.createConnection({
 //   if (err) throw err;
 // });
 
-// app.post("/", function(req, res) {
-//     fs.readFile('./data1.json', 'utf8', (err, jsonString) => {
-//         console.log(jsonString)
-//         let data = JSON.parse(jsonString)
-//         data.records.push(req.body)
-//         const output = JSON.stringify(data);
-//         fs.writeFile("data1.json", output, err=>{
 
-//         });
-//     })
-
-// });
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   db.query(
@@ -86,13 +75,6 @@ app.get("/getUnitReviews", (req, res) => {
   console.log(req.query);
   console.log("/getUnitReviews")
   db.query(
-    // `SELECT R.FirstName, R.PublicFeedback, G.PictureURL AS GuestPic, R.AddedOn
-    // FROM Listing L
-    // JOIN Guest G
-    // JOIN Review R
-    // WHERE L.Id = R.Listing 
-    // AND G.Id = R.Guest
-    // AND L.Name = ${db.escape(req.query.unitName)}`,
     `SELECT R.FirstName, R.PublicFeedback,  R.AddedOn
     FROM Listing L
     JOIN Guest G
@@ -257,6 +239,37 @@ app.get("/getOwnerInfoByListing", (req, res) => {
   );
 });
 
+app.get("/chargePreview", (req, res) => {
+  const startDate = req.body.startDate;
+  const endDate = req.body.endDate;
+  const nights = endDate.diff(startDate, "days");
+
+  db.query(
+    `SELECT * FROM Listing WHEREId = ${db.escape(Id)}`,
+    (err, listing) => {
+      if (err) reject(console.log("getListing: " + err));
+      let rent = 0;
+      for (
+        let j = moment(startDate);
+        j.isBefore(endDate, "day");
+        j.add(1, "days")
+      ) {
+        if (j.day() <= 4) {
+          rent += listing[0].WeekdayRate;
+        } else if (j.day() >= 5) {
+          rent += listing[0].WeekendRate;
+        }
+      }
+      const rate = rent / nights
+ 
+    const tax = Math.round((rent + this.props.listing.CleaningFee) * listing[0].RaxRate * 100)/100
+    const total = tax + rent + listing[0].CleaningFee
+    res.send({rate: rate, nights:nights,tax: tax, rent: rent, total: total})
+    }
+  );
+
+  l;
+});
 
 app.post("/charge", (req, res) => {
   const chargeAmount = req.body.chargeAmount;

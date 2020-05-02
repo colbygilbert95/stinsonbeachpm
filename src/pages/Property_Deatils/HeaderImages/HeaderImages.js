@@ -19,21 +19,21 @@ class HeaderImages extends Component {
     return (
       <section className="check-availability-section">
         <div className="beach-box border-rds h-unset">
-          <h1>Beach View at the Bird's Nest Bungalow</h1>
+          <h1>{title}</h1>
         </div>
         <div className="beach-img-box">
           <button className="take-tour-btn">Take Tour</button>
-          <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%2010.jpeg" className="border-rds large-img" />
+          <img src={headerImgs[0].URL} className="border-rds large-img" />
         </div>
         <div className="check-availability-gallery hidden-md hidden-sm hidden-xs">
           <div className="beach-img-box">
-            <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%2020.jpg" className="border-rds small-img" />
+            <img src={headerImgs[1].URL} className="border-rds small-img" />
           </div>
           <div className="beach-img-box">
-            <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%201.jpg" className="border-rds small-img" />
+            <img src={headerImgs[2].URL}  className="border-rds small-img" />
           </div>
           <div className="beach-img-box">
-            <img src="https://storage.googleapis.com/stinsonbeachpm.appspot.com/property_images/27_Pradero/27%20Pradero%2019.jpg?authuser=2" className="border-rds small-img" />
+            <img src={headerImgs[3].URL}  className="border-rds small-img" />
           </div>
         </div>
       </section>
