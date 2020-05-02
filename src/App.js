@@ -13,7 +13,7 @@ import Home from "./pages/Home/Home";
 import Blog from "./pages/Blog/Blog";
 import Single_blog from "./pages/Single_blog/Single_blog";
 import Book_Your_Rental from "./pages/Book_Your_Rental/Book_Your_Rental";
-import Check_availability from "./pages/Check_availability/Check_availability";
+import Check_availability from "./pages/Check_availability/CheckAvailability";
 import Property_Deatils from "./pages/Property_Deatils/PropertyDeatils";
 import Guarantee from "./pages/Guarantee/Guarantee";
 import Test from "./pages/Test/Test";

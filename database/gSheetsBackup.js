@@ -3,7 +3,7 @@ const path = require("path");
 const mysql = require("mysql");
 const fs = require("fs");
 const readline = require("readline");
-const { google } = require("../node_modules/googleapis");
+const { google } = require(".googleapis");
 const bodyParser = require("body-parser");
 const authorize = require("./google-auth");
 

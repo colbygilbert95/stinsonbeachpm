@@ -126,7 +126,7 @@ class DateRangePickerWrapper extends React.Component {
   onDatesChange({ startDate, endDate }) {
     const { stateDateWrapper } = this.props;
 
-    if (startDate !== null && endDate !== null) {
+    if(startDate !== null && endDate !== null) {
       for (
         let j = moment(startDate);
         j.isBefore(endDate, "day");
@@ -141,13 +141,19 @@ class DateRangePickerWrapper extends React.Component {
       }
     }
 
-
+    console.log("ondateschange")
+    console.log("startDate")
+    console.log(startDate)
+    console.log("endDate")
+    console.log(endDate)
     this.setState({
       startDate: startDate && stateDateWrapper(startDate),
       endDate: endDate && stateDateWrapper(endDate),
-    }, () => {
-      this.props.handleDateChange(startDate, endDate)
     });
+    // }, () => {
+    //   this.props.handleDateChange(startDate, endDate)
+      
+    // });
   }
 
   onFocusChange(focusedInput) {
@@ -157,10 +163,7 @@ class DateRangePickerWrapper extends React.Component {
   onDayBlocked(date) {
     return this.props.blockedDays[date.format("YYYY-MM-DD")] === "blocked"
   }
-
-  // onDayHighlighted(date) {
-  //  return this.props.blockedDays[date.format("YYYY-MM-DD")] === "highlight"
-  // }
+ 
 
   render() {
     const { focusedInput, startDate, endDate } = this.state;

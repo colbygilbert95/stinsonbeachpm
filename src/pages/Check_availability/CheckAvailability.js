@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
-import CheckAvailabilityModal from './CheckAvailabilityModal'
+import CheckAvailabilityModal from '../CheckAvailability/CheckAvailabilityModal'
 
 class Single_blog extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			modalState: false
+			modalState: false,
+			startDate: {},
+			endDate: {}
 		}
 	}
+
+	startDateCallback = (date) => {
+		this.setState({startDate: date})
+	  }
+	
+	  endDateCallback = (date) => {
+		this.setState({endDate: date})
+	  }
 	openCheckAvailabilityModal = () => {
 		this.setState({
 			modalState: true

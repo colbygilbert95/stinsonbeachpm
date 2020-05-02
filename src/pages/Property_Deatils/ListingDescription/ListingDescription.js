@@ -66,7 +66,7 @@ class ListingDescription extends Component {
                     );
                   })}
                 </span>
-                <span><br /><strong>Any questions for the host?</strong><br /></span>
+                <span><br /><strong>Any questions?</strong><br /></span>
                 <p className="contact-with-host-btn">
                   <a href="#">Contact</a>
                 </p>
@@ -74,7 +74,7 @@ class ListingDescription extends Component {
             </div>
             <div className="col-sm-4 mt-15">
               <div>
-                <div className="mt-15 mb-15"><strong>$145</strong> / night</div>
+                <div className="mt-15 mb-15"><strong>${listing.WeekdayRate}</strong> / night</div>
                 <button className="learn-btn" onClick={this.openCheckAvailabilityModal}>Check Availability</button>
               </div>
             </div>

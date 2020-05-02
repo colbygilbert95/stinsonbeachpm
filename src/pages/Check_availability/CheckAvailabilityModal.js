@@ -3,19 +3,22 @@ import { connect } from "react-redux"
 import { getUnit, getBlockedDays } from "../../store/actions/bookingActions"
 import DateRangePickerWrapper from "../Property_Deatils/ListingDescription/DateRangePickerWrapper/DateRangePickerWrapper";
 import GuestCalculator from './GuestCalculator'
+import TotalCalculator from './TotalCalculator/TotalCalculator'
 import { NavLink, withRouter } from 'react-router-dom'
+import momentPropTypes from "react-moment-proptypes";
 
 
 class CheckAvailabilityModal extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: null,
-      endDate: null,
+      startDate: momentPropTypes.momentObj,
+      endDate: momentPropTypes.momentObj,
       hasGuests: 0,
       isDateFieldRequired: false,
       isGuestsFieldRequired: false
     }
+    this.handleDateChange = this.handleDateChange.bind(this)
   }
   handleDateChange = (startDate, endDate) => {
     this.setState({
@@ -48,6 +51,7 @@ class CheckAvailabilityModal extends Component {
     }
   }
   render() {
+    const {startDate, endDate} = this.state;
     const { listing, blockedDays } = this.props;
     return (
       <div>
@@ -75,7 +79,9 @@ class CheckAvailabilityModal extends Component {
                 </p>
 
                 <GuestCalculator maxGuests={this.props.maxGuests} onGuestsChange={this.handleGuestsChange} required={this.state.isGuestsFieldRequired}></GuestCalculator>
-
+                {(this.state.startDate !== momentPropTypes.momentObj && this.state.endDate !== momentPropTypes.momentObj) ? (
+                  <TotalCalculator listing={listing} startDate={startDate} endDate={endDate}/>
+                ) : null}
                 <button className="check-availability-btn" onClick={this.reserve}>Reserve</button>
                 <p className="text-center mt-10 font-bold">You won't be charged yet</p>
 
