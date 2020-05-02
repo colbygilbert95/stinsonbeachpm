@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 class WhoIsComing extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+  }
+  getClientSecretAndContinue = () => {
+    axios.post('http://localhost:5001/stinsonbeachpm/us-central1/app/charge' , {
+      chargeAmount: 314
+    }).then(res => {
+      this.props.nextStep({
+        intentSecret: res.data.client_secret
+      })
+    }).catch(err => {
+      console.log(err)
+    })
   }
   render() {
     return (
@@ -32,7 +45,7 @@ class WhoIsComing extends Component {
             <p>Let Noa & Keren know a little bit about yourself and why you're coming.</p>
             <textarea rows="10" className="mt-15"> </textarea>
             <div className="agree">
-              <button onClick={this.props.nextStep}>Continue</button>
+              <button onClick={this.getClientSecretAndContinue}>Continue</button>
             </div>
           </div>
           <div className="col-md-6">

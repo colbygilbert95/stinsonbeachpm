@@ -18,8 +18,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
-app.set("port", process.env.PORT || 5555);
+app.use(cors({origin: true}));
 
 const db = mysql.createConnection({
   host: process.env.SERVER_SQL_HOST,
@@ -29,9 +28,9 @@ const db = mysql.createConnection({
   socketPath: process.env.SERVER_SQL_SOCKET_PAT
 });
 
-db.connect(function (err) {
-  if (err) throw err;
-});
+// db.connect(function (err) {
+//   if (err) throw err;
+// });
 
 // app.post("/", function(req, res) {
 //     fs.readFile('./data1.json', 'utf8', (err, jsonString) => {
@@ -265,17 +264,15 @@ app.post("/charge", (req, res) => {
     amount: chargeAmount,
     currency: 'usd',
     metadata: { integration_check: 'accept_a_payment' },
-  });
-  res.json({ client_secret: paymentIntent.client_secret });
+  }).then((intent) => {
+    console.log(intent.client_secret)
+    res.json({ client_secret: intent.client_secret });
+  })
 })
 
 app.post("/smartbnbWebhook", function (req, res) {
-  console.log(req.body);
-  console.log(req.body.listing.id);
-  //insertCleaning(req)
   if (req.body.listing.id != null) {
     getListingByAdId(req).then(listingId => {
-
       if (listingId) {
         checkGuest(req).then(guestExists => {
           console.log("guestExists: " + guestExists);
@@ -332,7 +329,6 @@ app.post("/smartbnbWebhook", function (req, res) {
       }
     });
   } else {
-    //saveNull(req);
     res.send("Null")
   }
 
@@ -748,17 +744,17 @@ function insertQaulityControl(req) {
     if (typeof adId === "string") adId = adId.match(/([^.]+$)/)[0];
     db.query(
       `
-              SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, R.EndDate, R.CheckoutTime  
-              FROM Listing L
-              INNER JOIN Reservation R
-              INNER JOIN ClientAccount C
-              INNER JOIN ListingPlatform LP
-              INNER JOIN Property P
-              WHERE LP.AdId = ${db.escape(adId)} 
-              AND R.ResId = ${db.escape(req.body.code)}  
-              AND R.Listing = L.Id
-              AND P.Id = L.Property 
-              AND P.ClientAccount = C.Id;`,
+        SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, R.EndDate, R.CheckoutTime  
+        FROM Listing L
+        INNER JOIN Reservation R
+        INNER JOIN ClientAccount C
+        INNER JOIN ListingPlatform LP
+        INNER JOIN Property P
+        WHERE LP.AdId = ${db.escape(adId)} 
+        AND R.ResId = ${db.escape(req.body.code)}  
+        AND R.Listing = L.Id
+        AND P.Id = L.Property 
+        AND P.ClientAccount = C.Id;`,
       (err, res) => {
         const qualityControlData = res[0];
         if (err) reject(console.log("insertQaulityControl a: " + err));

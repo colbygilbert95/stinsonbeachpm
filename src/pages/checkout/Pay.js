@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import InjectedCheckoutForm from './InjectedCheckoutForm.js';
+
 class Pay extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,9 @@ class Pay extends Component {
     this.setState({
       payWay: way
     })
+  }
+  pay = () => {
+    document.getElementById('payment-form').submit()
   }
   render() {
     const { payWay } = this.state
@@ -24,10 +29,7 @@ class Pay extends Component {
                 <img src="/images/cards.png" />
               </div>
             </h4>
-            <div class="input-group">
-              <span class="input-group-addon" id="basic-addon1"><i className="fa fa-credit-card"></i></span>
-              <input type="text" class="form-control" placeholder="credit or debit card" />
-            </div>
+            <InjectedCheckoutForm></InjectedCheckoutForm>
             <a href="#" className="enter-coupon">Enter a coupon</a>
             <span className="title-3 block mt-40">How do you want to pay?</span>
             <div className="ways-to-pay">
@@ -54,7 +56,7 @@ class Pay extends Component {
             </p>
             <p className="policy-footer">By selecting the button below, I agree to the <a href="#" className="color-blue">House Rules</a>, <a href="#" className="color-blue">Cancellation Policy</a>, and <a href="#" className="color-blue">the Guest Refund Policy</a>. I also agree to pay the total amount shown, which includes Service Fees.</p>
             <div className="agree">
-              <button>Confirm and pay</button>
+              <button onClick={this.pay}>Confirm and pay</button>
             </div>
           </div>
           <div className="col-md-6">

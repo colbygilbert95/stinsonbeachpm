@@ -4,8 +4,8 @@ import './App.css';
 import 'react-dates/lib/css/_datepicker.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { StripeProvider } from 'react-stripe-elements';
-
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 
 import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
 import './index.js';
@@ -19,10 +19,12 @@ import Guarantee from "./pages/Guarantee/Guarantee";
 import Test from "./pages/Test/Test";
 import Checkout from './pages/Checkout/Checkout';
 
+const stripePromise = loadStripe("pk_test_gTILJQKMDQTwNk6vS8gNwbib00UhqAgoeB");
+
 class App extends Component {
 	render() {
 		return (
-			<StripeProvider apiKey="pk_test_gTILJQKMDQTwNk6vS8gNwbib00UhqAgoeB">
+			<Elements stripe={stripePromise}>
 				<BrowserRouter>
 					<div>
 						<div className="content">
@@ -47,7 +49,7 @@ class App extends Component {
 						</div>
 					</div>
 				</BrowserRouter>
-			</StripeProvider>
+			</Elements >
 		);
 	}
 }

@@ -13,6 +13,8 @@
     "@babel/runtime": "^7.8.4",
     "@google-cloud/bigquery": "^4.4.0",
     "@google-cloud/spanner": "^4.2.0",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.5.0",
     "axios": "^0.19.2",
     "coffee-script": "^1.12.7",
     "coffeeify": "^3.0.1",

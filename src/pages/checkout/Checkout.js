@@ -8,13 +8,15 @@ class Checkout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: 0,
-      components: [Review, WhoIsComing, Pay]
+      step: 2,
+      components: [Review, WhoIsComing, Pay],
+      data: {}
     }
   }
-  nextStep = () => {
+  nextStep = (data) => {
     this.setState({
-      step: ++this.state.step
+      step: ++this.state.step,
+      data: data ? data: {}
     })
   }
   changeStep = (step) => {
@@ -23,12 +25,12 @@ class Checkout extends Component {
     })
   }
   render() {
-    const { step, components } = this.state
+    const { step, components , data } = this.state
     const View = components[step]
     return (
       <div>
         <CheckoutHeader changeStep={this.changeStep} step={step} />
-        <View nextStep={this.nextStep} />
+        <View nextStep={this.nextStep} data={data} />
       </div>
     )
   }
