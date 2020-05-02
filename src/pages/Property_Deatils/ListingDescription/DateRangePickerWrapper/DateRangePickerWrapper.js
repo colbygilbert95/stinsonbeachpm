@@ -187,8 +187,8 @@ class DateRangePickerWrapper extends React.Component {
           onDatesChange={this.onDatesChange}
           onFocusChange={this.onFocusChange}
           focusedInput={focusedInput}
-          startDate={this.props.initialStartDate}
-          endDate={this.props.initialEndDate}
+          startDate={startDate}
+          endDate={endDate}
           isDayBlocked={this.onDayBlocked}
           isDayHighlighted={this.onDayHighlighted}
         />

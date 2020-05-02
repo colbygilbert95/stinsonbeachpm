@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
- import {CardElement, Elements, ElementsConsumer} from '@stripe/react-stripe-js';
+import {CardElement, Elements, ElementsConsumer} from '@stripe/react-stripe-js';
 
 class CheckoutForm extends React.Component {
   handleSubmit = async (event) => {
