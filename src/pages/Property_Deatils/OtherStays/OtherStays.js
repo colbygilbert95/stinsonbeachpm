@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { getActiveUnits } from "../../../store/actions/bookingActions";
 import { connect } from "react-redux";
-import OtherStayCard from "./OtherStayCard/OtherStayCard"
+import OtherStayCard from "./OtherStayCard/OtherStayCard";
 import Slider from "react-slick";
 
 class OtherStays extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      changeToSlider: false
-    }
+      changeToSlider: false,
+    };
   }
   componentDidMount() {
     this.props.getActiveUnits();
@@ -19,56 +19,53 @@ class OtherStays extends Component {
   resize() {
     if (window.innerWidth <= 1250) {
       this.setState({
-        changeToSlider: true
+        changeToSlider: true,
       });
-    }
-    else {
+    } else {
       this.setState({
-        changeToSlider: false
+        changeToSlider: false,
       });
     }
   }
   render() {
-    const { units } = this.props
-    const displayUnits = units.slice(0, 5)
+    const { units } = this.props;
+    const displayUnits = units.slice(0, 5);
+
     const settings = {
-      infinity: false,
+      infinity: true,
       slidesToShow: 2,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      adaptiveHeight: false,
     };
     return (
       <section className="book-rental-inner mb-70">
         <div className="container-fluid">
           <hr />
           <div className="row row_padding">
-
             <div className="col-sm-12">
               <div className="rent-title">
                 <h3 className="title text-left">Other Places to Stay</h3>
               </div>
             </div>
           </div>
-          { this.state.changeToSlider ? 
-            <Slider {...settings}>  
-              {
-                displayUnits.map((unit, index) => {
-                  return (<OtherStayCard unitData={unit} key={index} />)
-                })
-              }
-            </Slider> 
-            :
+          {this.state.changeToSlider ? (
+            <Slider {...settings}>
+              {displayUnits.map((unit, index) => {
+                return <OtherStayCard unitData={unit} key={index} />;
+              })}
+            </Slider>
+          ) : (
             <div className="otherPlacesWrapper">
-              {
-                displayUnits.map((unit, index) => {
-                  return (<OtherStayCard unitData={unit} key={index} />)
-                })
-              }          
+              {displayUnits.map((unit, index) => {
+                return <OtherStayCard unitData={unit} key={index} />;
+              })}
             </div>
-        }
+          )}
+
           <div className="row row_padding">
             <div className="col-sm-12">
               <div className="c-footer mtb-15">
-                <a href="#">Show more &gt;</a>
+                <a href="#">Show mores &gt;</a>
               </div>
             </div>
           </div>
@@ -77,9 +74,9 @@ class OtherStays extends Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    units: state.booking.units
+    units: state.booking.units,
   };
 };
 
