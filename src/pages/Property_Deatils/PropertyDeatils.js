@@ -48,7 +48,6 @@ class PropertyDetails extends Component {
   render() {
     const { listing, blockedDays } = this.props
 
-    console.log("prop", this.props)
     return (
       <div>
         <Header />
