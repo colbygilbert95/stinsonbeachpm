@@ -30,7 +30,7 @@ class OtherStayCard extends Component {
                   }
                   alt="..."
                   width="250"
-                  height="250"
+                  height="300"
                 />
               </div>
             </div>
