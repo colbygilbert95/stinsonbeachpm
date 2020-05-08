@@ -8,7 +8,7 @@ class WhoIsComing extends Component {
   }
   getClientSecretAndContinue = () => {
     axios.post('http://localhost:5001/stinsonbeachpm/us-central1/app/charge' , {
-      chargeAmount: 314
+      chargeAmount: 20000.00
     }).then(res => {
       this.props.nextStep({
         intentSecret: res.data.client_secret

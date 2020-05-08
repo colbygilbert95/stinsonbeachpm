@@ -8,15 +8,18 @@ class Checkout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: 0,
+      step: 1,
       components: [Review, WhoIsComing, Pay],
       data: {}
     }
   }
   nextStep = (data) => {
     this.setState({
-      step: ++this.state.step,
       data: data ? data: {}
+    } , () => {
+      this.setState({
+        step: ++this.state.step,
+      })
     })
   }
   changeStep = (step) => {

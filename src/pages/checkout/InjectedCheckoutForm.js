@@ -4,25 +4,19 @@ import {CardElement, Elements, ElementsConsumer} from '@stripe/react-stripe-js';
 
 class CheckoutForm extends React.Component {
   handleSubmit = async (event) => {
-    event.preventDefault();
-
-    console.log(event)
-    
+    event.preventDefault();  
     const {stripe, elements} = this.props
-    
     if (!stripe || !elements) {
       return;
     }
-    
-    const result = await stripe.confirmCardPayment( this.props.data.client_secret, {
+    const result = await stripe.confirmCardPayment( this.props.intentSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
           name: 'Jenny Rosen',
         },
-      }
+      } 
     })
-
     if (result.error) {
       console.log(result)
     } 
@@ -31,22 +25,28 @@ class CheckoutForm extends React.Component {
         console.log(result)
       }
     }
-
-  };
+  }
+  componentDidMount(){
+    console.log(this.props)
+  }
   render() {
     const {stripe} = this.props;
     return (
-      <form id="payment-form" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <CardElement/>
+        <a href="#" className="enter-coupon">Enter a coupon</a>
+        <div className="agree">
+          <button onClick={this.handleSubmit}>Confirm and pay</button>
+        </div>
       </form>
     );
   }
 }
 
-const InjectedCheckoutForm = () => (
+const InjectedCheckoutForm = ({intentSecret}) => (
   <ElementsConsumer>
     {({stripe, elements}) => (
-      <CheckoutForm stripe={stripe} elements={elements} />
+      <CheckoutForm stripe={stripe} elements={elements} intentSecret={intentSecret} />
     )}
   </ElementsConsumer>
 );

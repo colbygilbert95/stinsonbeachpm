@@ -13,9 +13,6 @@ class Pay extends Component {
       payWay: way
     })
   }
-  pay = () => {
-    document.getElementById('payment-form').submit()
-  }
   render() {
     const { payWay } = this.state
     return (
@@ -23,14 +20,6 @@ class Pay extends Component {
         <div className="row">
           <div className="col-md-6">
             <h3>Confirm and Pay</h3>
-            <h4 className="credit-title">
-              <span className="title-3">Pay With</span>
-              <div className="cards">
-                <img src="/images/cards.png" />
-              </div>
-            </h4>
-            <InjectedCheckoutForm></InjectedCheckoutForm>
-            <a href="#" className="enter-coupon">Enter a coupon</a>
             <span className="title-3 block mt-40">How do you want to pay?</span>
             <div className="ways-to-pay">
               <a href="#" className={payWay === 'full' ? 'way-to-pay active' : 'way-to-pay'} onClick={() => this.changePayWay('full')}>
@@ -47,7 +36,7 @@ class Pay extends Component {
                 <p className="way-price ml-auto">
                   <p>314.63$</p>
                   <span className="way-state">now</span>
-                </p>
+                 </p>
               </a>
             </div>
             <span className="title-3 block mt-40">Cancellation policy</span>
@@ -55,9 +44,13 @@ class Pay extends Component {
             service fee. <a href="#" className="color-blue">More details</a>
             </p>
             <p className="policy-footer">By selecting the button below, I agree to the <a href="#" className="color-blue">House Rules</a>, <a href="#" className="color-blue">Cancellation Policy</a>, and <a href="#" className="color-blue">the Guest Refund Policy</a>. I also agree to pay the total amount shown, which includes Service Fees.</p>
-            <div className="agree">
-              <button onClick={this.pay}>Confirm and pay</button>
-            </div>
+            <h4 className="credit-title">
+              <span className="title-3">Pay With</span>
+              <div className="cards"> 
+                <img src="/images/cards.png" />
+              </div>
+            </h4>
+            <InjectedCheckoutForm intentSecret={this.props.data.intentSecret}></InjectedCheckoutForm>
           </div>
           <div className="col-md-6">
             <div className="flat-card-wrapper">

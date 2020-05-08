@@ -277,8 +277,8 @@ app.post("/charge", (req, res) => {
     amount: chargeAmount,
     currency: 'usd',
     metadata: { integration_check: 'accept_a_payment' },
-  }).then((intent) => {
-    console.log(intent.client_secret)
+  })
+  .then((intent) => {
     res.json({ client_secret: intent.client_secret });
   })
 })
