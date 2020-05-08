@@ -11,7 +11,7 @@ class OtherStayCard extends Component {
         className="place"
         to={{
           pathname: "/" + unitPathName,
-          state: { unitName: Name }
+          state: { unitName: Name },
         }}
         onClick={(e) => e.preventDefault()}
       >
@@ -30,18 +30,19 @@ class OtherStayCard extends Component {
                   }
                   alt="..."
                   width="250"
+                  height="300"
                 />
               </div>
             </div>
             <p className="text-overflow mt-15">{Title}</p>
             <p>
               <strong>${WeekdayRate}</strong> / night
-              </p>
+            </p>
             <a href="javascript;" className="pull-left">
               <i className="fa fa-star mr-2"></i>
               <span className="small">
                 <strong>{AvgReviews}</strong> ({NumReviews})
-                </span>
+              </span>
             </a>
           </div>
         </div>

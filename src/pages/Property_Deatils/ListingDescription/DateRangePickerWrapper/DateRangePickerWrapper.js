@@ -140,20 +140,13 @@ class DateRangePickerWrapper extends React.Component {
         }
       }
     }
-
-    console.log("ondateschange")
-    console.log("startDate")
-    console.log(startDate)
-    console.log("endDate")
-    console.log(endDate)
     this.setState({
       startDate: startDate && stateDateWrapper(startDate),
       endDate: endDate && stateDateWrapper(endDate),
-    });
-    // }, () => {
-    //   this.props.handleDateChange(startDate, endDate)
+    }, () => {
+      this.props.handleDateChange(startDate, endDate)
       
-    // });
+    });
   }
 
   onFocusChange(focusedInput) {
