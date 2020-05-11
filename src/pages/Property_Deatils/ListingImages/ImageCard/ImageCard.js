@@ -4,15 +4,11 @@ class ImageCard extends Component {
   render() {
     const { url, room } = this.props;
     return (
-      <div className="place">
-        <div className="property-services-box text-center">
-          <div className="property-services-box-inner">
-            <img className="property-services-box-inner" src={url} />
-          </div>
-          <p>
+      <div className="card-n">
+          <div className="card-cover-n" style={{backgroundImage: `url(${url})`}}></div>
+          <p className="card-title-n">
             <strong>{room}</strong>
           </p>
-        </div>
       </div>
     );
   }

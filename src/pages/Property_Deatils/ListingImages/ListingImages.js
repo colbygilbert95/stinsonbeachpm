@@ -21,30 +21,16 @@ class ListingImages extends Component {
     }
     return (
       <section className="property-services">
-        <div className="container-fluid">
-          <div className="row row_padding">
-            <div className="col-sm-12">
-              <div className="rent-title">
-                <h3 className="title text-left">Tour This Guesthouse</h3>
-              </div>
-            </div>
+        <div className="container-n">
+          <div className="rent-title">
+            <h3 className="title text-left">Tour This Guesthouse</h3>
           </div>
-          <div className="otherPlacesWrapper">
+          <div className="card-wrapper-n">
             {roomImgs.map((room, index) => {
               return <ImageCard key={index} url={room.URL} room={room.Name} />;
             })}
-
-            <div className="col-sm-3">
-              <div className="property-services-box text-center">
-                <div className="property-services-box-inner bg-white">
-                  <div className="c-footer mtblr">
-                    <a href="#">Show more &gt;</a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
           </div>
+          <a href="#" className="explore-all">Explore All Guesthouse</a>
         </div>
       </section>
     );

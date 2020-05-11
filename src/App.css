@@ -799,11 +799,56 @@ textarea {
 .guests-input.error {
   border: 1px solid #db3434;
 }
-.error .DateRangePickerInput__withBorder{
+.error .DateRangePickerInput__withBorder{ 
   border: 1px solid #db3434;
 }
 @media(max-width: 768px){
   .footers {
     text-align: center;
+  }
+}
+.container-n {
+  width: 80%;
+  margin: 0 auto;
+}
+.card-wrapper-n{
+  display: flex;
+  flex-wrap: wrap;
+}
+.card-n {
+  width: 25%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+.card-cover-n{
+  width: 100%;
+  height: 12vw;
+  background-size: cover;
+  background-position: center center;
+}
+.card-title-n {
+  margin-top: 7px;
+}
+.explore-all{
+  display: inline-block;
+  color: #9098db;
+  margin-left: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+@media(max-width: 1280px){
+  .card-n{
+    width: 33.33333%;
+  }
+}
+@media(max-width: 1025px){
+  .card-n{
+    width: 50%;
+  }
+  .card-cover-n{
+    height: 16vw;
+
   }
 }
