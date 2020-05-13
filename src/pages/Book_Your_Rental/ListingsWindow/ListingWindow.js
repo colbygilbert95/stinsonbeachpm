@@ -11,15 +11,11 @@ class ListingWindow extends Component {
     const { units } = this.props
     return (
       <section className="book-rental-inner">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-sm-12">
-              <div className="rent-title">
-                <h3 className="title text-left">Top Rated Places to Stay</h3>
-              </div>
-            </div>
+        <div className="container-n">
+          <div className="rent-title">
+            <h3 className="title text-left">Top Rated Places to Stay</h3>
           </div>
-          <div className="otherPlacesWrapper">
+          <div className="card-wrapper-n">
             {units.map((unit, index) => {
               return (<ListingCard unitData={unit} key={index} />)
             })}
