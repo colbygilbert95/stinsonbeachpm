@@ -39,14 +39,10 @@ class OtherStays extends Component {
     };
     return (
       <section className="book-rental-inner mb-70">
-        <div className="container-fluid">
+        <div className="container-n">
           <hr />
-          <div className="row row_padding">
-            <div className="col-sm-12">
-              <div className="rent-title">
-                <h3 className="title text-left">Other Places to Stay</h3>
-              </div>
-            </div>
+          <div className="rent-title">
+            <h3 className="title text-left">Other Places to Stay</h3>
           </div>
           {this.state.changeToSlider ? (
             <Slider {...settings}>
@@ -55,19 +51,14 @@ class OtherStays extends Component {
               })}
             </Slider>
           ) : (
-            <div className="otherPlacesWrapper">
-              {displayUnits.map((unit, index) => {
-                return <OtherStayCard unitData={unit} key={index} />;
-              })}
-            </div>
-          )}
-
-          <div className="row row_padding">
-            <div className="col-sm-12">
-              <div className="c-footer mtb-15">
-                <a href="#">Show mores &gt;</a>
+              <div className="card-wrapper-n">
+                {displayUnits.map((unit, index) => {
+                  return <OtherStayCard unitData={unit} key={index} />;
+                })}
               </div>
-            </div>
+            )}
+          <div className="c-footer mtb-15 mt-20">
+            <a href="#">Show mores &gt;</a>
           </div>
         </div>
       </section>

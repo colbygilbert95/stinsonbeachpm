@@ -14,36 +14,22 @@ class Amenties extends Component {
       this.props.getUnitAmenities(unitName);
     }
   }
-
   render() {
     const amenities =
       this.props.amenities === undefined ? [] : this.props.amenities;
-    //const {amenites} = this.props
     return (
       <section className="property-services">
-        <div className="container-fluid">
+        <div className="container-n">
           <hr />
-          <div className="row row_padding">
-            <div className="col-sm-12">
-              <div className="rent-title">
-                <h3 className="title text-left">Amenities</h3>
-              </div>
-            </div>
+          <div className="rent-title">
+            <h3 className="title text-left">Amenities</h3>
           </div>
-          <div className="otherPlacesWrapper">
+          <div className="card-wrapper-n">
             {amenities.map((amenity, index) => {
               return <AmentityCard key={index} url={amenity.IconURL} name={amenity.Name} />;
             })}
-            <div className="col-sm-3">
-              <div className="property-services-box text-center">
-                <div className="property-services-box-inner bg-white">
-                  <div className="c-footer mtblr">
-                    <a href="#">Show All &gt;</a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
+          <a href="#" className="explore-all">Explore All Amenities</a>
         </div>
       </section>
     );
@@ -51,7 +37,6 @@ class Amenties extends Component {
 }
 
 const mapStateToProps = state => {
-
   return {
     amenities: state.booking.amenities
   };

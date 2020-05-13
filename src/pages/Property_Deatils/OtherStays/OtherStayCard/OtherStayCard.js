@@ -8,7 +8,7 @@ class OtherStayCard extends Component {
     const unitPathName = Name.replace(/ /g, "_");
     return (
       <NavLink
-        className="place"
+        className="card-n card-large-n"
         to={{
           pathname: "/" + unitPathName,
           state: { unitName: Name },
@@ -18,21 +18,7 @@ class OtherStayCard extends Component {
         <div className="card card-blog">
           <div className="rent-card-body mt-40">
             <div className="rent-flex">
-              <div className="author">
-                <img
-                  className="author-picture width-unset"
-                  src={
-                    "images/property_images/" +
-                    unitPathName +
-                    "/" +
-                    unitPathName +
-                    "_Cover.jpg"
-                  }
-                  alt="..."
-                  width="250"
-                  height="300"
-                />
-              </div>
+              <div className="card-cover-n card-cover-large-n" style={{ backgroundImage: `url('images/property_images/${unitPathName}/${unitPathName}_Cover.jpg')` }}></div>
             </div>
             <p className="text-overflow mt-15">{Title}</p>
             <p>

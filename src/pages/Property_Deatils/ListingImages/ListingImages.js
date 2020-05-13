@@ -30,7 +30,7 @@ class ListingImages extends Component {
               return <ImageCard key={index} url={room.URL} room={room.Name} />;
             })}
           </div>
-          <a href="#" className="explore-all">Explore All Guesthouse</a>
+          <a href="#" className="explore-all">Explore All Guesthouses</a>
         </div>
       </section>
     );
