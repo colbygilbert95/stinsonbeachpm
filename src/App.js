@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import logo from "./logo.svg"
-import "./App.css"
 import "react-dates/lib/css/_datepicker.css"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import "./App.css"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 
