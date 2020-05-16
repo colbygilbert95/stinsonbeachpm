@@ -95,21 +95,21 @@ class Review extends Component {
                 </div>
                 <div className="price-details">
                   <div className="price-detail">
-                    <span>77$ X 3 nights</span>
-                    <span>231.81$</span>
+                    <span>$77 X 3 nights</span>
+                    <span>$231.81</span>
                   </div>
                   <div className="price-detail">
                     <span>cleaning fee <i className="fa fa-question-circle"></i></span>
-                    <span>43.90$</span>
+                    <span>$43.90</span>
                   </div>
                   <div className="price-detail">
                     <span>service fee <i className="fa fa-question-circle"></i></span>
-                    <span>38$</span>
+                    <span>$38</span>
                   </div>
                 </div>
                 <div className="total">
                   <span>Total (USD)</span>
-                  <span>314.63$</span>
+                  <span>$314.63</span>
                 </div>
               </div>
             </div>
