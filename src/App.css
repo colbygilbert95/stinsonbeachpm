@@ -5,8 +5,9 @@
 .App-logo {
   height: 40vmin;
 }
-p, h1 , h2 , h3 , h4 , h5 , h6 , a , li {
-  /* font-family: 'LeituraDisplay-Roman' !important; */
+h3 , h1{
+  font-family: 'leitura_displayroman' !important;
+  font-weight: bold;
 }
 .App-header {
   background-color: #282c34;
@@ -830,8 +831,10 @@ textarea {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  border-radius: 10px;
 }
 .card-title-n {
+  color: #282727;
   margin-top: 7px;
 }
 .explore-all{
@@ -846,11 +849,16 @@ textarea {
   .card-n{
     width: 33.33333%;
   }
-  .card-large-n {
-    width: 25%;
-  }
   .card-cover-large-n{
     height: 25vw;
+  }
+  .card-cover-large-n.book{
+    height: 12vw;
+  }
+}
+@media(max-width: 1250px){
+  .card-large-n {
+    width: 100% !important;
   }
 }
 @media(max-width: 1025px){
@@ -863,6 +871,9 @@ textarea {
   .card-cover-large-n{
     height: 25vw;
   }
+  .card-cover-large-n.book{
+    height: 16vw;
+  }
 }
 @media(max-width: 700px){
   .card-n{
@@ -871,6 +882,9 @@ textarea {
   .card-cover-n{
     height: 25vw;
 
+  }
+  .card-cover-large-n.book{
+    height: 25vw;
   }
 }
 .total-calculator > div {
@@ -883,7 +897,11 @@ textarea {
   background-size: 35%;
   background-color: #f2f2f2;
 }
-
+@media(max-width: 1025px){
+  .amentity-cover{
+    background-size: 25%;
+  }
+}
 .CalendarDay__selected_span {
  
   background: #60befc;
@@ -924,6 +942,7 @@ textarea {
 .DayPickerKeyboardShortcuts_show__bottomRight:hover::before {
   border-right: 33px solid #0471ba
 }
+<<<<<<< HEAD
 
 .other-card {
   display: inline-block;
@@ -955,3 +974,8 @@ textarea {
 
 
 
+=======
+.text-overflow {
+  color: #484848;
+}
+>>>>>>> 147ed6e2ca2a466c68a0f309916a7a90e51523de

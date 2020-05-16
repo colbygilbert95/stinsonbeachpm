@@ -18,7 +18,7 @@ class ListingCard extends Component {
           <div className="rent-card-body mt-40">
             <div className="rent-flex">
               <div className="card-cover-n">
-              <div className="card-cover-n card-cover-large-n" style={{ backgroundImage: `url(${URL})` }}></div>
+              <div className="card-cover-n card-cover-large-n book" style={{ backgroundImage: `url(${URL})` }}></div>
               </div>
               <div className="like">
                 <a href="javascript:;" className="pull-right">

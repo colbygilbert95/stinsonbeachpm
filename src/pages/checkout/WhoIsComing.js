@@ -23,7 +23,7 @@ class WhoIsComing extends Component {
         <div className="row">
           <div className="col-md-6">
             <h3>Who's Coming</h3>
-            <h4 className="number-of-nights">Guests</h4>
+            {/* <h4 className="number-of-nights">Guests</h4>
             <select class="form-control mt-30 gusts-slect-menu">
               <option>Guests</option>
               <option selected>1 guest</option>
@@ -38,7 +38,7 @@ class WhoIsComing extends Component {
                 <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox" />
                 <label for="someSwitchOptionDefault" class="label-default"></label>
               </div>
-            </h4>
+            </h4> */}
             <h4 className="number-of-nights">
               Introduce Yourself
             </h4>
@@ -72,21 +72,21 @@ class WhoIsComing extends Component {
                 </div>
                 <div className="price-details">
                   <div className="price-detail">
-                    <span>77$ X 3 nights</span>
-                    <span>231.81$</span>
+                    <span>$77 X 3 nights</span>
+                    <span>$231.81</span>
                   </div>
                   <div className="price-detail">
                     <span>cleaning fee <i className="fa fa-question-circle"></i></span>
-                    <span>43.90$</span>
+                    <span>$43.90</span>
                   </div>
                   <div className="price-detail">
                     <span>service fee <i className="fa fa-question-circle"></i></span>
-                    <span>38$</span>
+                    <span>$38</span>
                   </div>
                 </div>
                 <div className="total">
                   <span>Total (USD)</span>
-                  <span>314.63$</span>
+                  <span>$314.63</span>
                 </div>
               </div>
             </div>
