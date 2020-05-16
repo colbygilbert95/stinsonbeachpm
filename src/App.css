@@ -831,8 +831,10 @@ textarea {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  border-radius: 10px;
 }
 .card-title-n {
+  color: #282727;
   margin-top: 7px;
 }
 .explore-all{
@@ -940,4 +942,6 @@ textarea {
 .DayPickerKeyboardShortcuts_show__bottomRight:hover::before {
   border-right: 33px solid #0471ba
 }
-
+.text-overflow {
+  color: #484848;
+}
