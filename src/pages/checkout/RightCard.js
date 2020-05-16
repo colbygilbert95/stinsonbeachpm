@@ -32,7 +32,7 @@ class RightCard extends Component {
           </div>
           <div className="guests">
             <span className="icon"><i class="fa fa-user"></i></span>
-            <span className="text">{this.state.totalGuests} guests</span>
+            <span className="text">{this.state.total} guests</span>
           </div>
           <div className="dates">
             <span className="icon"><i class="fa fa-calendar"></i></span>
