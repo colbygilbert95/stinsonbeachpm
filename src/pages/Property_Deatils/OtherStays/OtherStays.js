@@ -9,6 +9,7 @@ class OtherStays extends Component {
     super(props);
     this.state = {
       changeToSlider: false,
+      sliderShowNumber: 3,
     };
   }
   componentDidMount() {
@@ -17,13 +18,19 @@ class OtherStays extends Component {
     this.resize();
   }
   resize() {
-    if (window.innerWidth <= 1250) {
+    if (window.outerWidth >= 501 && window.outerWidth <= 800) {
+      console.log("Whats up", window.outerWidth);
       this.setState({
-        changeToSlider: true,
+        sliderShowNumber: 2,
+      });
+    } else if (window.outerWidth <= 500) {
+      console.log("Hey There", window.outerWidth);
+      this.setState({
+        sliderShowNumber: 1,
       });
     } else {
       this.setState({
-        changeToSlider: false,
+        sliderShowNumber: 3,
       });
     }
   }
@@ -33,7 +40,7 @@ class OtherStays extends Component {
 
     const settings = {
       infinity: true,
-      slidesToShow: 2,
+      slidesToShow: this.state.sliderShowNumber,
       slidesToScroll: 1,
       adaptiveHeight: false,
     };
@@ -44,7 +51,7 @@ class OtherStays extends Component {
           <div className="rent-title">
             <h3 className="title text-left">Other Places to Stay</h3>
           </div>
-          {this.state.changeToSlider ? (
+          {/* {this.state.changeToSlider ? (
             <Slider {...settings}>
               {displayUnits.map((unit, index) => {
                 return <OtherStayCard unitData={unit} key={index} />;
@@ -56,7 +63,15 @@ class OtherStays extends Component {
                   return <OtherStayCard unitData={unit} key={index} />;
                 })}
               </div>
-            )}
+            )} */}
+          {
+            <Slider {...settings}>
+              {displayUnits.map((unit, index) => {
+                return <OtherStayCard unitData={unit} key={index} />;
+              })}
+            </Slider>
+          }
+
           <div className="c-footer mtb-15 mt-20">
             <a href="#">Show mores &gt;</a>
           </div>
@@ -65,7 +80,7 @@ class OtherStays extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     units: state.booking.units,
   };

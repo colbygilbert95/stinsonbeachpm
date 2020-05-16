@@ -787,7 +787,7 @@ textarea {
   z-index: 10000;
 }
 .slick-next {
-  right: 90px !important;
+  right: 35px !important;
 }
 .slick-prev{
   left: 13px !important;
@@ -924,4 +924,34 @@ textarea {
 .DayPickerKeyboardShortcuts_show__bottomRight:hover::before {
   border-right: 33px solid #0471ba
 }
+
+.other-card {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.other-cover-n {
+  width: 25vw;
+  height: 17vw;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@media(max-width: 800px){
+  .other-cover-n {
+    width: 38vw;
+    height: 25vw;
+   
+  }
+}
+
+@media(max-width: 500px){
+  .other-cover-n {
+    width: 100%;
+    height: 45vw;
+   
+  }
+}
+
+
 
