@@ -23,7 +23,7 @@ class WhoIsComing extends Component {
         <div className="row">
           <div className="col-md-6">
             <h3>Who's Coming</h3>
-            <h4 className="number-of-nights">Guests</h4>
+            {/* <h4 className="number-of-nights">Guests</h4>
             <select class="form-control mt-30 gusts-slect-menu">
               <option>Guests</option>
               <option selected>1 guest</option>
@@ -38,7 +38,7 @@ class WhoIsComing extends Component {
                 <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox" />
                 <label for="someSwitchOptionDefault" class="label-default"></label>
               </div>
-            </h4>
+            </h4> */}
             <h4 className="number-of-nights">
               Introduce Yourself
             </h4>
