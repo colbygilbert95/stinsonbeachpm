@@ -14,9 +14,23 @@ export const getActiveUnits = () => {
   };
 };
 
+export const setTotalGuests = total => {
+  window.localStorage.setItem('total' , total)
+  return {
+    type: 'SET_TOTAL_GUESTS',
+    playload: total
+  }
+}
+
+export const setDates = dates => {
+  window.localStorage.setItem('dates' , JSON.stringify(dates))
+  return {
+    type: 'SET_DATES',
+    playload: dates
+  }
+}
+
 export const getUnit = unitName => {
-  console.log("getUnit");
-  console.log(unitName);
   return dispatch => {
     return axios.get(apiUrl+ '/getUnit', {
       params: {
@@ -35,8 +49,6 @@ export const getUnit = unitName => {
 };
 
 export const getUnitReviews = unitName => {
-  console.log("getUnitReviews");
-  console.log(unitName);
   return dispatch => {
     return axios.get(apiUrl+ '/getUnitReviews', {
       params: {
@@ -55,8 +67,6 @@ export const getUnitReviews = unitName => {
 };
 
 export const getUnitHeaderImgs = unitName => {
-  console.log("getUnitHeaderImgs");
-  console.log(unitName);
   return dispatch => {
     return axios.get(apiUrl+ '/getUnitHeaderImgs', {
       params: {
@@ -75,8 +85,6 @@ export const getUnitHeaderImgs = unitName => {
 };
 
 export const getRoomHeaderImgs = unitName => {
-  console.log("getRoomHeaderImgs");
-  console.log(unitName);
   return dispatch => {
     return axios.get(apiUrl + '/getRoomHeaderImgs', {
       params: {
@@ -95,8 +103,6 @@ export const getRoomHeaderImgs = unitName => {
 };
 
 export const getUnitAmenities = unitName => {
-  console.log("getUnitAmenities");
-  console.log(unitName);
   return dispatch => {
     return axios.get(apiUrl + '/getUnitAmenities', {
       params: {
@@ -113,8 +119,6 @@ export const getUnitAmenities = unitName => {
 };
 
 export const getBlockedDays = unitName => {
-  console.log("getBlockedDays");
-  console.log(unitName);
   return dispatch => {
     return axios.get(apiUrl + '/getBlockedDays', {
       params: {
@@ -132,8 +136,6 @@ export const getBlockedDays = unitName => {
 };
 
 export const getOwnerInfoByListing = unitName => {
-  console.log("getOwnerInfoByListing");
-  console.log(unitName);
   return dispatch => {
     return axios.get(apiUrl + '/getOwnerInfoByListing', {
       params: {

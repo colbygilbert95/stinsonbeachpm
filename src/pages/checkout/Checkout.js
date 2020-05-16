@@ -9,7 +9,7 @@ class Checkout extends Component {
     super(props)
     this.state = {
       step: 0,
-      components: [Review, WhoIsComing, Pay],
+      components: [WhoIsComing, Pay],
       data: {}
     }
   }

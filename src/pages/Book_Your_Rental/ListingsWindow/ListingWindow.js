@@ -26,7 +26,6 @@ class ListingWindow extends Component {
   }
 }
 const mapStateToProps = state => {
-
   return {
     units: state.booking.units
   };

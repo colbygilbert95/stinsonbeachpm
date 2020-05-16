@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InjectedCheckoutForm from './InjectedCheckoutForm.js';
+import RightCard from './RightCard';
 
 class Pay extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Pay extends Component {
                 <p className="way-price ml-auto">
                   <p>314.63$</p>
                   <span className="way-state">now</span>
-                 </p>
+                </p>
               </a>
             </div>
             <span className="title-3 block mt-40">Cancellation policy</span>
@@ -46,54 +47,14 @@ class Pay extends Component {
             <p className="policy-footer">By selecting the button below, I agree to the <a href="#" className="color-blue">House Rules</a>, <a href="#" className="color-blue">Cancellation Policy</a>, and <a href="#" className="color-blue">the Guest Refund Policy</a>. I also agree to pay the total amount shown, which includes Service Fees.</p>
             <h4 className="credit-title">
               <span className="title-3">Pay With</span>
-              <div className="cards"> 
+              <div className="cards">
                 <img src="/images/cards.png" />
               </div>
             </h4>
             <InjectedCheckoutForm intentSecret={this.props.data.intentSecret}></InjectedCheckoutForm>
           </div>
           <div className="col-md-6">
-            <div className="flat-card-wrapper">
-              <div className="flat-card">
-                <div className="header">
-                  <div>
-                    <div className="flat-title">Stylish and spacious, elegant loft for calm stay...</div>
-                    <div className="flat-description">Entire apartment in Surry Hills</div>
-                    <div className="star"><span className="icon"><i className="fa fa-star"></i></span>4.7 (16)</div>
-                  </div>
-                  <div>
-                    <img src="/images/redy-earn.jpg" />
-                  </div>
-                </div>
-                <div className="guests">
-                  <span className="icon"><i class="fa fa-user"></i></span>
-                  <span className="text">2 guests</span>
-                </div>
-                <div className="dates">
-                  <span className="icon"><i class="fa fa-calendar"></i></span>
-                  <span>Mar 22 , 2020</span>
-                  <span>Mar 25 , 2020</span>
-                </div>
-                <div className="price-details">
-                  <div className="price-detail">
-                    <span>$77 X 3 nights</span>
-                    <span>$231.81</span>
-                  </div>
-                  <div className="price-detail">
-                    <span>cleaning fee <i className="fa fa-question-circle"></i></span>
-                    <span>$43.90</span>
-                  </div>
-                  <div className="price-detail">
-                    <span>service fee <i className="fa fa-question-circle"></i></span>
-                    <span>$38</span>
-                  </div>
-                </div>
-                <div className="total">
-                  <span>Total (USD)</span>
-                  <span>$314.63</span>
-                </div>
-              </div>
-            </div>
+            <RightCard></RightCard>
           </div>
         </div>
       </div>

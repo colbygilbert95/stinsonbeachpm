@@ -17,7 +17,7 @@ class GuestCalculator extends Component {
     if (this.state.total < this.props.maxGuests) {
       item.value++;
       this.setState({ items: this.state.items, total: this.state.total + 1 }, () => {
-        this.props.onGuestsChange(this.state.items.some(i => i.value))
+        this.props.onGuestsChange(this.state.items.some(i => i.value) , this.state.total)
       })
     }
   }
@@ -25,7 +25,7 @@ class GuestCalculator extends Component {
     if (item.value > 0) {
       item.value--
       this.setState({ items: this.state.items, total: this.state.total - 1 }, () => {
-        this.props.onGuestsChange(this.state.items.some(i => i.value))
+        this.props.onGuestsChange(this.state.items.some(i => i.value) , this.state.total)
       })
     }
   }

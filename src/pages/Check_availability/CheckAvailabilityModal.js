@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { getUnit, getBlockedDays } from "../../store/actions/bookingActions"
+import { getUnit, getBlockedDays , setTotalGuests , setDates } from "../../store/actions/bookingActions"
 import DateRangePickerWrapper from "../Property_Deatils/ListingDescription/DateRangePickerWrapper/DateRangePickerWrapper";
 import GuestCalculator from './GuestCalculator'
 import TotalCalculator from './TotalCalculator/TotalCalculator'
@@ -15,6 +15,7 @@ class CheckAvailabilityModal extends Component {
       startDate: momentPropTypes.momentObj,
       endDate: momentPropTypes.momentObj,
       hasGuests: 0,
+      total:0,
       isDateFieldRequired: false,
       isGuestsFieldRequired: false
     }
@@ -26,14 +27,14 @@ class CheckAvailabilityModal extends Component {
       endDate
     })
   }
-  handleGuestsChange = (hasGuests) => {
+  handleGuestsChange = (hasGuests , total) => {
     this.setState({
-      hasGuests
+      hasGuests,
+      total
     })
   }
   reserve = () => {
     let { startDate, endDate, hasGuests } = this.state
-    console.log(startDate === null)
     startDate === null || endDate === null ?
       this.setState({ isDateFieldRequired: true }) :
       this.setState({ isDateFieldRequired: false })
@@ -46,8 +47,12 @@ class CheckAvailabilityModal extends Component {
       this.setState({
         isDateFieldRequired: false,
         isGuestsFieldRequired: false
+      } , () => {
+        window.localStorage.setItem('listing' , JSON.stringify(this.props.listing))
+        this.props.setTotalGuests(this.state.total)
+        this.props.setDates({startDate: startDate.format('DD/MM/YYYY') ,endDate : endDate.format('DD/MM/YYYY')})
+        this.props.history.push("/checkout");
       })
-      this.props.history.push("/checkout");
     }
   }
   render() {
@@ -100,6 +105,11 @@ const mapStateToProps = state => {
     blockedDays: state.booking.blockedDays
   };
 }
+const mapDispatchtoProps = dispatch => ({
+  setTotalGuests: total => dispatch(setTotalGuests(total)),
+  setDates: total => dispatch(setDates(total)),
+  getUnit,
+  getBlockedDays
+})
 
-export default withRouter(connect(mapStateToProps, { getUnit, getBlockedDays })(CheckAvailabilityModal))
-
+export default withRouter(connect(mapStateToProps, mapDispatchtoProps)(CheckAvailabilityModal))
