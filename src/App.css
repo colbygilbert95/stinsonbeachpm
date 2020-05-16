@@ -850,6 +850,9 @@ textarea {
   .card-cover-large-n{
     height: 25vw;
   }
+  .card-cover-large-n.book{
+    height: 12vw;
+  }
 }
 @media(max-width: 1250px){
   .card-large-n {
@@ -866,6 +869,9 @@ textarea {
   .card-cover-large-n{
     height: 25vw;
   }
+  .card-cover-large-n.book{
+    height: 16vw;
+  }
 }
 @media(max-width: 700px){
   .card-n{
@@ -874,6 +880,9 @@ textarea {
   .card-cover-n{
     height: 25vw;
 
+  }
+  .card-cover-large-n.book{
+    height: 25vw;
   }
 }
 .total-calculator > div {
