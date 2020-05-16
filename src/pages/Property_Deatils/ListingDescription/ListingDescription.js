@@ -46,8 +46,8 @@ class ListingDescription extends Component {
           modalState={this.state.modalState}
           closeModal={this.closeModal}
         />
-        <div className="container-fluid">
-          <div className="row row_padding mt-40">
+        <div className="container-n">
+          <div className="row  mt-40">
             <div className="col-sm-8 mt-15">
               <div className="bed-list">
                 <div className="bed-inner">

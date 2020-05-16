@@ -884,3 +884,45 @@ textarea {
   background-size: 35%;
   background-color: #f2f2f2;
 }
+
+.CalendarDay__selected_span {
+ 
+  background: #60befc;
+  border: 1px double #a7d4f2;
+  color: #fff
+}
+.CalendarDay__selected_span:active,
+.CalendarDay__selected_span:hover {
+  background: #9dd2f5;
+  border: 1px double #70c6ff;
+  color: #fff
+}
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #3498DB;
+  border: 1px double #3498DB;
+  color: #fff
+}
+.CalendarDay__hovered_span,
+.CalendarDay__hovered_span:hover {
+  background: #abddff;
+  border: 1px double #61c0ff;
+  color: #007a87
+}
+.CalendarDay__hovered_span:active {
+  background: #61c0ff;
+  border: 1px double #61c0ff;
+  color: #007a87
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight::before {
+  border-top: 26px solid transparent;
+  border-right: 33px solid #3498DB;
+  bottom: 0;
+  right: 0
+}
+.DayPickerKeyboardShortcuts_show__bottomRight:hover::before {
+  border-right: 33px solid #0471ba
+}
+
