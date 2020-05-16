@@ -70,7 +70,7 @@ class PropertyDetails extends Component {
                 onDateChange={this.changeDates}
               />
             </div>
-            <div className="col-md-12 col-lg-5 mt-15">
+            {/* <div className="col-md-12 col-lg-5 mt-15">
               <DateRangePickerWrapper
                 blockedDays={blockedDays}
                 initialStartDate={this.state.start_date}
@@ -84,7 +84,7 @@ class PropertyDetails extends Component {
                 <option>4</option>
                 <option>5</option>
               </select>
-            </div>
+            </div> */}
           </div>
         </div>
         <MeetOwner unitName={listing.Name} />
