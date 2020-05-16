@@ -6,11 +6,13 @@ import RightCard from './RightCard';
 class WhoIsComing extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      prices: JSON.parse(window.localStorage.getItem('prices'))
+    }
   }
   getClientSecretAndContinue = () => {
     axios.post('http://localhost:5001/stinsonbeachpm/us-central1/app/charge' , {
-      chargeAmount: 20000.00
+      chargeAmount: Math.round(this.state.prices.total * 100)
     }).then(res => {
       this.props.nextStep({
         intentSecret: res.data.client_secret

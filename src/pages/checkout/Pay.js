@@ -6,7 +6,8 @@ class Pay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      payWay: 'full'
+      payWay: 'full',
+      prices: localStorage.getItem('prices') ? JSON.parse(localStorage.getItem('prices')) : {},
     }
   }
   changePayWay = (way) => {
@@ -26,7 +27,7 @@ class Pay extends Component {
               <a href="#" className={payWay === 'full' ? 'way-to-pay active' : 'way-to-pay'} onClick={() => this.changePayWay('full')}>
                 <span className={payWay === 'full' ? 'circle-thick' : 'circle-thin'}></span>
                 <p className="way-title">Pay In Full</p>
-                <p className="way-price ml-auto">314.63$</p>
+                <p className="way-price ml-auto">${this.state.prices.total}</p>
               </a>
               <a href="#" className={payWay === 'less' ? 'way-to-pay active' : 'way-to-pay'} onClick={() => this.changePayWay('less')}>
                 <span className={payWay === 'less' ? 'circle-thick' : 'circle-thin'}></span>
@@ -35,7 +36,7 @@ class Pay extends Component {
                   <p className="way-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
                 </p>
                 <p className="way-price ml-auto">
-                  <p>314.63$</p>
+                  <p>${this.state.prices.total}</p>
                   <span className="way-state">now</span>
                 </p>
               </a>

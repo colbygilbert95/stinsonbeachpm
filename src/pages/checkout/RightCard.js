@@ -7,6 +7,7 @@ class RightCard extends Component {
     this.state = {
       listing: localStorage.getItem('listing') ? JSON.parse(localStorage.getItem('listing')) : {},
       dates: localStorage.getItem('dates') ? JSON.parse(localStorage.getItem('dates')) : {},
+      prices: localStorage.getItem('prices') ? JSON.parse(localStorage.getItem('prices')) : {},
       total: localStorage.getItem('total') ? localStorage.getItem('total') : {},
     }
   }
@@ -41,21 +42,21 @@ class RightCard extends Component {
           </div>
           <div className="price-details">
             <div className="price-detail">
-              <span>$77 X 3 nights</span>
+              <span>${this.state.prices.rate} X {this.state.prices.nights} nights</span>
               <span>$231.81</span>
             </div>
             <div className="price-detail">
               <span>cleaning fee <i className="fa fa-question-circle"></i></span>
-              <span>$43.90</span>
+              <span>${this.state.listing.CleaningFee}</span>
             </div>
             <div className="price-detail">
               <span>service fee <i className="fa fa-question-circle"></i></span>
-              <span>$38</span>
+              <span>${this.state.prices.tax}</span>
             </div>
           </div>
           <div className="total">
             <span>Total (USD)</span>
-            <span>$314.63</span>
+            <span>${this.state.prices.total}</span>
           </div>
         </div>
       </div>

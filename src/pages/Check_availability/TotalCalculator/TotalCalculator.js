@@ -11,8 +11,6 @@ class TotalCalculator extends Component {
       tax: 0,
       total: 0
     };
-    // this.startDateCallback = this.startDateCallback.bind(this);
-    // this.endDateCallback = this.endDateCallback.bind(this);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.startDate !== this.props.starDtae && prevProps.endDate !== this.props.endDate && this.props.startDate !== null && this.props.endDate !== null) {
@@ -26,15 +24,12 @@ class TotalCalculator extends Component {
       j.isBefore(endDate, "day");
       j.add(1, "days")
     ) {
-
-
       if (j.day() <= 4) {
         rent += this.props.listing.WeekdayRate
       } else if (j.day() >= 5) {
         rent += this.props.listing.WeekendRate
       }
     }
-    //this.setState({rent: rent})
     return rent
   }
 
@@ -44,7 +39,9 @@ class TotalCalculator extends Component {
     const rate = rent / nights
     const tax = Math.round((rent + this.props.listing.CleaningFee) * .14 * 100) / 100
     let total = tax + rent + this.props.listing.CleaningFee
-    this.setState({ rate: rate, nights: nights, tax: tax, rent: rent, total: total })
+    this.setState({ rate: rate, nights: nights, tax: tax, rent: rent, total: total } , () => {
+      window.localStorage.setItem('prices' , JSON.stringify(this.state))
+    })
   }
   render() {
     const { rent, rate, nights, tax, total } = this.state;

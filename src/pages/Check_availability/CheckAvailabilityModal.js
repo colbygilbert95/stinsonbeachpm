@@ -85,7 +85,7 @@ class CheckAvailabilityModal extends Component {
 
                 <GuestCalculator maxGuests={this.props.maxGuests} onGuestsChange={this.handleGuestsChange} required={this.state.isGuestsFieldRequired}></GuestCalculator>
                 {(this.state.startDate !== momentPropTypes.momentObj && this.state.endDate !== momentPropTypes.momentObj) ? (
-                  <TotalCalculator listing={listing} startDate={startDate} endDate={endDate} />
+                  <TotalCalculator listing={listing} startDate={startDate} endDate={endDate} onCalculated={this.handleOnCalculated}/>
                 ) : null}
                 <button className="check-availability-btn" onClick={this.reserve}>Reserve</button>
                 <p className="text-center mt-10 font-bold">You won't be charged yet</p>

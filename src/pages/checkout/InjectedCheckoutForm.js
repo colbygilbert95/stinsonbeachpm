@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {CardElement, Elements, ElementsConsumer} from '@stripe/react-stripe-js';
+import PropTypes from 'prop-types'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 class CheckoutForm extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
   handleSubmit = async (event) => {
     event.preventDefault();  
     const {stripe, elements} = this.props
@@ -22,12 +27,11 @@ class CheckoutForm extends React.Component {
     } 
     else {
       if (result.paymentIntent.status === 'succeeded') {
-        console.log(result)
+        window.localStorage.clear()
+        window.localStorage.setItem('session' , 'Propery has reserved successfully')
+        window.location.href = "/Book_Your_Rental";
       }
     }
-  }
-  componentDidMount(){
-    console.log(this.props)
   }
   render() {
     const {stripe} = this.props;

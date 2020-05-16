@@ -9,7 +9,17 @@ import FilterOptions from "./FilterOptions/FilterOptions";
 import ListingWindow from "./ListingsWindow/ListingWindow";
 
 class Book_Your_Rental extends Component {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      session: window.localStorage.getItem('session')
+    }
+  }
+  componentDidMount(){
+    setTimeout(() => {
+      window.localStorage.removeItem('session')
+    }, 2000)
+  }
   render() {
     console.log(this.props);
     const { units } = this.props;
@@ -17,6 +27,10 @@ class Book_Your_Rental extends Component {
       <div>
         <Header />
         <FilterOptions />
+        {
+          this.state.session &&
+          <div class="alert alert-success text-center" role="alert">{this.state.session}</div>
+        }
         <ListingWindow />
         <Footer />
       </div>
