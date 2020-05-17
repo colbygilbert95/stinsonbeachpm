@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 import { connect } from "react-redux"
-import { getUnit, getBlockedDays } from "../../store/actions/bookingActions"
+import { getUnit, getBlockedDays , openModal , setDates } from "../../store/actions/bookingActions"
 import { NavLink } from "react-router-dom"
 import Reviews from "./Reviews/Reviews"
 import ListingImages from "./ListingImages/ListingImages"
@@ -41,7 +41,13 @@ class PropertyDetails extends Component {
         end_date
       },
       () => {
-        console.log(this.state.start_date)
+        if(end_date){
+          this.props.openModal()
+          this.props.setDates({
+            startDate: start_date ,
+            endDate : end_date
+          })
+        }
       }
     )
   }
@@ -104,6 +110,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { getUnit, getBlockedDays })(
+export default connect(mapStateToProps, { getUnit, getBlockedDays , openModal , setDates })(
   PropertyDetails
 )

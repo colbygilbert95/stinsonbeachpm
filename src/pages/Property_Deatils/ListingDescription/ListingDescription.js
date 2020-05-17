@@ -8,24 +8,19 @@ import {
 import DateRangePickerWrapper from "./DateRangePickerWrapper/DateRangePickerWrapper"
 import CardSection from "./CardSection"
 import CheckAvailabilityModal from "../../Check_availability/CheckAvailabilityModal"
+import { connect } from 'react-redux'
+import { openModal } from '../../../store/actions/bookingActions'
 
 class ListingDescription extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      modalState: false,
       exapnded: false
     }
   }
   openCheckAvailabilityModal = () => {
-    this.setState({
-      modalState: true
-    })
-  }
-
-  closeModal = () => {
-    this.setState({ modalState: false })
-  }
+		this.props.openModal()
+	}
 
   readMoreBtn = () => {
     this.setState({
@@ -43,8 +38,6 @@ class ListingDescription extends Component {
       <section className="check-availability-second mt-15">
         <CheckAvailabilityModal
           maxGuests={listing.Accommodates}
-          modalState={this.state.modalState}
-          closeModal={this.closeModal}
         />
         <div className="container-n">
           <div className="row  mt-40">
@@ -101,7 +94,7 @@ class ListingDescription extends Component {
                   >
                     <a>Hide The Space</a>
                     <div class="down-arrow"></div>
-                  </div>
+                   </div>
                 </scetion>
                 <span>
                   <br />
@@ -133,4 +126,4 @@ class ListingDescription extends Component {
   }
 }
 
-export default ListingDescription
+export default connect(null , {openModal})(ListingDescription)

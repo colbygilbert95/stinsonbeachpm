@@ -7,7 +7,8 @@ const initState = {
     blockedDays: {},
     ownerInfo: {},
     totalGuests: 0,
-    dates: {}
+    dates: {},
+    modalState: false
   };
   
   const bookingReducer = (state = initState, action) => {
@@ -23,11 +24,28 @@ const initState = {
           ...state,
           totalGuests: action.playload
         }
+
+      case "OPEN_MODAL":
+        return {
+          ...state,
+          modalState: true
+        }
+
+      case "CLOSE_MODAL":
+        return {
+          ...state,
+          modalState: false
+        }
         
       case "SET_DATES":
         return {
           ...state,
           dates: action.playload
+        }
+      case "CLEAR_DATES":
+        return {
+          ...state,
+          dates: {}
         }
 
       case "GET_OWNER_INFO_BY_LISTING_ERROR":

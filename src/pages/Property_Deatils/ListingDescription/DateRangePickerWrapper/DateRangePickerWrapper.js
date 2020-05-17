@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import momentPropTypes from 'react-moment-proptypes';
 import moment from 'moment';
 import omit from 'lodash/omit';
+import {connect} from 'react-redux'
 
 
 import { DateRangePicker } from 'react-dates';
@@ -18,7 +19,6 @@ import {
 import isInclusivelyAfterDay from 'react-dates/src/utils/isInclusivelyAfterDay';
 
 const propTypes = {
-  // example props for the demo
   autoFocus: PropTypes.bool,
   autoFocusEndDate: PropTypes.bool,
   stateDateWrapper: PropTypes.func,
@@ -35,14 +35,12 @@ const propTypes = {
 };
 
 const defaultProps = {
-  // example props for the demo
   autoFocus: false,
   autoFocusEndDate: false,
   initialStartDate: null,
   initialEndDate: null,
   handleDateChange: () => { },
   required: false,
-  // input related props
   startDateId: START_DATE,
   startDatePlaceholderText: 'Checkin',
   endDateId: END_DATE,
@@ -58,9 +56,6 @@ const defaultProps = {
   block: false,
   small: false,
   regular: false,
-
-
-  // calendar presentation and interaction related props
   renderMonthText: null,
   orientation: HORIZONTAL_ORIENTATION,
   anchorDirection: ANCHOR_LEFT,
@@ -72,29 +67,21 @@ const defaultProps = {
   keepOpenOnDateSelect: false,
   reopenPickerOnClearDates: false,
   isRTL: false,
-
-  // navigation related props
   navPosition: NAV_POSITION_TOP,
   navPrev: null,
   navNext: null,
-  onPrevMonthClick() { },
-  onNextMonthClick() { },
+  onPrevMonthClick() {},
+  onNextMonthClick() {},
   onClose() { },
-
-  // day presentation and interaction related props
   renderCalendarDay: undefined,
   renderDayContents: null,
   minimumNights: 1,
   enableOutsideDays: false,
-  //isDayBlocked: () => false,
   isOutsideRange: day => !isInclusivelyAfterDay(day, moment()),
   isDayHighlighted: () => false,
-
-  // internationalization
   displayFormat: () => moment.localeData().longDateFormat('L'),
   monthFormat: 'MMMM YYYY',
   phrases: DateRangePickerPhrases,
-
   stateDateWrapper: date => date,
 };
 
@@ -112,15 +99,14 @@ class DateRangePickerWrapper extends React.Component {
 
     this.state = {
       focusedInput,
-      startDate: props.initialStartDate,
-      endDate: props.initialEndDate,
+      startDate: props.dates.startDate || props.initialStartDate ,
+      endDate: props.dates.endDate || props.initialEndDate,
       blockedDays: props.blockedDays
     };
 
     this.onDatesChange = this.onDatesChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
     this.onDayBlocked = this.onDayBlocked.bind(this);
-    //this.onDayHighlighted = this.onDayHighlighted.bind(this);
   }
 
   onDatesChange({ startDate, endDate }) {
@@ -160,10 +146,6 @@ class DateRangePickerWrapper extends React.Component {
 
   render() {
     const { focusedInput, startDate, endDate } = this.state;
-
-    // autoFocus, autoFocusEndDate, initialStartDate and initialEndDate are helper props for the
-    // example wrapper but are not props on the SingleDatePicker itself and
-    // thus, have to be omitted.
     const props = omit(this.props, [
       'autoFocus',
       'autoFocusEndDate',
@@ -193,4 +175,8 @@ class DateRangePickerWrapper extends React.Component {
 DateRangePickerWrapper.propTypes = propTypes;
 DateRangePickerWrapper.defaultProps = defaultProps;
 
-export default DateRangePickerWrapper;
+const mapStateToProps = state => ({
+  dates: state.booking.dates
+})
+
+export default connect(mapStateToProps)(DateRangePickerWrapper);

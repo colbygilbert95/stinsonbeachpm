@@ -30,6 +30,23 @@ export const setDates = dates => {
   }
 }
 
+export const clearDates = () => {
+  window.localStorage.removeItem('dates')
+  return {
+    type: 'CLEAR_DATES'
+  }
+}
+
+export const openModal = () => {
+  return {
+    type: "OPEN_MODAL"
+  }
+}
+export const closeModal = () => {
+  return {
+    type: "CLOSE_MODAL",
+  }
+}
 export const getUnit = unitName => {
   return dispatch => {
     return axios.get(apiUrl+ '/getUnit', {

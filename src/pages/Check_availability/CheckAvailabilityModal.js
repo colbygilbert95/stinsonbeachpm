@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { getUnit, getBlockedDays , setTotalGuests , setDates } from "../../store/actions/bookingActions"
+import { getUnit, getBlockedDays , setTotalGuests , setDates , closeModal , clearDates } from "../../store/actions/bookingActions"
 import DateRangePickerWrapper from "../Property_Deatils/ListingDescription/DateRangePickerWrapper/DateRangePickerWrapper";
 import GuestCalculator from './GuestCalculator'
 import TotalCalculator from './TotalCalculator/TotalCalculator'
@@ -55,6 +55,10 @@ class CheckAvailabilityModal extends Component {
       })
     }
   }
+  close = () => {
+    this.props.closeModal()
+    this.props.clearDates()
+  }
   render() {
     const { startDate, endDate } = this.state;
     const { listing, blockedDays } = this.props;
@@ -67,7 +71,7 @@ class CheckAvailabilityModal extends Component {
             <div className="check-availability-wrapper">
               <div className="content">
 
-                <button className="remove-btn" onClick={this.props.closeModal}><i className="fa fa-remove"></i></button>
+                <button className="remove-btn" onClick={this.close}><i className="fa fa-remove"></i></button>
                 <div className="price"><strong>$145 </strong> / night</div>
 
                 <div className="rate">
@@ -102,14 +106,17 @@ class CheckAvailabilityModal extends Component {
 const mapStateToProps = state => {
   return {
     listing: state.booking.listing,
-    blockedDays: state.booking.blockedDays
+    blockedDays: state.booking.blockedDays,
+    modalState: state.booking.modalState
   };
 }
 const mapDispatchtoProps = dispatch => ({
   setTotalGuests: total => dispatch(setTotalGuests(total)),
-  setDates: total => dispatch(setDates(total)),
+  setDates: dates => dispatch(setDates(dates)),
   getUnit,
-  getBlockedDays
+  getBlockedDays,
+  closeModal: () => dispatch(closeModal()),
+  clearDates: () => dispatch(clearDates())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchtoProps)(CheckAvailabilityModal))

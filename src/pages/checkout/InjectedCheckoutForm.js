@@ -28,7 +28,7 @@ class CheckoutForm extends React.Component {
     else {
       if (result.paymentIntent.status === 'succeeded') {
         window.localStorage.clear()
-        window.localStorage.setItem('session' , 'Propery has reserved successfully')
+        window.localStorage.setItem('session' , 'Property has reserved successfully')
         window.location.href = "/Book_Your_Rental";
       }
     }

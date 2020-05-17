@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-import { BrowserRouter, Route, NavLink, HashRouter, Switch } from "react-router-dom";
 import CheckAvailabilityModal from '../Check_availability/CheckAvailabilityModal'
+import { connect } from 'react-redux'
+import { openModal , closeModal} from '../../store/actions/bookingActions'
 
 class Single_blog extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			modalState: false,
 			startDate: {},
 			endDate: {}
 		}
@@ -21,20 +21,13 @@ class Single_blog extends Component {
 		this.setState({ endDate: date })
 	}
 	openCheckAvailabilityModal = () => {
-		this.setState({
-			modalState: true
-		})
+		this.props.openModal()
 	}
-
-	closeModal = () => {
-		this.setState({ modalState: false })
-	}
-
 	render() {
 		return (
 			<div>
 				<Header />
-				<CheckAvailabilityModal modalState={this.state.modalState} closeModal={this.closeModal} />
+				<CheckAvailabilityModal />
 				<section className="check-availability-section">
 					<div className="beach-box border-rds h-unset">
 						<h1>Beach View at the Bird's Nest Bungalow</h1>
@@ -124,4 +117,8 @@ class Single_blog extends Component {
 	}
 }
 
-export default Single_blog;
+const mapDispatchToProps = {
+	openModal
+}
+
+export default connect(null , mapDispatchToProps)(Single_blog);
