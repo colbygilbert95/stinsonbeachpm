@@ -36,7 +36,7 @@ const db = mysql.createConnection({
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   db.query(
-    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL
+    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, P.Address
                 FROM Listing L
                 JOIN Property P
                 JOIN ClientAccount C 
