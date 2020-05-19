@@ -58,10 +58,12 @@ app.get("/getUnit", (req, res) => {
   console.log(req.query);
   console.log("/getUnit")
   db.query(
-    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription 
+    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription, P.Address As Address 
     FROM CancellationPolicy C
+    JOIN Property P
     JOIN Listing L
     WHERE L.Name = ${db.escape(req.query.unitName)}
+    AND L.Property = P.Id 
     AND C.Id = L.CancellationPolicy`,
     (err, result) => {
       if (err) throw console.log("getUnit: " + err);
