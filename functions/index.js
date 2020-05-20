@@ -35,8 +35,9 @@ const db = mysql.createConnection({
 
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log("/getActiveUnits")
   db.query(
-    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL
+    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, P.Address
                 FROM Listing L
                 JOIN Property P
                 JOIN ClientAccount C 
@@ -58,10 +59,12 @@ app.get("/getUnit", (req, res) => {
   console.log(req.query);
   console.log("/getUnit")
   db.query(
-    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription 
+    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription, P.Address As Address 
     FROM CancellationPolicy C
+    JOIN Property P
     JOIN Listing L
     WHERE L.Name = ${db.escape(req.query.unitName)}
+    AND L.Property = P.Id 
     AND C.Id = L.CancellationPolicy`,
     (err, result) => {
       if (err) throw console.log("getUnit: " + err);
@@ -102,6 +105,25 @@ app.get("/getUnitHeaderImgs", (req, res) => {
     LIMIT 5`,
     (err, result) => {
       if (err) throw console.log("getUnitHeaderImgs: " + err);
+      res.send(result);
+    }
+  );
+});
+
+app.get("/getUnitAllImgs", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log(req.query);
+  console.log("/getAllUnitImgs")
+  db.query(
+    `SELECT I.ImgOrder, I.Descriptionstat, I.URL, R.Name
+    FROM Listing L
+    JOIN RoomType R
+    JOIN ListingImage I
+    WHERE L.Id = I.Listing 
+    AND L.Name = ${db.escape(req.query.unitName)}
+    AND I.RoomType = R.Id`,
+    (err, result) => {
+      if (err) throw console.log("getAllUnitImgs: " + err);
       res.send(result);
     }
   );
@@ -151,6 +173,25 @@ app.get("/getUnitAmenities", (req, res) => {
     LIMIT 7`,
     (err, result) => {
       if (err) throw console.log("getUnitAmenities: " + err);
+      res.send(result);
+    }
+  );
+});
+
+app.get("/getAllUnitAmenities", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log(req.query);
+  console.log("/getAllUnitAmenities");
+  db.query(
+    `SELECT A.Name, A.IconURL
+    FROM Listing L
+    JOIN Amenity A
+    JOIN ListingAmenity LA
+    WHERE L.Id = LA.Listing 
+    AND L.Name = ${db.escape(req.query.unitName)}
+    AND A.Id = LA.Amenity`,
+    (err, result) => {
+      if (err) throw console.log("getAllUnitAmenities: " + err);
       res.send(result);
     }
   );
