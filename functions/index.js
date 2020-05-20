@@ -35,6 +35,7 @@ const db = mysql.createConnection({
 
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log("/getActiveUnits")
   db.query(
     `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, P.Address
                 FROM Listing L
@@ -109,6 +110,25 @@ app.get("/getUnitHeaderImgs", (req, res) => {
   );
 });
 
+app.get("/getUnitAllImgs", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log(req.query);
+  console.log("/getAllUnitImgs")
+  db.query(
+    `SELECT I.ImgOrder, I.Descriptionstat, I.URL, R.Name
+    FROM Listing L
+    JOIN RoomType R
+    JOIN ListingImage I
+    WHERE L.Id = I.Listing 
+    AND L.Name = ${db.escape(req.query.unitName)}
+    AND I.RoomType = R.Id`,
+    (err, result) => {
+      if (err) throw console.log("getAllUnitImgs: " + err);
+      res.send(result);
+    }
+  );
+});
+
 app.get("/getRoomHeaderImgs", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
@@ -153,6 +173,25 @@ app.get("/getUnitAmenities", (req, res) => {
     LIMIT 7`,
     (err, result) => {
       if (err) throw console.log("getUnitAmenities: " + err);
+      res.send(result);
+    }
+  );
+});
+
+app.get("/getAllUnitAmenities", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log(req.query);
+  console.log("/getAllUnitAmenities");
+  db.query(
+    `SELECT A.Name, A.IconURL
+    FROM Listing L
+    JOIN Amenity A
+    JOIN ListingAmenity LA
+    WHERE L.Id = LA.Listing 
+    AND L.Name = ${db.escape(req.query.unitName)}
+    AND A.Id = LA.Amenity`,
+    (err, result) => {
+      if (err) throw console.log("getAllUnitAmenities: " + err);
       res.send(result);
     }
   );
