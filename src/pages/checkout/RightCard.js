@@ -8,7 +8,7 @@ class RightCard extends Component {
       listing: localStorage.getItem('listing') ? JSON.parse(localStorage.getItem('listing')) : {},
       dates: localStorage.getItem('dates') ? JSON.parse(localStorage.getItem('dates')) : {},
       prices: localStorage.getItem('prices') ? JSON.parse(localStorage.getItem('prices')) : {},
-      total: localStorage.getItem('total') ? localStorage.getItem('total') : {},
+      total: localStorage.getItem('total'),
     }
   }
   render() {

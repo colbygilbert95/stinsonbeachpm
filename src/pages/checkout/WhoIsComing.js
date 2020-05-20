@@ -11,7 +11,7 @@ class WhoIsComing extends Component {
     }
   }
   getClientSecretAndContinue = () => {
-    axios.post('http://localhost:5001/stinsonbeachpm/us-central1/app/charge' , {
+    axios.post('https://us-central1-stinsonbeachpm.cloudfunctions.net/app/charge' , {
       chargeAmount: Math.round(this.state.prices.total * 100)
     }).then(res => {
       this.props.nextStep({
