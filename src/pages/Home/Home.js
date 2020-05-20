@@ -27,12 +27,13 @@ class Home extends Component {
                 <div className="col-sm-12 col-md-6 mt-15">
                   <div className="custom-media-box">
                     <div className="media">
-                      <h3>Why Stinson Beach Property Management ?</h3>
+                      <h3>Why Stinson Beach Property Management?</h3>
                       <div className="cu-media-body">
                         <div className="media-contant">
                           <p>
-                            Our promise to you is to increase your revenue while
-                            freeing up your time.
+                            We guarantee you will make at least $5,000 more in
+                            the first year of working with us, or we will pay
+                            you the difference.
                           </p>
                         </div>
                       </div>
@@ -49,12 +50,33 @@ class Home extends Component {
                       <div className="cu-media-body">
                         <div className="media-contant">
                           <p>
-                            We are the only property management company in
-                            Stinson Beach that advertises properties on Airbnb
-                            and VRBO. We handle all the back end work and taxes,
-                            so you can enjoy regular payouts.
+                            Stinson Beach Property Management operates
+                            exclusively in Stinson Beach, which allows for
+                            premium individualized care to maximize your
+                            property's revenue.
                           </p>
                         </div>
+                      </div>
+
+                      <div className="cu-media-body">
+                        <div className="media-contant">
+                          <p>
+                            We specialize in managing rentals for property
+                            owners, both short and long term, and are especially
+                            attentive to continually optimizing your listing on
+                            the Airbnb and VRBO platforms. It makes a massive
+                            difference in the number of bookings you'll get.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="cu-media-body">
+                      <div className="media-contant">
+                        <p>
+                          Our promise is to both save you time and increase your
+                          rental income. There is no contract or obligation of
+                          any kind.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -100,6 +122,11 @@ class Home extends Component {
         <section className="home-second">
           <div className="container custom-container">
             <div className="row">
+            <div className="col-sm-12">
+                <div className="rent-title">
+                  <h3 className="title text-center">Earn more in 3 Steps</h3>
+                </div>
+              </div>
               <div className="col-sm-12 col-md-4">
                 <div className="home-inner-content">
                   <h3 className="home-inner-title m0 font-lg">1.</h3>
@@ -107,20 +134,18 @@ class Home extends Component {
                     Receive your action plan
                   </h3>
                   <p>
-                    Set up a meeting a Homeowner Advisor to receive a detailed
-                    action plan to take your property to the next level
+                  Set up a meeting with a Homeowner Advisor to receive a detailed action plan to take your property to the next level.
                   </p>
                 </div>
               </div>
               <div className="col-sm-12 col-md-4">
                 <div className="home-inner-content">
-                  <h3 className="home-inner-title m0 font-lg">2</h3>
+                  <h3 className="home-inner-title m0 font-lg">2.</h3>
                   <h3 className="home-inner-title mt0">
                     We prepare your property
                   </h3>
                   <p>
-                    We put the plan motion and your property gets upgraded and
-                    integrated into our management systsm.
+                  We put the plan into motion and your property gets upgraded and integrated into our management system.
                   </p>
                 </div>
               </div>
@@ -131,8 +156,7 @@ class Home extends Component {
                     Welcome your first guest
                   </h3>
                   <p>
-                    Once your property is live, qualified guests book and
-                    Homeowner payouts begin.
+                  Once your property is live, qualified guests book and Homeowner payouts begin.
                   </p>
                 </div>
               </div>
@@ -152,11 +176,7 @@ class Home extends Component {
         <section className="home-second">
           <div className="container custom-container">
             <div className="row">
-              <div className="col-sm-12">
-                <div className="rent-title">
-                  <h3 className="title text-center">Earn more in 3 Steps</h3>
-                </div>
-              </div>
+              
             </div>
             <div className="row">
               <div className="col-sm-12 col-md-4">
@@ -197,7 +217,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <div className="col-sm-12">
                 <div className="border-img text-center">
                   <img src="images/border-icon.png" />
@@ -234,7 +254,7 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="row">
               <div className="col-sm-12">
                 <div className="border-img text-center">
@@ -274,7 +294,7 @@ class Home extends Component {
                           aria-controls="collapseOne"
                         >
                           <i className="more-less glyphicon glyphicon-plus"></i>
-                          Will I have to worry about taxes?
+                          Am I a good fit for Stinson Beach PM?
                         </a>
                       </h4>
                     </div>
@@ -285,18 +305,7 @@ class Home extends Component {
                       aria-labelledby="headingOne"
                     >
                       <div className="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high
-                        life accusamus terry richardson ad squid. 3 wolf moon
-                        officia aute, non cupidatat skateboard dolor brunch.
-                        Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                        wolf moon tempor, sunt aliqua put a bird on it squid
-                        single-origin coffee nulla assumenda shoreditch et.
-                        Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan
-                        excepteur butcher vice lomo. Leggings occaecat craft
-                        beer farm-to-table, raw denim aesthetic synth nesciunt
-                        you probably haven't heard of them accusamus labore
-                        sustainable VHS.
+                      We exclusively take on clients who have properties in Stinson Beach and Bolinas. Staying focused allows us to maximize revenue for clients.
                       </div>
                     </div>
                   </div>
@@ -322,7 +331,7 @@ class Home extends Component {
                           aria-controls="collapsetwo"
                         >
                           <i className="more-less glyphicon glyphicon-plus"></i>
-                          Can I rent my own place?
+                          Do guests ever damage the property?
                         </a>
                       </h4>
                     </div>
@@ -333,23 +342,235 @@ class Home extends Component {
                       aria-labelledby="headingtwo"
                     >
                       <div className="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high
-                        life accusamus terry richardson ad squid. 3 wolf moon
-                        officia aute, non cupidatat skateboard dolor brunch.
-                        Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                        wolf moon tempor, sunt aliqua put a bird on it squid
-                        single-origin coffee nulla assumenda shoreditch et.
-                        Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan
-                        excepteur butcher vice lomo. Leggings occaecat craft
-                        beer farm-to-table, raw denim aesthetic synth nesciunt
-                        you probably haven't heard of them accusamus labore
-                        sustainable VHS.
+                      This is a very rare occupancy. People that can afford vacations in Stinson Beach are usually types that respect their surroundings.
+
+If this did ever happen, you are still covered. We gather evidence and submit a claim through Airbnb or VRBO's Resolution Center that provides protection for up to $1,000,000 in the rare event of guest damages. Homes are inspected for damage every turnover, so nothing is missed.
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div
+                  className="panel-group"
+                  id="accordion"
+                  role="tablist"
+                  aria-multiselectable="true"
+                >
+                  <div className="panel panel-default">
+                    <div className="panel-heading" role="tab" id="headingtwo">
+                      <h4 className="panel-title">
+                        <a
+                          role="button"
+                          className="custom-pl"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                          href="#collapsetwo"
+                          aria-expanded="true"
+                          aria-controls="collapsetwo"
+                        >
+                          <i className="more-less glyphicon glyphicon-plus"></i>
+                          How much will I earn?
+                        </a>
+                      </h4>
+                    </div>
+                    <div
+                      id="collapsetwo"
+                      className="panel-collapse collapse"
+                      role="tabpanel"
+                      aria-labelledby="headingtwo"
+                    >
+                      <div className="panel-body">
+                      The best way to answer this is to give you a detailed 12-month revenue projection. Give us a call, and we collect the info we need to create an accurate forecast and get back to you in 24hrs.
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className="col-sm-6">
+                <div
+                  className="panel-group"
+                  id="accordion"
+                  role="tablist"
+                  aria-multiselectable="true"
+                >
+                  <div className="panel panel-default">
+                    <div className="panel-heading" role="tab" id="headingtwo">
+                      <h4 className="panel-title">
+                        <a
+                          role="button"
+                          className="custom-pl"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                          href="#collapsetwo"
+                          aria-expanded="true"
+                          aria-controls="collapsetwo"
+                        >
+                          <i className="more-less glyphicon glyphicon-plus"></i>
+                          How are guests vetted?
+                        </a>
+                      </h4>
+                    </div>
+                    <div
+                      id="collapsetwo"
+                      className="panel-collapse collapse"
+                      role="tabpanel"
+                      aria-labelledby="headingtwo"
+                    >
+                      <div className="panel-body">
+                      In addition to requiring a verified ID by Airbnb/VRBO's Trust + Safety department, we have developed a system that examines the guest profile, previous reviews, and message content to determine guest quality.
+
+We are looking for kind, and laid back people as guests.
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div
+                  className="panel-group"
+                  id="accordion"
+                  role="tablist"
+                  aria-multiselectable="true"
+                >
+                  <div className="panel panel-default">
+                    <div className="panel-heading" role="tab" id="headingtwo">
+                      <h4 className="panel-title">
+                        <a
+                          role="button"
+                          className="custom-pl"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                          href="#collapsetwo"
+                          aria-expanded="true"
+                          aria-controls="collapsetwo"
+                        >
+                          <i className="more-less glyphicon glyphicon-plus"></i>
+                          Can I cancel at any time?
+                        </a>
+                      </h4>
+                    </div>
+                    <div
+                      id="collapsetwo"
+                      className="panel-collapse collapse"
+                      role="tabpanel"
+                      aria-labelledby="headingtwo"
+                    >
+                      <div className="panel-body">
+                      Yes. You can cancel our agreement with us at any time for no fee. Our agreement is simply for documentation and clarity around the services I am providing you and not binding in any way.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div
+                  className="panel-group"
+                  id="accordion"
+                  role="tablist"
+                  aria-multiselectable="true"
+                >
+                  <div className="panel panel-default">
+                    <div className="panel-heading" role="tab" id="headingtwo">
+                      <h4 className="panel-title">
+                        <a
+                          role="button"
+                          className="custom-pl"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                          href="#collapsetwo"
+                          aria-expanded="true"
+                          aria-controls="collapsetwo"
+                        >
+                          <i className="more-less glyphicon glyphicon-plus"></i>
+                          Will I have to worry about taxes?
+                        </a>
+                      </h4>
+                    </div>
+                    <div
+                      id="collapsetwo"
+                      className="panel-collapse collapse"
+                      role="tabpanel"
+                      aria-labelledby="headingtwo"
+                    >
+                      <div className="panel-body">
+                      We take care of all Marin County taxes, permits, and licenses for you. </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div
+                  className="panel-group"
+                  id="accordion"
+                  role="tablist"
+                  aria-multiselectable="true"
+                >
+                  <div className="panel panel-default">
+                    <div className="panel-heading" role="tab" id="headingtwo">
+                      <h4 className="panel-title">
+                        <a
+                          role="button"
+                          className="custom-pl"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                          href="#collapsetwo"
+                          aria-expanded="true"
+                          aria-controls="collapsetwo"
+                        >
+                          <i className="more-less glyphicon glyphicon-plus"></i>
+                          Can I stay at my own place?
+                        </a>
+                      </h4>
+                    </div>
+                    <div
+                      id="collapsetwo"
+                      className="panel-collapse collapse"
+                      role="tabpanel"
+                      aria-labelledby="headingtwo"
+                    >
+                      <div className="panel-body">
+                      Of course, it's your place! We do not limit homeowner use.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div
+                  className="panel-group"
+                  id="accordion"
+                  role="tablist"
+                  aria-multiselectable="true"
+                >
+                  <div className="panel panel-default">
+                    <div className="panel-heading" role="tab" id="headingtwo">
+                      <h4 className="panel-title">
+                        <a
+                          role="button"
+                          className="custom-pl"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                          href="#collapsetwo"
+                          aria-expanded="true"
+                          aria-controls="collapsetwo"
+                        >
+                          <i className="more-less glyphicon glyphicon-plus"></i>
+                          How do I get started?
+                        </a>
+                      </h4>
+                    </div>
+                    <div
+                      id="collapsetwo"
+                      className="panel-collapse collapse"
+                      role="tabpanel"
+                      aria-labelledby="headingtwo"
+                    >
+                      <div className="panel-body">
+                      The fastest way to get started is to give us a call at 415-209-5847 or give us an email at Colby@StinsonBeachPM.com</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
             </div>
             <div className="row mt-30 mb-70">
               <div className="col-sm-12">
