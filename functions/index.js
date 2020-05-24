@@ -23,7 +23,7 @@ const db = mysql.createConnection({
   database: process.env.SERVER_SQL_DATABASE,
   user: process.env.SERVER_SQL_USER,
   password: process.env.SERVER_SQL_PASSWORD,
-  // socketPath: process.env.SERVER_SQL_SOCKET_PATH
+  socketPath: process.env.SERVER_SQL_SOCKET_PATH
 });
 
 db.connect(function (err) {
