@@ -28,7 +28,7 @@ class RightCard extends Component {
               </div>
             </div>
             <div>
-              <img src="/images/redy-earn.jpg" />
+              <img src={this.state.listing.PictureURL} />
             </div>
           </div>
           <div className="guests">

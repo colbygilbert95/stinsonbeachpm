@@ -1,11 +1,13 @@
 import axios from "axios";
-const apiUrl = "https://us-central1-stinsonbeachpm.cloudfunctions.net/app";
+// const apiUrl = "https://us-central1-stinsonbeachpm.cloudfunctions.net/app";
+const apiUrl = "http://localhost:5001/stinsonbeachpm/us-central1/app";
 
 export const getActiveUnits = () => {
   return dispatch => {
     return axios
       .get(apiUrl + "/getActiveUnits")
       .then(response => {
+        console.log(response)
         dispatch({ type: "GET_ACTIVE_UNITS_SUCCESS", res_data: response.data });
       })
       .catch(err => {

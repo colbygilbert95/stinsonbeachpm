@@ -8,10 +8,8 @@ const bodyParser = require("body-parser");
 const moment = require("moment-timezone");
 const cors = require("cors");
 const stripe = require("stripe")("sk_test_0WDf0azcNEORL3fzFr84q3Ty00CJ90FvWS");
-//const data1 = require('./data1.json')
 const axios = require("axios");
 const ical = require("ical.js");
-//const dotenv = require('dotenv')
 
 const app = express();
 
@@ -19,23 +17,22 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors({origin: true}));
-
+console.log(process.env.SERVER_SQL_HOST)
 const db = mysql.createConnection({
   host: process.env.SERVER_SQL_HOST,
   database: process.env.SERVER_SQL_DATABASE,
   user: process.env.SERVER_SQL_USER,
   password: process.env.SERVER_SQL_PASSWORD,
-  socketPath: process.env.SERVER_SQL_SOCKET_PAT
+  // socketPath: process.env.SERVER_SQL_SOCKET_PATH
 });
 
-// db.connect(function (err) {
-//   if (err) throw err;
-// });
+db.connect(function (err) {
+  if (err) throw err;
+});
 
 
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
-  console.log("/getActiveUnits")
   db.query(
     `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, P.Address
                 FROM Listing L
@@ -48,6 +45,7 @@ app.get("/getActiveUnits", (req, res) => {
                 AND L.Id = I.Listing
                 AND I.ImgOrder = 1;`,
     (err, result) => {
+      console.log(result)
       if (err) throw console.log("getActiveUnits: " + err);
       res.send(result);
     }
@@ -488,7 +486,6 @@ function insertGuest(req) {
                 )`,
       (err, res) => {
         if (err) reject(console.log("insertGuest" + err));
-        //console.log("insertGuest: Success");
         resolve();
       }
     );
@@ -631,7 +628,6 @@ function updateReservation(req) {
 
       err => {
         if (err) reject(console.log("updateReservation: " + err));
-        console.log("updateReservation: Success");
         resolve();
       }
     );
@@ -911,16 +907,6 @@ function saveNull(req) {
 
 exports.app = functions.https.onRequest(app)
 
-// const server = app.listen(app.get("port"), () => {
-//   console.log("server is running on port", server.address().port);
-// });
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
 
 
 
