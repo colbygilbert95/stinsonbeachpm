@@ -50,7 +50,7 @@ class CheckAvailabilityModal extends Component {
       } , () => {
         window.localStorage.setItem('listing' , JSON.stringify(this.props.listing))
         this.props.setTotalGuests(this.state.total)
-        this.props.setDates({startDate: startDate.format('DD/MM/YYYY') ,endDate : endDate.format('DD/MM/YYYY')})
+        this.props.setDates({startDate: startDate.format('MMM D , YYYY') ,endDate : endDate.format('MMM D , YYYY')})
         this.props.history.push("/checkout");
       })
     }
