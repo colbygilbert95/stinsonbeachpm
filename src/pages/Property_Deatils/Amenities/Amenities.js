@@ -28,8 +28,12 @@ class Amenties extends Component {
             {amenities.map((amenity, index) => {
               return <AmentityCard key={index} url={amenity.IconURL} name={amenity.Name} />;
             })}
+            <div className="card-n">
+              <div className="card-cover-n show-all amentity-cover">
+                Show All >
+              </div>
+            </div>
           </div>
-          <a href="#" className="explore-all">Explore All Amenities</a>
         </div>
       </section>
     );

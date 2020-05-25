@@ -29,8 +29,12 @@ class ListingImages extends Component {
             {roomImgs.map((room, index) => {
               return <ImageCard key={index} url={room.URL} room={room.Name} />;
             })}
+            <div className="card-n">
+              <div className="card-cover-n show-all amentity-cover">
+                Show All >
+              </div>
+            </div>
           </div>
-          <a href="#" className="explore-all">Explore All Guesthouses</a>
         </div>
       </section>
     );

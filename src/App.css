@@ -970,9 +970,16 @@ textarea {
    
   }
 }
-
-
-
 .text-overflow {
   color: #484848;
+}
+.card-cover-n.show-all{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: unset !important;
+  border: 1px solid #3498DB;
+  cursor: pointer;
+  color: #3498DB;
+  font-weight: bold;
 }
