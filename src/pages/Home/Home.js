@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { NavLink } from "react-router-dom";
-import Search_form from "../Form/Search_form";
+import SearchForm from "./SearchForm/SearchForm";
+
 
 class Home extends Component {
+
+
   render() {
     return (
       <div>
@@ -13,7 +16,7 @@ class Home extends Component {
         <div className="main-banner">
           <div className="container">
             <div className="row flex justify-content-end py-5 pr-60 pl-60">
-              {<Search_form />}
+              {<SearchForm />}
             </div>
           </div>
         </div>
@@ -124,7 +127,7 @@ class Home extends Component {
             <div className="row">
               <div className="col-sm-12">
                 <div className="rent-title">
-                  <h3 className="title text-center">Earn more in 3 Steps</h3>
+                  <h3 className="title text-center"><strong>Earn more in 3 Steps</strong></h3>
                 </div>
               </div>
               <div className="col-sm-12 col-md-4">
@@ -271,7 +274,7 @@ class Home extends Component {
             <div className="row">
               <div className="col-sm-12">
                 <div className="rent-title">
-                  <h3 className="title text-center">Your questions answered</h3>
+                  <h3 className="title text-center"><strong>Your questions answered</strong></h3>
                 </div>
               </div>
             </div>

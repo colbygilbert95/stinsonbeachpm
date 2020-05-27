@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import {NavLink} from "react-router-dom";
-import Search_form from "../Form/Search_form";
+import SearchForm from "../Home/SearchForm/SearchForm";
 
 class Home extends Component {
 	render() {
@@ -18,7 +18,7 @@ class Home extends Component {
 						<div className="container-fluid">
 							<div className="row align-items-center">
 								<div className="col-lg-9"></div>
-								{<Search_form/>}
+								{<SearchForm/>}
 							</div>
 						</div>
 					</div>

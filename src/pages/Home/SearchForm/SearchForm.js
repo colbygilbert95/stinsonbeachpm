@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import Select from "react-select";
+const revenueData = require("./revenueData.json")
 
 const HomeToolTip = () => {
   return (
@@ -21,7 +22,7 @@ const TypeofPlaceOptions = [
 ];
 
 const NumberOfGuestOptions = [
-  { value: "1", label: "1 guest" },
+  
   { value: "2", label: "2 guests" },
   { value: "3", label: "3 guests" },
   { value: "4", label: "4 guests" },
@@ -38,9 +39,43 @@ const NumberOfGuestOptions = [
   { value: "15", label: "15 guests" },
   { value: "16", label: "16 guests" },
 ];
+ 
 
-export class Search_form extends Component {
+class SearchForm extends Component {
+
+  state = {
+    typeOfPlace: null,
+    numberOfGuest: null
+  }
+
+  handleTypeChange = (selectedOption) => {
+    this.setState({ typeOfPlace: selectedOption.label });
+  }
+
+  handleNumberChange = (selectedOption) => {
+    this.setState({ numberOfGuest: parseInt(selectedOption.label) });
+  }
+
+  calculateRevenue = (typeOfPlace, numberOfGuest) =>{
+    if(typeOfPlace == null || numberOfGuest == null) {
+      return "---- "
+    } 
+   console.log(revenueData)
+   console.log(revenueData[typeOfPlace][numberOfGuest])
+    const weekend = revenueData[typeOfPlace][numberOfGuest]
+    const weekday = weekend * .89
+    const orphan = weekend * .74
+
+    const avgDay = ((weekend * 2) + (weekday * 3) + (orphan * 2)) / 7
+    const avgMonth = avgDay *22
+    return Math.round(avgMonth)
+    
+  }
+
+  
+
   render() {
+    const { typeOfPlace, numberOfGuest } = this.state;
     return (
       <div className="get-appointment-form mb-50">
         <h3>Vacation Home Managment</h3>
@@ -64,6 +99,7 @@ export class Search_form extends Component {
               <Select
                 placeholder={"Type Of Place"}
                 options={TypeofPlaceOptions}
+                onChange={this.handleTypeChange}
                 className="form_select"
               />
             </div>
@@ -71,13 +107,14 @@ export class Search_form extends Component {
               <Select
                 placeholder={"Number of guests"}
                 options={NumberOfGuestOptions}
+                onChange={this.handleNumberChange}
                 className="form_select"
               />
             </div>
           </div>
           <div className="col-md-12 price_tag">
             <br />
-            <span className="form_price">$3333</span>
+            <span className="form_price">${this.calculateRevenue(typeOfPlace,numberOfGuest)} </span>
             <span className="form_label">
               {" "}
               per month{" "}
@@ -98,4 +135,4 @@ export class Search_form extends Component {
   }
 }
 
-export default Search_form;
+export default SearchForm;
