@@ -60,8 +60,6 @@ class SearchForm extends Component {
     if(typeOfPlace == null || numberOfGuest == null) {
       return "---- "
     } 
-   console.log(revenueData)
-   console.log(revenueData[typeOfPlace][numberOfGuest])
     const weekend = revenueData[typeOfPlace][numberOfGuest]
     const weekday = weekend * .89
     const orphan = weekend * .74
