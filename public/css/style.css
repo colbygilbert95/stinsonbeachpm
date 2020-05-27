@@ -834,6 +834,11 @@ ul.pd-0 {
 .form_text{
     font-size:10.5px !important;
 }
+.form_select{
+    font-size:10.5px !important;
+    min-width: 100px !important;
+    
+}
 .price_tag{
     padding:0px !important;
 }
@@ -889,6 +894,8 @@ img.author-picture {
         display: block;
         text-align: center;
     }
+
+ 
 
 }
 
