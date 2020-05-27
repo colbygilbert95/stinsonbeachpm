@@ -5,7 +5,7 @@ import ListingCard from "./ListingCard/ListingCard";
 
 class ListingWindow extends Component {
   state = {
-    showMap: true,
+    showMap: false,
   };
   componentDidMount() {
     this.props.getActiveUnits();
