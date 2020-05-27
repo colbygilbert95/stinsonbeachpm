@@ -6,7 +6,6 @@
   height: 40vmin;
 }
 h3 , h1{
-  font-family: 'leitura_displayroman' !important;
   font-weight: bold;
 }
 .App-header {
@@ -58,6 +57,7 @@ h3 , h1{
 */
 
 .earn-more {
+  font-family: 'leitura_displayroman' !important;
   display: flex;
   background-color: #EBF5FC;
   align-items: center;
@@ -74,7 +74,9 @@ h3 , h1{
   margin-bottom: 30px;
 }
 .client-result > h3 {
+  font-family: 'leitura_displayroman' !important;
   text-align: center;
+
 }
 .break {
   border-bottom: 3px solid #484848;

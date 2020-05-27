@@ -122,7 +122,7 @@ class Home extends Component {
         <section className="home-second">
           <div className="container custom-container">
             <div className="row">
-            <div className="col-sm-12">
+              <div className="col-sm-12">
                 <div className="rent-title">
                   <h3 className="title text-center">Earn more in 3 Steps</h3>
                 </div>
@@ -134,7 +134,9 @@ class Home extends Component {
                     Receive your action plan
                   </h3>
                   <p>
-                  Set up a meeting with a Homeowner Advisor to receive a detailed action plan to take your property to the next level.
+                    Set up a meeting with a Homeowner Advisor to receive a
+                    detailed action plan to take your property to the next
+                    level.
                   </p>
                 </div>
               </div>
@@ -145,7 +147,8 @@ class Home extends Component {
                     We prepare your property
                   </h3>
                   <p>
-                  We put the plan into motion and your property gets upgraded and integrated into our management system.
+                    We put the plan into motion and your property gets upgraded
+                    and integrated into our management system.
                   </p>
                 </div>
               </div>
@@ -156,7 +159,8 @@ class Home extends Component {
                     Welcome your first guest
                   </h3>
                   <p>
-                  Once your property is live, qualified guests book and Homeowner payouts begin.
+                    Once your property is live, qualified guests book and
+                    Homeowner payouts begin.
                   </p>
                 </div>
               </div>
@@ -175,9 +179,7 @@ class Home extends Component {
         </section>
         <section className="home-second">
           <div className="container custom-container">
-            <div className="row">
-              
-            </div>
+            <div className="row"></div>
             <div className="row">
               <div className="col-sm-12 col-md-4">
                 <div className="home-inner-content">
@@ -305,7 +307,9 @@ class Home extends Component {
                       aria-labelledby="headingOne"
                     >
                       <div className="panel-body">
-                      We exclusively take on clients who have properties in Stinson Beach and Bolinas. Staying focused allows us to maximize revenue for clients.
+                        We exclusively take on clients who have properties in
+                        Stinson Beach and Bolinas. Staying focused allows us to
+                        maximize revenue for clients.
                       </div>
                     </div>
                   </div>
@@ -342,46 +346,14 @@ class Home extends Component {
                       aria-labelledby="headingtwo"
                     >
                       <div className="panel-body">
-                      This is a very rare occupancy. People that can afford vacations in Stinson Beach are usually types that respect their surroundings.
-
-If this did ever happen, you are still covered. We gather evidence and submit a claim through Airbnb or VRBO's Resolution Center that provides protection for up to $1,000,000 in the rare event of guest damages. Homes are inspected for damage every turnover, so nothing is missed.
-</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-6">
-                <div
-                  className="panel-group"
-                  id="accordion"
-                  role="tablist"
-                  aria-multiselectable="true"
-                >
-                  <div className="panel panel-default">
-                    <div className="panel-heading" role="tab" id="headingtwo">
-                      <h4 className="panel-title">
-                        <a
-                          role="button"
-                          className="custom-pl"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapsetwo"
-                          aria-expanded="true"
-                          aria-controls="collapsetwo"
-                        >
-                          <i className="more-less glyphicon glyphicon-plus"></i>
-                          How much will I earn?
-                        </a>
-                      </h4>
-                    </div>
-                    <div
-                      id="collapsetwo"
-                      className="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="headingtwo"
-                    >
-                      <div className="panel-body">
-                      The best way to answer this is to give you a detailed 12-month revenue projection. Give us a call, and we collect the info we need to create an accurate forecast and get back to you in 24hrs.
+                        This is a very rare occupancy. People that can afford
+                        vacations in Stinson Beach are usually types that
+                        respect their surroundings. If this did ever happen, you
+                        are still covered. We gather evidence and submit a claim
+                        through Airbnb or VRBO's Resolution Center that provides
+                        protection for up to $1,000,000 in the rare event of
+                        guest damages. Homes are inspected for damage every
+                        turnover, so nothing is missed.
                       </div>
                     </div>
                   </div>
@@ -395,16 +367,56 @@ If this did ever happen, you are still covered. We gather evidence and submit a 
                   aria-multiselectable="true"
                 >
                   <div className="panel panel-default">
-                    <div className="panel-heading" role="tab" id="headingtwo">
+                    <div className="panel-heading" role="tab" id="headingthree">
                       <h4 className="panel-title">
                         <a
                           role="button"
                           className="custom-pl"
                           data-toggle="collapse"
                           data-parent="#accordion"
-                          href="#collapsetwo"
+                          href="#collapsethree"
                           aria-expanded="true"
-                          aria-controls="collapsetwo"
+                          aria-controls="collapsethree"
+                        >
+                          <i className="more-less glyphicon glyphicon-plus"></i>
+                          How much will I earn?
+                        </a>
+                      </h4>
+                    </div>
+                    <div
+                      id="collapsethree"
+                      className="panel-collapse collapse"
+                      role="tabpanel"
+                      aria-labelledby="headingthree"
+                    >
+                      <div className="panel-body">
+                        The best way to answer this is to give you a detailed
+                        12-month revenue projection. Give us a call, and we
+                        collect the info we need to create an accurate forecast
+                        and get back to you in 24hrs.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div
+                  className="panel-group"
+                  id="accordion"
+                  role="tablist"
+                  aria-multiselectable="true"
+                >
+                  <div className="panel panel-default">
+                    <div className="panel-heading" role="tab" id="headingfour">
+                      <h4 className="panel-title">
+                        <a
+                          role="button"
+                          className="custom-pl"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                          href="#collapsefour"
+                          aria-expanded="true"
+                          aria-controls="collapsefour"
                         >
                           <i className="more-less glyphicon glyphicon-plus"></i>
                           How are guests vetted?
@@ -412,16 +424,18 @@ If this did ever happen, you are still covered. We gather evidence and submit a 
                       </h4>
                     </div>
                     <div
-                      id="collapsetwo"
+                      id="collapsefour"
                       className="panel-collapse collapse"
                       role="tabpanel"
-                      aria-labelledby="headingtwo"
+                      aria-labelledby="headingfour"
                     >
                       <div className="panel-body">
-                      In addition to requiring a verified ID by Airbnb/VRBO's Trust + Safety department, we have developed a system that examines the guest profile, previous reviews, and message content to determine guest quality.
-
-We are looking for kind, and laid back people as guests.
-</div>
+                        In addition to requiring a verified ID by Airbnb/VRBO's
+                        Trust + Safety department, we have developed a system
+                        that examines the guest profile, previous reviews, and
+                        message content to determine guest quality. We are
+                        looking for kind, and laid back people as guests.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -434,16 +448,16 @@ We are looking for kind, and laid back people as guests.
                   aria-multiselectable="true"
                 >
                   <div className="panel panel-default">
-                    <div className="panel-heading" role="tab" id="headingtwo">
+                    <div className="panel-heading" role="tab" id="headingfive">
                       <h4 className="panel-title">
                         <a
                           role="button"
                           className="custom-pl"
                           data-toggle="collapse"
                           data-parent="#accordion"
-                          href="#collapsetwo"
+                          href="#collapsefive"
                           aria-expanded="true"
-                          aria-controls="collapsetwo"
+                          aria-controls="collapsefive"
                         >
                           <i className="more-less glyphicon glyphicon-plus"></i>
                           Can I cancel at any time?
@@ -451,13 +465,17 @@ We are looking for kind, and laid back people as guests.
                       </h4>
                     </div>
                     <div
-                      id="collapsetwo"
+                      id="collapsefive"
                       className="panel-collapse collapse"
                       role="tabpanel"
-                      aria-labelledby="headingtwo"
+                      aria-labelledby="headingfive"
                     >
                       <div className="panel-body">
-                      Yes. You can cancel our agreement with us at any time for no fee. Our agreement is simply for documentation and clarity around the services I am providing you and not binding in any way.</div>
+                        Yes. You can cancel our agreement with us at any time
+                        for no fee. Our agreement is simply for documentation
+                        and clarity around the services I am providing you and
+                        not binding in any way.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -470,16 +488,16 @@ We are looking for kind, and laid back people as guests.
                   aria-multiselectable="true"
                 >
                   <div className="panel panel-default">
-                    <div className="panel-heading" role="tab" id="headingtwo">
+                    <div className="panel-heading" role="tab" id="headingsix">
                       <h4 className="panel-title">
                         <a
                           role="button"
                           className="custom-pl"
                           data-toggle="collapse"
                           data-parent="#accordion"
-                          href="#collapsetwo"
+                          href="#collapsesix"
                           aria-expanded="true"
-                          aria-controls="collapsetwo"
+                          aria-controls="collapsesix"
                         >
                           <i className="more-less glyphicon glyphicon-plus"></i>
                           Will I have to worry about taxes?
@@ -487,13 +505,15 @@ We are looking for kind, and laid back people as guests.
                       </h4>
                     </div>
                     <div
-                      id="collapsetwo"
+                      id="collapsesix"
                       className="panel-collapse collapse"
                       role="tabpanel"
-                      aria-labelledby="headingtwo"
+                      aria-labelledby="headingsix"
                     >
                       <div className="panel-body">
-                      We take care of all Marin County taxes, permits, and licenses for you. </div>
+                        We take care of all Marin County taxes, permits, and
+                        licenses for you.{" "}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -506,16 +526,16 @@ We are looking for kind, and laid back people as guests.
                   aria-multiselectable="true"
                 >
                   <div className="panel panel-default">
-                    <div className="panel-heading" role="tab" id="headingtwo">
+                    <div className="panel-heading" role="tab" id="headingseven">
                       <h4 className="panel-title">
                         <a
                           role="button"
                           className="custom-pl"
                           data-toggle="collapse"
                           data-parent="#accordion"
-                          href="#collapsetwo"
+                          href="#collapseseven"
                           aria-expanded="true"
-                          aria-controls="collapsetwo"
+                          aria-controls="collapseseven"
                         >
                           <i className="more-less glyphicon glyphicon-plus"></i>
                           Can I stay at my own place?
@@ -523,13 +543,15 @@ We are looking for kind, and laid back people as guests.
                       </h4>
                     </div>
                     <div
-                      id="collapsetwo"
+                      id="collapseseven"
                       className="panel-collapse collapse"
                       role="tabpanel"
-                      aria-labelledby="headingtwo"
+                      aria-labelledby="headingseven"
                     >
                       <div className="panel-body">
-                      Of course, it's your place! We do not limit homeowner use.</div>
+                        Of course, it's your place! We do not limit homeowner
+                        use.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -542,16 +564,16 @@ We are looking for kind, and laid back people as guests.
                   aria-multiselectable="true"
                 >
                   <div className="panel panel-default">
-                    <div className="panel-heading" role="tab" id="headingtwo">
+                    <div className="panel-heading" role="tab" id="headingeight">
                       <h4 className="panel-title">
                         <a
                           role="button"
                           className="custom-pl"
                           data-toggle="collapse"
                           data-parent="#accordion"
-                          href="#collapsetwo"
+                          href="#collapseeight"
                           aria-expanded="true"
-                          aria-controls="collapsetwo"
+                          aria-controls="collapseeight"
                         >
                           <i className="more-less glyphicon glyphicon-plus"></i>
                           How do I get started?
@@ -559,18 +581,20 @@ We are looking for kind, and laid back people as guests.
                       </h4>
                     </div>
                     <div
-                      id="collapsetwo"
+                      id="collapseeight"
                       className="panel-collapse collapse"
                       role="tabpanel"
-                      aria-labelledby="headingtwo"
+                      aria-labelledby="headingeight"
                     >
                       <div className="panel-body">
-                      The fastest way to get started is to give us a call at 415-209-5847 or give us an email at Colby@StinsonBeachPM.com</div>
+                        The fastest way to get started is to give us a call at
+                        415-209-5847 or give us an email at
+                        Colby@StinsonBeachPM.com
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
             </div>
             <div className="row mt-30 mb-70">
               <div className="col-sm-12">

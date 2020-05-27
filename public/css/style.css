@@ -46,6 +46,7 @@ h1, h2, h3, h4, span, p, a, div {
     text-decoration: underline;
 }
 .title{
+    font-family: 'leitura_displayroman' !important;
     color: #4b484b;
     font-size: 28px;
     text-align: center;
@@ -114,6 +115,7 @@ div#accordion a.custom-pl {
     position: relative;
 }
 .redy-to-earn-text {
+    font-family: 'leitura_displayroman' !important;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -162,6 +164,7 @@ div#accordion a.custom-pl {
     margin-top: 30px;
 }
 .media h3 {
+    font-family: 'leitura_displayroman' !important;
     margin-bottom: 25px;
 }
 .get-appointment-form h3 {
@@ -822,6 +825,7 @@ ul.pd-0 {
 .form_price {
     font-size: 2.0em;
     font-weight: bold;
+    color: #484848;
 }
 .form_edit_1 {
     padding-left: 0px !important;
