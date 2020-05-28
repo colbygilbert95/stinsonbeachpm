@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { getUnitAmenities } from "../../../store/actions/bookingActions";
 import { connect } from "react-redux";
 import AmentityCard from "./AmenityCard.js/AmenityCard";
+import { withRouter } from 'react-router';
 
 class Amenties extends Component {
   componentDidMount() {
-    const { unitName } = this.props;
+    let unitName = this.props.location.state
+      ? this.props.location.state.unitName
+      : window.location.href.split(/([^\/]+$)/)[1].replace("_", " ")
     this.props.getUnitAmenities(unitName);
   }
   componentDidUpdate(prevProps) {
@@ -15,8 +18,7 @@ class Amenties extends Component {
     }
   }
   render() {
-    const amenities =
-      this.props.amenities === undefined ? [] : this.props.amenities;
+    const amenities = this.props.amenities === undefined ? [] : this.props.amenities;
     return (
       <section className="property-services">
         <div className="container-n">
@@ -26,9 +28,9 @@ class Amenties extends Component {
           </div>
           <div className="card-wrapper-n">
             {amenities.map((amenity, index) => {
-              return <AmentityCard key={index} url={amenity.IconURL} name={amenity.Name} />;
+              return <AmentityCard key={index} url={amenity.IconURL} name={amenity.Name}/>;
             })}
-            <div className="card-n">
+            <div className="card-n" onClick={() => this.props.history.push('/amenity-details')}>
               <div className="card-cover-n show-all amentity-cover">
                 Show All >
               </div>
@@ -36,7 +38,7 @@ class Amenties extends Component {
           </div>
         </div>
       </section>
-    );
+    )
   }
 }
 
@@ -46,4 +48,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getUnitAmenities })(Amenties);
+export default withRouter(connect(mapStateToProps, { getUnitAmenities })(Amenties));

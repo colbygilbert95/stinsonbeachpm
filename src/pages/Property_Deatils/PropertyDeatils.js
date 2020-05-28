@@ -26,11 +26,9 @@ class PropertyDetails extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props)
     let unitName = this.props.location.state
       ? this.props.location.state.unitName
       : window.location.href.split(/([^\/]+$)/)[1].replace("_", " ")
-
     this.props.getUnit(unitName)
     this.props.getBlockedDays(unitName)
   }
@@ -53,7 +51,6 @@ class PropertyDetails extends Component {
   }
   render() {
     const { listing, blockedDays } = this.props
-
     return (
       <div>
         <Header />
@@ -63,11 +60,7 @@ class PropertyDetails extends Component {
         <ListingImages unitName={listing.Name} />
         <Amenties unitName={listing.Name} />
         <Location listing={listing} />
-        <Reviews
-          unitName={listing.Name}
-          numReviews={listing.NumReviews}
-          avgReviews={listing.AvgReviews}
-        />
+        <Reviews unitName={listing.Name} numReviews={listing.NumReviews} avgReviews={listing.AvgReviews} />
         <div className="container-fluid">
           <div className="row row_padding">
             <div className="col-md-12 col-lg-7 mt-15">
@@ -76,21 +69,6 @@ class PropertyDetails extends Component {
                 onDateChange={this.changeDates}
               />
             </div>
-            {/* <div className="col-md-12 col-lg-5 mt-15">
-              <DateRangePickerWrapper
-                blockedDays={blockedDays}
-                initialStartDate={this.state.start_date}
-                initialEndDate={this.state.end_date}
-              />
-              <select class="form-control mt-30 gusts-slect-menu">
-                <option>Guests</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div> */}
           </div>
         </div>
         <MeetOwner unitName={listing.Name} />

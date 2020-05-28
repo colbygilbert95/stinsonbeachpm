@@ -24,6 +24,7 @@ import Property_Deatils from "./pages/Property_Deatils/PropertyDeatils"
 import Guarantee from "./pages/Guarantee/Guarantee"
 import Test from "./pages/Test/Test"
 import Checkout from "./pages/Checkout/Checkout"
+import AmenityDetails from "./pages/Property_Deatils/Amenities/AmenityDetails"
 
 const stripePromise = loadStripe("pk_test_gTILJQKMDQTwNk6vS8gNwbib00UhqAgoeB")
 
@@ -37,21 +38,9 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/Blog" component={Blog} />
               <Route exact path="/Single_blog" component={Single_blog} />
-              <Route
-                exact
-                path="/Book_Your_Rental"
-                component={Book_Your_Rental}
-              />
-              <Route
-                exact
-                path="/Check_availability"
-                component={Check_availability}
-              />
-              <Route
-                exact
-                path="/Property_Deatils"
-                component={Property_Deatils}
-              />
+              <Route exact path="/Book_Your_Rental" component={Book_Your_Rental} />
+              <Route exact path="/Check_availability" component={Check_availability} />
+              <Route exact path="/Property_Deatils" component={Property_Deatils} />
               <Route exact path="/Guarantee" component={Guarantee} />
               <Route exact path="/Test" component={Test} />
               <Route exact path="/11_Sierra" component={Property_Deatils} />
@@ -64,6 +53,7 @@ class App extends Component {
               <Route exact path="/Mermaid_View" component={Property_Deatils} />
               <Route exact path="/27_Pradero" component={Property_Deatils} />
               <Route exact path="/checkout" component={Checkout} />
+              <Route exact path="/amenity-details" component={AmenityDetails} />
             </div>
           </div>
         </BrowserRouter>
