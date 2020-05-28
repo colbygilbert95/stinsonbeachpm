@@ -983,10 +983,18 @@ textarea {
 }
 .amenity-details-wrapper h1 {
   color: #484848;
+  font-family: 'leitura_displayroman';
 }
 .amenity-details-wrapper .header{
   margin-bottom: 20px;
   border-bottom: 1px solid #f2f2f2;
+}
+.amenity-details-wrapper .list {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.amenity-details-wrapper .list h1 {
+  margin-bottom: 50px;
 }
 .back-button{
   display: inline-block;
@@ -997,7 +1005,6 @@ textarea {
   margin-left: 20px;
   margin-top: 5px;
 }
-
 .googleContainerStyle {
   width: 100%;
   margin: 0 auto;

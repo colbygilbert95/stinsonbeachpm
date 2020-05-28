@@ -2,24 +2,24 @@ import React, { Component } from 'react'
 import AmentityCard from "./AmenityCard.js/AmenityCard";
 import { getUnitAmenities } from "../../../store/actions/bookingActions";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
 
 class AmenityDetails extends Component {
-  componentDidMount() {
-    const { unitName } = this.props;
-    this.props.getUnitAmenities(unitName);
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps.unitName != this.props.unitName) {
-      const { unitName } = this.props;
-      this.props.getUnitAmenities(unitName);
+  constructor(props){
+    super(props)
+    this.state = {
+      amenities: JSON.parse(localStorage.getItem('amenities'))
     }
   }
+  returnBack = () => {
+    this.props.history.goBack()
+  }
   render() {
-    const amenities = this.props.amenities === undefined ? [] : this.props.amenities;
+    const amenities = this.state.amenities
     return (
       <div className="amenity-details-wrapper">
         <div className="header">
-          <a href="#" className="back-button">
+          <a href="#" className="back-button" onClick={this.returnBack}> 
             <i class="fa fa-chevron-left"></i>
           </a>
         </div>
@@ -50,4 +50,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getUnitAmenities })(AmenityDetails)
+export default withRouter(connect(mapStateToProps, { getUnitAmenities })(AmenityDetails))
