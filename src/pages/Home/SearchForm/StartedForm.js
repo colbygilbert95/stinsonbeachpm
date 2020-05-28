@@ -42,7 +42,7 @@ function StartedForm(props) {
         Host: process.env.REACT_APP_EMAIL_HOST,
         Username: process.env.REACT_APP_EMAIL_USERNAME,
         Password: process.env.REACT_APP_EMAIL_PASSWORD,
-        To: "colby@dipseapm.com",
+        To: "tahmidziko@gmail.com",
         From: "colby@dipseapm.com",
         Subject: "[Dipseapm.com] New Client Inqury",
         Body: `

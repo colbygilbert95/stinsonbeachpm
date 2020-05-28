@@ -4,12 +4,9 @@ import { connect } from "react-redux";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import Select from "react-select";
-import HomeGetStartedModal from "../Modal";
-import {
-  setSelectedGuest,
-  setSelectedPlace,
-  setSelectedvalue,
-} from "../../store/actions/sendMessageActons";
+import HomeGetStartedModal from "../../Modal";
+import { setSelectedvalue } from "../../../store/actions/sendMessageActions";
+const revenueData = require("./revenueData.json");
 
 const HomeToolTip = () => {
   return (
@@ -46,8 +43,37 @@ const NumberOfGuestOptions = [
   { id: "selectedGuest", value: "16", label: "16 guests" },
 ];
 
-export class Search_form extends Component {
+class SearchForm extends Component {
+  state = {
+    typeOfPlace: null,
+    numberOfGuest: null,
+  };
+
+  handleTypeChange = selectedOption => {
+    this.setState({ typeOfPlace: selectedOption.label });
+  };
+
+  handleNumberChange = selectedOption => {
+    this.setState({ numberOfGuest: parseInt(selectedOption.label) });
+  };
+
+  calculateRevenue = (typeOfPlace, numberOfGuest) => {
+    if (typeOfPlace == null || numberOfGuest == null) {
+      return "---- ";
+    }
+    console.log(revenueData);
+    console.log(revenueData[typeOfPlace][numberOfGuest]);
+    const weekend = revenueData[typeOfPlace][numberOfGuest];
+    const weekday = weekend * 0.89;
+    const orphan = weekend * 0.74;
+
+    const avgDay = (weekend * 2 + weekday * 3 + orphan * 2) / 7;
+    const avgMonth = avgDay * 22;
+    return Math.round(avgMonth);
+  };
+
   render() {
+    const { typeOfPlace, numberOfGuest } = this.state;
     return (
       <div className="get-appointment-form mb-50">
         <h3>Vacation Home Managment</h3>
@@ -71,6 +97,7 @@ export class Search_form extends Component {
               <Select
                 placeholder={"Type Of Place"}
                 options={TypeofPlaceOptions}
+                onChange={this.handleTypeChange}
                 className="form_select"
                 onChange={this.props.change}
               />
@@ -79,6 +106,7 @@ export class Search_form extends Component {
               <Select
                 placeholder={"Number of guests"}
                 options={NumberOfGuestOptions}
+                onChange={this.handleNumberChange}
                 className="form_select"
                 onChange={this.props.change}
               />
@@ -86,7 +114,9 @@ export class Search_form extends Component {
           </div>
           <div className="col-md-12 price_tag">
             <br />
-            <span className="form_price">$3333</span>
+            <span className="form_price">
+              ${this.calculateRevenue(typeOfPlace, numberOfGuest)}{" "}
+            </span>
             <span className="form_label">
               {" "}
               per month{" "}
@@ -121,4 +151,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Search_form);
+export default connect(null, mapDispatchToProps)(SearchForm);

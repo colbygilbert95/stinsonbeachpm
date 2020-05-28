@@ -934,7 +934,6 @@ textarea {
   border: 1px double #61c0ff;
   color: #007a87
 }
-
 .DayPickerKeyboardShortcuts_show__bottomRight::before {
   border-top: 26px solid transparent;
   border-right: 33px solid #3498DB;
@@ -944,12 +943,10 @@ textarea {
 .DayPickerKeyboardShortcuts_show__bottomRight:hover::before {
   border-right: 33px solid #0471ba
 }
-
 .other-card {
   display: inline-block;
   padding: 0 10px;
 }
-
 .other-cover-n {
   width: 25vw;
   height: 17vw;
@@ -964,7 +961,6 @@ textarea {
    
   }
 }
-
 @media(max-width: 500px){
   .other-cover-n {
     width: 100%;
@@ -985,7 +981,30 @@ textarea {
   color: #3498DB;
   font-weight: bold;
 }
-
+.amenity-details-wrapper h1 {
+  color: #484848;
+  font-family: 'leitura_displayroman';
+}
+.amenity-details-wrapper .header{
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.amenity-details-wrapper .list {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.amenity-details-wrapper .list h1 {
+  margin-bottom: 50px;
+}
+.back-button{
+  display: inline-block;
+  padding: 10px;
+  border-radius: 3px;
+  color: #484848;
+  font-size: 25px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
 .googleContainerStyle {
   width: 100%;
   margin: 0 auto;

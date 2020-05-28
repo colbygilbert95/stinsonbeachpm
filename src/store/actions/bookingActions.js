@@ -130,6 +130,7 @@ export const getUnitAmenities = unitName => {
     })
       .then(response => {
         dispatch({ type: "GET_UNIT_AMENITIES_SUCCESS", res_data: response.data });
+        window.localStorage.setItem('amenities' , JSON.stringify(response.data))
       })
       .catch(err => {
         dispatch({ type: "GET_UNIT_AMENITIES_ERROR", err });

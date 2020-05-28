@@ -1,5 +1,5 @@
 import React from "react";
-import GetForm from "../Form/StartedForm";
+import GetForm from "../Home/SearchForm/StartedForm";
 function Modal(props) {
   return (
     <div
