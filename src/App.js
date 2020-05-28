@@ -19,7 +19,6 @@ import Home from "./pages/Home/Home"
 import Blog from "./pages/Blog/Blog"
 import Single_blog from "./pages/Single_blog/Single_blog"
 import Book_Your_Rental from "./pages/Book_Your_Rental/Book_Your_Rental"
-import Check_availability from "./pages/Check_availability/CheckAvailability"
 import Property_Deatils from "./pages/Property_Deatils/PropertyDeatils"
 import Guarantee from "./pages/Guarantee/Guarantee"
 import Test from "./pages/Test/Test"
@@ -39,7 +38,6 @@ class App extends Component {
               <Route exact path="/Blog" component={Blog} />
               <Route exact path="/Single_blog" component={Single_blog} />
               <Route exact path="/Book_Your_Rental" component={Book_Your_Rental} />
-              <Route exact path="/Check_availability" component={Check_availability} />
               <Route exact path="/Property_Deatils" component={Property_Deatils} />
               <Route exact path="/Guarantee" component={Guarantee} />
               <Route exact path="/Test" component={Test} />

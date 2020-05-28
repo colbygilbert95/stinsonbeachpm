@@ -1,33 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { getActiveUnits } from "../../../store/actions/bookingActions";
 import { connect } from "react-redux";
-import ListingCard from './ListingCard/ListingCard';
+import ListingCard from "./ListingCard/ListingCard";
 
 class ListingWindow extends Component {
+  state = {
+    showMap: false,
+  };
   componentDidMount() {
     this.props.getActiveUnits();
   }
   render() {
-    const { units } = this.props
+    const { units } = this.props;
     return (
       <section className="book-rental-inner">
-        <div className="container-n">
-          <div className="rent-title">
-            <h3 className="title text-left">Top Rated Places to Stay</h3>
+        <div
+          className={`${
+            this.state.showMap ? "googleContainerStyle row" : "container-n"
+          }`}
+        >
+          <div className={`${this.state.showMap ? "col-md-6" : ""}`}>
+            <div className="rent-title">
+              <h3 className="title text-left">Top Rated Places to Stay</h3>
+            </div>
+            <div className="card-wrapper-n">
+              {units.map((unit, index) => {
+                return <ListingCard unitData={unit} key={index} />;
+              })}
+            </div>
           </div>
-          <div className="card-wrapper-n">
-            {units.map((unit, index) => {
-              return (<ListingCard unitData={unit} key={index} />)
-            })}
-
-          </div>
+          {this.state.showMap ? (
+            <div className="col-md-6 google-map-nav">Goggle Map</div>
+          ) : null}
         </div>
-      </section>);
+      </section>
+    );
   }
 }
 const mapStateToProps = state => {
   return {
-    units: state.booking.units
+    units: state.booking.units,
   };
 };
 
