@@ -55,8 +55,16 @@ class SearchForm extends Component {
 
   handleNumberChange = selectedOption => {
     this.setState({ numberOfGuest: parseInt(selectedOption.label) });
-  };
+  }
 
+  calculateRevenue = (typeOfPlace, numberOfGuest) =>{
+    if(typeOfPlace == null || numberOfGuest == null) {
+      return "---- "
+    } 
+    const weekend = revenueData[typeOfPlace][numberOfGuest]
+    const weekday = weekend * .89
+    const orphan = weekend * .74
+  }
   calculateRevenue = (typeOfPlace, numberOfGuest) => {
     if (typeOfPlace == null || numberOfGuest == null) {
       return "---- ";

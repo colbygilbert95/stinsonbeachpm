@@ -38,6 +38,9 @@ class ListingDescription extends Component {
       <section className="check-availability-second mt-15">
         <CheckAvailabilityModal
           maxGuests={listing.Accommodates}
+          listing={listing}
+
+
         />
         <div className="container-n">
           <div className="row  mt-40">

@@ -72,11 +72,11 @@ class CheckAvailabilityModal extends Component {
               <div className="content">
 
                 <button className="remove-btn" onClick={this.close}><i className="fa fa-remove"></i></button>
-                <div className="price"><strong>$145 </strong> / night</div>
+                <div className="price"><strong>${listing.WeekdayRate} </strong> / night</div>
 
                 <div className="rate">
                   <i className="fa fa-star"></i>
-                  <strong>4.7</strong> (16)
+                  <strong>{listing.AvgReviews}</strong> ({listing.NumReviews})
                 </div>
                 <p><strong>Dates</strong></p>
 
