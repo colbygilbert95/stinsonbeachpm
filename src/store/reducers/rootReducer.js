@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import bookingReducer from "./bookingReducer"
+import bookingReducer from "./bookingReducer";
+import sendMessageReducer from "./sendMessageReducer";
 
 const rootReducer = combineReducers({
-    booking: bookingReducer
-})
+  booking: bookingReducer,
+  sendMessage: sendMessageReducer,
+});
 
-export default rootReducer
+export default rootReducer;
