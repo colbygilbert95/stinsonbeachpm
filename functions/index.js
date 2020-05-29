@@ -878,7 +878,6 @@ function cancelQualityControl(req) {
           Status = ${db.escape(
         "Cancelled"
       )} 
-          
             WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
         req.body.code
       )} LIMIT 1);
