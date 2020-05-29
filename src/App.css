@@ -988,6 +988,7 @@ textarea {
 .amenity-details-wrapper .header{
   margin-bottom: 20px;
   border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 10px;
 }
 .amenity-details-wrapper .list {
   margin-top: 20px;
@@ -1004,6 +1005,11 @@ textarea {
   font-size: 25px;
   margin-left: 20px;
   margin-top: 5px;
+}
+.listing-details-wrapper .header{
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 10px;
 }
 .googleContainerStyle {
   width: 100%;
