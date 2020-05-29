@@ -4,7 +4,7 @@ import { getUnit, getBlockedDays , setTotalGuests , setDates , closeModal , clea
 import DateRangePickerWrapper from "../Property_Deatils/ListingDescription/DateRangePickerWrapper/DateRangePickerWrapper";
 import GuestCalculator from './GuestCalculator'
 import TotalCalculator from './TotalCalculator/TotalCalculator'
-import { NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import momentPropTypes from "react-moment-proptypes";
 
 

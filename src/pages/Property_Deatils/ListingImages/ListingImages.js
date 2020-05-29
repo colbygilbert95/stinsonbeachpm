@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getRoomHeaderImgs } from "../../../store/actions/bookingActions";
 import { connect } from "react-redux";
 import ImageCard from "./ImageCard/ImageCard";
+import { withRouter } from 'react-router-dom'
 
 class ListingImages extends Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ class ListingImages extends Component {
             {roomImgs.map((room, index) => {
               return <ImageCard key={index} url={room.URL} room={room.Name} />;
             })}
-            <div className="card-n">
+            <div className="card-n" onClick={() => this.props.history.push('/take-tour')}>
               <div className="card-cover-n show-all amentity-cover">
                 Show All >
               </div>
@@ -46,4 +47,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getRoomHeaderImgs })(ListingImages);
+export default withRouter(connect(mapStateToProps, { getRoomHeaderImgs })(ListingImages));
