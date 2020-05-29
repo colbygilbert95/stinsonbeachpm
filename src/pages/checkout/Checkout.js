@@ -8,7 +8,7 @@ class Checkout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      step: 0,
+      step: 1,
       components: [Review , WhoIsComing, Pay],
       data: {}
     }
@@ -22,7 +22,8 @@ class Checkout extends Component {
       })
     })
   }
-  changeStep = (step) => {
+  changeStep = (step , e) => {
+    e.preventDefault()
     this.setState({
       step
     })

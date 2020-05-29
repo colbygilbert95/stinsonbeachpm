@@ -1032,6 +1032,11 @@ textarea {
   font-family: 'leitura_displayroman';
 }
 
+.loading-icon {
+  width: 20px;
+  margin-right: 5px;
+}
+
 .googleContainerStyle {
   width: 100%;
   margin: 0 auto;
