@@ -11,7 +11,7 @@ class Review extends Component {
       <div className="container mt-40">
         <div className="row">
           <div className="col-md-6">
-            <h3>Review House Rules</h3>
+            <h3 className="roman">Review House Rules</h3>
             <h4 className="number-of-nights">3 Nights In Surry Hills</h4>
             <div className="checkouts-wrapper">
               <div className="check">

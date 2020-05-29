@@ -26,7 +26,7 @@ class WhoIsComing extends Component {
       <div className="container mt-40">
         <div className="row">
           <div className="col-md-6">
-            <h3>Who's Coming</h3>
+            <h3 className="roman">Who's Coming</h3>
             <h4 className="number-of-nights">
               Introduce Yourself
             </h4>

@@ -21,19 +21,22 @@ class Pay extends Component {
       <div className="container mt-40">
         <div className="row">
           <div className="col-md-6">
-            <h3>Confirm and Pay</h3>
+            <h3 className="roman">Confirm and Pay</h3>
             <span className="title-3 block mt-40">How do you want to pay?</span>
             <div className="ways-to-pay">
               <a href="#" className={payWay === 'full' ? 'way-to-pay active' : 'way-to-pay'} onClick={() => this.changePayWay('full')}>
                 <span className={payWay === 'full' ? 'circle-thick' : 'circle-thin'}></span>
-                <p className="way-title">Pay In Full</p>
+                <p className="way-title">
+                  Pay In Full
+                  <p className="way-description" style={{display: payWay === 'full' ? 'block' : 'none'}}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
+                </p>
                 <p className="way-price ml-auto">${this.state.prices.total}</p>
               </a>
               <a href="#" className={payWay === 'less' ? 'way-to-pay active' : 'way-to-pay'} onClick={() => this.changePayWay('less')}>
                 <span className={payWay === 'less' ? 'circle-thick' : 'circle-thin'}></span>
                 <p className="way-title">
                   Pay less upfront
-                  <p className="way-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
+                  <p className="way-description" style={{display: payWay === 'less' ? 'block' : 'none'}}>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.</p>
                 </p>
                 <p className="way-price ml-auto">
                   <p>${this.state.prices.total}</p>
