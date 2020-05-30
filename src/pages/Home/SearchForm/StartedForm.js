@@ -42,7 +42,7 @@ function StartedForm(props) {
         Host: process.env.REACT_APP_EMAIL_HOST,
         Username: process.env.REACT_APP_EMAIL_USERNAME,
         Password: process.env.REACT_APP_EMAIL_PASSWORD,
-        To: "tahmidziko@gmail.com",
+        To: "colby@dipseapm.com",
         From: "colby@dipseapm.com",
         Subject: "[Dipseapm.com] New Client Inqury",
         Body: `
@@ -54,6 +54,7 @@ function StartedForm(props) {
              <p> Number Of Guest:  ${props.guest} </p> </br>
            `,
       }).then(message => {
+        setButtonLoading(false);
         if (message === "OK") {
           setValues({
             name: "",
@@ -62,7 +63,6 @@ function StartedForm(props) {
             body: "",
           });
           setSuccessMessage(true);
-          setButtonLoading(false);
         } else {
           console.log(message);
         }
