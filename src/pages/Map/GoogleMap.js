@@ -62,7 +62,7 @@ function GoogleMapCombo(props) {
 
   const handleZoomChange = () => {
     if (mapRef.current) {
-      props.setZoom(mapRef.current.zoom);
+      //props.setZoom(mapRef.current.zoom);
       console.log("Get Current Zoom", mapRef.current.zoom);
     }
   };

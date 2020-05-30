@@ -23,16 +23,16 @@ class MeetOwner extends Component {
     const { FirstName, LastName, Bio, PictureURL, AddedOn } = ownerInfo;
     return (
       <section className="meet-the-owner">
-        <div className="container-fluid">
+        <div className="container-n">
           <hr />
-          <div className="row row_padding">
+          <div className="row ">
             <div className="col-sm-12">
               <div className="rent-title">
                 <h3 className="title text-left">Meet the Owner</h3>
               </div>
             </div>
           </div>
-          <div className="row row_padding mb-40">
+          <div className="row  mb-40">
             <div className="col-sm-9 mt-15">
               <div className="meet-box">
                 <div className="row">
@@ -83,7 +83,7 @@ class MeetOwner extends Component {
 }
 const mapStateToProps = state => {
   return {
-    ownerInfo: state.booking.ownerInfo
+    ownerInfo: state.booking.ownerInfo,
   };
 };
 
