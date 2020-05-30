@@ -28,7 +28,7 @@ class MeetOwner extends Component {
           <div className="row row_padding">
             <div className="col-sm-12">
               <div className="rent-title">
-                <h3 className="title text-left">Meet the Owner</h3>
+                <h3 className="title text-left"><strong>Meet the Owner</strong></h3>
               </div>
             </div>
           </div>

@@ -49,7 +49,7 @@ class OtherStays extends Component {
         <div className="container-n">
           <hr />
           <div className="rent-title">
-            <h3 className="title text-left">Other Places to Stay</h3>
+            <h3 className="title text-left"><strong>Other Places to Stay</strong></h3>
           </div>
           {/* {this.state.changeToSlider ? (
             <Slider {...settings}>

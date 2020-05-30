@@ -24,7 +24,7 @@ class Reviews extends Component {
         <div className="row row_padding">
           <div className="col-sm-12">
             <div className="rent-title">
-              <h3 className="title text-left">Reviews</h3>
+              <h3 className="title text-left"><strong>Reviews</strong></h3>
             </div>
           </div>
         </div>
