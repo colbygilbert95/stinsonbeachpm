@@ -34,7 +34,7 @@ db.connect(function (err) {
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   db.query(
-    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, P.Address
+    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, P.Latitude, P.Longitude
                 FROM Listing L
                 JOIN Property P
                 JOIN ClientAccount C 
@@ -57,7 +57,7 @@ app.get("/getUnit", (req, res) => {
   console.log(req.query);
   console.log("/getUnit")
   db.query(
-    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription, P.Address As Address 
+    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription, P.Latitude As Latitude, P.Longitude As Longitude 
     FROM CancellationPolicy C
     JOIN Property P
     JOIN Listing L
