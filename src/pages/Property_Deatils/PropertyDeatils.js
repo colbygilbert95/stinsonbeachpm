@@ -33,6 +33,7 @@ class PropertyDetails extends Component {
     let unitName = this.props.location.state
       ? this.props.location.state.unitName
       : window.location.href.split(/([^\/]+$)/)[1].replace("_", " ");
+    if (unitName.slice(-1) === "#") unitName = unitName.slice(0, -1);
     this.props.getUnit(unitName);
     this.props.getBlockedDays(unitName);
   }
