@@ -35,7 +35,7 @@ class WhoIsComing extends Component {
             <h4 className="number-of-nights">
               Introduce Yourself
             </h4>
-            <p>Let Noa & Keren know a little bit about yourself and why you're coming.</p>
+            <p>Let us know a little bit about yourself and why you're coming.</p>
             <textarea rows="10" className="mt-15"> </textarea>
             <div className="agree">
               <button onClick={this.getClientSecretAndContinue}>
