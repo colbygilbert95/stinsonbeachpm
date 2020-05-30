@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { getActiveUnits } from "../../../store/actions/bookingActions";
+import { closeMap } from "../../../store/actions/googleMapActions";
 import { connect } from "react-redux";
 import ListingCard from "./ListingCard/ListingCard";
+import GoogleMap from "../../Map/GoogleMap";
 
 class ListingWindow extends Component {
-  state = {
-    showMap: false,
-  };
   componentDidMount() {
     this.props.getActiveUnits();
   }
@@ -16,10 +15,10 @@ class ListingWindow extends Component {
       <section className="book-rental-inner">
         <div
           className={`${
-            this.state.showMap ? "googleContainerStyle row" : "container-n"
+            this.props.showMap ? "googleContainerStyle row" : "container-n"
           }`}
         >
-          <div className={`${this.state.showMap ? "col-md-6" : ""}`}>
+          <div className={`${this.props.showMap ? "col-md-6" : ""}`}>
             <div className="rent-title">
               <h3 className="title text-left">Top Rated Places to Stay</h3>
             </div>
@@ -29,9 +28,26 @@ class ListingWindow extends Component {
               })}
             </div>
           </div>
-          {this.state.showMap ? (
-            <div className="col-md-6 google-map-nav">Goggle Map</div>
-          ) : null}
+          {this.props.showMap && (
+            <div className="col-md-6 google-map-nav">
+              <GoogleMap units={units} />
+              <div className="map-control-box">
+                <div
+                  className="map-close-btn"
+                  onClick={() => {
+                    this.props.closeMap();
+                  }}
+                >
+                  <i class="fa fa-remove"></i>
+                </div>
+                <div className="map-search">
+                  <h6>
+                    <input type="checkbox" /> Search As I Move The Map
+                  </h6>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     );
@@ -40,7 +56,10 @@ class ListingWindow extends Component {
 const mapStateToProps = state => {
   return {
     units: state.booking.units,
+    showMap: state.googleMap.mapState,
   };
 };
 
-export default connect(mapStateToProps, { getActiveUnits })(ListingWindow);
+export default connect(mapStateToProps, { getActiveUnits, closeMap })(
+  ListingWindow
+);

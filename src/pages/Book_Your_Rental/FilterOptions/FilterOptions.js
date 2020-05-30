@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { openMap, setCenter } from "../../../store/actions/googleMapActions";
 
 class FilterOptions extends Component {
   render() {
@@ -22,13 +24,26 @@ class FilterOptions extends Component {
               <a href="#">More Filters</a>
             </li>
           </ul>
-          <div className="Show-Map-btn mt-15">
-            <span>Show Map</span>
-          </div>
+          {!this.props.showMap && (
+            <div
+              className="Show-Map-btn mt-15"
+              onClick={() => {
+                this.props.openMap();
+              }}
+            >
+              <span>Show Map</span>
+            </div>
+          )}
         </div>
       </section>
     );
   }
 }
 
-export default FilterOptions;
+const mapStateToProps = state => {
+  return {
+    map: state.googleMap.mapState,
+  };
+};
+
+export default connect(mapStateToProps, { openMap })(FilterOptions);

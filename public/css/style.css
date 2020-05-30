@@ -553,6 +553,7 @@ section.book-your--top {
 .Show-Map-btn {
     display: inline-block;
     float: right;
+    cursor: pointer;
 }
 .mt-0 {
     margin-top: 0px;
