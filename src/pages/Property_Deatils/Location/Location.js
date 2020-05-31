@@ -35,7 +35,7 @@ class Location extends Component {
             </div>
             <div className="col-sm-7 mt-15">
               <div className="property-location-map">
-                <MapWithMarker />
+                <MapWithMarker lat={listing.Latitude} lng={listing.Longitude} />
               </div>
             </div>
           </div>

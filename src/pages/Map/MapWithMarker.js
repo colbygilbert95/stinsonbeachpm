@@ -12,10 +12,6 @@ const mapContainerStyle = {
   width: "100%",
   height: "400px",
 };
-const center = {
-  lat: 37.8993528948048,
-  lng: -122.64535267101688,
-};
 
 const circleOptions = {
   strokeColor: "#333",
@@ -55,6 +51,10 @@ function MapWithMarker(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   });
 
+  const center = {
+    lat: parseFloat(props.lat),
+    lng: parseFloat(props.lng),
+  };
   const mapRef = useRef();
 
   const handleIdle = () => {
