@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-
+import MapWithMarker from "../../Map/MapWithMarker";
 class Location extends Component {
   state = {};
   render() {
     const { listing } = this.props;
+    console.log(listing);
     return (
       <section className="property-location">
         <div className="container-n">
@@ -34,7 +35,7 @@ class Location extends Component {
             </div>
             <div className="col-sm-7 mt-15">
               <div className="property-location-map">
-                <img className="border-rds" src="images/map-2.png" />
+                <MapWithMarker />
               </div>
             </div>
           </div>
