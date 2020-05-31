@@ -878,10 +878,10 @@ function cancelQualityControl(req) {
           Status = ${db.escape(
         "Cancelled"
       )} 
-            WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
+        WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
         req.body.code
       )} LIMIT 1);
-              `,
+      `,
       err => {
         if (err) reject(console.log("cancelQaulityConrol a: " + err));
         console.log("cancelQualityControl: Success");

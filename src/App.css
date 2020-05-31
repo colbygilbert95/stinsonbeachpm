@@ -1036,7 +1036,6 @@ textarea {
   width: 20px;
   margin-right: 5px;
 }
-
 .googleContainerStyle {
   width: 100%;
   margin: 0 auto;
@@ -1047,4 +1046,10 @@ textarea {
   top: 0;
   height:100vh;
   margin-bottom: -70px;
+}
+.alice-carousel__stage-item.__active{
+  text-align: center;
+}
+.alice-carousel__stage-item img {
+  width: 600px;
 }
