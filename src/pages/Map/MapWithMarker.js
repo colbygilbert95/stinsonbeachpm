@@ -105,6 +105,7 @@ function MapWithMarker(props) {
       },
       streetViewControlOptions: {
         position: window.google.maps.ControlPosition.RIGHT_CENTER,
+        fullscreenControl: false,
       },
     });
 

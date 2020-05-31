@@ -8,16 +8,17 @@
     display: none !important
   }
 
-  .gm-style .gm-style-iw-t::after {
+.gm-style .gm-style-iw-t::after {
     background: linear-gradient(0deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 0%);
     box-shadow: 0px 0px 0px 0;
-
-
-  }
-  .gm-style-iw-d {
+}
+.gm-style-iw-d {
       overflow: hidden !important;
-  }
+ }
 
+ .gm-fullscreen-control {
+   display: none !important;
+ }
   .google-info-window {
       min-width: 250px;
       font-size: 1.4em;
