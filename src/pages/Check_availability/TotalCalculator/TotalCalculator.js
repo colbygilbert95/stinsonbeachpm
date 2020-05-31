@@ -36,7 +36,7 @@ class TotalCalculator extends Component {
   calculateBooking = (startDate, endDate) => {
     const nights = endDate.diff(startDate, 'days')
     const rent = this.calculateRent(this.props.startDate, this.props.endDate)
-    const rate = rent / nights
+    const rate = Math.floor(rent / nights)
     const tax = Math.round((rent + this.props.listing.CleaningFee) * .14 * 100) / 100
     let total = tax + rent + this.props.listing.CleaningFee
     this.setState({ rate: rate, nights: nights, tax: tax, rent: rent, total: total } , () => {

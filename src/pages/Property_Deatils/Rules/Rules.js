@@ -18,7 +18,7 @@ class Rules extends Component {
           <div className="row row_padding mt-40">
             <div className="col-sm-6 border-right">
               <div className="rent-title mtt-0">
-                <h3 className="title text-left">House Rules</h3>
+                <h3 className="title text-left"><strong>House Rules</strong></h3>
               </div>
               <p>
                 The host has set some house rules, which you’ll be asked to agree
@@ -36,7 +36,7 @@ class Rules extends Component {
             </div>
             <div className="col-sm-6">
               <div className="rent-title mtt-0">
-                <h3 className="title text-left">Cancellation Policy</h3>
+                <h3 className="title text-left"><strong>Cancellation Policy</strong></h3>
               </div>
               {cancPolicy.split(/\n/i).map((text) => {
                 return (<p>{text}</p>)

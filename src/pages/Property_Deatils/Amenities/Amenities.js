@@ -24,7 +24,7 @@ class Amenties extends Component {
         <div className="container-n">
           <hr />
           <div className="rent-title">
-            <h3 className="title text-left">Amenities</h3>
+            <h3 className="title text-left"><strong>Amenities</strong></h3>
           </div>
           <div className="card-wrapper-n">
             {amenities.map((amenity, index) => {

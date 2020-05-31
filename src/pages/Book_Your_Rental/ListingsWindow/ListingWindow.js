@@ -21,7 +21,7 @@ class ListingWindow extends Component {
         >
           <div className={`${this.state.showMap ? "col-md-6" : ""}`}>
             <div className="rent-title">
-              <h3 className="title text-left">Top Rated Places to Stay</h3>
+              <h3 className="title text-left"><strong>Top Rated Places to Stay</strong></h3>
             </div>
             <div className="card-wrapper-n">
               {units.map((unit, index) => {

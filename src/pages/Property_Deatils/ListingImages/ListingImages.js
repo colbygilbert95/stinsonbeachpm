@@ -24,7 +24,7 @@ class ListingImages extends Component {
       <section className="property-services">
         <div className="container-n">
           <div className="rent-title">
-            <h3 className="title text-left">Tour This Guesthouse</h3>
+            <h3 className="title text-left"><strong>Tour This Guesthouse</strong></h3>
           </div>
           <div className="card-wrapper-n">
             {roomImgs.map((room, index) => {
