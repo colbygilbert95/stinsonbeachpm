@@ -7,6 +7,7 @@ import {
   Circle,
   Marker,
 } from "@react-google-maps/api";
+import { withRouter } from "react-router-dom";
 
 const mapContainerStyle = {
   width: "100%",
@@ -18,13 +19,13 @@ const circleOptions = {
   strokeOpacity: 0.8,
   strokeWeight: 0,
   fillColor: "#333",
-  fillOpacity: 0.35,
+  fillOpacity: 0.25,
   clickable: false,
   draggable: false,
   editable: false,
   visible: true,
   radius: 250,
-  zIndex: 1,
+  zIndex: 0,
 };
 
 const options = {
@@ -101,7 +102,6 @@ function MapWithMarker(props) {
         onIdle={handleIdle}
         onZoomChanged={handleZoomChange}
       >
-        <Circle center={center} options={circleOptions} />
         <Marker
           position={center}
           icon={{
@@ -110,7 +110,9 @@ function MapWithMarker(props) {
             anchor: new window.google.maps.Point(15, 15),
             scaledSize: new window.google.maps.Size(40, 40),
           }}
+          zIndex={10000}
         />
+        <Circle center={center} options={circleOptions} />
       </GoogleMap>
     </div>
   );
