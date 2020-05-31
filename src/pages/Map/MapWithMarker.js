@@ -78,8 +78,8 @@ function MapWithMarker(props) {
   });
 
   const center = {
-    lat: parseFloat(props.lat),
-    lng: parseFloat(props.lng),
+    lat: parseFloat(props.lat ? props.lat : 37.8993528948048),
+    lng: parseFloat(props.lng ? props.lng : -122.64535267101688),
   };
   const mapRef = useRef();
 
