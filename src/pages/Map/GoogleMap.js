@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { setCenter, setZoom } from "../../store/actions/googleMapActions";
 import { connect } from "react-redux";
+import "../Map/Map.css";
 import {
   GoogleMap,
   useLoadScript,
@@ -13,8 +14,8 @@ const mapContainerStyle = {
   height: "100vh",
 };
 const center = {
-  lat: 37.89660952415718,
-  lng: -122.64474112736148,
+  lat: 37.8993528948048,
+  lng: -122.64535267101688,
 };
 
 const options = {
@@ -62,7 +63,7 @@ function GoogleMapCombo(props) {
 
   const handleZoomChange = () => {
     if (mapRef.current) {
-      //props.setZoom(mapRef.current.zoom);
+      props.setZoom(mapRef.current.zoom);
       console.log("Get Current Zoom", mapRef.current.zoom);
     }
   };
@@ -85,7 +86,7 @@ function GoogleMapCombo(props) {
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={props.mapValues.zoom === "" ? 14 : props.mapValues.zoom}
+        zoom={props.mapValues.zoom === "" ? 16 : props.mapValues.zoom}
         center={
           Object.keys(props.mapValues.center).length === 0
             ? center
@@ -103,25 +104,21 @@ function GoogleMapCombo(props) {
         onZoomChanged={handleZoomChange}
       >
         {props.units.map(marker => (
-          // <Marker
-          //   key={`${marker.lat}-${marker.lng}`}
-          //   position={{ lat: marker.lat, lng: marker.lng }}
-          // />
           <OverlayView
-            key={i++}
+            key={`${marker.Latitude + marker.Longitude}`}
             position={{ lat: marker.Latitude, lng: marker.Longitude }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
             <div
               className={
-                hoverId === i
-                  ? "bubbleHover"
-                  : //   : selected
-                    //   ? selected.Latitude === marker.Latitude &&
-                    //     selected.Longitude === marker.Longitude
-                    //     ? "bubbleSelected"
-                    //     : "bubble"
-                    "bubble"
+                props.mapValues.hoverId === marker.Id
+                  ? "bubbleSelected"
+                  : selected
+                  ? selected.Latitude === marker.Latitude &&
+                    selected.Longitude === marker.Longitude
+                    ? "bubbleSelected"
+                    : "bubble"
+                  : "bubble"
               }
               onClick={() => {
                 setSelected(marker);
@@ -142,29 +139,26 @@ function GoogleMapCombo(props) {
               setSelected(null);
             }}
           >
-            <div className="card card-blog">
-              <div className="rent-card-body mt-40">
-                <div className="rent-flex">
-                  <div className="card-cover-n">
-                    <div
-                      className="card-cover-n card-cover-large-n book"
-                      style={{ backgroundImage: `url(${selected.URL})` }}
-                    ></div>
-                  </div>
-                  <div className="like">
-                    <a href="javascript:;" className="pull-right">
-                      <i className="fa fa-star mr-2"></i>
-                      <span className="small">
-                        <strong>{selected.AvgReviews}</strong>(
-                        {selected.NumReviews})
-                      </span>
-                    </a>
-                  </div>
+            <div className="google-info-window">
+              <div
+                className="google-info-window-img"
+                style={{ backgroundImage: `url(${selected.URL})` }}
+              ></div>
+              <div className="google-info-window-body">
+                <p className="google-info-window-title">{selected.Title}</p>
+
+                <div className="google-info-window-description">
+                  <span className="pull-left">
+                    <strong>${selected.WeekdayRate}</strong> / night
+                  </span>
+                  <a href="javascript:;" className="pull-right">
+                    <i className="fa fa-star mr-2"></i>
+                    <span className="small">
+                      <strong>{selected.AvgReviews}</strong>(
+                      {selected.NumReviews})
+                    </span>
+                  </a>
                 </div>
-                <p className="text-overflow">{selected.Title}</p>
-                <p>
-                  <strong>${selected.WeekdayRate}</strong> / night
-                </p>
               </div>
             </div>
           </InfoWindow>

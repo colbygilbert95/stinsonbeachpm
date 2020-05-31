@@ -2,6 +2,7 @@ const initState = {
   mapState: false,
   center: {},
   zoom: "",
+  hoverId: "",
 };
 
 const googleMapReducer = (state = initState, action) => {
@@ -29,6 +30,12 @@ const googleMapReducer = (state = initState, action) => {
       return {
         ...state,
         zoom: action.playload,
+      };
+
+    case "SET_HOVER_ID":
+      return {
+        ...state,
+        hoverId: action.playload,
       };
 
     default:

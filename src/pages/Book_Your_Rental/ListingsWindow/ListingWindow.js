@@ -24,7 +24,13 @@ class ListingWindow extends Component {
             </div>
             <div className="card-wrapper-n">
               {units.map((unit, index) => {
-                return <ListingCard unitData={unit} key={index} />;
+                return (
+                  <ListingCard
+                    unitData={unit}
+                    key={index}
+                    showMap={this.props.showMap}
+                  />
+                );
               })}
             </div>
           </div>
@@ -38,7 +44,7 @@ class ListingWindow extends Component {
                     this.props.closeMap();
                   }}
                 >
-                  <i class="fa fa-remove"></i>
+                  <i className="fa fa-remove"></i>
                 </div>
                 <div className="map-search">
                   <h6>

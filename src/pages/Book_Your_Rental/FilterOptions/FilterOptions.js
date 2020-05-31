@@ -24,7 +24,7 @@ class FilterOptions extends Component {
               <a href="#">More Filters</a>
             </li>
           </ul>
-          {!this.props.showMap && (
+          {!this.props.map && (
             <div
               className="Show-Map-btn mt-15"
               onClick={() => {

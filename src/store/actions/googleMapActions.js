@@ -23,3 +23,10 @@ export const setZoom = data => {
     playload: data,
   };
 };
+
+export const setHoverId = data => {
+  return {
+    type: "SET_HOVER_ID",
+    playload: data,
+  };
+};
