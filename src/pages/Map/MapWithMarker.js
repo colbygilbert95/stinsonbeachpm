@@ -28,6 +28,31 @@ const circleOptions = {
   zIndex: 0,
 };
 
+function CreateExactMessage() {
+  let controlDiv = document.createElement("div");
+  let controlUI = document.createElement("div");
+  controlUI.style.backgroundColor = "#fff";
+  controlUI.style.border = "2px solid #fff";
+  controlUI.style.borderRadius = "3px";
+  controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+  controlUI.style.cursor = "pointer";
+  controlUI.style.marginBottom = "22px";
+  controlUI.style.textAlign = "center";
+  controlUI.title = "Click to recenter the map";
+  controlDiv.appendChild(controlUI);
+
+  let controlText = document.createElement("div");
+  controlText.style.color = "rgb(25,25,25)";
+  controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+  controlText.style.fontSize = "16px";
+  controlText.style.lineHeight = "38px";
+  controlText.style.paddingLeft = "5px";
+  controlText.style.paddingRight = "5px";
+  controlText.textContent = "Exact Location Provided After Booking";
+  controlUI.appendChild(controlText);
+  return controlDiv;
+}
+
 const options = {
   disableDefaultUI: true,
   zoomControl: true,
@@ -82,6 +107,10 @@ function MapWithMarker(props) {
         position: window.google.maps.ControlPosition.RIGHT_CENTER,
       },
     });
+
+    map.controls[window.google.maps.ControlPosition.BOTTOM_CENTER].push(
+      CreateExactMessage()
+    );
   }, []);
 
   if (LoadError) return "Error Loading Map";
