@@ -18,7 +18,7 @@ class RightCard extends Component {
           <div className="header">
             <div>
               <div className="flat-title">{this.state.listing.Title}</div>
-              <div className="flat-description">{this.state.listing.Location}</div>
+              <div className="flat-description">{this.state.listing.PropertyType} in Stinson Beach, CA</div>
               <div className="star">
                 <span className="icon">
                   <i className="fa fa-star"></i>
@@ -43,14 +43,14 @@ class RightCard extends Component {
           <div className="price-details">
             <div className="price-detail">
               <span>${this.state.prices.rate} X {this.state.prices.nights} nights</span>
-              <span>$231.81</span>
+              <span>${this.state.prices.rent}</span>
             </div>
             <div className="price-detail">
-              <span>cleaning fee <i className="fa fa-question-circle"></i></span>
+              <span>Cleaning fee <i className="fa fa-question-circle"></i></span>
               <span>${this.state.listing.CleaningFee}</span>
             </div>
             <div className="price-detail">
-              <span>service fee <i className="fa fa-question-circle"></i></span>
+              <span>Service fee <i className="fa fa-question-circle"></i></span>
               <span>${this.state.prices.tax}</span>
             </div>
           </div>

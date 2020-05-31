@@ -55,14 +55,13 @@ class SearchForm extends Component {
 
   handleNumberChange = selectedOption => {
     this.setState({ numberOfGuest: parseInt(selectedOption.label) });
-  };
+  }
 
   calculateRevenue = (typeOfPlace, numberOfGuest) => {
     if (typeOfPlace == null || numberOfGuest == null) {
       return "---- ";
     }
-    console.log(revenueData);
-    console.log(revenueData[typeOfPlace][numberOfGuest]);
+    
     const weekend = revenueData[typeOfPlace][numberOfGuest];
     const weekday = weekend * 0.89;
     const orphan = weekend * 0.74;

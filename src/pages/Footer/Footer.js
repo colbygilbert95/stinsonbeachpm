@@ -21,7 +21,7 @@ export class Footer extends Component {
 										<NavLink to="/"><img src="images/logo_footer.svg" className="logo" alt="Logo" style={STYLE.infoLogo}/></NavLink>
 									</div>
 								</div>
-								<div className="col-xs-6 mb-20 col-sm-3 col-md-2 footers-link-title">
+								{/* <div className="col-xs-6 mb-20 col-sm-3 col-md-2 footers-link-title">
 									<h5>C o m p a n y</h5>
 									<ul className="list-unstyled">
 										<li><a href="#">Our Story</a></li>
@@ -31,19 +31,19 @@ export class Footer extends Component {
 										</li>
 										<li><a href="#">Help</a></li>
 									</ul>
-								</div>
+								</div> */}
 								<div className="col-xs-6 mb-20 col-sm-3 col-md-2 footers-link-title">
 									<h5>H o m e o w n e r </h5>
 									<ul className="list-unstyled">
-										<li><a href="#">Why Use A Manager</a></li>
-										<li><a href="#">Refer Homeowners</a></li>
+										{/* <li><a href="#">Why Use A Manager</a></li>
+										<li><a href="#">Refer Homeowners</a></li> */}
 										<li>
 											<NavLink to="/Guarantee">Revenue Guarantee</NavLink>
 										</li>
-										<li><a href="#">Hospitality Standards</a></li>
+										{/* <li><a href="#">Hospitality Standards</a></li> */}
 									</ul>
 								</div>
-								<div className="col-xs-6 mb-20 col-sm-3 col-md-2 footers-link-title">
+								{/* <div className="col-xs-6 mb-20 col-sm-3 col-md-2 footers-link-title">
 									<h5>G u e s t </h5>
 									<ul className="list-unstyled">
 										<li><a href="#">Invite Friends</a></li>
@@ -56,7 +56,7 @@ export class Footer extends Component {
 											<a href="https://twitter.com/"><i id="social-tw" className="fa fa-youtube-play fa-lg social"></i></a>
 											<a href="https://plus.google.com/"><i id="social-gp" className="fa fa-facebook fa-lg social"></i></a>
 									</div>
-								</div>
+								</div> */}
 							</div>
 						</div>
 					</section>

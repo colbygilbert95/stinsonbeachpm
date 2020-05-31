@@ -24,6 +24,7 @@ import Guarantee from "./pages/Guarantee/Guarantee"
 import Test from "./pages/Test/Test"
 import Checkout from "./pages/Checkout/Checkout"
 import AmenityDetails from "./pages/Property_Deatils/Amenities/AmenityDetails"
+import ListingImagesDetails from "./pages/Property_Deatils/ListingImages/ListingImagesDetails"
 
 const stripePromise = loadStripe("pk_test_gTILJQKMDQTwNk6vS8gNwbib00UhqAgoeB")
 
@@ -52,6 +53,7 @@ class App extends Component {
               <Route exact path="/27_Pradero" component={Property_Deatils} />
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/amenity-details" component={AmenityDetails} />
+              <Route exact path="/take-tour" component={ListingImagesDetails} />
             </div>
           </div>
         </BrowserRouter>

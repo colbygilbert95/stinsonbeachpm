@@ -33,7 +33,7 @@ function StartedForm(props) {
     const { name, email, phone, body } = values;
 
     if (!name) {
-      setError({ ...errors, name: "Please Provide Name" });
+      setError({ ...errors, name: "Send us a message!" });
     } else if (!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
       setError({ ...errors, email: "Please Provide Email Address" });
     } else {
@@ -44,7 +44,7 @@ function StartedForm(props) {
         Password: process.env.REACT_APP_EMAIL_PASSWORD,
         To: "colby@dipseapm.com",
         From: "colby@dipseapm.com",
-        Subject: "[Dipseapm.com] New Client Inqury",
+        Subject: "[StinsonBeachPM.com] New Client Inqury",
         Body: `
              <p> Name:  ${name}</p> </br>
              <p> Phone: ${phone} </p> </br>
@@ -81,8 +81,7 @@ function StartedForm(props) {
           variant="success"
           onClose={() => setSuccessMessage(false)}
         >
-          Thanks! We have Recieved Your Message.Contact With You As soon As
-          Possible.
+          Thanks! We have Recieved Your Message. You will hear from us in 24 hours.
         </Alert>
       ) : null}
 

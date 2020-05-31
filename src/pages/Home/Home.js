@@ -132,7 +132,7 @@ class Home extends Component {
               </div>
               <div className="col-sm-12 col-md-4">
                 <div className="home-inner-content">
-                  <h3 className="home-inner-title m0 font-lg">1.</h3>
+                  <h3 className="home-inner-title m0 font-lg roman">1.</h3>
                   <h3 className="home-inner-title mt0">
                     Receive your action plan
                   </h3>
@@ -145,7 +145,7 @@ class Home extends Component {
               </div>
               <div className="col-sm-12 col-md-4">
                 <div className="home-inner-content">
-                  <h3 className="home-inner-title m0 font-lg">2.</h3>
+                  <h3 className="home-inner-title m0 font-lg roman">2.</h3>
                   <h3 className="home-inner-title mt0">
                     We prepare your property
                   </h3>
@@ -157,7 +157,7 @@ class Home extends Component {
               </div>
               <div className="col-sm-12 col-md-4">
                 <div className="home-inner-content">
-                  <h3 className="home-inner-title m0 font-lg">3.</h3>
+                  <h3 className="home-inner-title m0 font-lg roman">3.</h3>
                   <h3 className="home-inner-title mt0">
                     Welcome your first guest
                   </h3>

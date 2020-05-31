@@ -1,37 +1,41 @@
 import React, { Component } from 'react';
 import RightCard from './RightCard';
+import moment from 'moment'
 
 class Review extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      dates: localStorage.getItem('dates') ? JSON.parse(localStorage.getItem('dates')) : {},
+    }
   }
   render() {
+    const {startDate, endDate} = this.state.dates
     return (
       <div className="container mt-40">
         <div className="row">
           <div className="col-md-6">
-            <h3>Review House Rules</h3>
+            <h3 className="roman">Review House Rules</h3>
             <h4 className="number-of-nights">3 Nights In Surry Hills</h4>
             <div className="checkouts-wrapper">
               <div className="check">
                 <div className="label-grey">
-                  <p>Mar</p>
-                  <p>22</p>
+                  <p>{moment(startDate).format("MMM")}</p>
+                  <p>{moment(startDate).format("D")}</p>
                 </div>
                 <div className="check-in">
-                  <p>Sunday Check-in</p>
-                  <p>After 2:00 PM</p>
+                  <p>{moment(startDate).format("dddd")} Check-in</p>
+                  <p>After 3:00 PM</p>
                 </div>
               </div>
               <div className="check check-out">
                 <div className="label-grey">
-                  <p>Mar</p>
-                  <p>22</p>
+                <p>{moment(endDate).format("MMM")}</p>
+                  <p>{moment(endDate).format("D")}</p>
                 </div>
                 <div className="checkout">
-                  <p>Wedensday Check-out</p>
-                  <p>10:00 AM</p>
+                  <p>{moment(endDate).format("dddd")} Check-out</p>
+                  <p>11:00 AM</p>
                 </div>
               </div>
             </div>

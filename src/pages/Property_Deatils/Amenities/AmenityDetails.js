@@ -11,7 +11,8 @@ class AmenityDetails extends Component {
       amenities: JSON.parse(localStorage.getItem('amenities'))
     }
   }
-  returnBack = () => {
+  returnBack = (e) => {
+    e.preventDefault()
     this.props.history.goBack()
   }
   render() {
@@ -20,11 +21,11 @@ class AmenityDetails extends Component {
       <div className="amenity-details-wrapper">
         <div className="header">
           <a href="#" className="back-button" onClick={this.returnBack}> 
-            <i class="fa fa-chevron-left"></i>
+            <img src="/images/back-arrow.png"/>
           </a>
         </div>
         <div className="container">
-          <div className="list">
+          <div className="list"> 
             <h1>Special To This Guesthouse</h1>
             <div className="card-wrapper-n">
               {amenities.map((amenity, index) => {

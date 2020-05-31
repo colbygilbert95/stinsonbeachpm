@@ -19,7 +19,7 @@ class HeaderImages extends Component {
     return (
       <section className="check-availability-section">
         <div className="beach-box border-rds h-unset">
-          <h1>{title}</h1>
+          <h1 className="roman">{title}</h1>
         </div>
         <div className="beach-img-box">
           <button className="take-tour-btn">Take Tour</button>

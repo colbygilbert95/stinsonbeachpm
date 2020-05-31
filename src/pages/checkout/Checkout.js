@@ -22,7 +22,8 @@ class Checkout extends Component {
       })
     })
   }
-  changeStep = (step) => {
+  changeStep = (step , e) => {
+    e.preventDefault()
     this.setState({
       step
     })
@@ -40,5 +41,3 @@ class Checkout extends Component {
 }
 
 export default Checkout;
-
-

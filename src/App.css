@@ -726,7 +726,7 @@ textarea {
   margin-top: 20px;
 }
 .circle-thin , .circle-thick {
-  width: 20px;
+  min-width: 20px;
   height: 20px;
   border-radius: 100%;
   display: inline-block;
@@ -916,7 +916,6 @@ textarea {
   }
 }
 .CalendarDay__selected_span {
- 
   background: #60befc;
   border: 1px double #a7d4f2;
   color: #fff
@@ -995,10 +994,12 @@ textarea {
 .amenity-details-wrapper h1 {
   color: #484848;
   font-family: 'leitura_displayroman';
+  font-size: 28px;
 }
 .amenity-details-wrapper .header{
   margin-bottom: 20px;
   border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 10px;
 }
 .amenity-details-wrapper .list {
   margin-top: 20px;
@@ -1016,6 +1017,37 @@ textarea {
   margin-left: 20px;
   margin-top: 5px;
 }
+
+/* listing */
+.listing-details-wrapper .header{
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f2f2f2;
+}
+.listing-details-wrapper h1 {
+  font-family: 'leitura_displayroman';
+  color: #484848;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.listing-details-wrapper .black-screen {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  background-color: #8a8a8a;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* end listing */
+.roman{
+  font-family: 'leitura_displayroman';
+}
+
+.loading-icon {
+  width: 20px;
+  margin-right: 5px;
+}
+
 .googleContainerStyle {
   width: 100%;
   margin: 0 auto;
