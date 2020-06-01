@@ -11,14 +11,9 @@ class Home extends Component {
         <Header />
 
         <div className="main-banner">
-          <div className="d-table">
-            <div className="d-table-cell">
-              <div className="container-fluid">
-                <div className="row align-items-center">
-                  <div className="col-lg-9"></div>
-                  {<SearchForm />}
-                </div>
-              </div>
+          <div className="container">
+            <div className="row flex justify-content-end py-5 pr-60 pl-60">
+              {<SearchForm />}
             </div>
           </div>
         </div>
