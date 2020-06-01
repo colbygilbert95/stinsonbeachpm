@@ -23,7 +23,7 @@ const db = mysql.createConnection({
   database: process.env.SERVER_SQL_DATABASE,
   user: process.env.SERVER_SQL_USER,
   password: process.env.SERVER_SQL_PASSWORD,
-  socketPath: process.env.SERVER_SQL_SOCKET_PATH
+  //socketPath: process.env.SERVER_SQL_SOCKET_PATH
 });
 
 db.connect(function (err) {
@@ -34,7 +34,7 @@ db.connect(function (err) {
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   db.query(
-    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, P.Latitude, P.Longitude
+    `  SELECT L.Id, L.Name, L.WeekdayRate, L.Title, L.NumReviews, L.AvgReviews, I.URL, L.Latitude, L.Longitude
                 FROM Listing L
                 JOIN Property P
                 JOIN ClientAccount C 
@@ -57,7 +57,7 @@ app.get("/getUnit", (req, res) => {
   console.log(req.query);
   console.log("/getUnit")
   db.query(
-    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription, P.Latitude As Latitude, P.Longitude As Longitude 
+    `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription, L.Latitude As Latitude, L.Longitude As Longitude 
     FROM CancellationPolicy C
     JOIN Property P
     JOIN Listing L
