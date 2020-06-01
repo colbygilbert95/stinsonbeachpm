@@ -12,6 +12,10 @@ export class ListingImagesDetails extends Component {
     e.preventDefault()
     this.props.history.goBack()
   }
+  showGallery = (e) => {
+    e.preventDefault()
+    this.props.history.push('/gallery')
+  }
   render() {
     return (
       <div className="listing-details-wrapper">
@@ -24,76 +28,76 @@ export class ListingImagesDetails extends Component {
           <div className="list">
             <h1>Full Kitchen</h1>
             <div className="row">
-              <div className="col-md-4"><div className="black-screen"></div></div>
-              <div className="col-md-8"><div className="black-screen"></div></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-8"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
             <div className="row">
-              <div className="col-md-6"><div className="black-screen"></div></div>
-              <div className="col-md-6"><div className="black-screen"></div></div>
+              <div className="col-md-6"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-6"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
           </div>
           <div className="list">
             <h1>Full Bathroom</h1>
             <div className="row">
-              <div className="col-md-7"><div className="black-screen"></div> </div>
-              <div className="col-md-5"><div className="black-screen"></div> </div>
+              <div className="col-md-7"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-5"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
             <div className="row">
-              <div className="col-md-4"><div className="black-screen"></div> </div>
-              <div className="col-md-4"><div className="black-screen"></div> </div>
-              <div className="col-md-4"><div className="black-screen"></div> </div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
           </div>
           <div className="list">
             <h1>Half Bathroom</h1>
             <div className="row">
-              <div className="col-md-12"><div className="black-screen"></div> </div>
+              <div className="col-md-12"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
             <div className="row">
-              <div className="col-md-4"><div className="black-screen"></div> </div>
-              <div className="col-md-4"><div className="black-screen"></div> </div>
-              <div className="col-md-4"><div className="black-screen"></div> </div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
           </div>
           <div className="list">
             <h1>Entry</h1>
             <div className="row">
-              <div className="col-md-12"><div className="black-screen"></div></div>
+              <div className="col-md-12"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
             <div className="row">
-              <div className="col-md-7"><div className="black-screen"></div> </div>
-              <div className="col-md-5"><div className="black-screen"></div> </div>
+              <div className="col-md-7"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-5"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
           </div>
           <div className="list">
             <h1>Bedroom Area</h1>
             <div className="row">
-              <div className="col-md-12"><div className="black-screen"></div></div>
+              <div className="col-md-12"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
             <div className="row">
-              <div className="col-md-5"><div className="black-screen"></div> </div>
-              <div className="col-md-7"><div className="black-screen"></div> </div>
+              <div className="col-md-5"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-7"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
           </div>
           <div className="list">
             <h1>Exterior</h1>
             <div className="row">
-              <div className="col-md-12"><div className="black-screen"></div> </div>
+              <div className="col-md-12"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
             <div className="row">
-              <div className="col-md-4"><div className="black-screen"></div> </div>
-              <div className="col-md-4"><div className="black-screen"></div> </div>
-              <div className="col-md-4"><div className="black-screen"></div> </div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
           </div>
           <div className="list">
             <h1>Outdoor Space</h1>
             <div className="row">
-              <div className="col-md-12"><div className="black-screen"></div> </div>
+              <div className="col-md-12"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
             <div className="row">
-              <div className="col-md-6"><div className="black-screen"></div></div>
-              <div className="col-md-6"><div className="black-screen"></div></div>
+              <div className="col-md-6"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-6"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
             </div>
           </div>
         </div>
