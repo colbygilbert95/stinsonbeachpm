@@ -1,9 +1,15 @@
-h1, h2, h3, h4, span, p, a, div {
+span, p, a, div {
     /*color: #4b484b;*/
-	color:#7d7d7d;
+	color:#707070;
 	font-family:Arial;
    
 }
+
+h1, h2, h3, h4, strong {
+    color:#484848;
+	
+}
+
 .main-banner {
     background-image: url(../images/Stinson_Skinny.jpg); 
     background-position: center center;
@@ -629,6 +635,7 @@ section.book-your--top {
     margin-right: 15px;
     font-size: 15px;
     font-weight: 600;
+    color: #484848
 }
 .bed-inner ul {
     padding: 0px;

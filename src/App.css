@@ -338,7 +338,7 @@ img.author-picture {
   margin-top: 30px;
 }
 .overlay {
-  background-color: black;
+  background-color: #484848;
   opacity: .6;
   position: fixed;
   top: 0;
@@ -459,7 +459,7 @@ img.author-picture {
 }
 .number-of-nights {
   margin-top: 50px;
-  color: black;
+  color: #484848;
   font-weight: bold;
 }
 .checkouts-wrapper {
@@ -665,7 +665,7 @@ textarea {
   margin-top: 30px;
   font-weight: bold;
   font-size: 15px;
-  color: black;
+  color: #484848;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -785,6 +785,9 @@ textarea {
 }
 .font-bold {
   font-weight: bold;
+}
+.font-black {
+  color: #484848
 }
 .width-unset{
   width: 90% !important;
@@ -1041,6 +1044,7 @@ textarea {
 /* end listing */
 .roman{
   font-family: 'leitura_displayroman';
+  color: #484848
 }
 
 .loading-icon {
