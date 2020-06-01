@@ -12,7 +12,7 @@ class Location extends Component {
           <div className="row ">
             <div className="col-sm-12">
               <div className="rent-title">
-                <h3 className="title text-left">Location</h3>
+                <h3 className="title text-left"><strong>Location</strong></h3>
               </div>
             </div>
           </div>
