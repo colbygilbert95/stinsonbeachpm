@@ -121,6 +121,8 @@ CREATE TABLE `Listing` (
   `Accommodates` DOUBLE,
   `PropertyType` VARCHAR(255),
   `RoomType` VARCHAR(255),
+  `Latitude` VARCHAR (255),
+  `Longitude` VARCHAR(255),
   `WeekdayRate` DOUBLE,
   `WeekendRate` DOUBLE,
   `CleaningFee` DOUBLE,
@@ -155,8 +157,6 @@ CREATE TABLE `Property` (
   `ClientAccount` INT,
   `Name` VARCHAR(255) UNIQUE,
   `Address` VARCHAR(255),
-  `Latitude` VARCHAR (255),
-  `Longitude` VARCHAR(255),
   `AddedOn` DATETIME,
   `AddedBy` VARCHAR(255),
   PRIMARY KEY (`Id`)

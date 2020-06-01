@@ -54,6 +54,7 @@ function StartedForm(props) {
              <p> Number Of Guest:  ${props.guest} </p> </br>
            `,
       }).then(message => {
+        setButtonLoading(false);
         if (message === "OK") {
           setValues({
             name: "",
@@ -62,7 +63,6 @@ function StartedForm(props) {
             body: "",
           });
           setSuccessMessage(true);
-          setButtonLoading(false);
         } else {
           console.log(message);
         }

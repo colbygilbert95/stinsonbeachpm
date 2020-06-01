@@ -553,6 +553,7 @@ section.book-your--top {
 .Show-Map-btn {
     display: inline-block;
     float: right;
+    cursor: pointer;
 }
 .mt-0 {
     margin-top: 0px;
@@ -736,9 +737,7 @@ ul.pd-0 {
     border: 1px solid #ddd;
     padding: 50px 20px;
 }
-.property-location-map img {
-    height: 372px;
-}
+
 .font-style-italic {
     font-weight: bold;
     color: #ddd;
