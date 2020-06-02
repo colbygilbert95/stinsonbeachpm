@@ -222,8 +222,6 @@ h3 {
 .check-availability-section {
   margin-top: 20px;
   display: flex;
-  margin-left: 24px;
-  margin-right: 24px;
 }
 .check-availability-section > * {
   flex:1;
