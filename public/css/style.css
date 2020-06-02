@@ -743,6 +743,7 @@ ul.pd-0 {
 .location-box {
     border: 1px solid #ddd;
     padding: 50px 20px;
+    min-height: 400px;
 }
 
 .font-style-italic {

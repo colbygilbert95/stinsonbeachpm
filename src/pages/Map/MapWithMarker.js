@@ -12,6 +12,7 @@ import { withRouter } from "react-router-dom";
 const mapContainerStyle = {
   width: "100%",
   height: "400px",
+  borderRadius: "10px",
 };
 
 const circleOptions = {
