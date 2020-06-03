@@ -19,12 +19,10 @@ class OtherStays extends Component {
   }
   resize() {
     if (window.outerWidth >= 501 && window.outerWidth <= 800) {
-      console.log("Whats up", window.outerWidth);
       this.setState({
         sliderShowNumber: 2,
       });
     } else if (window.outerWidth <= 500) {
-      console.log("Hey There", window.outerWidth);
       this.setState({
         sliderShowNumber: 1,
       });
@@ -49,7 +47,9 @@ class OtherStays extends Component {
         <div className="container-n">
           <hr />
           <div className="rent-title">
-            <h3 className="title text-left"><strong>Other Places to Stay</strong></h3>
+            <h3 className="title text-left">
+              <strong>Other Places to Stay</strong>
+            </h3>
           </div>
           {/* {this.state.changeToSlider ? (
             <Slider {...settings}>

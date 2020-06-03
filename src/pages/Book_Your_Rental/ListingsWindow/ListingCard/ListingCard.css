@@ -1,0 +1,19 @@
+.slick-arrow{
+    display: none !important;
+}
+
+.slick-slider:hover > .slick-arrow {
+display: block !important;
+}
+
+.slick-dots {
+    bottom: 10px ;
+}
+
+.slick-dots li {
+    margin: 0px;
+}
+
+.slick-dots li.slick-active button:before {
+    color: white;
+}
