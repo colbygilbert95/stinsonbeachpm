@@ -175,7 +175,7 @@ function GoogleMapCombo(props) {
               <Link
                 target="_blank"
                 to={{
-                  pathname: "/" + selected.Name,
+                  pathname: "/" + selected.Name.split(" ").join("_"),
                   state: { unitName: selected.Name },
                 }}
               >
