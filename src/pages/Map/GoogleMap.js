@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { setCenter, setZoom } from "../../store/actions/googleMapActions";
 import { connect } from "react-redux";
+import Slider from "react-slick";
 import "../Map/Map.css";
 import {
   GoogleMap,
@@ -8,6 +9,16 @@ import {
   OverlayView,
   InfoWindow,
 } from "@react-google-maps/api";
+
+const sliderSetting = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  adaptiveHeight: true,
+  swipeToSlide: false,
+};
 
 const mapContainerStyle = {
   width: "100%",
@@ -140,10 +151,26 @@ function GoogleMapCombo(props) {
             }}
           >
             <div className="google-info-window">
-              <div
+              {/* <div
                 className="google-info-window-img"
                 style={{ backgroundImage: `url(${selected.URL})` }}
-              ></div>
+              ></div> */}
+
+              <Slider {...sliderSetting}>
+                <div>
+                  <div
+                    className="google-info-window-img"
+                    style={{ backgroundImage: `url(${selected.URL})` }}
+                  ></div>
+                </div>
+
+                <div>
+                  <div
+                    className="google-info-window-img"
+                    style={{ backgroundImage: `url(${selected.URL})` }}
+                  ></div>
+                </div>
+              </Slider>
               <div className="google-info-window-body">
                 <p className="google-info-window-title">{selected.Title}</p>
 

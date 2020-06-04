@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { setHoverId } from "../../../../store/actions/googleMapActions";
+import {
+  setHoverId,
+  setListingImgs,
+} from "../../../../store/actions/googleMapActions";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 import axios from "axios";
@@ -20,6 +23,7 @@ class ListingCard extends Component {
     listingImgs: [],
   };
   componentDidMount() {
+    console.log("Call Did Mount");
     const apiUrl = "https://us-central1-stinsonbeachpm.cloudfunctions.net/app";
     axios
       .get(apiUrl + "/getUnitHeaderImgs", {
@@ -28,7 +32,10 @@ class ListingCard extends Component {
         },
       })
       .then(response => {
-        console.log("Listing Data: ", response.data);
+        this.props.setListingImgs({
+          Id: this.props.unitData.Id,
+          imgs: response.data,
+        });
         this.setState({
           loading: false,
           listingImgs: response.data,
@@ -129,4 +136,4 @@ class ListingCard extends Component {
   }
 }
 
-export default connect(null, { setHoverId })(ListingCard);
+export default connect(null, { setHoverId, setListingImgs })(ListingCard);

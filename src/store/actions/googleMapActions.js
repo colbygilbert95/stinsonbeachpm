@@ -30,3 +30,12 @@ export const setHoverId = data => {
     playload: data,
   };
 };
+
+export const setListingImgs = data => {
+  console.log("Action Data", data);
+
+  return {
+    type: "SET_LISTING_IMG",
+    playload: data,
+  };
+};
