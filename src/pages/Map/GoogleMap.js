@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { setCenter, setZoom } from "../../store/actions/googleMapActions";
 import { connect } from "react-redux";
 import Slider from "react-slick";
@@ -16,7 +17,7 @@ const sliderSetting = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  adaptiveHeight: true,
+  adaptiveHeight: false,
   swipeToSlide: false,
 };
 
@@ -171,22 +172,32 @@ function GoogleMapCombo(props) {
                   ></div>
                 </div>
               </Slider>
-              <div className="google-info-window-body">
-                <p className="google-info-window-title">{selected.Title}</p>
+              <Link
+                target="_blank"
+                to={{
+                  pathname: "/" + selected.Name,
+                  state: { unitName: selected.Name },
+                }}
+              >
+                <div>
+                  <div className="google-info-window-body">
+                    <p className="google-info-window-title">{selected.Title}</p>
 
-                <div className="google-info-window-description">
-                  <span className="pull-left">
-                    <strong>${selected.WeekdayRate}</strong> / night
-                  </span>
-                  <a href="javascript:;" className="pull-right">
-                    <i className="fa fa-star mr-2"></i>
-                    <span className="small">
-                      <strong>{selected.AvgReviews}</strong>(
-                      {selected.NumReviews})
-                    </span>
-                  </a>
+                    <div className="google-info-window-description clearfix">
+                      <span className="pull-left">
+                        <strong>${selected.WeekdayRate}</strong> / night
+                      </span>
+                      <span className="pull-right map-popup-star">
+                        <i className="fa fa-star mr-2"></i>
+                        <span className="small">
+                          <strong>{selected.AvgReviews}</strong>(
+                          {selected.NumReviews})
+                        </span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </InfoWindow>
         ) : null}

@@ -69,6 +69,7 @@ class ListingCard extends Component {
     return (
       <NavLink
         className={this.props.showMap ? "card-n-50" : "card-n"}
+        target="_blank"
         to={{
           pathname: "/" + unitPathName,
           state: { unitName: Name },
