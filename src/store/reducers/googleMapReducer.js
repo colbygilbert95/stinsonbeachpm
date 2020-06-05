@@ -3,10 +3,10 @@ const initState = {
   center: {},
   zoom: "",
   hoverId: "",
+  listingImgs: [],
 };
 
 const googleMapReducer = (state = initState, action) => {
-  console.log(action);
   switch (action.type) {
     case "OPEN_MAP":
       return {
@@ -36,6 +36,12 @@ const googleMapReducer = (state = initState, action) => {
       return {
         ...state,
         hoverId: action.playload,
+      };
+
+    case "SET_LISTING_IMG":
+      return {
+        ...state,
+        listingImgs: [...state.listingImgs, action.playload],
       };
 
     default:

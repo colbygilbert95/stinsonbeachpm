@@ -20,7 +20,9 @@ class ListingWindow extends Component {
         >
           <div className={`${this.props.showMap ? "col-md-6" : ""}`}>
             <div className="rent-title">
-              <h3 className="title text-left"><strong>Top Rated Places to Stay</strong></h3>
+              <h3 className="title text-left">
+                <strong>Top Rated Places to Stay</strong>
+              </h3>
             </div>
             <div className="card-wrapper-n">
               {units.map((unit, index) => {
@@ -46,11 +48,11 @@ class ListingWindow extends Component {
                 >
                   <i className="fa fa-remove"></i>
                 </div>
-                <div className="map-search">
+                {/* <div className="map-search">
                   <h6>
                     <input type="checkbox" /> Search As I Move The Map
                   </h6>
-                </div>
+                </div> */}
               </div>
             </div>
           )}

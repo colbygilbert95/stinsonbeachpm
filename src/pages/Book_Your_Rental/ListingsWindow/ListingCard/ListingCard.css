@@ -2,8 +2,8 @@
     display: none !important;
 }
 
-.slick-slider:hover > .slick-arrow {
-display: block !important;
+.card-blog:hover  .slick-slider > .slick-arrow  {
+    display: block !important;
 }
 
 .slick-dots {
@@ -17,3 +17,4 @@ display: block !important;
 .slick-dots li.slick-active button:before {
     color: white;
 }
+
