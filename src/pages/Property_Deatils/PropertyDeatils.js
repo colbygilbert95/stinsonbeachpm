@@ -34,6 +34,7 @@ class PropertyDetails extends Component {
       ? this.props.location.state.unitName
       : window.location.href.split(/([^\/]+$)/)[1].replace("_", " ");
     if (unitName.slice(-1) === "#") unitName = unitName.slice(0, -1);
+    localStorage.setItem('unitName' , unitName)
     this.props.getUnit(unitName);
     this.props.getBlockedDays(unitName);
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import AliceCarousel from 'react-alice-carousel';
+import { getAllUnitsImgs } from "../../../store/actions/bookingActions";
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 export class Gallery extends Component {
   constructor(props) {
@@ -17,6 +19,9 @@ export class Gallery extends Component {
         {url: '/images/bg-1.png' , title: 'New Slide'},
       ]
     }
+  }
+  componentDidMount() {
+    this.props.getAllUnitsImgs(localStorage.getItem('unitName'));
   }
   slideTo = (i) => this.setState({ currentIndex: i });
   onSlideChanged = (e) => this.setState({ currentIndex: e.item });
@@ -88,4 +93,10 @@ export class Gallery extends Component {
   }
 }
 
-export default withRouter(Gallery)
+const mapStateToProps = state => {
+  return {
+    allImgs: state.booking.allImgs
+  };
+};
+
+export default withRouter(connect(mapStateToProps , { getAllUnitsImgs })(Gallery))

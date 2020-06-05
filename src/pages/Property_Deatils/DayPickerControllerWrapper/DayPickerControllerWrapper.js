@@ -13,7 +13,6 @@ import { START_DATE, END_DATE, HORIZONTAL_ORIENTATION } from 'react-dates/src/co
 import isInclusivelyAfterDay from 'react-dates/src/utils/isInclusivelyAfterDay';
 
 const propTypes = forbidExtraProps({
-  // example props for the demo
   autoFocusEndDate: PropTypes.bool,
   initialStartDate: momentPropTypes.momentObj,
   initialEndDate: momentPropTypes.momentObj,
@@ -22,15 +21,12 @@ const propTypes = forbidExtraProps({
   showInputs: PropTypes.bool,
   minDate: momentPropTypes.momentObj,
   maxDate: momentPropTypes.momentObj,
-
   keepOpenOnDateSelect: PropTypes.bool,
   minimumNights: PropTypes.number,
   isOutsideRange: PropTypes.func,
   isDayBlocked: PropTypes.func,
   isDayHighlighted: PropTypes.func,
   daysViolatingMinNightsCanBeClicked: PropTypes.bool,
-
-  // DayPicker props
   enableOutsideDays: PropTypes.bool,
   numberOfMonths: PropTypes.number,
   orientation: ScrollableOrientationShape,
@@ -40,12 +36,10 @@ const propTypes = forbidExtraProps({
   renderCalendarInfo: PropTypes.func,
   renderMonthElement: PropTypes.func,
   renderMonthText: PropTypes.func,
-
   navPrev: PropTypes.node,
   navNext: PropTypes.node,
   renderNavPrevButton: PropTypes.func,
   renderNavNextButton: PropTypes.func,
-
   onPrevMonthClick: PropTypes.func,
   onNextMonthClick: PropTypes.func,
   onOutsideClick: PropTypes.func,
@@ -53,10 +47,7 @@ const propTypes = forbidExtraProps({
   renderDayContents: PropTypes.func,
   renderKeyboardShortcutsButton: PropTypes.func,
   renderKeyboardShortcutsPanel: PropTypes.func,
-
-  // i18n
   monthFormat: PropTypes.string,
-
   isRTL: PropTypes.bool,
 });
 
@@ -76,7 +67,6 @@ const defaultProps = {
   renderDayContents: null,
   minimumNights: 1,
   enableOutsideDays: false,
-  //isDayBlocked: () => false,
   isOutsideRange: day => !isInclusivelyAfterDay(day, moment()),
   isDayHighlighted: () => false,
 
@@ -96,16 +86,12 @@ const defaultProps = {
   renderMonthElement: null,
   renderKeyboardShortcutsButton: undefined,
   renderKeyboardShortcutsPanel: undefined,
-
-  // navigation related props
   navPrev: null,
   navNext: null,
   renderNavPrevButton: null,
   renderNavNextButton: null,
   onPrevMonthClick() { },
   onNextMonthClick() { },
-
-  // internationalization
   monthFormat: 'MMMM YYYY',
 };
 

@@ -122,6 +122,7 @@ app.get("/getUnitAllImgs", (req, res) => {
     AND I.RoomType = R.Id`,
     (err, result) => {
       if (err) throw console.log("getAllUnitImgs: " + err);
+      console.log(result)
       res.send(result);
     }
   );

@@ -72,6 +72,15 @@ const initState = {
         return state;
   
   
+      case "GET_ALL_UNITS_IMGS_SUCCESS":
+        return {
+          ...state,
+          allImgs: action.res_data
+        };
+
+      case "GET_ALL_UNITS_IMGS_ERROR":
+        return state;
+
       case "GET_ROOM_HEADER_IMGS_SUCCESS":
         return {
           ...state,

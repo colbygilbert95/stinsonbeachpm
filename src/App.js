@@ -25,7 +25,7 @@ import Test from "./pages/Test/Test"
 import Checkout from "./pages/Checkout/Checkout"
 import AmenityDetails from "./pages/Property_Deatils/Amenities/AmenityDetails"
 import ListingImagesDetails from "./pages/Property_Deatils/ListingImages/ListingImagesDetails"
-import Gallery from "./pages/Property_Deatils/HeaderImages/Gallery"
+import Gallery from "./pages/Property_Deatils/Gallery/Gallery"
 
 const stripePromise = loadStripe("pk_test_gTILJQKMDQTwNk6vS8gNwbib00UhqAgoeB")
 

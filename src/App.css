@@ -1041,19 +1041,22 @@ textarea {
 }
 .listing-details-wrapper .black-screen {
   width: 100%;
-  height: 250px;
+  height: 22vh;
   border-radius: 10px;
-  background-color: #8a8a8a;
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
+  background-size: cover;
+  background-position: center;
+}
+.grey {
+  background-color: #8a8a8a;
 }
 /* end listing */
 .roman{
   font-family: 'leitura_displayroman';
   color: #484848
 }
-
 .loading-icon {
   width: 20px;
   margin-right: 5px;
@@ -1071,9 +1074,7 @@ textarea {
   margin-bottom: -70px;
   padding-left: 0px !important;
   padding-right: 0px !important;
-
 }
-
 .map-control-box {
   width: 45vw;
   position: absolute;
@@ -1094,17 +1095,13 @@ textarea {
   text-align: center;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px
-  
-
 }
-
 .map-close-btn:hover {
   background-color: #ddd
 }
 .map-close-btn i {
   margin-top: 9px;
 }
-
 .map-search {
   background-color: #fff;
   margin: 0 auto;
@@ -1113,25 +1110,21 @@ textarea {
   border-radius: 10px;
   cursor: pointer;
 }
-
 .map-search:hover
 {
   background-color: #ddd
 }
-
 .map-search h6 {
   font-weight: bold;
   font-size: 20px;
   font-family: 'leitura_displayroman' !important;
   cursor: pointer;
 }
-
 .map-search input {
 
   cursor: pointer;
 }
-
- .bubble {
+.bubble {
   align-items: center;
   background-color: rgb(255, 255, 255);
   border-radius: 28px;
@@ -1146,7 +1139,6 @@ textarea {
   cursor: pointer;
 
 }
-
 .bubbleSelected {
   align-items: center;
   background-color: rgb(46, 45, 45);
@@ -1243,17 +1235,13 @@ textarea {
 }
 /* gallery */
 .bubble:hover {
-
   transform: scale(1.07);
 }
-
-
 .bubble span {
   color: #333;
   font-weight: bold;
   font-size: 1.5rem;
 }
-
 .bubbleSelected span {
   color: #fff;
   font-weight: bold;
