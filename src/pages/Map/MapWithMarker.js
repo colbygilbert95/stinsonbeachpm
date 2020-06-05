@@ -44,7 +44,7 @@ function CreateExactMessage() {
 
   let controlText = document.createElement("div");
   controlText.style.color = "rgb(25,25,25)";
-  controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+  controlText.style.fontFamily = "Arial,sans-serif";
   controlText.style.fontSize = "16px";
   controlText.style.lineHeight = "38px";
   controlText.style.paddingLeft = "5px";

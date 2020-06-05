@@ -11,6 +11,37 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
+function createSearchElement() {
+  let controlDiv = document.createElement("div");
+  let controlUI = document.createElement("div");
+  controlUI.style.backgroundColor = "#fff";
+  controlUI.style.border = "2px solid #fff";
+  controlUI.style.borderRadius = "3px";
+  controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+  controlUI.style.cursor = "pointer";
+  controlUI.style.padding = "0px 10px";
+  controlUI.style.marginTop = "10px";
+  controlUI.style.marginBottom = "22px";
+  controlUI.style.textAlign = "center";
+  controlUI.title = "Click to recenter the map";
+  controlDiv.appendChild(controlUI);
+
+  let inputBtn = document.createElement("input");
+  inputBtn.setAttribute("type", "checkbox");
+  inputBtn.style.display = "inline";
+
+  let controlText = document.createElement("span");
+  controlText.style.color = "rgb(25,25,25)";
+  controlText.style.fontFamily = "Arial,sans-serif";
+  controlText.style.fontSize = "16px";
+  controlText.style.lineHeight = "38px";
+  controlText.style.paddingLeft = "5px";
+  controlText.style.paddingRight = "5px";
+  controlText.textContent = "Search As I Move The Map";
+  controlUI.appendChild(inputBtn);
+  controlUI.appendChild(controlText);
+  return controlDiv;
+}
 const sliderSetting = {
   dots: true,
   infinite: true,
@@ -90,6 +121,10 @@ function GoogleMapCombo(props) {
         position: window.google.maps.ControlPosition.RIGHT_TOP,
       },
     });
+
+    map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(
+      createSearchElement()
+    );
   }, []);
 
   if (LoadError) return "Error Loading Map";

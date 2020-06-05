@@ -75,3 +75,6 @@
 .map-popup-star {
   color: #337ab7;
 }
+.map-popup-star .small strong{
+ margin: 0 6px;
+}
