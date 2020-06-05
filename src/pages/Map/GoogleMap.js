@@ -15,10 +15,11 @@ const sliderSetting = {
   dots: true,
   infinite: true,
   speed: 500,
+  autoplay: true,
+  autoplaySpeed: 1900,
   slidesToShow: 1,
   slidesToScroll: 1,
   adaptiveHeight: false,
-  swipeToSlide: false,
 };
 
 const mapContainerStyle = {
@@ -48,6 +49,8 @@ const options = {
 };
 
 function GoogleMapCombo(props) {
+  console.log(props.mapValues);
+
   const { isLoaded, LoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   });
@@ -92,8 +95,6 @@ function GoogleMapCombo(props) {
   if (LoadError) return "Error Loading Map";
   if (!isLoaded) return "Loading Map";
 
-  let i = 0;
-  let hoverId = props.hoverId;
   return (
     <div>
       <GoogleMap
@@ -158,19 +159,25 @@ function GoogleMapCombo(props) {
               ></div> */}
 
               <Slider {...sliderSetting}>
-                <div>
+                {/* <div>
                   <div
                     className="google-info-window-img"
                     style={{ backgroundImage: `url(${selected.URL})` }}
                   ></div>
-                </div>
+                </div> */}
 
-                <div>
-                  <div
-                    className="google-info-window-img"
-                    style={{ backgroundImage: `url(${selected.URL})` }}
-                  ></div>
-                </div>
+                {props.mapValues.listingImgs
+                  .filter(value => value.Id === selected.Id)
+                  .map(value =>
+                    value.imgs.map(img => (
+                      <div>
+                        <div
+                          className="google-info-window-img"
+                          style={{ backgroundImage: `url(${img.URL})` }}
+                        ></div>
+                      </div>
+                    ))
+                  )}
               </Slider>
               <Link
                 target="_blank"
