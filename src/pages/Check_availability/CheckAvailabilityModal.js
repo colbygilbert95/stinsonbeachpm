@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { getUnit, getBlockedDays , setTotalGuests , setDates , closeModal , clearDates } from "../../store/actions/bookingActions"
+import { getUnit, getBlockedDays, setTotalGuests, setDates, closeModal, clearDates } from "../../store/actions/bookingActions"
 import DateRangePickerWrapper from "../Property_Deatils/ListingDescription/DateRangePickerWrapper/DateRangePickerWrapper";
 import GuestCalculator from './GuestCalculator'
 import TotalCalculator from './TotalCalculator/TotalCalculator'
@@ -15,7 +15,7 @@ class CheckAvailabilityModal extends Component {
       startDate: momentPropTypes.momentObj,
       endDate: momentPropTypes.momentObj,
       hasGuests: 0,
-      total:0,
+      total: 0,
       isDateFieldRequired: false,
       isGuestsFieldRequired: false
     }
@@ -27,7 +27,7 @@ class CheckAvailabilityModal extends Component {
       endDate
     })
   }
-  handleGuestsChange = (hasGuests , total) => {
+  handleGuestsChange = (hasGuests, total) => {
     this.setState({
       hasGuests,
       total
@@ -47,10 +47,11 @@ class CheckAvailabilityModal extends Component {
       this.setState({
         isDateFieldRequired: false,
         isGuestsFieldRequired: false
-      } , () => {
-        window.localStorage.setItem('listing' , JSON.stringify(this.props.listing))
+      }, () => {
+        window.localStorage.setItem('listing', JSON.stringify(this.props.listing))
         this.props.setTotalGuests(this.state.total)
-        this.props.setDates({startDate: startDate.format('MMM D , YYYY') ,endDate : endDate.format('MMM D , YYYY')})
+        console.log(startDate)
+        this.props.setDates({startDate: startDate ,endDate : endDate})
         this.props.history.push("/checkout");
       })
     }
@@ -89,7 +90,7 @@ class CheckAvailabilityModal extends Component {
 
                 <GuestCalculator maxGuests={this.props.maxGuests} onGuestsChange={this.handleGuestsChange} required={this.state.isGuestsFieldRequired}></GuestCalculator>
                 {(this.state.startDate !== momentPropTypes.momentObj && this.state.endDate !== momentPropTypes.momentObj) ? (
-                  <TotalCalculator listing={listing} startDate={startDate} endDate={endDate} onCalculated={this.handleOnCalculated}/>
+                  <TotalCalculator listing={listing} startDate={startDate} endDate={endDate} onCalculated={this.handleOnCalculated} />
                 ) : null}
                 <button className="check-availability-btn" onClick={this.reserve}>Reserve</button>
                 <p className="text-center mt-10 font-bold">You won't be charged yet</p>

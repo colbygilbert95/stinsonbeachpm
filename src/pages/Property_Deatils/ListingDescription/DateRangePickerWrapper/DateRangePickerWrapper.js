@@ -99,8 +99,8 @@ class DateRangePickerWrapper extends React.Component {
 
     this.state = {
       focusedInput,
-      startDate: props.dates.startDate || props.initialStartDate ,
-      endDate: props.dates.endDate || props.initialEndDate,
+      startDate: JSON.parse(localStorage.getItem('dates')) ? moment(JSON.parse(localStorage.getItem('dates')).startDate) : props.initialStartDate ,
+      endDate: JSON.parse(localStorage.getItem('dates')) ? moment(JSON.parse(localStorage.getItem('dates')).endDate) : props.initialEndDate,
       blockedDays: props.blockedDays
     };
 

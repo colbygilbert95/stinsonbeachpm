@@ -50,7 +50,7 @@ export class ListingImagesDetails extends Component {
             <div className="row">
               <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen" style={{backgroundImage: `url(${this.getRandomImage()})`}}></a></div>
               <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen" style={{backgroundImage: `url(${this.getRandomImage()})`}}></a></div>
-              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen"></a></div>
+              <div className="col-md-4"><a href="#" onClick={(e) => this.showGallery(e)} className="black-screen" style={{backgroundImage: `url(${this.getRandomImage()})`}}></a></div>
             </div>
           </div>
           <div className="list">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import moment from 'moment'
 
 class RightCard extends Component {
   constructor(props) {
@@ -37,8 +38,8 @@ class RightCard extends Component {
           </div>
           <div className="dates">
             <span className="icon"><i class="fa fa-calendar"></i></span>
-            <span>{this.state.dates.startDate}</span>
-            <span>{this.state.dates.endDate}</span>
+            <span>{moment(this.state.dates.startDate).format('MMM D , YYYY')}</span>
+            <span>{moment(this.state.dates.endDate).format('MMM D , YYYY')}</span>
           </div>
           <div className="price-details">
             <div className="price-detail">

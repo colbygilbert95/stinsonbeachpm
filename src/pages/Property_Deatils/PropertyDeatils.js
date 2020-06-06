@@ -20,6 +20,8 @@ import Rules from "./Rules/Rules";
 import OtherStays from "./OtherStays/OtherStays";
 import "react-dates/initialize";
 import DayPickerRangeControllerWrapper from "./DayPickerControllerWrapper/DayPickerControllerWrapper";
+import moment from 'moment';
+
 
 class PropertyDetails extends Component {
   constructor(props) {
@@ -34,7 +36,7 @@ class PropertyDetails extends Component {
       ? this.props.location.state.unitName
       : window.location.href.split(/([^\/]+$)/)[1].replace("_", " ");
     if (unitName.slice(-1) === "#") unitName = unitName.slice(0, -1);
-    localStorage.setItem('unitName' , unitName)
+    localStorage.setItem('unitName', unitName)
     this.props.getUnit(unitName);
     this.props.getBlockedDays(unitName);
   }
