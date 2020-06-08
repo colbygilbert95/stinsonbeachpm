@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import AliceCarousel from 'react-alice-carousel';
 import { getAllUnitsImgs } from "../../../store/actions/bookingActions";
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
 
 export class Gallery extends Component {
   constructor(props) {
@@ -19,7 +19,10 @@ export class Gallery extends Component {
       })
     })
   }
-  slideTo = (i) => this.setState({ currentIndex: i });
+  slideTo = (e , i) => {
+    e.preventDefault()
+    this.setState({ currentIndex: i })
+  }
   onSlideChanged = (e) => this.setState({ currentIndex: e.item });
   slideNext = () => {
     let { currentIndex, items } = this.state;
@@ -45,7 +48,7 @@ export class Gallery extends Component {
       {
         items.map((item, i) =>
           <li key={i} className={i === currentIndex ? 'active' : ''}>
-            <a href="#" onClick={() => this.slideTo(i)}>
+            <a href="#" onClick={(e) => this.slideTo(e , i)}>
               <img src={item.URL} />
             </a>
           </li>
@@ -105,4 +108,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, { getAllUnitsImgs })(Gallery))
+export default withRouter(connect(mapStateToProps, { getAllUnitsImgs })(Gallery));

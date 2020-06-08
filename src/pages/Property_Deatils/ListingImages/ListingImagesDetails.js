@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import { getAllUnitsImgs } from "../../../store/actions/bookingActions";
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 export class ListingImagesDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      images: JSON.parse(localStorage.getItem('RoomHeaderImgs'))
+      images: []
     }
   }
   returnBack = (e) => {
@@ -17,7 +19,19 @@ export class ListingImagesDetails extends Component {
     this.props.history.push('/gallery')
   }
   getRandomImage = () => {
-    return this.state.images[Math.floor((Math.random() * 10))].URL
+    if(this.state.images.length){
+      return this.state.images[Math.floor((Math.random() * 10))].URL
+    }
+    else {
+      return {}
+    }
+  }
+  componentDidMount = () => {
+    this.props.getAllUnitsImgs(localStorage.getItem('unitName')).then(() => {
+      this.setState({
+        images: this.props.allImgs
+      })
+    }) 
   }
   render() { 
     return (
@@ -111,4 +125,10 @@ export class ListingImagesDetails extends Component {
   }
 }
 
-export default withRouter(ListingImagesDetails)
+const mapStateToProps = state => {
+  return {
+    allImgs: state.booking.allImgs
+  };
+};
+
+export default withRouter(connect(mapStateToProps , { getAllUnitsImgs })(ListingImagesDetails))

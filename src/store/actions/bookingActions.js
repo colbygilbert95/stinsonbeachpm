@@ -44,11 +44,13 @@ export const openModal = () => {
     type: "OPEN_MODAL"
   }
 }
+
 export const closeModal = () => {
   return {
     type: "CLOSE_MODAL",
   }
 }
+
 export const getUnit = unitName => {
   return dispatch => {
     return axios.get(apiUrl + '/getUnit', {
@@ -57,8 +59,6 @@ export const getUnit = unitName => {
       }
     })
       .then(response => {
-        console.log("getUnit");
-        console.log(response.data);
         dispatch({ type: "GET_UNIT_SUCCESS", res_data: response.data });
       })
       .catch(err => {
@@ -74,13 +74,12 @@ export const getAllUnitsImgs = unitName => {
         unitName: unitName
       }
     })
-      .then(response => {
-        console.log(response.data)
-        dispatch({ type: "GET_ALL_UNITS_IMGS_SUCCESS", res_data: response.data });
-      })
-      .catch(err => {
-        dispatch({ type: "GET_ALL_UNITS_IMGS_ERROR", err });
-      });
+    .then(response => {
+      dispatch({ type: "GET_ALL_UNITS_IMGS_SUCCESS", res_data: response.data });
+    })
+    .catch(err => {
+      dispatch({ type: "GET_ALL_UNITS_IMGS_ERROR", err });
+    });
   };
 };
 
@@ -92,8 +91,6 @@ export const getUnitReviews = unitName => {
       }
     })
       .then(response => {
-        console.log("getUnitReviews");
-        console.log(response.data);
         dispatch({ type: "GET_UNIT_REVIEW_SUCCESS", res_data: response.data });
       })
       .catch(err => {
