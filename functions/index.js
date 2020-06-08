@@ -110,8 +110,6 @@ app.get("/getUnitHeaderImgs", (req, res) => {
 
 app.get("/getUnitAllImgs", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
-  console.log(req.query);
-  console.log("/getAllUnitImgs")
   db.query(
     `SELECT I.ImgOrder, I.Descriptionstat, I.URL, R.Name
     FROM Listing L
