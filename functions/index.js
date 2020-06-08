@@ -111,13 +111,14 @@ app.get("/getUnitHeaderImgs", (req, res) => {
 app.get("/getUnitAllImgs", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   db.query(
-    `SELECT I.ImgOrder, I.Descriptionstat, I.URL, R.Name
+    `SELECT I.ImgOrder, I.Description, I.URL, R.Name
     FROM Listing L
     JOIN RoomType R
     JOIN ListingImage I
     WHERE L.Id = I.Listing 
     AND L.Name = ${db.escape(req.query.unitName)}
-    AND I.RoomType = R.Id`,
+    AND I.RoomType = R.Id
+    ORDER BY Name, ImgOrder DESC`,
     (err, result) => {
       if (err) throw console.log("getAllUnitImgs: " + err);
       console.log(result)
