@@ -17,7 +17,7 @@
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.5.0",
     "@tippyjs/react": "^4.0.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "coffee-script": "^1.12.7",
     "coffeeify": "^3.0.1",
     "cookie-parser": "^1.4.5",
