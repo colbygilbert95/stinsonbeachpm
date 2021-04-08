@@ -1,35 +1,205 @@
-require('dotenv').config();
-const functions = require('firebase-functions');
+require("dotenv").config();
+const functions = require("firebase-functions");
 const express = require("express");
-const path = require("path");
 const mysql = require("mysql");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const moment = require("moment-timezone");
 const cors = require("cors");
-const stripe = require("stripe")("sk_test_0WDf0azcNEORL3fzFr84q3Ty00CJ90FvWS");
-const axios = require("axios");
-const ical = require("ical.js");
+const { google } = require("googleapis");
+const googleCredentials = require("./credentials.json");
+const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
 
-const app = express();
 
+const client_id = process.env.XERO_CLIENT_ID;
+const client_secret = process.env.XERO_CLIENT_SECRET;
+const redirectUrl = process.env.XERO_REDIRECT_URI;
+const scopes =
+  "openid profile email accounting.settings accounting.transactions offline_access";
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors({origin: true}));
-console.log(process.env.SERVER_SQL_HOST)
+const authenticationData = (req, res) => {
+  return {
+    decodedIdToken: req.session.decodedIdToken,
+    decodedAccessToken: req.session.decodedAccessToken,
+    tokenSet: req.session.tokenSet,
+    allTenants: req.session.allTenants,
+    activeTenant: req.session.activeTenant,
+  };
+};
+
 const db = mysql.createConnection({
   host: process.env.SERVER_SQL_HOST,
   database: process.env.SERVER_SQL_DATABASE,
   user: process.env.SERVER_SQL_USER,
   password: process.env.SERVER_SQL_PASSWORD,
-  socketPath: process.env.SERVER_SQL_SOCKET_PATH
+  // Must be uncommented for production 
+  socketPath: process.env.SERVER_SQL_SOCKET_PATH, 
 });
 
 db.connect(function (err) {
   if (err) throw err;
 });
 
+const sessionStore = new MySQLStore({}, db);
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(cors({ origin: true }));
+app.use(
+  session({
+    secret: "something crazy",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
+
+
+app.get("/connect", async (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  const { XeroClient } = require("xero-node");
+  const xero = new XeroClient({
+    clientId: client_id,
+    clientSecret: client_secret,
+    redirectUris: [redirectUrl],
+    scopes: scopes.split(" "),
+  });
+  xero.initialize();
+  try {
+    const consentUrl = await xero.buildConsentUrl();
+    res.redirect(consentUrl);
+  } catch (err) {
+    console.log(err);
+    res.send("Sorry, something went wrong in connect");
+  }
+});
+
+app.get("/callback", async (req, res) => {
+  const jwtDecode = require("jwt-decode");
+  const { XeroClient, BankTransaction } = require("xero-node");
+  const xero = new XeroClient({
+    clientId: client_id,
+    clientSecret: client_secret,
+    redirectUris: [redirectUrl],
+    scopes: scopes.split(" "),
+  });
+  await xero.initialize();
+  try {
+    const tokenSet = await xero.apiCallback(req.url);
+    console.log(tokenSet)
+    await xero.updateTenants();
+
+    const decodedIdToken = jwtDecode(tokenSet.id_token);
+    const decodedAccessToken = jwtDecode(tokenSet.access_token);
+
+    req.session.decodedIdToken = decodedIdToken;
+    req.session.decodedAccessToken = decodedAccessToken;
+    req.session.tokenSet = tokenSet;
+    req.session.allTenants = xero.tenants;
+    // XeroClient is sorting tenants behind the scenes so that most recent / active connection is at index 0
+    req.session.activeTenant = xero.tenants[0];
+
+    const authData = authenticationData(req, res);
+    //console.log(authData)
+    res.send("Connected to Xero!");
+  } catch (err) {
+    console.log(err);
+    res.send("Sorry, something went wrong in callback");
+  }
+});
+
+app.get("/uploadMgmtInvoices", async (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  const { XeroClient, Invoices } = require("xero-node");
+  const { TokenSet } = require('openid-client');
+  const xero = new XeroClient({
+    clientId: client_id,
+    clientSecret: client_secret,
+    redirectUris: [redirectUrl],
+    scopes: scopes.split(" "),
+  });
+  
+  await xero.initialize();
+  await xero.setTokenSet(new TokenSet(req.session.tokenSet));
+
+  const tokenSet = await xero.readTokenSet();
+  
+  if (!tokenSet.expired()) {
+    try {
+      const rawXeroData = await getXeroInvoiceData();
+      const invoices = parseXeroData(rawXeroData);
+      
+      const newInvoices = new Invoices();
+      newInvoices.invoices = invoices;
+      
+      const response = await xero.accountingApi.createInvoices(
+        "15a0a407-e2d1-48e3-9255-f8d61cef5c93",
+        newInvoices,
+        false, 4
+      );
+      res.send(response);
+    } catch (err) {
+      console.log(err);
+      res.send(
+        "Sorry, something went wrong in uploadInvoices, try reconnecting by <a href='https://us-central1-stinsonbeachpm.cloudfunctions.net/app/connect'>clicking here</a>"
+      );
+    }
+  } else {
+    res.send(
+      "Access to xero has expired, reconnect by <a href='https://us-central1-stinsonbeachpm.cloudfunctions.net/app/connect'>clicking here</a>"
+    );
+  }
+});
+
+// Uploads invoices for reservations booked with units directly operated by Stinson Beach PM
+app.get("/uploadCompanyInvoices", async (req, res) => {
+  res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  const { XeroClient, Invoices } = require("xero-node");
+  const { TokenSet } = require('openid-client');
+  const xero = new XeroClient({
+    clientId: client_id,
+    clientSecret: client_secret,
+    redirectUris: [redirectUrl],
+    scopes: scopes.split(" "),
+  });
+  
+  await xero.initialize();
+  await xero.setTokenSet(new TokenSet(req.session.tokenSet));
+
+  const tokenSet = await xero.readTokenSet();
+  
+  if (!tokenSet.expired()) {
+    try {
+      const rawXeroData = await getXeroInvoiceData();
+      const invoices = parseXeroData(rawXeroData);
+      
+      const newInvoices = new Invoices();
+      newInvoices.invoices = invoices;
+      
+      const response = await xero.accountingApi.createInvoices(
+        "ac018c2b-d7ac-4fa6-b3c9-54559fdac216",
+        newInvoices,
+        false, 4
+      );
+      res.send(response);
+    } catch (err) {
+      console.log(err);
+      res.send(err)
+      // res.send(
+      //   "Sorry, something went wrong in uploadInvoices, try reconnecting by <a href='https://us-central1-stinsonbeachpm.cloudfunctions.net/app/connect'>clicking here</a>"
+      // );
+    }
+  } else {
+    res.send(
+      "Access to xero has expired, reconnect by <a href='https://us-central1-stinsonbeachpm.cloudfunctions.net/app/connect'>clicking here</a>"
+    );
+  }
+});
 
 app.get("/getActiveUnits", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
@@ -45,7 +215,7 @@ app.get("/getActiveUnits", (req, res) => {
                 AND L.Id = I.Listing
                 AND I.ImgOrder = 1;`,
     (err, result) => {
-      console.log(result)
+      console.log(result);
       if (err) throw console.log("getActiveUnits: " + err);
       res.send(result);
     }
@@ -55,7 +225,7 @@ app.get("/getActiveUnits", (req, res) => {
 app.get("/getUnit", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
-  console.log("/getUnit")
+  console.log("/getUnit");
   db.query(
     `SELECT * , C.Name AS PolicyName, C.Description AS PolicyDescription, L.Latitude As Latitude, L.Longitude As Longitude 
     FROM CancellationPolicy C
@@ -74,7 +244,7 @@ app.get("/getUnit", (req, res) => {
 app.get("/getUnitReviews", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
-  console.log("/getUnitReviews")
+  console.log("/getUnitReviews");
   db.query(
     `SELECT R.FirstName, R.PublicFeedback,  R.AddedOn
     FROM Listing L
@@ -92,7 +262,7 @@ app.get("/getUnitReviews", (req, res) => {
 app.get("/getUnitHeaderImgs", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
-  console.log("/getUnitHeaderImgs")
+  console.log("/getUnitHeaderImgs");
   db.query(
     `SELECT I.URL
     FROM Listing L
@@ -110,6 +280,8 @@ app.get("/getUnitHeaderImgs", (req, res) => {
 
 app.get("/getUnitAllImgs", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+  console.log(req.query);
+  console.log("/getAllUnitImgs");
   db.query(
     `SELECT I.ImgOrder, I.Description, I.URL, R.Name
     FROM Listing L
@@ -121,7 +293,6 @@ app.get("/getUnitAllImgs", (req, res) => {
     ORDER BY Name, ImgOrder DESC`,
     (err, result) => {
       if (err) throw console.log("getAllUnitImgs: " + err);
-      console.log(result)
       res.send(result);
     }
   );
@@ -130,7 +301,7 @@ app.get("/getUnitAllImgs", (req, res) => {
 app.get("/getRoomHeaderImgs", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
   console.log(req.query);
-  console.log("/getRoomHeaderImgs")
+  console.log("/getRoomHeaderImgs");
   db.query(
     `SELECT I.URL, R.Name
     FROM ListingImage I
@@ -197,8 +368,13 @@ app.get("/getAllUnitAmenities", (req, res) => {
 
 app.get("/getBlockedDays", (req, res) => {
   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+
   console.log(req.query);
   console.log("/getBlockedDays");
+
+  const ical = require("ical.js");
+  const axios = require("axios");
+
   db.query(
     `SELECT LP.CalendarURL
   FROM Listing L
@@ -209,20 +385,18 @@ app.get("/getBlockedDays", (req, res) => {
       if (err) throw console.log("getBlockedDays: " + err);
       let blockedDays = {};
       Promise.all(
-        result.map(calURL => {
+        result.map((calURL) => {
           return new Promise((resolve, reject) => {
             if (calURL.CalendarURL !== "") {
               console.log(calURL.CalendarURL);
               axios
                 .get(calURL.CalendarURL)
-                .then(response => {
+                .then((response) => {
                   const events = ical.parse(response.data)[2];
 
                   for (let i = 0; i < events.length; i++) {
                     const startDate = moment(getVeventStartDate(events[i]));
                     const endDate = moment(getVeventEndDate(events[i]));
-
-
 
                     if (endDate.isSameOrAfter(moment())) {
                       blockedDays[startDate.format("YYYY-MM-DD")] = "highlight";
@@ -241,7 +415,7 @@ app.get("/getBlockedDays", (req, res) => {
 
                   resolve();
                 })
-                .catch(err => {
+                .catch((err) => {
                   reject(err);
                 });
             } else {
@@ -299,11 +473,20 @@ app.get("/chargePreview", (req, res) => {
           rent += listing[0].WeekendRate;
         }
       }
-      const rate = rent / nights
- 
-    const tax = Math.round((rent + this.props.listing.CleaningFee) * listing[0].RaxRate * 100)/100
-    const total = tax + rent + listing[0].CleaningFee
-    res.send({rate: rate, nights:nights,tax: tax, rent: rent, total: total})
+      const rate = rent / nights;
+
+      const tax =
+        Math.round(
+          (rent + this.props.listing.CleaningFee) * listing[0].RaxRate * 100
+        ) / 100;
+      const total = tax + rent + listing[0].CleaningFee;
+      res.send({
+        rate: rate,
+        nights: nights,
+        tax: tax,
+        rent: rent,
+        total: total,
+      });
     }
   );
 
@@ -311,80 +494,32 @@ app.get("/chargePreview", (req, res) => {
 });
 
 app.post("/charge", (req, res) => {
+  const stripe = require("stripe")(
+    "sk_test_0WDf0azcNEORL3fzFr84q3Ty00CJ90FvWS"
+  );
   const chargeAmount = req.body.chargeAmount;
-  const paymentIntent = stripe.paymentIntents.create({
-    amount: chargeAmount,
-    currency: 'usd',
-    metadata: { integration_check: 'accept_a_payment' },
-  })
-  .then((intent) => {
-    res.json({ client_secret: intent.client_secret });
-  })
-})
-
-app.post("/smartbnbWebhook", function (req, res) {
-  if (req.body.listing.id != null) {
-    getListingByAdId(req).then(listingId => {
-      if (listingId) {
-        checkGuest(req).then(guestExists => {
-          console.log("guestExists: " + guestExists);
-          if (guestExists) {
-            checkReservation(req).then(reservationExists => {
-              if (reservationExists) {
-                updateReservation(req).then(() => {
-                  updateCleaning(req);
-                  updateQualityControl(req);
-                  console.log("Res Status Check")
-                  console.log(req.body.status.toUpperCase())
-                  if (req.body.status.toUpperCase() == "CANCELLED") {
-                    cancelCleaning(req)
-                    cancelQualityControl(req)
-                  }
-                  res.send("Done: Update reservation");
-                });
-              } else {
-                getGuest(req).then(guestId => {
-                  getPlatformId(req).then(platformId => {
-                    console.log("First insert");
-                    insertReservation(req, guestId, listingId, platformId).then(
-                      () => {
-                        if (req.body.status.toUpperCase() !== "CANCELLED") {
-                          insertCleaning(req);
-                          insertQaulityControl(req);
-                        }
-                        res.send("Done: First insert");
-                      }
-                    );
-                  });
-                });
-              }
-            });
-          } else {
-            insertGuest(req).then(() => {
-              getGuest(req).then(guestId => {
-                getPlatformId(req).then(platformId => {
-                  console.log("Second insert");
-                  insertReservation(req, guestId, listingId, platformId).then(
-                    () => {
-                      if (req.body.status.toUpperCase() !== "CANCELLED") {
-                        insertCleaning(req);
-                        insertQaulityControl(req);
-                      }
-                      res.send("Done: Second insert");
-                    }
-                  );
-                });
-              });
-            });
-          }
-        });
-      }
+  const paymentIntent = stripe.paymentIntents
+    .create({
+      amount: chargeAmount,
+      currency: "usd",
+      metadata: { integration_check: "accept_a_payment" },
+    })
+    .then((intent) => {
+      res.json({ client_secret: intent.client_secret });
     });
-  } else {
-    res.send("Null")
-  }
-
 });
+
+app.post("/smartbnbWebhook", async (req, res) => {
+  try {
+    await uploadReservation(req.body)
+    res.send(console.log("smartbnbWebhook: Success"));
+  } catch (err) {
+    res.send(console.log("smartbnbWebhook: " + err));
+  }
+  
+  
+});
+
 
 function getVeventStartDate(vevent) {
   const event = vevent[1];
@@ -406,506 +541,265 @@ function getVeventEndDate(vevent) {
   }
   return;
 }
-function getListingByAdId(req) {
-  return new Promise((resolve, reject) => {
-    let adId = req.body.listing.id;
-    if (typeof adId === "string") adId = adId.match(/([^.]+$)/)[0];
-    db.query(
-      `SELECT Listing 
-      FROM ListingPlatform 
-      WHERE AdId = ${db.escape(adId)}`,
-      (err, listingId) => {
-        if (err) reject(console.log("getListingByAdId: " + err));
-        if (listingId[0] != undefined) {
-          resolve(listingId[0].Listing);
-        }
-        resolve(false);
-      }
+
+function getXeroInvoiceData() {
+  return new Promise(function (resolve, reject) {
+    const jwt = new google.auth.JWT(
+      googleCredentials.service_account.client_email,
+      null,
+      googleCredentials.service_account.private_key,
+      ["https://www.googleapis.com/auth/spreadsheets"]
     );
-  });
-}
 
-function checkGuest(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `SELECT EXISTS(SELECT * FROM Guest WHERE ChannelId = ${db.escape(
-        req.body.guest.id
-      )})`,
-      (err, guest) => {
-        if (err) reject(console.log("checkGuest: " + err));
-        resolve(
-          guest[0][
-          `EXISTS(SELECT * FROM Guest WHERE ChannelId = ${db.escape(
-            req.body.guest.id
-          )})`
-          ] === 1
-        );
+    const request = {
+      // The ID of the spreadsheet to retrieve data from.
+      spreadsheetId: "1G9KgXCYGKI_fbo2w3iRJH5BQ_HsZRyjhbuLgkI4Yt-Y", // TODO: Update placeholder value.
+
+      // The A1 notation of the values to retrieve.
+      range: "Xero Export!A2:AA", // TODO: Update placeholder value.
+      auth: jwt,
+      key: googleCredentials.api_key,
+    };
+
+    const sheets = google.sheets("v4");
+    sheets.spreadsheets.values.get(request, (err, res) => {
+      if (err) {
+        console.log("Rejecting because of error");
+        reject(err);
+      } else {
+        console.log("Request successful");
+        resolve(res.data.values);
       }
-    );
-  });
-}
-
-function getGuest(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `SELECT Id FROM Guest WHERE ChannelId = ${db.escape(req.body.guest.id)}`,
-      (err, guest) => {
-        if (err) reject(console.log("getkGuest: " + err));
-        resolve(guest[0].Id);
-      }
-    );
-  });
-}
-
-function insertGuest(req) {
-  return new Promise((resolve, reject) => {
-    const phone = req.body.guest.phone
-    db.query(
-      `INSERT INTO Guest (
-                    ChannelId,
-                    FirstName, 
-                    LastName, 
-                    PictureURL, 
-                    Phone, 
-                    ChannelEmail, 
-                    Email, 
-                    Location,
-                    AddedOn
-
-                )
-                VALUES (
-                    ${db.escape(req.body.guest.id)},
-                    ${db.escape(req.body.guest.first_name)},
-                    ${db.escape(req.body.guest.last_name)},
-                    ${db.escape(req.body.guest.picture_url)},
-                    ${db.escape((phone != null ? phone.replace(/\D/g, "") : ""))},
-                    ${db.escape(req.body.guest.email)},
-                    '',
-                    ${db.escape(req.body.guest.location)},
-                    ${db.escape(moment().format("YYYY-MM-DD HH:mm:ss"))}
-                )`,
-      (err, res) => {
-        if (err) reject(console.log("insertGuest" + err));
-        resolve();
-      }
-    );
-  });
-}
-
-function checkReservation(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `SELECT EXISTS(SELECT * FROM Reservation WHERE ResId = ${db.escape(
-        req.body.code
-      )})`,
-      (err, reservation) => {
-        if (err) reject(console.log("checkReservation: " + err));
-        resolve(
-          reservation[0][
-          `EXISTS(SELECT * FROM Reservation WHERE ResId = ${db.escape(
-            req.body.code
-          )})`
-          ] === 1
-        );
-      }
-    );
-  });
-}
-
-function insertReservation(req, guestId, listingId, platformId) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `INSERT INTO Reservation (
-            ResId,
-            Platform,
-            Guest, 
-            Listing, 
-            UserId, 
-            ListingTitle, 
-            Nights, 
-            Status, 
-            Guests, 
-            Adults, 
-            Children,
-            Infants,
-            StartDate,
-            Checkintime,
-            EndDate,
-            CheckoutTime,
-            Currency,
-            PerNightPrice,
-            BasePrice,
-            SecurityDeposit,
-            Subtotal,
-            Tax,
-            GuestFee,
-            CleaningFee,
-            Total,
-            HostFee,
-            Payout,
-            CreatedAt,
-            UpdatedAt,
-            SentAt
-        )
-        VALUES (
-            ${db.escape(req.body.code)},
-            ${db.escape(platformId)},
-            ${db.escape(guestId)},
-            ${db.escape(listingId)},
-            ${db.escape(req.body.user_id)},
-            ${db.escape(req.body.listing.name)},
-            ${db.escape(req.body.nights)},
-            ${db.escape(req.body.status)},
-            ${db.escape(req.body.guests)},
-            ${db.escape(req.body.adults)},
-            ${db.escape(req.body.children)},
-            ${db.escape(req.body.infants)},
-            ${db.escape(req.body.start_date)},
-            ${db.escape(
-        moment.tz(req.body.checkin_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-      )},
-            ${db.escape(req.body.end_date)},
-            ${db.escape(
-        moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-      )},
-            ${db.escape(req.body.currency)},
-            ${db.escape(req.body.per_night_price)},
-            ${db.escape(req.body.base_price)},
-            ${db.escape(req.body.security_price)},
-            ${db.escape(req.body.subtotal)},
-            ${db.escape(req.body.tax_amount)},
-            ${db.escape(req.body.guest_fee)},
-            ${db.escape(req.body.extras_price)},
-            ${db.escape(req.body.total_price)},
-            ${db.escape(req.body.host_service_fee)},
-            ${db.escape(req.body.payout_price)},
-            ${db.escape(
-        moment.unix(req.body.created_at).format("YYYY-MM-DD HH:mm:ss")
-      )},
-            ${db.escape(
-        moment.unix(req.body.updated_at).format("YYYY-MM-DD HH:mm:ss")
-      )},
-            ${db.escape(
-        moment.unix(req.body.sent_at).format("YYYY-MM-DD HH:mm:ss")
-      )}
-        )`,
-      err => {
-        if (err) reject(console.log("insertReservation: " + err));
-        console.log("insertReservation: Success");
-        resolve();
-      }
-    );
-  });
-}
-
-function updateReservation(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `UPDATE Reservation SET   
-        Nights = ${db.escape(req.body.nights)}, 
-        Status = ${db.escape(req.body.status)}, 
-        Guests = ${db.escape(req.body.guests)}, 
-        Adults = ${db.escape(req.body.adults)}, 
-        Children = ${db.escape(req.body.children)},
-        Infants = ${db.escape(req.body.infants)},
-        StartDate = ${db.escape(req.body.start_date)},
-        EndDate = ${db.escape(req.body.end_date)},
-        Currency = ${db.escape(req.body.currency)},
-        PerNightPrice = ${db.escape(req.body.per_night_price)},
-        BasePrice = ${db.escape(req.body.base_price)},
-        Subtotal = ${db.escape(req.body.subtotal)},
-        Tax = ${db.escape(req.body.tax_amount)},
-        GuestFee = ${db.escape(req.body.guest_fee)},
-        CleaningFee = ${db.escape(req.body.extras_price)},
-        Payout = ${db.escape(req.body.payout_price)},
-        UpdatedAt = ${db.escape(
-        moment.unix(req.body.updated_at).format("YYYY-MM-DD HH:mm:ss")
-      )},
-        SentAt = ${db.escape(
-        moment.unix(req.body.sent_at).format("YYYY-MM-DD HH:mm:ss")
-      )}
-      WHERE ResId = ${db.escape(req.body.code)}`,
-
-      err => {
-        if (err) reject(console.log("updateReservation: " + err));
-        resolve();
-      }
-    );
-  });
-}
-
-function getPlatformId(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `SELECT Id FROM Platform WHERE Name = ${db.escape(req.body.channel)}`,
-      (err, platformId) => {
-        if (err) reject(console.log("getPlatformId: " + err));
-        resolve(platformId[0].Id);
-      }
-    );
-  });
-}
-
-function getCleanerByListing(listingId) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `SELECT Cleaner 
-         FROM Listing L 
-         INNER JOIN ON ClientAccount C 
-         WHERE C.Property = L.Property 
-         AND L.Listing = ${db.escape(listingId)}`,
-      (err, cleaner) => {
-        if (err) reject(console.log("getCleanerByListing: " + err));
-        resolve(cleaner[0].Cleaner);
-      }
-    );
-  });
-}
-
-function getReservation(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `SELECT * FROM Reservation WHERE ResId = ${db.escape(req.body.code)}`,
-      (err, reservation) => {
-        if (err) reject(console.log("getReservation: " + err));
-        resolve(reservation[0]);
-      }
-    );
-  });
-}
-
-function getListing(Id) {
-  return new Promise((resolve, reject) => {
-    console.log(Id);
-    db.query(
-      `SELECT * FROM Listing WHEREId = ${db.escape(Id)}`,
-      (err, listing) => {
-        if (err) reject(console.log("getListing: " + err));
-        resolve(listing[0]);
-      }
-    );
-  });
-}
-
-function insertCleaning(req) {
-  return new Promise((resolve, reject) => {
-    let adId = req.body.listing.id;
-    if (typeof adId === "string") adId = adId.match(/([^.]+$)/)[0];
-    db.query(
-      `
-            SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, C.CleaningCrew, R.EndDate, R.CheckoutTime  
-            FROM Listing L
-            INNER JOIN Reservation R
-            INNER JOIN ClientAccount C
-            INNER JOIN ListingPlatform LP
-            INNER JOIN Property P
-            WHERE LP.AdId = ${db.escape(adId)} 
-            AND R.ResId = ${db.escape(req.body.code)}  
-            AND R.Listing = L.Id
-            AND P.Id = L.Property 
-            AND P.ClientAccount = C.Id;`,
-      (err, res) => {
-        const cleaningData = res[0];
-        if (err) reject(console.log("insertCleaning a: " + err));
-        if (cleaningData != undefined) {
-          db.query(
-            `INSERT INTO Task (
-                        Title, 
-                        Description, 
-                        Status, 
-                        Listing, 
-                        Reservation, 
-                        TaskType, 
-                        DueDate, 
-                        StartWindow,
-                        Paid, 
-                        AddedOn) 
-                     VALUES (
-                        ${db.escape(cleaningData.Name + " - Cleaning")},
-                        '',
-                        ${db.escape("Pending")},
-                        ${db.escape(cleaningData.ListingId)},
-                        ${db.escape(cleaningData.ReservationId)},
-                        1,
-                        ${db.escape(
-              moment(cleaningData.EndDate)
-                .format("YYYY-MM-DD HH:mm:ss")
-            )},
-                        ${db.escape(cleaningData.CheckoutTime)},
-                        ${db.escape((moment(cleaningData.EndDate).isSameOrBefore(moment("02/29/2020")) ? 1 : 0))},
-                        ${db.escape(moment().format("YYYY-MM-DD HH:mm:ss"))}
-                     )`,
-            err => {
-              if (err) reject(console.log("insertCleaning b: " + err));
-              console.log("insertCleaning: Success");
-              resolve();
-            }
-          );
-        }
-      }
-    );
-  });
-}
-
-function cancelCleaning(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `UPDATE Task SET 
-        Status = ${db.escape(
-        "Cancelled"
-      )}
-        WHERE TaskType = 1 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-        req.body.code
-      )} LIMIT 1);
-            `,
-      err => {
-        if (err) reject(console.log("cancelCleaning a: " + err));
-        console.log("cancelCleaning: Success");
-        resolve();
-      }
-    );
-  });
-}
-
-function updateCleaning(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `UPDATE Task SET 
-        StartWindow = ${db.escape(
-        moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-      )}, 
-        DueDate = ${db.escape(req.body.end_date)}
-                WHERE TaskType = 1 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-        req.body.code
-      )} LIMIT 1);
-            `,
-      err => {
-        if (err) reject(console.log("updateCleaning a: " + err));
-        console.log("updateCleaning: Success");
-        resolve();
-      }
-    );
-  });
-}
-
-function insertQaulityControl(req) {
-  return new Promise((resolve, reject) => {
-    let adId = req.body.listing.id;
-    if (typeof adId === "string") adId = adId.match(/([^.]+$)/)[0];
-    db.query(
-      `
-        SELECT L.Name, L.Id AS ListingId, R.Id AS ReservationId, R.EndDate, R.CheckoutTime  
-        FROM Listing L
-        INNER JOIN Reservation R
-        INNER JOIN ClientAccount C
-        INNER JOIN ListingPlatform LP
-        INNER JOIN Property P
-        WHERE LP.AdId = ${db.escape(adId)} 
-        AND R.ResId = ${db.escape(req.body.code)}  
-        AND R.Listing = L.Id
-        AND P.Id = L.Property 
-        AND P.ClientAccount = C.Id;`,
-      (err, res) => {
-        const qualityControlData = res[0];
-        if (err) reject(console.log("insertQaulityControl a: " + err));
-        if (qualityControlData != undefined) {
-          db.query(
-            `INSERT INTO Task (
-                          Title, 
-                          Description, 
-                          Status, 
-                          Listing, 
-                          Reservation, 
-                          CastMember,
-                          TaskType, 
-                          DueDate, 
-                          StartWindow, 
-                          AddedOn) 
-                       VALUES (
-                          ${db.escape(
-              qualityControlData.Name + " - Quality Control"
-            )},
-                          '',
-                          ${db.escape("Pending")},
-                          ${db.escape(qualityControlData.ListingId)},
-                          ${db.escape(qualityControlData.ReservationId)},
-                          1,
-                          2,
-                          ${db.escape(
-              moment(qualityControlData.EndDate)
-                .format("YYYY-MM-DD HH:mm:ss")
-            )},
-                          ${db.escape(qualityControlData.CheckoutTime)},
-                          ${db.escape(moment().format("YYYY-MM-DD HH:mm:ss"))}
-                       )`,
-            err => {
-              if (err) reject(console.log("insertQaulityControl b: " + err));
-              console.log("insertQaulityControl: Success");
-              resolve();
-            }
-          );
-        }
-      }
-    );
-  });
-}
-
-function updateQualityControl(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `UPDATE Task SET 
-          StartWindow = ${db.escape(
-        moment.tz(req.body.checkout_time, "America/Los_Angeles").format("YYYY-MM-DD HH:mm:ss")
-      )}, 
-          DueDate = ${db.escape(req.body.end_date)}
-                  WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-        req.body.code
-      )} LIMIT 1);
-              `,
-      err => {
-        if (err) reject(console.log("updateQaulityConrol a: " + err));
-        console.log("updateQualityControl: Success");
-        resolve();
-      }
-    );
-  });
-}
-
-function cancelQualityControl(req) {
-  return new Promise((resolve, reject) => {
-    db.query(
-      `UPDATE Task SET 
-          Status = ${db.escape(
-        "Cancelled"
-      )} 
-        WHERE TaskType = 2 AND Reservation = (SELECT Id FROM Reservation WHERE ResId = ${db.escape(
-        req.body.code
-      )} LIMIT 1);
-      `,
-      err => {
-        if (err) reject(console.log("cancelQaulityConrol a: " + err));
-        console.log("cancelQualityControl: Success");
-        resolve();
-      }
-    );
-  });
-}
-
-function saveNull(req) {
-  return new Promise((resolve, reject) => {
-    fs.readFile("./data1.json", "utf8", (err, jsonString) => {
-      let data = JSON.parse(jsonString);
-      data.records.push(req.body);
-      const output = JSON.stringify(data);
-      fs.writeFile("data1.json", output, err => {
-        console.log("saveNull: Success");
-      });
     });
   });
 }
 
-exports.app = functions.https.onRequest(app)
+function uploadReservation(req) {
+  return new Promise(function (resolve, reject) {
+    const jwt = new google.auth.JWT(
+      googleCredentials.service_account.client_email,
+      null,
+      googleCredentials.service_account.private_key,
+      ["https://www.googleapis.com/auth/spreadsheets"]
+    );
+    let data = []
+      console.log()
+    data.push(req.user_id)
+    data.push(req.code)
+    data.push(req.channel)
+    data.push(req.start_date)
+    data.push(req.end_date)
+    data.push(req.checkin_time)
+    data.push(req.checkout_time)
+    data.push(req.nights)
+    data.push(req.guests)
+    data.push(req.adults)
+    data.push(req.children)
+    data.push(req.infants)
+    data.push(req.status)
+    data.push(req.listing.id)
+    data.push(req.listing.property_id)
+    data.push(req.listing.name)
+    data.push(req.listing.address)
+    data.push(req.listing.picture_url)
+    data.push(req.listing.lat)
+    data.push(req.listing.lng)
+    data.push(req.guest.id)
+    data.push(req.guest.first_name)
+    data.push(req.guest.last_name)
+    data.push(req.guest.picture_url)
+    data.push(req.guest.location)
+    data.push(req.guest.phone)
+    data.push(req.guest.email)
+    data.push(req.currency)
+    data.push(req.security_price)
+    data.push(req.per_night_price)
+    data.push(req.base_price)
+    data.push(req.extras_price)
+    data.push(req.subtotal)
+    data.push(req.tax_amount)
+    data.push(req.guest_fee)
+    data.push(req.total_price)
+    data.push(req.host_service_fee)
+    data.push(req.payout_price)
+    data.push(req.created_at)
+    data.push(req.updated_at)
+    data.push(req.sent_at)
+      console.log(data)
+    const request = {
+      // The ID of the spreadsheet to retrieve data from.
+      spreadsheetId: "1Zk1RRGwL5RgO4moCTDNDK1IRa5SN7x7rEuZ1GO7njWE", // TODO: Update placeholder value.
+
+      // The A1 notation of the values to retrieve.
+      range: "Smartbnb Data!A1", 
+      valueInputOption: "RAW",
+      auth: jwt,
+      key: googleCredentials.api_key,
+      requestBody: {
+        majorDimension: "ROWS",
+        //range: "Smartbnb Data!A1",
+        values: [data]
+      }
+    };
+
+    const sheets = google.sheets("v4");
+    sheets.spreadsheets.values.append(request, (err, res) => {
+      if (err) {
+        console.log("Rejecting because of error");
+        reject(err);
+      } else {
+        console.log("Request successful");
+        resolve(res.data.values);
+      }
+    });
+  });
+}
+function parseXeroData(data) {
+  let checkExists = {};
+  let jsonXeroData = [];
+  for (let i = 0; i < data.length; i++) {
+    if (checkExists[data[i][10]] === undefined) {
+      checkExists[data[i][10]] = i;
+      jsonXeroData[i] = {
+        type: (data[i][17] >=0 ? "ACCREC" : "ACCPAY"),
+        contact: {
+          name: data[i][0],
+        },
+
+        invoiceNumber: data[i][10],
+        reference: data[i][11],
+        url: "https://stinsonbeachpm.com",
+        currencyCode: "USD",
+        status: "DRAFT", //AUTHORISED 
+        lineAmountTypes: "NoTax",
+        date: moment(data[i][12]).format("YYYY-MM-DD"),
+        dueDate: moment(data[i][13]).format("YYYY-MM-DD"),
+        lineItems: [
+          {
+            item: data[i][14],
+            description: data[i][15],
+            quantity: data[i][16],
+            unitAmount: (data[i][17] >=0 ? data[i][17] : data[i][17].substring(1)),
+            accountCode: data[i][19],
+            tracking: [
+              {
+                name: data[i][21],
+                option: data[i][22],
+              },
+              {
+                name: data[i][23],
+                option: data[i][24],
+              }
+            ],
+          },
+        ]
+      };
+      
+    } else {
+      jsonXeroData[checkExists[data[i][10]]].lineItems.push({
+        item: data[i][14],
+        description: data[i][15],
+        quantity: data[i][16],
+        unitAmount: data[i][17],
+        accountCode: data[i][19],
+        tracking: [
+          {
+            name: data[i][21],
+            option: data[i][22],
+          },
+          {
+            name: data[i][23],
+            option: data[i][24],
+          }
+        ],
+      });
+     
+    }
+  }
+  
+  return jsonXeroData;
+}
 
 
 
 
+exports.app = functions.https.onRequest(app);
+
+// app.get("/billableExpenses", async (req, res) => {
+//   res.set("Cache-Control", "public, max-age=300, s-maxage=600");
+//   const { XeroClient, Invoices  , LinkedTransaction,  Invoice} = require("xero-node");
+//   const { TokenSet } = require('openid-client');
+//   const xero = new XeroClient({
+//     clientId: client_id,
+//     clientSecret: client_secret,
+//     redirectUris: [redirectUrl],
+//     scopes: scopes.split(" "),
+//   });
+  
+//   await xero.initialize();
+//   await xero.setTokenSet(new TokenSet(req.session.tokenSet));
+
+//   const tokenSet = await xero.readTokenSet();
+  
+//   if (!tokenSet.expired()) {
+//     try {
+//       let checkExists = []
+//       let jsonXeroData = []
+
+//       const linkedTransactionresponse = await xero.accountingApi.getLinkedTransactions("ac018c2b-d7ac-4fa6-b3c9-54559fdac216", null, null, null, null, "APPROVED");
+//       const linkedTrans = linkedTransactionresponse.body.linkedTransactions
+//       //console.log(await xero.accountingApi.getBankTransaction("ac018c2b-d7ac-4fa6-b3c9-54559fdac216","c9ffce74-6135-4908-af28-5009c6a76f51"));
+//       console.log(linkedTrans.length)
+//       res.send(linkedTrans)
+//       // for(let i = 0; i < linkedTrans.length; i++) {
+//       //   const bankTransactionsGetResponse = await xero.accountingApi.getBankTransaction("ac018c2b-d7ac-4fa6-b3c9-54559fdac216",linkedTrans[i].sourceTransactionID );
+//       //   const trxn = bankTransactionsGetResponse.body.bankTransactions[0]
+//       //   if (checkExists[linkedTrans[i].customerID] === undefined) {
+//       //     checkExists[linkedTrans[i].customerID] = i;
+//       //     jsonXeroData[i] = {
+//       //       type: "ACCREC",
+//       //       contact: {
+//       //         contactID: linkedTrans[i].contactID,
+//       //       },    
+//       //       reference: trxn.lineItems[0].tracking[0].option + " Expenses " + moment().subtract(1,'months').format("MMM, YYYY") ,
+//       //       url: "https://stinsonbeachpm.com",
+//       //       currencyCode: "USD",
+//       //       status: "DRAFT",
+//       //       lineAmountTypes: "NoTax",
+//       //       date: moment().subtract(1,'months').endOf('month').format('YYYY-MM-DD'),
+//       //       dueDate: moment().date(15).format('YYYY-MM-DD'),
+//       //       lineItems: [
+              
+//       //       ]
+//       //     };
+          
+//       //   } 
+//       //     jsonXeroData[checkExists[linkedTrans[i].customerID]].lineItems.push({
+//       //       item: (trxn.lineItems[0].item != undefined ? "; " + trxn.lineItems[0].item: ""),
+//       //       description: trxn.contact.name + (trxn.lineItems[0].description != undefined ? "; " + trxn.lineItems[0].description: ""),
+//       //       quantity: (trxn.lineItems[0].quantity != undefined ? "; " + trxn.lineItems[0].quantity: ""),
+//       //       unitAmount: (trxn.lineItems[0].unitAmount != undefined ? "; " + trxn.lineItems[0].unitAmount: ""),
+//       //       accountCode: (trxn.lineItems[0].accountCode != undefined ? "; " + trxn.lineItems[0].accountCode: ""),
+//       //       tracking: [
+//       //         {
+//       //           name: trxn.lineItems[0].tracking[0].name,
+//       //           option: trxn.lineItems[0].tracking[0].option,
+//       //         }
+//       //       ],
+//       //     });
+//       // }
+      
+      
+//       //res.send(jsonXeroData);
+//     } catch (err) {
+//       console.log(err);
+//       res.send(
+//         "Sorry, something went wrong in billableExpenses, try reconnecting by <a href='https://us-central1-stinsonbeachpm.cloudfunctions.net/app/connect'>clicking here</a>"
+//       );
+//     }
+//   } else {
+//     res.send(
+//       "Access to xero has expired, reconnect by <a href='https://us-central1-stinsonbeachpm.cloudfunctions.net/app/connect'>clicking here</a>"
+//     );
+//   }
+// });
